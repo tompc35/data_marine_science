@@ -23,7 +23,7 @@ If you have a Mac, open Atom and select "Install Shell Commands" from the Atom d
 #### What is Miniconda?
 
 Anaconda is a popular distribution of Python and a set of programs built specifically for data science. Miniconda is stripped-down version of Anaconda. We will use Miniconda, and add additional programs manually, so that it does not take up as much space on your computer. Miniconda includes:
-* *Python*: Programming language (we'll be using version 3.7)
+* *Python*: Programming language (we'll be using version 3.8)
 * *Conda*: Package manager
 
 *Conda* is a package manager. It maintains the directories (folder pathways) and versions of external (non-default) python packages. A package is a set of Python tools designed for a specific purpose. Some of these are included with Python, but others have to be downloaded from an external source.
@@ -34,7 +34,7 @@ If you have Anaconda or Miniconda already installed on your computer, follow the
 
 First run Python and check which version you have. The version number is displayed when Python starts up.
 
-To maintain consistency, we will be using Python version 3.7 in this class. Previous versions of Python 3.x will work most of the time in classroom demonstrations and other course materials, but you may run into a few cases where certain commands are invalid or not available. Python 2.x is completely incompatible with the course material. If your version is already 3.7, proceed to [installing additional tools using conda](#installing-additional-tools-using-conda).
+To maintain consistency, we will be using Python version 3.8 in this class. Previous versions of Python 3.x will work most of the time in classroom demonstrations and other course materials, but you may run into a few cases where certain commands are invalid or not available. Python 2.x is completely incompatible with the course material. If your version is already 3.8, proceed to [installing additional tools using conda](#installing-additional-tools-using-conda).
 
 If you have a different version of Python, you have two options:
 
@@ -47,13 +47,13 @@ Option 2 will allow you to use the same Python version and packages as the rest 
 Open a terminal (Mac) or Anaconda prompt (Windows) and type:
 
 ```
-conda create --name ms263 python=3.7
+conda create --name ms263-21 python=3.8
 ```
 
-You can replace `ms263` with any name you like for your environment. To enter the new environment, type:
+You can replace `ms263-21` with any name you like for your environment. To enter the new environment, type:
 
 ```
-source activate ms263
+source activate ms263-21
 ```
 
 You will have to repeat this command whenever you start a new terminal or Anaconda prompt.
@@ -64,7 +64,7 @@ Keep this window open and proceed to [Installing additional tools using conda](#
 
 1) Go to: https://conda.io/miniconda.html
 
-2. Select *Python 3.7* version. Download the appropriate installer for your operating system and run. The default options will be fine.
+2. Select *Python 3.8* version. Download the appropriate installer for your operating system and run. The default options will be fine.
 
   * <b>Windows</b>: Select 32-bit or 64-bit. Chances are, with a newer computer, your operating system is 64-bit. If you do not know, try 64-bit and the installer will tell you if you made the wrong choice. Click on the installer file to download it.
 
@@ -96,7 +96,7 @@ Or you can search for "Terminal" in the spotlight (use press cmd-space).
 
 This will bring up a screen where you can type commands. Continue to the next section on [Installing additional tools using conda](#installing-additional-tools-using-conda)
 
-### Installing additional tools using conda
+### Installing additional tools
 
 Now that you have a command line open, type these commands to install additional programs and Python packages that we will use throughout the semester.
 
@@ -109,12 +109,28 @@ conda config --add channels conda-forge
 Now, install the additional programs and Python packages. This will take a while. Type the following on the command line and press Enter:
 
 ```
-conda install jupyter jupyterlab pandas xarray netCDF4 cartopy cmocean scikit-image statsmodels cbsyst uncertainties
+conda install jupyter jupyterlab pandas xarray netCDF4 cartopy cmocean gsw scikit-image scikit-learn  statsmodels uncertainties pingouin
 ```
 
 Here, `conda` is the name of the package management program and `install` is a command given to this program, followed by the names of programs to install. A description of the packages that you have just installed can be found [here](package-list.md).
 
-When those package installations have finished, install Git. Git is version control system that is commonly used in developing software projects. Enter this command:
+When those package installations have finished, there is one more tool that has be installed with a different package manager called `pip`. Enter this command:
+
+```
+pip install PyCO2SYS
+```
+
+### Install ipyml
+
+This tool enhances plots by making them interactive. Enter this command to install:
+
+```
+conda install ipympl
+```
+
+### Install Git
+
+Git is version control system that is commonly used in developing software projects. Enter this command:
 
 ```
 conda install git

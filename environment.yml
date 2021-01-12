@@ -1,6 +1,6 @@
 name: ms263-env
 dependencies:
-  - python=3.7
+  - python=3.8
   - numpy
   - matplotlib
   - scipy
@@ -11,6 +11,5 @@ dependencies:
   - cmocean
   - scikit-image
   - statsmodels
-  - cbsyst
   - gsw
   - uncertainties
