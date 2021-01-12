@@ -4,13 +4,13 @@
 
 An introduction to using observational oceanographic data, with hands on practice in scientific programming for data analysis with Python.
 
-These course notes are in Jupyter Notebooks. They can be viewed as static web pages on Github or run interactively on Binder at https://mybinder.org/v2/gh/mlmldata2020/course-notes/master
+<!--These course notes are in Jupyter Notebooks. They can be viewed as static web pages on Github or run interactively on Binder at https://mybinder.org/v2/gh/mlmldata2020/course-notes/master
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mlmldata2020/course-notes/master) 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mlmldata2020/course-notes/master)-->
 
 #### General information
 
-* [Git reference](git-reference)
+<!--* [Git reference](git-reference)-->
 
 * [Installing software](software-installation)
 
@@ -18,8 +18,9 @@ These course notes are in Jupyter Notebooks. They can be viewed as static web pa
 
 * [Outside resources](resources.md)
 
-* [Google Drive folder (syllabus, slides, readings)](https://tinyurl.com/qq6ludk)
+* [SJSU Canvas (syllabus, slides, readings)](https://sjsu.instructure.com/)
 
+<!--
 #### Lecture and lab notes
 
 * [Week 0 - Introduction](week00-introduction.ipynb)
