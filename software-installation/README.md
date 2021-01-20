@@ -182,4 +182,4 @@ notepad
 
 On the first day of class, we will go through the Software Carpentry <a href="http://swcarpentry.github.io/shell-novice/">Unix shell tutorial</a>. Software Carpentry is an organization that develops lessons and workshops to teach skills in research computing.
 
-You need to download some files to follow this lesson. To prepare for this lesson, follow the steps listed at the beginning of the <a href="http://swcarpentry.github.io/shell-novice/setup.html"> setup instructions under "download files" and "Open a new shell." </a>.
+You need to download some files to follow this lesson. To prepare for this lesson, follow the steps listed at the beginning of the <a href="http://swcarpentry.github.io/shell-novice/setup.html"> setup instructions </a> under "download files" and "open a new shell" (you have already installed all of the necessary software). 
