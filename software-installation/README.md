@@ -82,7 +82,7 @@ You might have to search for this in the start menu.<br>
 
 <img src="images/comd_prompt_windows.png" alt="cmd_prompt_windows" width="300"/>
 
-Clicking *Anaconda Prompt* will bring up a screen where you can type commands. Keep this window open and follow the steps under [Installing additional tools using conda](#installing-additional-tools-using-conda)
+Clicking *Anaconda Prompt* will bring up a screen where you can type commands. Keep this window open and follow the steps under [Installing additional tools using conda](#installing-additional-tools)
 
 ##### Mac instructions
 
