@@ -82,7 +82,7 @@ You might have to search for this in the start menu.<br>
 
 <img src="images/comd_prompt_windows.png" alt="cmd_prompt_windows" width="300"/>
 
-Clicking *Anaconda Prompt* will bring up a screen where you can type commands. Keep this window open and follow the steps under [Installing additional tools using conda](#installing-additional-tools-using-conda)
+Clicking *Anaconda Prompt* will bring up a screen where you can type commands. Keep this window open and follow the steps under [Installing additional tools using conda](#installing-additional-tools)
 
 ##### Mac instructions
 
@@ -182,4 +182,4 @@ notepad
 
 On the first day of class, we will go through the Software Carpentry <a href="http://swcarpentry.github.io/shell-novice/">Unix shell tutorial</a>. Software Carpentry is an organization that develops lessons and workshops to teach skills in research computing.
 
-You need to download some files to follow this lesson. To prepare for this lesson, follow the three steps listed at the beginning of the <a href="http://swcarpentry.github.io/shell-novice/setup.html"> setup instructions </a>.
+You need to download some files to follow this lesson. To prepare for this lesson, follow the steps listed at the beginning of the <a href="http://swcarpentry.github.io/shell-novice/setup.html"> setup instructions </a> under "download files" and "open a new shell" (you have already installed all of the necessary software). 
