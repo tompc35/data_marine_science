@@ -20,11 +20,12 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [SJSU Canvas (syllabus, slides, readings)](https://sjsu.instructure.com/)
 
+
+#### Lecture and tutorial notes
+
+* [Week 1 - Introduction](week01-introduction.ipynb)
+
 <!--
-#### Lecture and lab notes
-
-* [Week 0 - Introduction](week00-introduction.ipynb)
-
 * [Week 1 - Probabilities and Distributions](week01-probability-and-distributions.ipynb)
 
 * [Week 1 Lab - Python Introduction](week01b-python-intro.ipynb)
