@@ -26,9 +26,9 @@ An introduction to using observational oceanographic data, with hands on practic
 * [Week 1 - Introduction](week01-introduction.ipynb)
 
 
-* [Week 2 Lecture - Probabilities and Distributions](week01-probability-and-distributions.ipynb)
+* [Week 2 Lecture - Probabilities and Distributions](week02-probability-and-distributions.ipynb)
 
-* [Week 2 Lab - Python Introduction](week01b-python-intro.ipynb)
+* [Week 2 Lab - Python Introduction](week02b-python-intro.ipynb)
 
 <!--
 * [Week 2 - Modeling, sampling, confidence intervals](week02a-modeling-sampling.ipynb)
