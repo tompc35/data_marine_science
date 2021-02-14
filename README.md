@@ -31,11 +31,11 @@ An introduction to using observational oceanographic data, with hands on practic
 * [Week 2 Lab - Python Introduction](week02b-python-intro.ipynb)
 
 
-* [Week 2 - Modeling, sampling, confidence intervals](week03a-modeling-sampling.ipynb)
+* [Week 3 - Modeling, sampling, confidence intervals](week03a-modeling-sampling.ipynb)
 
-* [Week 2 Lab - Python variable types (cont.), Boolean logic](week03b-boolean.ipynb)
+* [Week 3 Lab - Python variable types (cont.), Boolean logic](week03b-boolean.ipynb)
 
-* [Week 2 Lab - Cruise data analysis](week03c-cruise-data-analysis.ipynb)
+* [Week 3 Lab - Cruise data analysis](week03c-cruise-data-analysis.ipynb)
 
 <!--
 * [Week 3 - Hypothesis testing, power analysis](week03a-hypothesis-power.ipynb)
