@@ -37,18 +37,19 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 3 Lab - Cruise data analysis](week03c-cruise-data-analysis.ipynb)
 
+* [Week 4 - Hypothesis testing, power analysis](week04a-hypothesis-power.ipynb)
+
+* [Week 4 Lab - Loops](week04b-loops.ipynb)
+
+* [Week 4 Lab - Python functions](week04c-python-functions.ipynb)
+
+
 <!--
-* [Week 3 - Hypothesis testing, power analysis](week03a-hypothesis-power.ipynb)
-
-* [Week 3 Lab - Loops](week03b-loops.ipynb)
-
-* [Week 3 Lab - WCOA cruise comparison](week03c_wcoa_cruise_comparison.ipynb)
-
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
 
 * [Week 4 - Correlation, general least squares regression](week04b-corr-regress-least-squares.ipynb)
 
-* [Week 4 Lab - Python functions](week04c-python-functions.ipynb)
+* [Week 3 Lab - WCOA cruise comparison](week03c_wcoa_cruise_comparison.ipynb)
 
 * [Week 4 Lab - Linear regression examples](week04d-linear-regression-three-methods.ipynb)
 
