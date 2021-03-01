@@ -25,11 +25,9 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 1 - Introduction](week01-introduction.ipynb)
 
-
 * [Week 2 Lecture - Probabilities and Distributions](week02-probability-and-distributions.ipynb)
 
 * [Week 2 Lab - Python Introduction](week02b-python-intro.ipynb)
-
 
 * [Week 3 - Modeling, sampling, confidence intervals](week03a-modeling-sampling.ipynb)
 
@@ -43,11 +41,15 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 4 Lab - Python functions](week04c-python-functions.ipynb)
 
+* [Week 5 - Correlation, general least squares regression](week05a-corr-regress-least-squares.ipynb)
+
+* [Week 5 Lab - Conditional execution](week05b-conditional-execution.ipynb)
+
+* [Week 5 Lab - Python modules](week05c-python-modules.ipynb)
+
 
 <!--
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
-
-* [Week 4 - Correlation, general least squares regression](week04b-corr-regress-least-squares.ipynb)
 
 * [Week 3 Lab - WCOA cruise comparison](week03c_wcoa_cruise_comparison.ipynb)
 
@@ -55,7 +57,7 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 5 - The generalized linear model](week05a_generalized_linear_model.ipynb)
 
-* [Week 5b - Python modules](week05b-python-modules.ipynb)
+
 
 * [Week 6 - ANOVA, non-parametric statistics](week06a-anova-nonparam.ipynb)
 
