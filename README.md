@@ -47,6 +47,14 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 5 Lab - Python modules](week05c-python-modules.ipynb)
 
+* [Week 6 - ANOVA, non-parametric statistics](week06a-anova-nonparam.ipynb)
+
+* [Week 6 - The generalized linear model](week06b_generalized_linear_model.ipynb)
+
+* [Week 6 Lab - WCOA cruise comparison and linear regression methods](week06c_wcoa_cruise_comparison.ipynb)
+
+* [Week 6 Lab - GM and multiple regression workbook](week06d-GM-regression-multiple-regression-workbook.ipynb)
+
 
 <!--
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
@@ -59,7 +67,7 @@ An introduction to using observational oceanographic data, with hands on practic
 
 
 
-* [Week 6 - ANOVA, non-parametric statistics](week06a-anova-nonparam.ipynb)
+
 
 * [Week 6 - Optimization](week06b-optimization.ipynb)
 
