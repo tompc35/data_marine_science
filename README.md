@@ -61,6 +61,10 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 7 Lab - Stats examples](week07c-stats-examples.ipynb)
 
+* [Week 7 Lab - Comparing regional temperatures](week07d-example-comparing-wcoa-temperature.ipynb)
+
+* [Week 7 Lab - Poisson regression](week07e-poisson-regression-tropical-storms.ipynb)
+
 
 <!--
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
