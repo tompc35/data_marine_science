@@ -55,6 +55,12 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 6 Lab - GM and multiple regression workbook](week06d-GM-regression-multiple-regression-workbook.ipynb)
 
+* [Week 7 - Error propagation](week07a-error-propagation.ipynb)
+
+* [Week 7 - Optimization](week07b-optimization.ipynb)
+
+* [Week 7 Lab - Stats examples](week07c-stats-examples.ipynb)
+
 
 <!--
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
