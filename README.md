@@ -65,6 +65,14 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 7 Lab - Poisson regression](week07e-poisson-regression-tropical-storms.ipynb)
 
+* [Week 8 - Principal Component Analysis/Empirical Orthogonal Functions](week08a-PCA-EOF.ipynb)
+
+* [Week 8 - Multi-Dimensional Scaling Analysis](week08b-MDS.ipynb)
+
+* [Week 8 Lab - Population growth and optimizing exponential fits](week08c-us-population-example.ipynb)
+
+* [Week 8 Lab - Python packages](week08d-python-packages.ipynb)
+
 
 <!--
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
@@ -75,21 +83,9 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 5 - The generalized linear model](week05a_generalized_linear_model.ipynb)
 
-
-
-
-
 * [Week 6 - Optimization](week06b-optimization.ipynb)
 
-* [Week 6 Lab - Population growth and optimizing exponential fits](week06c-us-population-example.ipynb)
-
-* [Week 7 - Principal Component Analysis/Empirical Orthogonal Functions](week07a-PCA-EOF.ipynb)
-
 * [Week 7 Lab - Monterey Bay Kelp PCA](week07b-montereybay-kelp-pca.ipynb)
-
-* [Week 8 - Multi-Dimensional Scaling Analysis](week08a-MDS.ipynb)
-
-* [Week 8 Lab - Python packages](week08b-python-packages.ipynb)
 
 * [Week 9 - Spectral analysis](week09a_spectral_analysis.ipynb)
 
