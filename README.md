@@ -73,6 +73,11 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 8 Lab - Python packages](week08d-python-packages.ipynb)
 
+* [Week 9 - Spectral analysis](week09a_spectral_analysis.ipynb)
+
+* [Week 9 Lab - NDBC wind](week09b-ndbc-wind.ipynb)
+
+* [Week 9 Lab - Monterey Bay Kelp PCA](week09c-monterey_bay_kelp.ipynb)
 
 <!--
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
@@ -85,9 +90,7 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 6 - Optimization](week06b-optimization.ipynb)
 
-* [Week 7 Lab - Monterey Bay Kelp PCA](week07b-montereybay-kelp-pca.ipynb)
 
-* [Week 9 - Spectral analysis](week09a_spectral_analysis.ipynb)
 
 * [Week 9 Lab - Pacific Decadal Oscillation and autocorrelation](week09b_correlation_function_pdo.ipynb)
 
