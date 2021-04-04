@@ -79,6 +79,8 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 9 Lab - Monterey Bay Kelp PCA](week09c-monterey_bay_kelp.ipynb)
 
+* [Week 9 Supplemental - Monterey Bay Kelp PCA](week09d-ndbc-wind-pca-detailed.ipynb)
+
 <!--
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
 
