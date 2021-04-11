@@ -79,6 +79,10 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 9 Lab - Monterey Bay Kelp PCA](week09c-monterey_bay_kelp.ipynb)
 
+* [Week 10 Lab - Elkhorn Slough spectral analysis - Part 1](week10a_lobo_spectral.ipynb)
+
+* [Week 11 Lab - Elkhorn Slough spectral analysis - Part 2](week11b_lobo_spectral_part2.ipynb)
+z
 <!--
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
 
@@ -94,9 +98,7 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 9 Lab - Pacific Decadal Oscillation and autocorrelation](week09b_correlation_function_pdo.ipynb)
 
-* [Week 9 Lab - Elkhorn Slough spectral analysis - Part 1](week09c_lobo_spectral.ipynb)
 
-* [Week 10 Lab - Elkhorn Slough spectral analysis - Part 2](week10_lobo_spectral_part2.ipynb)
 
 * [Week 11 - Convolution, filtering and image analysis](week11a_filtering_image_analysis.ipynb)
 
