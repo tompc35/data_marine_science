@@ -85,6 +85,8 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 11 - Spatial analysis](week11b-spatial-analysis.ipynb)
 
+* [Week 11 - Interpolation](week11c-interpolation.ipynb)
+
 * [Week 12 - Mapping examples](week12-mapping-intro.ipynb)
 
 <!--
