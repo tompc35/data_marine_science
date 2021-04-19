@@ -81,7 +81,7 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 10 Lab - Elkhorn Slough spectral analysis - Part 1](week10a_lobo_spectral.ipynb)
 
-* [Week 11 Lab - Elkhorn Slough spectral analysis - Part 2](week11b_lobo_spectral_part2.ipynb)
+* [Week 11 Lab - Elkhorn Slough spectral analysis - Part 2](week11a_lobo_spectral_part2.ipynb)
 
 * [Week 11 - Spatial analysis](week11b-spatial-analysis.ipynb)
 
