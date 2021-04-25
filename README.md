@@ -87,7 +87,11 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 11 - Interpolation](week11c-interpolation.ipynb)
 
-* [Week 12 - Mapping examples](week12-mapping-intro.ipynb)
+* [Week 11 - Filtering](week11d-filtering.ipynb)
+
+* [Week 12 - Mapping examples](week12a-mapping-intro.ipynb)
+
+* [Week 12 - Image analysis](week12b-image_analysis.ipynb)
 
 <!--
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
