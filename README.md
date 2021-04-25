@@ -91,7 +91,7 @@ An introduction to using observational oceanographic data, with hands on practic
 
 * [Week 12 - Mapping examples](week12a-mapping-intro.ipynb)
 
-* [Week 12 - Image analysis](week12b-image_analysis.ipynb)
+* [Week 12 - Image analysis](week12b-image-analysis.ipynb)
 
 <!--
 * [Week 4 - Power analysis](week04a-power-analysis.ipynb)
