@@ -50,7 +50,7 @@ You only have to do this once for each project. You do not have to run this comm
 
 ## Set up a remote repository on GitHub
 
-Go to the [class GitHub page](https://github.com/mlmldata2017) or your own GitHub account page
+Go to your GitHub account page
 
 Click the green "New" button
 
@@ -58,7 +58,7 @@ Enter a name for the repository and select whether the repository will be public
 
 In the project directory on your local computer, run the following command:
 ```
-git remote add origin https://github.com/mlmldata2017/repository-name.git
+git remote add origin https://github.com/user-name/repository-name.git
 ```
 
 __Replace the address above with the address of the remote repository you created on GitHub.__
