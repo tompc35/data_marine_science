@@ -68,3 +68,27 @@ If you have not done so already, [initialize a local repository on your computer
 Follow the quick steps to [push changes to a remote repository](#push-changes-to-a-remote-repository-quick-steps)
 
 You only have to do this once for each project.
+
+## Delete a local git repository on your computer
+
+Sometimes you may want to delete a local git repository that you have already created with `git init`. You want to keep the files, but undo everything that has been done with git. This situation might arise if you make a mistake, like initializing in the wrong directory. Deleting the repository allows you to start over.
+
+There is no special command for deleting a local repository. Instead, what you have to do is delete the hidden `.git` directory that was created when you ran `git init`.
+
+Deleting the `.git` directory can be done on the command line. However, the instructions here demonstrate how to do this in the file browser because there is less chance of making a catastrophic error. The directions depend on the operating system (scroll down for Windows).
+
+### Mac
+
+In the Finder, navigate to your main project directory (the one where you ran `git init`).
+
+![planets directory](images/planets-dir.png)
+
+To show the hidden files, type <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd>
+
+![planets directory - hidden files](images/planets-dir-hidden.png)
+
+Delete the `.git` directory.
+
+![planets directory](images/planets-dir-delete.png)
+
+You local git repository has been deleted. You can now start over and [initialize a new repository](#initialize-a-local-repository-on-your-computer)
