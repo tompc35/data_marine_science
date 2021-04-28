@@ -97,13 +97,13 @@ Your local git repository has been deleted. You can now start over and [initiali
 
 ### Windows
 
-Open File Explorer from the taskbar. Navigate to your main project directory (the one where you ran `git init`).
+* Open File Explorer from the taskbar. Navigate to your main project directory (the one where you ran `git init`).
 
-Select *View > Options > Change folder* and search options.
+* Select *View > Options > Change folder* and search options.
 
-Select the View tab and, in *Advanced settings*, select *Show hidden files, folders, and drives* and *OK*.
+* Select the View tab and, in *Advanced settings*, select *Show hidden files, folders, and drives* and *OK*.
 
-Delete the `.git` directory. Your local git repository has been deleted. You can now start over and [initialize a new repository](#initialize-a-local-repository-on-your-computer)
+* Delete the `.git` directory. Your local git repository has been deleted. You can now start over and [initialize a new repository](#initialize-a-local-repository-on-your-computer)
 
 Source for instructions on viewing hidden files and folders: [Microsoft support](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)
 
