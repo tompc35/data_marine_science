@@ -75,7 +75,7 @@ You only have to do this once for each project.
 
 Sometimes you may want to delete a local git repository that you have already created with `git init`. You want to keep the files, but undo everything that has been done with git. This situation might arise if you make a mistake, like initializing in the wrong directory. Deleting the repository allows you to start over.
 
-There is no special command for deleting a local repository. Instead, what you have to do is delete the hidden `.git` directory that was created when you ran `git init`.
+There is no special command for deleting a local repository. Instead, you need to delete the hidden `.git` directory that was created when you ran `git init`. This is where git stores all files related to your project.
 
 Deleting the `.git` directory can be done on the command line. However, the instructions here demonstrate how to do this in the file browser because there is less chance of making a catastrophic error. The directions depend on the operating system (scroll down for Windows).
 
@@ -93,4 +93,17 @@ Delete the `.git` directory.
 
 ![planets directory](images/planets-dir-delete.png)
 
-You local git repository has been deleted. You can now start over and [initialize a new repository](#initialize-a-local-repository-on-your-computer)
+Your local git repository has been deleted. You can now start over and [initialize a new repository](#initialize-a-local-repository-on-your-computer)
+
+### Windows
+
+Open File Explorer from the taskbar. Navigate to your main project directory (the one where you ran `git init`).
+
+Select *View > Options > Change folder* and search options.
+
+Select the View tab and, in *Advanced settings*, select *Show hidden files, folders, and drives* and *OK*.
+
+Delete the `.git` directory. Your local git repository has been deleted. You can now start over and [initialize a new repository](#initialize-a-local-repository-on-your-computer)
+
+Source for instructions on viewing hidden files and folders: [Microsoft support](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)
+
