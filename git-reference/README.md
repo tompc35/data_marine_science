@@ -6,6 +6,8 @@
 
 [Set up a remote repository on GitHub](#set-up-a-remote-repository-on-github)
 
+[Delete a local git repository on your computer](#delete-a-local-git-repository-on-your-computer)
+
 ## Push changes to a remote repository: quick steps
 
 If you have already [initialized a local repository on your computer](#initialize-a-local-repository-on-your-computer) and [set up a remote repository on GitHub](#set-up-a-remote-repository-on-github), running the three commands below in your local project directory will add all new files and changes and push them to GitHub.
@@ -83,7 +85,7 @@ In the Finder, navigate to your main project directory (the one where you ran `g
 
 ![planets directory](images/planets-dir.png)
 
-To show the hidden files, type <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd>
+To show the hidden files, type <kbd>command</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd>
 
 ![planets directory - hidden files](images/planets-dir-hidden.png)
 
