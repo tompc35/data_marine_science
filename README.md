@@ -10,7 +10,7 @@ An introduction to using observational oceanographic data, with hands on practic
 
 #### General information
 
-<!--* [Git reference](git-reference)-->
+* [Git reference](git-reference)
 
 * [Installing software](software-installation)
 
