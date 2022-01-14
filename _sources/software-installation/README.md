@@ -38,7 +38,7 @@ If you have Anaconda or Miniconda already installed on your computer, follow the
 
 First run Python and check which version you have. The version number is displayed when Python starts up.
 
-To maintain consistency, we will be using Python version 3.8 in this class. Previous versions of Python 3.x will work most of the time in classroom demonstrations and other course materials, but you may run into a few cases where certain commands are invalid or not available. Python 2.x is completely incompatible with the course material. If your version is already 3.8, proceed to [installing additional tools using conda](#installing-additional-tools-using-conda).
+To maintain consistency, we will be using Python version 3.8 in this class. Previous versions of Python 3.x will work most of the time in classroom demonstrations and other course materials, but you may run into a few cases where certain commands are invalid or not available. Python 2.x is completely incompatible with the course material. If your version is already 3.8, proceed to [installing additional tools](#installing-additional-tools).
 
 If you have a different version of Python, you have two options:
 
@@ -62,7 +62,7 @@ conda activate ms263-22
 
 You will have to repeat this command whenever you start a new terminal or Anaconda prompt.
 
-Keep this window open and proceed to [Installing additional tools using conda](#installing-additional-tools-using-conda)
+Keep this window open and proceed to [Installing additional tools](#installing-additional-tools)
 
 ### Miniconda installation
 
@@ -90,7 +90,7 @@ You might have to search for this in the start menu.<br>
 :align: left
 ```
 
-Clicking *Anaconda Prompt* will bring up a screen where you can type commands. Keep this window open and follow the steps under [Installing additional tools using conda](#installing-additional-tools)
+Clicking *Anaconda Prompt* will bring up a screen where you can type commands. Keep this window open and follow the steps under [Installing additional tools](#installing-additional-tools)
 
 #### Mac instructions
 
