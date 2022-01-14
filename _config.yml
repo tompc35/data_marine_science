@@ -3,7 +3,7 @@
 
 title: Data Analysis Techniques in Marine Science
 author: Tom Connolly
-#logo: logo.png
+logo: images/course-logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
