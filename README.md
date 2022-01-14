@@ -1,31 +1,21 @@
-# Data Analysis Techniques In Marine Science
+# Data Analysis Techniques in Marine Science
 
-## MS 263 - Moss Landing Marine Labs
-
-An introduction to using observational oceanographic data, with hands on practice in scientific programming for data analysis with Python.
+An introductory resource for analyzing oceanographic data. Fundamental concepts in sampling and statistics are combined with hands on practice in scientific programming with Python.
 
 <!--These course notes are in Jupyter Notebooks. They can be viewed as static web pages on Github or run interactively on Binder at https://mybinder.org/v2/gh/mlmldata2020/course-notes/master
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mlmldata2020/course-notes/master)-->
 
-#### General information
+## Course Schedule
 
-* [Git reference](git-reference)
+### Before class
+* [Installing software](software-installation/README.md)
 
-* [Installing software](software-installation)
+### Week 1
+* [Introduction to sampling and statistics](week01-introduction.ipynb)
+* The command line and shell scripts
 
-* [Code of conduct](code-of-conduct.md)
-
-* [Outside resources](resources.md)
-
-* [SJSU Canvas (syllabus, slides, readings)](https://sjsu.instructure.com/)
-
-
-#### Lecture and tutorial notes
-
-* [Week 1 - Introduction](week01-introduction.ipynb)
-
-* [Week 2 Lecture - Probabilities and Distributions](week02-probability-and-distributions.ipynb)
+<!--* [Week 2 Lecture - Probabilities and Distributions](week02-probability-and-distributions.ipynb)
 
 * [Week 2 Lab - Python Introduction](week02b-python-intro.ipynb)
 
