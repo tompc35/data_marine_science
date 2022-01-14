@@ -51,13 +51,13 @@ Option 2 will allow you to use the same Python version and packages as the rest 
 Open a terminal (Mac) or Anaconda prompt (Windows) and type:
 
 ```
-conda create --name ms263-21 python=3.8
+conda create --name ms263-22 python=3.8
 ```
 
-You can replace `ms263-21` with any name you like for your environment. To enter the new environment, type:
+You can replace `ms263-22` with any name you like for your environment. To enter the new environment, type:
 
 ```
-source activate ms263-21
+source activate ms263-22
 ```
 
 You will have to repeat this command whenever you start a new terminal or Anaconda prompt.
