@@ -25,8 +25,7 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/executablebooks/jupyter-book  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
+  url: https://github.com/mlmldata2022/course-notes  # Online location of your book
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
@@ -36,4 +35,4 @@ html:
   use_repository_button: true
 
 launch_buttons:
-  binderhub_url: "https://mybinder.org/v2/gh/mlmldata2022/course-notes/HEAD"
+  binderhub_url: "https://mybinder.org"
