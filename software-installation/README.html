@@ -1,0 +1,684 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setup and software installation &#8212; Data Analysis Techniques in Marine Science</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sampling and statistics: Introduction" href="../week01-introduction.html" />
+    <link rel="prev" title="Data Analysis Techniques in Marine Science" href="../README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/course-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Data Analysis Techniques in Marine Science
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Setup and software installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week01-introduction.html">
+   Sampling and statistics: Introduction
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/software-installation/README.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsoftware-installation/README.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#storage-requirements">
+   Storage requirements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sign-up-for-a-github-account">
+   Sign up for a GitHub account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-the-atom-text-editor">
+   Install the Atom text editor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-miniconda">
+   Install Miniconda
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-miniconda">
+     What is Miniconda?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-have-anaconda-or-miniconda-already-installed">
+     If you have Anaconda or Miniconda already installed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#miniconda-installation">
+     Miniconda installation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-a-terminal-or-command-prompt">
+     Open a terminal or command prompt
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#windows-instructions">
+       Windows instructions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mac-instructions">
+       Mac instructions
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-additional-tools">
+   Installing additional tools
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-ipyml">
+   Install ipyml
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-git">
+   Install Git
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows-only-open-the-git-bash-command-line">
+     Windows only: open the Git Bash command line
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-a-text-editor-from-the-command-line">
+   Open a text editor from the command line
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#atom">
+     Atom
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nano">
+     Nano
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-default-text-editor">
+     System default text editor
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#textedit">
+       TextEdit
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#notepad">
+       Notepad
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-for-the-unix-shell-tutorial">
+   Setup for the Unix shell tutorial
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Setup and software installation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#storage-requirements">
+   Storage requirements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sign-up-for-a-github-account">
+   Sign up for a GitHub account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-the-atom-text-editor">
+   Install the Atom text editor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-miniconda">
+   Install Miniconda
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-miniconda">
+     What is Miniconda?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-have-anaconda-or-miniconda-already-installed">
+     If you have Anaconda or Miniconda already installed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#miniconda-installation">
+     Miniconda installation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-a-terminal-or-command-prompt">
+     Open a terminal or command prompt
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#windows-instructions">
+       Windows instructions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mac-instructions">
+       Mac instructions
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-additional-tools">
+   Installing additional tools
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-ipyml">
+   Install ipyml
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-git">
+   Install Git
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows-only-open-the-git-bash-command-line">
+     Windows only: open the Git Bash command line
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-a-text-editor-from-the-command-line">
+   Open a text editor from the command line
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#atom">
+     Atom
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nano">
+     Nano
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-default-text-editor">
+     System default text editor
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#textedit">
+       TextEdit
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#notepad">
+       Notepad
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-for-the-unix-shell-tutorial">
+   Setup for the Unix shell tutorial
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="setup-and-software-installation">
+<h1>Setup and software installation<a class="headerlink" href="#setup-and-software-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="storage-requirements">
+<h2>Storage requirements<a class="headerlink" href="#storage-requirements" title="Permalink to this headline">¶</a></h2>
+<p>You will need at least 2 GB free on your computer’s hard drive.</p>
+</div>
+<div class="section" id="sign-up-for-a-github-account">
+<h2>Sign up for a GitHub account<a class="headerlink" href="#sign-up-for-a-github-account" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com">Github</a> is a popular remote repository hosting service. This is a way to store and share version controlled software off of your computer. You can think of this sort of like Dropbox for code and something we will use extensively in this class. You will need to sign up for an account, if you do not already have one.</p>
+</div>
+<div class="section" id="install-the-atom-text-editor">
+<h2>Install the Atom text editor<a class="headerlink" href="#install-the-atom-text-editor" title="Permalink to this headline">¶</a></h2>
+<p>Text editors do exactly what their name implies, and often a lot more. They are useful for writing code and exploring data files that are stored in text format. In this class we will use the Atom text editor because it is available on all operating systems and has some cool custom plugins.
+ 
+Download an installer for Atom at <a class="reference external" href="https://atom.io/">atom.io</a> and run it.</p>
+<p>If you have a Mac, open Atom and select “Install Shell Commands” from the Atom drop-down menu.</p>
+<a class="reference internal image-reference" href="../_images/atom-commandline-mac.png"><img alt="Atom drop-down menu" class="align-left" src="../_images/atom-commandline-mac.png" style="width: 100px;" /></a>
+</div>
+<div class="section" id="install-miniconda">
+<h2>Install Miniconda<a class="headerlink" href="#install-miniconda" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-miniconda">
+<h3>What is Miniconda?<a class="headerlink" href="#what-is-miniconda" title="Permalink to this headline">¶</a></h3>
+<p>Anaconda is a popular distribution of Python and a set of programs built specifically for data science. Miniconda is stripped-down version of Anaconda. We will use Miniconda, and add additional programs manually, so that it does not take up as much space on your computer. Miniconda includes:</p>
+<ul class="simple">
+<li><p><em>Python</em>: Programming language (we’ll be using version 3.8)</p></li>
+<li><p><em>Conda</em>: Package manager</p></li>
+</ul>
+<p><em>Conda</em> is a package manager. It maintains the directories (folder pathways) and versions of external (non-default) python packages. A package is a set of Python tools designed for a specific purpose. Some of these are included with Python, but others have to be downloaded from an external source.</p>
+</div>
+<div class="section" id="if-you-have-anaconda-or-miniconda-already-installed">
+<h3>If you have Anaconda or Miniconda already installed<a class="headerlink" href="#if-you-have-anaconda-or-miniconda-already-installed" title="Permalink to this headline">¶</a></h3>
+<p>If you have Anaconda or Miniconda already installed on your computer, follow the steps below. If not, move on to <a class="reference external" href="#miniconda-installation">Miniconda installation</a>.</p>
+<p>First run Python and check which version you have. The version number is displayed when Python starts up.</p>
+<p>To maintain consistency, we will be using Python version 3.8 in this class. Previous versions of Python 3.x will work most of the time in classroom demonstrations and other course materials, but you may run into a few cases where certain commands are invalid or not available. Python 2.x is completely incompatible with the course material. If your version is already 3.8, proceed to <a class="reference external" href="#installing-additional-tools-using-conda">installing additional tools using conda</a>.</p>
+<p>If you have a different version of Python, you have two options:</p>
+<ol class="simple">
+<li><p>Uninstall the previous installation. If you choose this option, find the uninstall instructions for your operating system at <a class="reference external" href="https://conda.io/docs/user-guide/install/index.html">https://conda.io/docs/user-guide/install/index.html</a>. Proceed with the <a class="reference external" href="#miniconda-installation">Miniconda installation</a> steps below.</p></li>
+<li><p><em>Advanced:</em> Create a new <em>environment</em> for this class.</p></li>
+</ol>
+<p>Option 2 will allow you to use the same Python version and packages as the rest of the class, without altering your existing setup. For more information on environments, see <a class="reference external" href="https://conda.io/docs/user-guide/tasks/manage-environments.html">https://conda.io/docs/user-guide/tasks/manage-environments.html</a></p>
+<p>Open a terminal (Mac) or Anaconda prompt (Windows) and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">ms263</span><span class="o">-</span><span class="mi">21</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.8</span>
+</pre></div>
+</div>
+<p>You can replace <code class="docutils literal notranslate"><span class="pre">ms263-21</span></code> with any name you like for your environment. To enter the new environment, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">ms263</span><span class="o">-</span><span class="mi">21</span>
+</pre></div>
+</div>
+<p>You will have to repeat this command whenever you start a new terminal or Anaconda prompt.</p>
+<p>Keep this window open and proceed to <a class="reference external" href="#installing-additional-tools-using-conda">Installing additional tools using conda</a></p>
+</div>
+<div class="section" id="miniconda-installation">
+<h3>Miniconda installation<a class="headerlink" href="#miniconda-installation" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Go to: <a class="reference external" href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p></li>
+</ol>
+<ol class="simple">
+<li><p>Select <em>Python 3.8</em> version. Download the appropriate installer for your operating system and run. The default options will be fine.</p></li>
+</ol>
+<ul class="simple">
+<li><p><b>Windows</b>: Select 32-bit or 64-bit. Chances are, with a newer computer, your operating system is 64-bit. If you do not know, try 64-bit and the installer will tell you if you made the wrong choice. Click on the installer file to download it.</p></li>
+<li><p><b>Mac</b>: There are two different options for installers. Download the .pkg installer and click on it.</p></li>
+</ul>
+</div>
+<div class="section" id="open-a-terminal-or-command-prompt">
+<h3>Open a terminal or command prompt<a class="headerlink" href="#open-a-terminal-or-command-prompt" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="#windows-instructions">Windows instructions</a></p></li>
+<li><p><a class="reference external" href="#mac-instructions">Mac instructions</a></p></li>
+</ul>
+<div class="section" id="windows-instructions">
+<h4>Windows instructions<a class="headerlink" href="#windows-instructions" title="Permalink to this headline">¶</a></h4>
+<p>After installing Anaconda, open the program <b>”Anaconda Prompt”</b>
+You might have to search for this in the start menu.<br></p>
+<a class="reference internal image-reference" href="../_images/comd_prompt_windows.png"><img alt="Windows command prompt" class="align-left" src="../_images/comd_prompt_windows.png" style="width: 300px;" /></a>
+<p>Clicking <em>Anaconda Prompt</em> will bring up a screen where you can type commands. Keep this window open and follow the steps under <a class="reference external" href="#installing-additional-tools">Installing additional tools using conda</a></p>
+</div>
+<div class="section" id="mac-instructions">
+<h4>Mac instructions<a class="headerlink" href="#mac-instructions" title="Permalink to this headline">¶</a></h4>
+<p>After installing Anaconda, open the program <b>”Terminal”</b></p>
+<p>This is located in Applications -&gt; Utilities</p>
+<p>Or you can search for “Terminal” in the spotlight (use press cmd-space).</p>
+<a class="reference internal image-reference" href="../_images/comd_prompt_osx.png"><img alt="OSX command prompt" class="align-left" src="../_images/comd_prompt_osx.png" style="width: 450px;" /></a>
+<p>This will bring up a screen where you can type commands. Continue to the next section on <a class="reference external" href="#installing-additional-tools-using-conda">Installing additional tools using conda</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="installing-additional-tools">
+<h2>Installing additional tools<a class="headerlink" href="#installing-additional-tools" title="Permalink to this headline">¶</a></h2>
+<p>Now that you have a command line open, type these commands to install additional programs and Python packages that we will use throughout the semester.</p>
+<p>First, add the <a class="reference external" href="https://conda-forge.org/">conda-forge</a> channel as a source for obtaining packages. This is a  community-driven project that makes sure that none of the packages you download conflict with each other. Type the following on the command line and press Enter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="n">add</span> <span class="n">channels</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+</pre></div>
+</div>
+<p>Now, install the additional programs and Python packages. This will take a while. Type the following on the command line and press Enter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">jupyter</span> <span class="n">jupyterlab</span> <span class="n">pandas</span> <span class="n">xarray</span> <span class="n">netCDF4</span> <span class="n">cartopy</span> <span class="n">cmocean</span> <span class="n">gsw</span> <span class="n">scikit</span><span class="o">-</span><span class="n">image</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>  <span class="n">statsmodels</span> <span class="n">uncertainties</span> <span class="n">pingouin</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">conda</span></code> is the name of the package management program and <code class="docutils literal notranslate"><span class="pre">install</span></code> is a command given to this program, followed by the names of programs to install. A description of the packages that you have just installed can be found <a class="reference internal" href="package-list.html"><span class="doc std std-doc">here</span></a>.</p>
+<p>When those package installations have finished, there is one more tool that has be installed with a different package manager called <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Enter this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PyCO2SYS</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-ipyml">
+<h2>Install ipyml<a class="headerlink" href="#install-ipyml" title="Permalink to this headline">¶</a></h2>
+<p>This tool enhances plots by making them interactive. Enter this command to install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">ipympl</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-git">
+<h2>Install Git<a class="headerlink" href="#install-git" title="Permalink to this headline">¶</a></h2>
+<p>Git is version control system that is commonly used in developing software projects. Enter this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">git</span>
+</pre></div>
+</div>
+<p>Choose the default options if prompted to make selections. If for some reason that method of installing Git does not work, you can download and install Git for your operating system by following the instructions at <a class="reference external" href="https://git-scm.com">https://git-scm.com</a></p>
+<div class="section" id="windows-only-open-the-git-bash-command-line">
+<h3>Windows only: open the Git Bash command line<a class="headerlink" href="#windows-only-open-the-git-bash-command-line" title="Permalink to this headline">¶</a></h3>
+<p>If you have windows, check to make sure that you can open the Git Bash command prompt. You should be able to find Git Bash in the list of programs when you open the Windows Start menu.</p>
+<p>Git Bash provides another interface for entering text commands. Using Git Bash will allow you to enter the same commands as a Mac or any other Unix-based system (like Linux). This will allow for consistency across the entire class and expose you to the commands commonly used on Unix-based servers.</p>
+</div>
+</div>
+<div class="section" id="open-a-text-editor-from-the-command-line">
+<h2>Open a text editor from the command line<a class="headerlink" href="#open-a-text-editor-from-the-command-line" title="Permalink to this headline">¶</a></h2>
+<p>Make sure that you can open a text editor from the command line.</p>
+<div class="section" id="atom">
+<h3>Atom<a class="headerlink" href="#atom" title="Permalink to this headline">¶</a></h3>
+<p>First, try the Atom text editor. On the command line, enter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">atom</span>
+</pre></div>
+</div>
+<p>This should open a blank text document in the Atom text editor. If that worked, then you are all set.</p>
+</div>
+<div class="section" id="nano">
+<h3>Nano<a class="headerlink" href="#nano" title="Permalink to this headline">¶</a></h3>
+<p>If for some reason you cannot open Atom from the command line, try the Nano text editor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span>
+</pre></div>
+</div>
+<p>This brings up a text editor in the terminal window. Enter Control-X to exit Nano.</p>
+</div>
+<div class="section" id="system-default-text-editor">
+<h3>System default text editor<a class="headerlink" href="#system-default-text-editor" title="Permalink to this headline">¶</a></h3>
+<p>You can also try the default text editor for your operating system. These do not have as many features as Atom but will get the job done.</p>
+<div class="section" id="textedit">
+<h4>TextEdit<a class="headerlink" href="#textedit" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="o">-</span><span class="n">e</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="notepad">
+<h4>Notepad<a class="headerlink" href="#notepad" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">notepad</span>
+</pre></div>
+</div>
+<p>If you are using Windows, it is highly recommended that you install the free <a class="reference external" href="https://notepad-plus-plus.org/">Notepad++</a> editor instead of using the default Notepad.</p>
+</div>
+</div>
+</div>
+<div class="section" id="setup-for-the-unix-shell-tutorial">
+<h2>Setup for the Unix shell tutorial<a class="headerlink" href="#setup-for-the-unix-shell-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>On the first day of class, we will go through the Software Carpentry <a href="http://swcarpentry.github.io/shell-novice/">Unix shell tutorial</a>. Software Carpentry is an organization that develops lessons and workshops to teach skills in research computing.</p>
+<p>You need to download some files to follow this lesson. To prepare for this lesson, follow the steps listed at the beginning of the <a href="http://swcarpentry.github.io/shell-novice/setup.html"> setup instructions </a> under “download files” and “open a new shell” (you have already installed all of the necessary software).</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./software-installation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data Analysis Techniques in Marine Science</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../week01-introduction.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sampling and statistics: Introduction</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Tom Connolly<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
