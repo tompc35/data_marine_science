@@ -126,18 +126,21 @@ conda install jupyter jupyterlab pandas xarray netCDF4 cartopy cmocean gsw sciki
 
 Here, `conda` is the name of the package management program and `install` is a command given to this program, followed by the names of programs to install. A description of the packages that you have just installed can be found [here](package-list.md).
 
+## Install ipyml
+
+This optional tool enhances plots by making them interactive. Enter this command to install:
+
+```
+conda update jupyterlab
+conda install ipympl
+```
+
+## Install PyCO2SYS
+
 When those package installations have finished, there is one more tool that has be installed with a different package manager called `pip`. Enter this command:
 
 ```
 pip install PyCO2SYS
-```
-
-## Install ipyml
-
-This tool enhances plots by making them interactive. Enter this command to install:
-
-```
-conda install ipympl
 ```
 
 ## Install Git
