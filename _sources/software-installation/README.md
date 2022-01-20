@@ -42,7 +42,7 @@ To maintain consistency, we will be using Python version 3.8 in this class. Prev
 
 If you have a different version of Python, you have two options:
 
-1. Uninstall the previous installation. If you choose this option, find the uninstall instructions for your operating system at https://conda.io/docs/user-guide/install/index.html. Proceed with the [Miniconda installation](#miniconda-installation) steps below.
+1. Uninstall the previous installation. Note that option 2 below may be better if you already have Python code that you want to keep running on the same version of Python. If you choose option 1, find the uninstall instructions for your operating system at https://conda.io/projects/conda/en/latest/user-guide/install/index.html#regular-installation. For Mac and Windows installations, be sure to remove the Miniconda or Anaconda directory from your home folder. Restart your terminal and proceed with the [Miniconda installation](#miniconda-installation) steps below.
 
 2. *Advanced:* Create a new *environment* for this class.
 
