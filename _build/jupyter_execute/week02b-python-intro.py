@@ -83,7 +83,7 @@ print(6)
 print(4+6)
 
 
-# If you get a `SyntaxError` it means Python can't handle something you've done because of an error in the syntax. In real life, we can sometimes break rules of syntax and get away with it. When communicating with computers in a language like Python, there is no room for error.
+# If you get a `SyntaxError` it means Python can't handle something you've done because of incorrect syntax. In real life, we can sometimes break rules of syntax and get away with it. When communicating with computers in a language like Python, there is no room for error.
 # 
 # ##### Exercise
 # 

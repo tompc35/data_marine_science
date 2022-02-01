@@ -14,3 +14,4 @@ parts:
    chapters:
    - file: week02-probability-and-distributions
    - file: week02b-python-intro
+   - file: week02c-exercises-python-intro

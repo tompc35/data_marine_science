@@ -21,6 +21,7 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 
 * [Probabilities and Distributions](week02-probability-and-distributions.ipynb)
 * [Python Introduction](week02b-python-intro.ipynb)
+* [Exercises - Python Introduction](week02c-exercises-python-intro.ipynb)
 
 <!--* 
 
