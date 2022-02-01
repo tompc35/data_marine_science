@@ -1,0 +1,651 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Probability and distributions &#8212; Data Analysis Techniques in Marine Science</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction to Python" href="week02b-python-intro.html" />
+    <link rel="prev" title="Sampling and statistics: Introduction" href="week01-introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/course-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Data Analysis Techniques in Marine Science
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software-installation/README.html">
+   Setup and software installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week01-introduction.html">
+   Sampling and statistics: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Probability and distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02b-python-intro.html">
+   Introduction to Python
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/week02-probability-and-distributions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek02-probability-and-distributions.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week02-probability-and-distributions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#focus-questions">
+   Focus questions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-density-functions">
+   Probability Density functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formal-features-of-probabilities">
+   Formal features of Probabilities
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayes-theorem-diachronic-interpretation">
+     Bayes theorem – diachronic interpretation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-of-two-dice">
+     Sum of two dice
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-monty-hall-problem">
+     The Monty Hall problem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distributions">
+   Distributions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normal-distribution">
+     Normal Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-normal-distributions">
+     Non-normal distributions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#poisson-distribution">
+     Poisson Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weibull-distribution">
+     Weibull Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-normal-distribution">
+     Log-Normal Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#back-to-normal-distributions">
+     Back to Normal Distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Probability and distributions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#focus-questions">
+   Focus questions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-density-functions">
+   Probability Density functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formal-features-of-probabilities">
+   Formal features of Probabilities
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayes-theorem-diachronic-interpretation">
+     Bayes theorem – diachronic interpretation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-of-two-dice">
+     Sum of two dice
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-monty-hall-problem">
+     The Monty Hall problem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distributions">
+   Distributions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normal-distribution">
+     Normal Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-normal-distributions">
+     Non-normal distributions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#poisson-distribution">
+     Poisson Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weibull-distribution">
+     Weibull Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-normal-distribution">
+     Log-Normal Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#back-to-normal-distributions">
+     Back to Normal Distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="probability-and-distributions">
+<h1>Probability and distributions<a class="headerlink" href="#probability-and-distributions" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="focus-questions">
+<h2>Focus questions<a class="headerlink" href="#focus-questions" title="Permalink to this headline">¶</a></h2>
+<p>Goals for student knowledge at the end of the lesson:</p>
+<ol class="simple">
+<li><p>Give examples of situations where the following distributions are an appropriate model for observed data:</p>
+<ul class="simple">
+<li><p>Poission</p></li>
+<li><p>Weibull</p></li>
+<li><p>log-normal</p></li>
+<li><p>normal</p></li>
+</ul>
+</li>
+<li><p>Apply Bayes’ theorem to determine probability in cases where trials are not independent.</p></li>
+<li><p>How does a “prior probability” differ from a “posterior probability” in applications of Bayes’ theorem?</p></li>
+</ol>
+</div>
+<div class="section" id="probability-density-functions">
+<h2>Probability Density functions<a class="headerlink" href="#probability-density-functions" title="Permalink to this headline">¶</a></h2>
+<p><strong>Probability Functions</strong></p>
+<p><span class="math notranslate nohighlight">\(P(x)\)</span> = probability mass function (for discrete data)</p>
+<p><em>Example:</em> The probability an number <span class="math notranslate nohighlight">\(x\)</span> coming up on a dice role. The PMF is plotted as vertical lines because the probability of rolling a non-integer (e.g. 3.5) is equal to zero.</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a uniform distribution</span>
+<span class="c1"># see https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.randint.html#scipy.stats.randint</span>
+<span class="n">low</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">high</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">rv</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+
+<span class="c1"># plot the probability mass function</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">low</span><span class="p">,</span><span class="n">high</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.175</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;probability mass function (PMF) for a roll of one die&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;probability&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/week02-probability-and-distributions_4_0.png" src="_images/week02-probability-and-distributions_4_0.png" />
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(F(x)\)</span> = cumulative distribution function (CDF)</p>
+<p>The cumulative distribution is the probability of occurrence of a value of <span class="math notranslate nohighlight">\(x\)</span> or lower. For the example of one die roll, the CDF is a step function.</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a step function from points, function adapted from http://stackoverflow.com/a/41185239</span>
+<span class="k">def</span> <span class="nf">get_x_y_steps</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">):</span>
+    <span class="n">zipxx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+    <span class="n">zipyy</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">where</span> <span class="o">==</span> <span class="s2">&quot;post&quot;</span><span class="p">:</span>
+        <span class="n">x_step</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="n">_x</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">zipxx</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">_x</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">]</span>
+        <span class="n">y_step</span> <span class="o">=</span> <span class="p">[</span><span class="n">_y</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">zipyy</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">_y</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="k">elif</span> <span class="n">where</span> <span class="o">==</span> <span class="s2">&quot;pre&quot;</span><span class="p">:</span>
+        <span class="n">x_step</span> <span class="o">=</span> <span class="p">[</span><span class="n">_x</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">zipxx</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">_x</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">y_step</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="n">_y</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">zipyy</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">_y</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x_step</span><span class="p">,</span> <span class="n">y_step</span>
+
+<span class="c1"># create step function for CDF</span>
+<span class="n">xcdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ycdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">rv</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">(</span><span class="n">x_step</span><span class="p">,</span><span class="n">y_step</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_x_y_steps</span><span class="p">(</span><span class="n">xcdf</span><span class="p">,</span><span class="n">ycdf</span><span class="p">)</span>
+
+<span class="c1"># plot CDF</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_step</span><span class="p">,</span> <span class="n">y_step</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;cumulative distribution function (CDF) for a roll of one die&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;probability&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/week02-probability-and-distributions_6_0.png" src="_images/week02-probability-and-distributions_6_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="formal-features-of-probabilities">
+<h2>Formal features of Probabilities<a class="headerlink" href="#formal-features-of-probabilities" title="Permalink to this headline">¶</a></h2>
+<p><strong>Mutiplication Principle</strong> - If two events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are unrelated, the probability of joint occurrence <span class="math notranslate nohighlight">\(P(A,B)\)</span>, i.e. both events happening, is multiplication of two probabilities,</p>
+<p><span class="math notranslate nohighlight">\(P(A,B)  = p(B)p(A)\)</span>.</p>
+<p>This is a simplification of <strong>Bayes’ theorem</strong> for the special case where events are independent. In the more general case where the probability of events are not independent,</p>
+<p><span class="math notranslate nohighlight">\(P(A,B) = p(B|A)p(A) = p(A|B)p(B)\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(p(A|B)\)</span> is the probability of <span class="math notranslate nohighlight">\(A\)</span> occuring, given that <span class="math notranslate nohighlight">\(B\)</span> has already occurred. In this case, the two events depend on each other, which is not the case for dice.</p>
+<p><strong>Additive principle</strong> - Probability of one event or another mutually exclusive event is the sum of the probabilities. Mutually exclusive means that the events cannot occur at the same time.</p>
+<p><span class="math notranslate nohighlight">\(P(C|D) = P(C) + P(D)\)</span></p>
+<div class="section" id="bayes-theorem-diachronic-interpretation">
+<h3>Bayes theorem – diachronic interpretation<a class="headerlink" href="#bayes-theorem-diachronic-interpretation" title="Permalink to this headline">¶</a></h3>
+<p><strong>Diachronic</strong>: happening over time</p>
+<p>Updating a hypothesis (H) given new data (D):</p>
+<p><span class="math notranslate nohighlight">\(P(H|D) = \frac{P(H)P(D|H)}{P(D)}\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(H)\)</span> - probability of a hypothesis before seeing data (“prior”)</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(H|D)\)</span>  - probability of a hypothesis after seeing data (“posterior”)</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(D|H)\)</span> - probability of the data given the hypothesis (“likelihood”)</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(D)\)</span> - probability of the data under any hypothesis (“normalizing constant”)</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(P(D)\)</span> is often the hardest to understand and quantify</p>
+<p>Problems can often be simplified by laying out a suite of hypotheses that are:</p>
+<ol class="simple">
+<li><p>Mutually exclusive</p></li>
+<li><p>Collectively exhaustive</p></li>
+</ol>
+</div>
+<div class="section" id="sum-of-two-dice">
+<h3>Sum of two dice<a class="headerlink" href="#sum-of-two-dice" title="Permalink to this headline">¶</a></h3>
+<p>From the rules above, we can calculate the probability mass function and cumulative distribution function for the sum of two dice. From the multiplication rule, the probability of rolling a particular sequence of dice is (1/6) <span class="math notranslate nohighlight">\(\times\)</span> (1/6) = 1/36. This is the probability of a joint occurrence of two independent events. For example, the combinations (1 and 1), (1 and 2), (2 and 1) and (1 and 3) are all joint occurrences of two independent events.</p>
+<p>The probability of obtaining a certain sum, which may be arrived at through several possible sequences of dice rolls, can be calculated from the addition rule. There are three ways of obtaining a sum of four: (1 and 3) or (2 and 2) or (3 and 1). These combinations of rolls are mutually exlusive. Therefore the probability of rolling a four is (1/36) + (1/36) + (1/36) = 1/12.</p>
+</div>
+<div class="section" id="the-monty-hall-problem">
+<h3>The Monty Hall problem<a class="headerlink" href="#the-monty-hall-problem" title="Permalink to this headline">¶</a></h3>
+<p>A classic application of Bayes theorem, showing how our intuition about probability can lead us astray.</p>
+</div>
+</div>
+<div class="section" id="distributions">
+<h2>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="normal-distribution">
+<h3>Normal Distribution<a class="headerlink" href="#normal-distribution" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Normal dist" src="_images/Standard_deviation_diagram.png" /></p>
+<ul class="simple">
+<li><p><strong>Mean</strong> - 1st moment</p></li>
+<li><p><strong>Variance</strong> - 2nd moment</p></li>
+<li><p><strong>Skew</strong> - 3rd moment, Describes the spread (Normal Distribution, skew = 0)</p></li>
+<li><p><strong>Kurtosis</strong> - 4th moment, Describes how pointy the distribution is. Low value would be flat (compared to a Normal distribution (k=3))</p></li>
+</ul>
+</div>
+<div class="section" id="non-normal-distributions">
+<h3>Non-normal distributions<a class="headerlink" href="#non-normal-distributions" title="Permalink to this headline">¶</a></h3>
+<p><strong>Example: Life expectancy</strong></p>
+<p>Negative skew towards later life (spike at birth). The cumulative probability function is useful because we are not necessarily interested in the probability of dying at a very specific age, like exactly 67 years. We are more interested in the probability of living until a certain age or less. The cumulative probability distribution tapers off to one for very high ages. The probability of living to 120 years or less is equal to one.</p>
+<p><img alt="life expectancy" src="_images/life_expectancy_1.png" /></p>
+<p>source: <a class="reference external" href="http://www.cureffi.org/2013/06/19/how-censoring-by-life-expectancy-affects-age-of-onset-distributions/">http://www.cureffi.org/2013/06/19/how-censoring-by-life-expectancy-affects-age-of-onset-distributions/</a></p>
+</div>
+<div class="section" id="poisson-distribution">
+<h3>Poisson Distribution<a class="headerlink" href="#poisson-distribution" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Often used as a model for count data</p></li>
+<li><p>Assumptions:</p>
+<ul>
+<li><p>One event does not affect the probability of the next (they are independent)</p></li>
+<li><p>Events cannot occur in the same time and place in the interval</p></li>
+<li><p>Events occur at a constant rate<br></p></li>
+</ul>
+</li>
+</ul>
+<p><span class="math notranslate nohighlight">\(k\)</span> = # of events counted per interval (ie floods per century)</p>
+<p><span class="math notranslate nohighlight">\(\lambda\)</span> = expected values, true mean</p>
+<p><span class="math notranslate nohighlight">\(P(k) = \frac{\lambda^k e^{-\lambda}}{k!}\)</span></p>
+<p>Count uncertainty  = <span class="math notranslate nohighlight">\(\sqrt{k}\)</span> - More counts =&gt; less uncertainty</p>
+<p><strong>Exercise</strong>: if on average 10 flood occur per century. What is probability of counting 15 floods occuring in a century?</p>
+</div>
+<div class="section" id="weibull-distribution">
+<h3>Weibull Distribution<a class="headerlink" href="#weibull-distribution" title="Permalink to this headline">¶</a></h3>
+<p>A theoretical distribution that is often fit to wind speed data. Wind speed has only positive values, so the probability of a negative wind speed is zero. The distribution of wind speed is generally <strong>skewed</strong>, since very high values do occur, but are rare. This theoretical distribution is useful for engineering wind power projects, since it can be defined by a few parameters. The parameters obtained from a fit to data at a given location can be used as inputs to models for designing equipment with maximum efficiency.</p>
+<p><img alt="weibull distribution" src="_images/weibull.png" /></p>
+<p>Source: <a class="reference external" href="http://www.wind-powemr-program.com/wind_statistics.htm">http://www.wind-powemr-program.com/wind_statistics.htm</a></p>
+</div>
+<div class="section" id="log-normal-distribution">
+<h3>Log-Normal Distribution<a class="headerlink" href="#log-normal-distribution" title="Permalink to this headline">¶</a></h3>
+<p>Many biological data, such as growth rates, follow a log-normal distribution. The distributions are skewed, with a peak close to zero but a long tail of rare high values. These data can be transformed by taking the logarithm, giving a distribution that is more symmetric and closer to a normal distribution.</p>
+<p><img alt="log normal" src="_images/log_normal.png" /></p>
+<p>source: Landry, M.R. and B.M. Hickey (eds.) (1989) Coastal Oceanography of Washington and
+Oregon, 607 pp., Elsevier Science, Amsterdam, The Netherlands.</p>
+</div>
+<div class="section" id="back-to-normal-distributions">
+<h3>Back to Normal Distributions<a class="headerlink" href="#back-to-normal-distributions" title="Permalink to this headline">¶</a></h3>
+<p>Random instrument error is often normally distributed. The mean of errors tends to be zero if error is randomly distributed and <strong>accurate</strong>, i.e. not biased.</p>
+<p><img alt="satellite error" src="_images/instr_error_dist.png" /></p>
+<p>source: Connolly and Lentz (2014)</p>
+<p>In this example, error is defined as: <span class="math notranslate nohighlight">\(T_{sat} - T_{mooring}\)</span> units of [<span class="math notranslate nohighlight">\(^o\)</span>C]. There is a fairly large spread in the data. We therefore cannot be extremely confident in any particular satellite image. However, we can be confident that the mean of a large number of errors is close to zero.</p>
+<p>Normal distributions can be “standardized”, where the</p>
+<ul class="simple">
+<li><p>mean = 0</p></li>
+<li><p>standard deviation = 1</p></li>
+<li><p>Unitless</p></li>
+</ul>
+<p>The <strong>z-score</strong> transforms the data so that each data point is unitless and described in terms of standard deviations away from the mean.</p>
+<p><span class="math notranslate nohighlight">\(z_i = \frac{x_i - \bar{x}}{ s }\)</span></p>
+<p>The z-score can be helpful for identifying outliers (large Z-scores). Outliers are often classified as having a z-score of <span class="math notranslate nohighlight">\(\pm\)</span> 3. However, the basic rules of scientific integrity require that you have a good reason for excluding outliers from your analysis, and report that they have been excluded. Never delete outliers from the original data set.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "data-book"
+        },
+        kernelOptions: {
+            kernelName: "data-book",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'data-book'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="week01-introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Sampling and statistics: Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="week02b-python-intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Tom Connolly<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
