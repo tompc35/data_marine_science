@@ -3,8 +3,14 @@
 
 format: jb-book
 root: README
-chapters:
-- file: software-installation/README
-- file: week01-introduction
-- file: week02-probability-and-distributions
-- file: week02b-python-intro
+parts:
+ - caption: Before class
+   chapters:
+   - file: software-installation/README
+ - caption: Week 1
+   chapters:
+   - file: week01-introduction
+ - caption: Week 2
+   chapters:
+   - file: week02-probability-and-distributions
+   - file: week02b-python-intro

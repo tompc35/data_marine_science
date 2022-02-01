@@ -15,11 +15,14 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 
 ### Week 1
 * [Introduction to sampling and statistics](week01-introduction.ipynb)
-* The command line and shell scripts
+* [The command line and shell scripts - Software Carpentry tutorial](https://swcarpentry.github.io/shell-novice/)
 
-<!--* [Week 2 Lecture - Probabilities and Distributions](week02-probability-and-distributions.ipynb)
+### Week 2
 
-* [Week 2 Lab - Python Introduction](week02b-python-intro.ipynb)
+* [Probabilities and Distributions](week02-probability-and-distributions.ipynb)
+* [Python Introduction](week02b-python-intro.ipynb)
+
+<!--* 
 
 * [Week 3 - Modeling, sampling, confidence intervals](week03a-modeling-sampling.ipynb)
 
