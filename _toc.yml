@@ -6,3 +6,5 @@ root: README
 chapters:
 - file: software-installation/README
 - file: week01-introduction
+- file: week02-probability-and-distributions
+- file: week02b-python-intro
