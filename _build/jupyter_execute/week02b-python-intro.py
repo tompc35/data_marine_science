@@ -68,17 +68,6 @@
 # ## Syntax
 # 
 # These are the rules of the language. Think of it as grammar.
-# If you get a `SyntaxError` it means Python cant handle something you've done because of an error in the syntax. In real life, we can sometimes break rules of syntax and get away with it. When communicating with computers in a language like Python, there is no room for error.
-# 
-# The following lines of code will raise a `SyntaxError`, can you see why?
-
-# `print('Hello, World!'
-# 
-# print('Hello, World!'))
-# 
-# print('Hello, World!")
-# 
-# print('Hello, World!)`
 
 # `'Hello, World!'` is an example of a __string__, which is a set of characters. Strings are indicated by enclosing them in quotes. They can be single quotes ' ' or double quotes " ", but note a combination of the two.
 # 
@@ -93,6 +82,22 @@ print('Hello MS263')
 print(6)
 print(4+6)
 
+
+# If you get a `SyntaxError` it means Python can't handle something you've done because of an error in the syntax. In real life, we can sometimes break rules of syntax and get away with it. When communicating with computers in a language like Python, there is no room for error.
+# 
+# ##### Exercise
+# 
+# The following lines of code will raise a `SyntaxError`, can you see why?
+
+# ```
+# print('Hello, World!'
+# 
+# print('Hello, World!'))
+# 
+# print('Hello, World!")
+# 
+# print('Hello, World!)
+# ```
 
 # In[2]:
 
@@ -143,17 +148,21 @@ print(string_variable)
 
 # Variables cannot start with a number or contain special characters (except underscore \_). The following code would therefore raise an error.
 
-# `2& = 8 `
+# ```python
+# 2& = 8 
+# ```
 
 # ##### Excercise
 # 
 # Without running any code, predict the output of the following three-line program.
 
-# `a = 16 
+# ```python
+# a = 16 
 # a = a+2  
-# print(a) `
+# print(a)
+# ```
 
-# ### User input
+# ### User input*
 # 
 # Another example of a function that takes input and produces output is `input()`. This function waits for the user to type something, and then stores that input in a variable. This puts the user input into a container that can be used later.
 
@@ -188,7 +197,7 @@ print(f)
 print(type(f))
 
 
-# #### Complex numbers
+# #### Complex numbers*
 
 # In[8]:
 
@@ -229,6 +238,7 @@ print(s2)
 s = '16'
 si = int(s)
 print(si)
+type(si)
 
 
 # An integer can be coverted to a floating point number. The value is the same, but it is stored on the computer in a different way (with bits devoted to the sign, exponent and mantissa).
@@ -252,11 +262,10 @@ print(type(sf))
 # 
 # What type of value (integer, floating point number, or character string) would you use to represent each of the following? There may be more than one good answer for each problem.
 # 
-# 1. Serial number of a piece of lab equipment.
-# 2. A lab specimen’s age
-# 3. Current population of a city.
-# 4. Average population of a city over time.
-# 5. Time elapsed from the start of the year until now in days.
+# 1. Current population of a city.
+# 2. Average population of a city over time.
+# 3. Serial number of a piece of lab equipment.
+# 4. Time elapsed from the start of the year until now in days.
 # 
 # Adapted from:
 # http://swcarpentry.github.io/python-novice-gapminder/03-types-conversion/index.html
@@ -353,6 +362,15 @@ print(a+b)
 # 6. `2.0 * second`
 # 
 
+# ```{toggle}
+# 1. Correct
+# 2. Gives incorrect answer of 2.1
+# 3. Gives a value error because "1.1" cannot be converted to an integer
+# 4. Correct
+# 5. Gives the integer value 2, not a floating point
+# 6. Gives a type error because a string cannot be multiplied by a float
+# ```
+
 # ### Lists
 # 
 # * In many situations, we do want to store just one data value, we want to store a collection of data values. One way to do this is with a list. Square brackets denote this as a list.
@@ -426,31 +444,103 @@ help(len)
 # ##### Exercise
 # 
 # Use slicing to access only the last four characters of a string or entries of a list. The following variables have been created in Python:
-# 
-# ```python
-# string_for_slicing = "Observation date: 02-Feb-2013"
-# list_for_slicing = [["fluorine", "F"],
-#                     ["chlorine", "Cl"],
-#                     ["bromine", "Br"],
-#                     ["iodine", "I"],
-#                     ["astatine", "At"]]
-# ```
-# 
+
+# In[25]:
+
+
+string_for_slicing = "Observation date: 02-Feb-2013"
+list_for_slicing = [["fluorine", "F"],
+                    ["chlorine", "Cl"],
+                    ["bromine", "Br"],
+                    ["iodine", "I"],
+                    ["astatine", "At"]]
+
+
 # What Python code creates the following output? Would your solution work regardless of whether you knew beforehand the length of the string or list (e.g. if you wanted to apply the solution to a set of lists of different lengths)? If not, try to change your approach to make it more robust.
 # 
 # ```
 # "2013"
+# 
 # [["chlorine", "Cl"], ["bromine", "Br"], ["iodine", "I"], ["astatine", "At"]]
 # ```
 # 
 # Adapted from:
 # http://swcarpentry.github.io/python-novice-inflammation/05-lists/index.html
 
-# #### Numpy
+# In[26]:
+
+
+string_for_slicing[25:]
+
+
+# In[27]:
+
+
+list_for_slicing[1:5]
+
+
+# ### Tuples
+# 
+# Tuples are immutable
+
+# In[28]:
+
+
+my_tuple = (1,2,3)
+type(my_tuple)
+
+
+# This code gives an error because you cannot change a tuple after it has been created.
+# 
+# ```python
+# my_tuple[1] = 5
+# ```
+# 
+# Why use a tuple? In certain situations, using a tuple is much more efficient than using a list. The main reason we are introducing it here is that some functions provide output in tuples, so it is good to know what they are.
+
+# ### Dictionaries
+# 
+# Dictionaries are like lists but use keys instead of numerical indexing.
+
+# In[29]:
+
+
+my_town = {'name':'Moss Landing','state':'California'}
+
+
+# In[30]:
+
+
+my_town['name']
+
+
+# In[31]:
+
+
+my_town['zip'] = 95039
+
+
+# In[32]:
+
+
+my_town
+
+
+# ##### Exercise
+# 
+# Modify the `my_town` dictionary to include a list of restaurants in Moss Landing.
+
+# In[33]:
+
+
+my_town['restaurants'] = ['Whole Enchilada','Haute Enchilada','Phil\'s']
+
+
+# ## Numpy
 # 
 # NumPy (Numerical Python) is a __package__ that extends Python's basic capabilities and allows for more complex mathematical operations involving groups of numbers. Importing the numpy __module__ gives access to its functions.
 
-# In[25]:
+# In[34]:
 
 
 import numpy as np
@@ -460,7 +550,7 @@ import numpy as np
 # 
 # The numpy library gives access to special mathematical functions, like square root.
 
-# In[26]:
+# In[35]:
 
 
 val = 2
@@ -474,7 +564,7 @@ print(val_sr)
 # 
 # A list of numbers can be converted to an array.
 
-# In[27]:
+# In[36]:
 
 
 num_list = [1,2,3]
@@ -485,13 +575,13 @@ print(type(num_arr))
 
 # Arrays behave differently from lists. Multiplication and addition operatations _replicate_ lists, but these operations act on each individual _elements_ in an array.
 
-# In[28]:
+# In[37]:
 
 
 print(num_list*2)
 
 
-# In[29]:
+# In[38]:
 
 
 print(num_arr*2)
