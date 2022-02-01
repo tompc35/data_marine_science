@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Excercises - Introduction to Python
+# # Exercises - Introduction to Python
 # 
 # ### Variable assignment
 # 
@@ -97,3 +97,9 @@
 # Check the results of your code with the results of the built-in Numpy function, `np.std`:
 # 
 # `np.std(my_array)`
+
+# In[ ]:
+
+
+
+
