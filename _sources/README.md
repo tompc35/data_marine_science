@@ -23,13 +23,18 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 * [Python Introduction](week02b-python-intro.ipynb)
 * [Exercises - Python Introduction](week02c-exercises-python-intro.ipynb)
 
-<!--* 
+### Week 3
 
-* [Week 3 - Modeling, sampling, confidence intervals](week03a-modeling-sampling.ipynb)
+* [Modeling, sampling, confidence intervals](week03a-modeling-sampling.ipynb)
 
-* [Week 3 Lab - Python variable types (cont.), Boolean logic](week03b-boolean.ipynb)
+* [Boolean logic in Python](week03b-boolean.ipynb)
 
-* [Week 3 Lab - Cruise data analysis](week03c-cruise-data-analysis.ipynb)
+* [Cruise data analysis using Pandas](week03c-cruise-data-analysis.ipynb)
+
+* [Exercises](week03d-exercises.ipynb)
+
+
+<!--*
 
 * [Week 4 - Hypothesis testing, power analysis](week04a-hypothesis-power.ipynb)
 
