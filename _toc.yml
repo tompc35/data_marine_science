@@ -15,3 +15,9 @@ parts:
    - file: week02-probability-and-distributions
    - file: week02b-python-intro
    - file: week02c-exercises-python-intro
+ - caption: Week 3
+   chapters:
+   - file: week03a-modeling-sampling
+   - file: week03b-boolean
+   - file: week03c-cruise-data-analysis
+   - file: week03d-exercises
