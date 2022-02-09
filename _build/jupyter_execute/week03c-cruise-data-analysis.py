@@ -21,6 +21,7 @@
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
+from scipy import stats
 
 
 # ### Introduction to Pandas dataframes
@@ -299,17 +300,41 @@ dfsub.head()
 # 
 # 
 # 1. Create a new DataFrame called `dfsub1` that excludes all bad, questionable and missing pH values. Plot the probability density function for pH.
-# 
+
+# In[30]:
+
+
+dfsub = df[(df['CTDPRS'] > 10) & (df['LATITUDE'] > 40)]
+
+
 # 2. Create a new DataFrame called `dfsub2` that excludes all bad, questionable and missing pH and CTD oxygen values. Plot oxygen vs. pH.
+
+# In[31]:
+
+
+dfsub2 = df[(df['CTDOXY_FLAG_W'] == 2) & (df['PH_TOT_FLAG_W'] == 2)]
+
 
 # ### Fit a linear model in Python
 
-# In[30]:
+# In[32]:
 
 
 plt.plot(df['CTDOXY'],df['PH_TOT'],'.')
 plt.xlabel('dissolved oxygen [$\mu$mol/kg]')
 plt.ylabel('pH$_{Tot}$')
+
+
+# In[33]:
+
+
+result = stats.linregress(dfsub2['CTDOXY'],dfsub2['PH_TOT'])
+
+
+# In[34]:
+
+
+result
 
 
 # ### Exercise

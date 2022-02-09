@@ -472,6 +472,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 </pre></div>
 </div>
 </div>
@@ -877,7 +878,7 @@ Name: CTDTMP, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7feaf0345ee0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb51165af10&gt;]
 </pre></div>
 </div>
 <img alt="_images/week03c-cruise-data-analysis_30_1.png" src="_images/week03c-cruise-data-analysis_30_1.png" />
@@ -892,7 +893,7 @@ Name: CTDTMP, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7feaf02c7b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fb5116cf520&gt;
 </pre></div>
 </div>
 <img alt="_images/week03c-cruise-data-analysis_32_1.png" src="_images/week03c-cruise-data-analysis_32_1.png" />
@@ -2008,8 +2009,24 @@ Name: CTDTMP, dtype: float64
 </ul>
 <ol class="simple">
 <li><p>Create a new DataFrame called <code class="docutils literal notranslate"><span class="pre">dfsub1</span></code> that excludes all bad, questionable and missing pH values. Plot the probability density function for pH.</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfsub</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;CTDPRS&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
 <li><p>Create a new DataFrame called <code class="docutils literal notranslate"><span class="pre">dfsub2</span></code> that excludes all bad, questionable and missing pH and CTD oxygen values. Plot oxygen vs. pH.</p></li>
 </ol>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfsub2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;CTDOXY_FLAG_W&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PH_TOT_FLAG_W&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="fit-a-linear-model-in-python">
 <h3>Fit a linear model in Python<a class="headerlink" href="#fit-a-linear-model-in-python" title="Permalink to this headline">¶</a></h3>
@@ -2025,7 +2042,26 @@ Name: CTDTMP, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;pH$_{Tot}$&#39;)
 </pre></div>
 </div>
-<img alt="_images/week03c-cruise-data-analysis_53_1.png" src="_images/week03c-cruise-data-analysis_53_1.png" />
+<img alt="_images/week03c-cruise-data-analysis_56_1.png" src="_images/week03c-cruise-data-analysis_56_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">dfsub2</span><span class="p">[</span><span class="s1">&#39;CTDOXY&#39;</span><span class="p">],</span><span class="n">dfsub2</span><span class="p">[</span><span class="s1">&#39;PH_TOT&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=0.0023050765461032387, intercept=7.202036145940104, rvalue=0.951063101996966, pvalue=0.0, stderr=2.7737424376777215e-05, intercept_stderr=0.00497780264159739)
+</pre></div>
+</div>
 </div>
 </div>
 </div>
