@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercises &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>Loops &#8212; Data Analysis Techniques in Marine Science</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Hypothesis testing and Power" href="week04a-hypothesis-power.html" />
-    <link rel="prev" title="Cruise data analysis in Python" href="week03c-cruise-data-analysis.html" />
+    <link rel="next" title="Functions" href="week04c-python-functions.html" />
+    <link rel="prev" title="Hypothesis testing and Power" href="week04a-hypothesis-power.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -147,7 +147,7 @@
   Week 3
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week03a-modeling-sampling.html">
    Modeling, sampling, confidence intervals
@@ -163,8 +163,8 @@
    Cruise data analysis in Python
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03d-exercises.html">
    Exercises
   </a>
  </li>
@@ -174,14 +174,14 @@
   Week 4
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week04a-hypothesis-power.html">
    Hypothesis testing and Power
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week04b-loops.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Loops
   </a>
  </li>
@@ -231,7 +231,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week03d-exercises.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/week04b-loops.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -251,7 +251,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek03d-exercises.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek04b-loops.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -272,7 +272,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week03d-exercises.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week04b-loops.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -289,59 +289,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability">
-   Probability
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boolean-logic">
-   Boolean logic
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-data-frames">
-   Pandas data frames
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exploratory-analysis">
-   Exploratory analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframe-indexing">
-   Dataframe indexing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframe-subsets-1">
-   Dataframe subsets 1
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframe-subsets-2">
-   Dataframe subsets 2
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframe-subsets-3">
-   Dataframe subsets 3
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-regression">
-   Linear regression
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -349,147 +296,167 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercises</h1>
+                <h1>Loops</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability">
-   Probability
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boolean-logic">
-   Boolean logic
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-data-frames">
-   Pandas data frames
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exploratory-analysis">
-   Exploratory analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframe-indexing">
-   Dataframe indexing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframe-subsets-1">
-   Dataframe subsets 1
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframe-subsets-2">
-   Dataframe subsets 2
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframe-subsets-3">
-   Dataframe subsets 3
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-regression">
-   Linear regression
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="probability">
-<h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h2>
-<p>A newspaper article quotes a statistic about the relationship between the El Nino index and high precipitation in Southern California. A high precipitation winter is defined as being in the top 10% of all winters. According to the article, 75% of high precipitation winters in Southern California occur during El Nino years. El Nino events occur approximately every five years.</p>
-<p>Based on this information, what is the probability of high precipitation occuring during an El Nino year?</p>
-</div>
-<div class="section" id="boolean-logic">
-<h2>Boolean logic<a class="headerlink" href="#boolean-logic" title="Permalink to this headline">¶</a></h2>
-<p>Predict the output from each of the following three lines of code.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">3</span><span class="p">))</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kc">False</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="kc">True</span><span class="p">))</span> <span class="o">!=</span> <span class="kc">False</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span> <span class="o">=</span> <span class="kc">False</span>
+  <div class="tex2jax_ignore mathjax_ignore section" id="loops">
+<h1>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h1>
+<p>Loops are a way of repeating commands over and over again.</p>
+<p>A <em>while</em> loop is an indefinite loop. It runs indefinitely until a certain condition is met. Be careful with while loops. If the condition is never met, the while loop will try to run forever.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">:</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done with while loop&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="pandas-data-frames">
-<h2>Pandas data frames<a class="headerlink" href="#pandas-data-frames" title="Permalink to this headline">¶</a></h2>
-<p>Create a list of unique station ID’s (“STNNBR”) found in the survey data. Call it <code class="docutils literal notranslate"><span class="pre">stns</span></code>. How many unique stations are there in the data?</p>
-</div>
-<div class="section" id="exploratory-analysis">
-<h2>Exploratory analysis<a class="headerlink" href="#exploratory-analysis" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>What scientific questions can be addressed with this data set?</p></li>
-<li><p>What relationships might occur between different variables?</p></li>
-<li><p>What differences might occur within the same variables, but at different locations or times?</p></li>
-<li><p>Create exploratory plots (one PDF, one scatter plot)</p></li>
-</ul>
-</div>
-<div class="section" id="dataframe-indexing">
-<h2>Dataframe indexing<a class="headerlink" href="#dataframe-indexing" title="Permalink to this headline">¶</a></h2>
-<p>What do you expect to happen when you execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+4
+5
+done with while loop
 </pre></div>
 </div>
-<p>What do you expect to happen when you call:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</div>
+</div>
+<p>A <em>for</em> loop is a definite loop. It iterates over a list, array or other variable types that are groups of values or other variables. It definitely stops when it gets to the end of the list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span><span class="s1">&#39;Jane&#39;</span><span class="p">,</span><span class="s1">&#39;Mary&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_list</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>         
 </pre></div>
 </div>
-<p>How are the two commands different?</p>
 </div>
-<div class="section" id="dataframe-subsets-1">
-<h2>Dataframe subsets 1<a class="headerlink" href="#dataframe-subsets-1" title="Permalink to this headline">¶</a></h2>
-<p>Select a subset of rows in the <code class="docutils literal notranslate"><span class="pre">df</span></code> DataFrame that contains data from a pressure range between 500 and 1000 dbar. How many rows did you end up with? What did your neighbor get?</p>
-</div>
-<div class="section" id="dataframe-subsets-2">
-<h2>Dataframe subsets 2<a class="headerlink" href="#dataframe-subsets-2" title="Permalink to this headline">¶</a></h2>
-<p>You can use the isin command in Python to query a DataFrame based upon a list of values as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;STNNBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">listGoesHere</span><span class="p">])]</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Bob
+Hello Jane
+Hello Mary
+done
 </pre></div>
 </div>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">isin</span></code> function to find all samples from station numbers 11 and 12.</p>
 </div>
-<div class="section" id="dataframe-subsets-3">
-<h2>Dataframe subsets 3<a class="headerlink" href="#dataframe-subsets-3" title="Permalink to this headline">¶</a></h2>
-<p>pH values are contained in the <code class="docutils literal notranslate"><span class="pre">df['PH_TOT']</span></code> DataArray of the WCOA data set.</p>
-<p>Quality control flags for pH are contained in the <code class="docutils literal notranslate"><span class="pre">df['PH_TOT_FLAG_W']</span></code> DataArray.</p>
-<p>World Ocean Circulation Experiment (WOCE) quality control flags are used:
-2 = good value,
-3 = questionable value,
-4 = bad value ,
-5 = value not reported,
-6 = mean of replicate measurements,
-9 = sample not drawn.</p>
-<p>a. Create a new DataFrame called <code class="docutils literal notranslate"><span class="pre">dfsub1</span></code> that excludes all bad, questionable and missing pH values. Plot the probability density function for pH.</p>
-<p>b. Create a new DataFrame called <code class="docutils literal notranslate"><span class="pre">dfsub2</span></code> that excludes all bad, questionable and missing pH and CTD oxygen values. Plot oxygen vs. pH.</p>
 </div>
-<div class="section" id="linear-regression">
-<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
-<p>Create a linear model of pH as a function of CTD oxygen. Plot the linear model with the data.</p>
+<p>An example of looping through a sequence of numbers created with the <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 2 3 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 3 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.  2.5 3.  3.5 4.  4.5]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+2
+4
+6
+8
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise</strong>:</p>
+<p>Write a for loop that prints out the cumulative sum of an array. For example, the cumulative sum of the array</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">21</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>algorithm - a process or set of rules followed in calculations or problem solving</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">cumsum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">cumsum</span> <span class="o">=</span> <span class="n">cumsum</span> <span class="o">+</span> <span class="n">val</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cumsum</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+4
+10
+14
+21
+done
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">cumsum_a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">cumsum_array</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">x_a</span><span class="p">:</span>
+    <span class="n">cumsum_a</span> <span class="o">=</span> <span class="n">cumsum_a</span> <span class="o">+</span> <span class="n">val</span>
+    <span class="n">cumsum_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cumsum_array</span><span class="p">,</span><span class="n">cumsum_a</span><span class="p">)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">cumsum_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  4. 10. 14. 21.]
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -502,33 +469,33 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "ms263-21"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "ms263-21",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'ms263-21'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="week03c-cruise-data-analysis.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="week04a-hypothesis-power.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Cruise data analysis in Python</p>
+            <p class="prev-next-title">Hypothesis testing and Power</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="week04a-hypothesis-power.html" title="next page">
+    <a class='right-next' id="next-link" href="week04c-python-functions.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Hypothesis testing and Power</p>
+        <p class="prev-next-title">Functions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

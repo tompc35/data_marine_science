@@ -33,6 +33,16 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 
 * [Exercises](week03d-exercises.ipynb)
 
+### Week 4
+
+* [Hypothesis testing, power analysis](week04a-hypothesis-power.ipynb)
+
+* [Loops in Python](week04b-loops.ipynb)
+
+* [Python functions](week04c-python-functions.ipynb)
+
+* [Exercises](week04d-exercises.ipynb)
+
 
 <!--*
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Books on electronic reserve (required) &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>&lt;no title&gt; &#8212; Data Analysis Techniques in Marine Science</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -167,28 +169,6 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 4
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="week04a-hypothesis-power.html">
-   Hypothesis testing and Power
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week04b-loops.html">
-   Loops
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week04c-python-functions.html">
-   Functions
-  </a>
- </li>
-</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -229,9 +209,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/resources.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/week04d-in-class-exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -249,7 +229,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fresources.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek04d-in-class-exercises.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -265,6 +245,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week04d-in-class-exercises.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -274,44 +271,7 @@
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Books on electronic reserve (required)
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#statistics-books-online-required">
-   Statistics Books - online (required)
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-books-online-supplemental">
-   Python Books - online (supplemental)
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#websites-supplemental">
-   Websites (supplemental)
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning-to-code">
-     Learning to code
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jupyter-notebooks">
-     Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#signal-processing-and-time-series-analysis">
-     Signal processing and time series analysis
-    </a>
-   </li>
-  </ul>
- </li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
 
             </nav>
@@ -322,7 +282,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Books on electronic reserve (required)</h1>
+                <h1><no title></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -331,44 +291,7 @@
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Books on electronic reserve (required)
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#statistics-books-online-required">
-   Statistics Books - online (required)
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-books-online-supplemental">
-   Python Books - online (supplemental)
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#websites-supplemental">
-   Websites (supplemental)
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning-to-code">
-     Learning to code
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jupyter-notebooks">
-     Jupyter Notebooks
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#signal-processing-and-time-series-analysis">
-     Signal processing and time series analysis
-    </a>
-   </li>
-  </ul>
- </li>
+                            <ul class="simple visible nav section-nav flex-column">
 </ul>
 
                         </nav>
@@ -378,53 +301,87 @@
             
               <div>
                 
-  <div class="section" id="books-on-electronic-reserve-required">
-<h1>Books on electronic reserve (required)<a class="headerlink" href="#books-on-electronic-reserve-required" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://reserves.calstate.edu/mosslanding/course/611792370002913">https://reserves.calstate.edu/mosslanding/course/611792370002913</a></p>
-<ul class="simple">
-<li><p>Emery, W. J. and R. E. Thomson, Data Analysis Methods in Physical Oceanography, 2nd ed., 2013, Elsevier, Amsterdam, ISBN:  978-0-444-50756-3, <a class="reference external" href="http://www.sciencedirect.com/science/book/9780444507563">http://www.sciencedirect.com/science/book/9780444507563</a> (available for free download through MLML library)</p></li>
-<li><p>Glover, D. M., W. J. Jenkins, and S. C. Doney, Modeling Methods for Marine Science, 2011, Cambridge University Press, Cambridge, UK. ISBN: 9780521867832 <a class="reference external" href="https://mlml-primo.hosted.exlibrisgroup.com/permalink/f/ejj43j/01CALS_ALMA71579419580002901">https://mlml-primo.hosted.exlibrisgroup.com/permalink/f/ejj43j/01CALS_ALMA71579419580002901</a> (available for free download through MLML library)</p></li>
-</ul>
+  <p><strong>Confidence intervals</strong></p>
+<ol class="simple">
+<li><p>Interpretation of confidence intervals</p></li>
+</ol>
+<p>On the poll, list your answers to the following questions.</p>
+<p><img alt="Conf-Int-Q.png" src="_images/Conf-Int-Q.png" />
+<img alt="Conf-Int-TF.png" src="_images/Conf-Int-TF.png" /></p>
+<ol class="simple">
+<li><p>A set of 100 anchovy weight samples has a mean value of 13.95 g and a standard deviation of 9.52 g.</p></li>
+</ol>
+<p>a. Calculate the standard error.</p>
+<p>b. Calculate 95% confidence intervals for the mean.</p>
+<ol class="simple">
+<li><p>Write a for loop that prints out the cumulative sum of an array. For example, the cumulative sum of the array</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+</pre></div>
 </div>
-<div class="section" id="statistics-books-online-required">
-<h1>Statistics Books - online (required)<a class="headerlink" href="#statistics-books-online-required" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p>Poldrack, R. A. Statistical Thinking for the 21st Century <a class="reference external" href="http://statsthinking21.org/">http://statsthinking21.org/</a></p></li>
-</ul>
+<p>would be:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">21</span><span class="p">]</span>
+</pre></div>
 </div>
-<div class="section" id="python-books-online-supplemental">
-<h1>Python Books - online (supplemental)<a class="headerlink" href="#python-books-online-supplemental" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p>Severance, C., Python For Everybody, 2016 <a class="reference external" href="https://www.py4e.com/book.php">https://www.py4e.com/book.php</a></p></li>
-<li><p>Green Tea Press - Free books by Allen B. Downey (Includes <em>Think Python</em>,  which formed the basis for <em>Python for Everybody</em> listed above) <a class="reference external" href="https://greenteapress.com/wp/">https://greenteapress.com/wp/</a></p></li>
-</ul>
+<p>Write out your algorithm first, and use the following code as a template (replace the dashes —– with code).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="n">cumsum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">cumsum</span> <span class="o">=</span> <span class="o">-------</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cumsum</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="websites-supplemental">
-<h1>Websites (supplemental)<a class="headerlink" href="#websites-supplemental" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="learning-to-code">
-<h2>Learning to code<a class="headerlink" href="#learning-to-code" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.thinkful.com/blog/why-learning-to-code-is-so-damn-hard/">Why learning to code is so damn hard</a></p></li>
-</ul>
+<ol class="simple">
+<li><p>Write a for loop that stores the cumulative sum of an array in another array. Use the <code class="docutils literal notranslate"><span class="pre">np.append()</span></code> function - see <code class="docutils literal notranslate"><span class="pre">help(np.append)</span></code> - and make sure that you have run <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>  at the top of your program in order to use this function.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="n">cumsum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">cumsum_array</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">cumsum</span> <span class="o">=</span> <span class="o">-------</span>
+    <span class="n">cumsum_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">------</span><span class="p">,</span><span class="o">--------</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cumsum_array</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="jupyter-notebooks">
-<h2>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.nature.com/news/interactive-notebooks-sharing-the-code-1.16261">Interactive notebooks: sharing the code (Nature)</a></p></li>
-<li><p><a class="reference external" href="https://jakevdp.github.io/blog/2017/03/03/reproducible-data-analysis-in-jupyter/">Reproducible Data Analysis in Jupyter</a></p></li>
-<li><p><a class="reference external" href="http://www.datadependence.com/2017/02/speed-up-jupyter-notebook-workflow/">Become a lord of the cells and speed up your Jupyter workflow</a></p></li>
-<li><p><a class="reference external" href="https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/">Jupyter notebook tips, tricks and shortcuts</a></p></li>
-<li><p><a class="reference external" href="https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/">Advanced Jupyter notebook tricks</a></p></li>
-</ul>
+<ol class="simple">
+<li><p>(If time) Write a for loop that prints the first n numbers of the Fibonacci sequence:
+1,1,2,3,5,8,13…
+Write out your algorithm first, and start with the following minimal code.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># insert code here</span>
+</pre></div>
 </div>
-<div class="section" id="signal-processing-and-time-series-analysis">
-<h2>Signal processing and time series analysis<a class="headerlink" href="#signal-processing-and-time-series-analysis" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://jakevdp.github.io/blog/2013/08/28/understanding-the-fft/">Understanding the FFT alogorithm (Python tutorial)</a>)</p></li>
-<li><p><a class="reference external" href="http://www.numerical-tours.com/python/">Numerical tours in Python</a></p></li>
-</ul>
+<p><strong>Python functions</strong></p>
+<ol class="simple">
+<li><p>Create a function that converts temperature from degrees Celsius to degrees Fahrenheit.</p></li>
+<li><p>Use the function created above to convert the following array of temperature values from degrees F to degrees C. Avoid using a for loop.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temps_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">50.5</span><span class="p">,</span> <span class="mf">58.4</span><span class="p">,</span> <span class="mf">62.3</span><span class="p">,</span> <span class="mf">49.2</span><span class="p">])</span>
+</pre></div>
 </div>
+<ol class="simple">
+<li><p>Stokes’ law predicts the settling velocity (or “terminal velocity”) of a sinking sphere, <span class="math notranslate nohighlight">\(v\)</span> (units: m/s). The theoretical velocity is based on the radius of the particle, <span class="math notranslate nohighlight">\(r\)</span> (units: m), the density of the particle  <span class="math notranslate nohighlight">\(\rho_p\)</span> (units: kg/m<span class="math notranslate nohighlight">\(^3\)</span>), the density of the ambient fluid <span class="math notranslate nohighlight">\(\rho_f\)</span>, the dynamic viscosity of the ambient fluid <span class="math notranslate nohighlight">\(\mu\)</span> (units: kg/(m*s)), and the acceleration due to gravity <span class="math notranslate nohighlight">\(g\)</span> (units: m/s<span class="math notranslate nohighlight">\(^2\)</span>):</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[v = \frac{2}{9}\frac{(\rho_p-\rho_f)}{\mu}g r^2\]</div>
+<p>Use the following template to create a function that calculates the velocity predicted by Stokes law:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stokes_law</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">rho_p</span><span class="p">,</span><span class="n">rho_f</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">g</span><span class="p">):</span>
+    <span class="c1"># insert code here</span>
+    <span class="k">return</span> <span class="n">v</span>
+</pre></div>
 </div>
+<ol class="simple">
+<li><p>Use your <code class="docutils literal notranslate"><span class="pre">stokes_law</span></code> function to estimate the settling velocity of the single-cell alga <em>Phaeocystis globosa</em>, assuming it is spherical. The radius of a typical cell is 46 <span class="math notranslate nohighlight">\(\mu m\)</span> and the typical cell density is 1091 kg/m<span class="math notranslate nohighlight">\(^3\)</span>. For standard seawater conditions (temperature = 10 deg C, practical salinity = 35) <span class="math notranslate nohighlight">\(\rho_f\)</span> = 1025 kg/m<span class="math notranslate nohighlight">\(^3\)</span>, <span class="math notranslate nohighlight">\(\mu =\)</span> 1.51 × 10<span class="math notranslate nohighlight">\(^{−3}\)</span> kg/(m*s).</p></li>
+</ol>
+<p>Source: L. Peperzak, F. Colijn, R. Koeman, W. W. C. Gieskes, J. C. A. Joordens, Phytoplankton sinking rates in the Rhine region of freshwater influence, Journal of Plankton Research, Volume 25, Issue 4, April 2003, Pages 365–383, <a class="reference external" href="https://doi.org/10.1093/plankt/25.4.365">https://doi.org/10.1093/plankt/25.4.365</a></p>
+<ol class="simple">
+<li><p>Edit your function to use typical seawater values as defaults for  <code class="docutils literal notranslate"><span class="pre">rho_f</span></code> and <code class="docutils literal notranslate"><span class="pre">mu</span></code>.</p></li>
+</ol>
 
     <script type="text/x-thebe-config">
     {
@@ -435,16 +392,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "ms263-21"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "ms263-21",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'ms263-21'</script>
 
               </div>
               
