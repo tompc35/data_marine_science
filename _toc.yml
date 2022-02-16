@@ -21,3 +21,9 @@ parts:
    - file: week03b-boolean
    - file: week03c-cruise-data-analysis
    - file: week03d-exercises
+ - caption: Week 4
+   chapters:
+   - file: week04a-hypothesis-power
+   - file: week04b-loops
+   - file: week04c-python-functions
+   - file: week04d-exercises
