@@ -26,31 +26,28 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 ### Week 3
 
 * [Modeling, sampling, confidence intervals](week03a-modeling-sampling.ipynb)
-
 * [Boolean logic in Python](week03b-boolean.ipynb)
-
 * [Cruise data analysis using Pandas](week03c-cruise-data-analysis.ipynb)
-
 * [Exercises](week03d-exercises.ipynb)
 
 ### Week 4
 
 * [Hypothesis testing, power analysis](week04a-hypothesis-power.ipynb)
-
 * [Loops in Python](week04b-loops.ipynb)
-
 * [Python functions](week04c-python-functions.ipynb)
-
 * [Exercises](week04d-exercises.ipynb)
+
+### Week 5
+
+* [Correlation, general least squares regression](week05a-corr-regress-least-squares.ipynb)
+* [Conditional execution](week05b-conditional-execution.ipynb)
+* [Python modules](week05c-python-modules.ipynb)
+* [Exercises](week05d-exercises.ipynb)
 
 
 <!--*
 
-* [Week 4 - Hypothesis testing, power analysis](week04a-hypothesis-power.ipynb)
 
-* [Week 4 Lab - Loops](week04b-loops.ipynb)
-
-* [Week 4 Lab - Python functions](week04c-python-functions.ipynb)
 
 * [Week 5 - Correlation, general least squares regression](week05a-corr-regress-least-squares.ipynb)
 

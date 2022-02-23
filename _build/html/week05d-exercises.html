@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercises &#8212; Data Analysis Techniques in Marine Science</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Creating your own Python module" href="week05c-python-modules.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/course-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Data Analysis Techniques in Marine Science
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Before class
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software-installation/README.html">
+   Setup and software installation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week01-introduction.html">
+   Sampling and statistics: Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02-probability-and-distributions.html">
+   Probability and distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02b-python-intro.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02c-exercises-python-intro.html">
+   Exercises - Introduction to Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03a-modeling-sampling.html">
+   Modeling, sampling, confidence intervals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03b-boolean.html">
+   Boolean logic in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03c-cruise-data-analysis.html">
+   Cruise data analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03d-exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04a-hypothesis-power.html">
+   Hypothesis testing and Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04b-loops.html">
+   Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04c-python-functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04d-exercises.html">
+   Interpretation of confidence intervals
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 5
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05a-corr-regress-least-squares.html">
+   Correlation and linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05b-conditional-execution.html">
+   Conditional execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05c-python-modules.html">
+   Creating your own Python module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/week05d-exercises.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek05d-exercises.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week05d-exercises.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-5">
+   Week 5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-execution">
+     Conditional execution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grain-size-classification-if-time">
+     Grain size classification (if time)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-modules">
+     Python modules
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Exercises</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-5">
+   Week 5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-execution">
+     Conditional execution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grain-size-classification-if-time">
+     Grain size classification (if time)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-modules">
+     Python modules
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="week-5">
+<h2>Week 5<a class="headerlink" href="#week-5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="conditional-execution">
+<h3>Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">¶</a></h3>
+<p>a. Calculate the absolute value of a number (not using the built-in abs function). Use the following code as a template (replace the dashes —– with code).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">------</span>
+<span class="k">if</span> <span class="o">-----</span><span class="p">:</span>
+    <span class="n">absx</span> <span class="o">=</span> <span class="o">-----</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">absx</span> <span class="o">=</span> <span class="o">-----</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the absolute value of x is&#39;</span><span class="p">,</span><span class="n">absx</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>b. Using conditional execution, determine whether a user-provided integer x is even or odd and print the result (hint: the % operator calculates the remainder that occurs when dividing two numbers, e.g. the result of    7 % 3 is equal to 1).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>xin = input(&#39;Please enter a number:&#39;)
+x = int(xin)
+if ------:
+    --------
+else:
+    print(‘The number is odd’)
+</pre></div>
+</div>
+<p>c. Modify the code written in part b to use try and except statements to handle non-integer input gracefully. If the input is not an integer, the program should print a friendly message explaining what went wrong.</p>
+<p>d. (if time) Modify the code written in part b above to continue requesting input until an integer is provided.</p>
+</div>
+<div class="section" id="grain-size-classification-if-time">
+<h3>Grain size classification (if time)<a class="headerlink" href="#grain-size-classification-if-time" title="Permalink to this headline">¶</a></h3>
+<p>Write a function that takes sediment grain size as an input, then returns the Wentworth grain size classification based on the table below.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Grain Size</p></th>
+<th class="head"><p>Classification</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&gt;= 256 mm</p></td>
+<td><p>Boulder</p></td>
+</tr>
+<tr class="row-odd"><td><p>64-256 mm</p></td>
+<td><p>Cobble</p></td>
+</tr>
+<tr class="row-even"><td><p>2-64 mm</p></td>
+<td><p>Gravel</p></td>
+</tr>
+<tr class="row-odd"><td><p>62.5 μm - 2 mm</p></td>
+<td><p>Sand</p></td>
+</tr>
+<tr class="row-even"><td><p>3.9-62.5 μm</p></td>
+<td><p>Silt</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.98-3.9 μm</p></td>
+<td><p>Clay</p></td>
+</tr>
+</tbody>
+</table>
+<p>Test the program repeatedly to make sure it works for different input values.</p>
+</div>
+<div class="section" id="python-modules">
+<h3>Python modules<a class="headerlink" href="#python-modules" title="Permalink to this headline">¶</a></h3>
+<p>a. Write two more unit conversion functions (converting one way and back).</p>
+<p>b. Use one in the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code>  section of <a class="reference external" href="http://convert.py">convert.py</a></p>
+<p>c. Use the other in <a class="reference external" href="http://myscript.py">myscript.py</a></p>
+<p>d. Run these files from the shell, and see what parts of the code are run</p>
+<p>e. Think about what other functions would be useful in your research (conversion or otherwise). If time, try to implement one or more of these functions in a module.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="week05c-python-modules.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Creating your own Python module</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Tom Connolly<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

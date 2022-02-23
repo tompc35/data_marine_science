@@ -27,3 +27,9 @@ parts:
    - file: week04b-loops
    - file: week04c-python-functions
    - file: week04d-exercises
+ - caption: Week 5
+   chapters:
+   - file: week05a-corr-regress-least-squares
+   - file: week05b-conditional-execution
+   - file: week05c-python-modules
+   - file: week05d-exercises
