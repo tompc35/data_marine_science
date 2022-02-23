@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>Interpretation of confidence intervals &#8212; Data Analysis Techniques in Marine Science</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Correlation and linear regression" href="week05a-corr-regress-least-squares.html" />
     <link rel="prev" title="Functions" href="week04c-python-functions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -175,7 +176,7 @@
   Week 4
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week04a-hypothesis-power.html">
    Hypothesis testing and Power
@@ -189,6 +190,38 @@
  <li class="toctree-l1">
   <a class="reference internal" href="week04c-python-functions.html">
    Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Interpretation of confidence intervals
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05a-corr-regress-least-squares.html">
+   Correlation and linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05b-conditional-execution.html">
+   Conditional execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05c-python-modules.html">
+   Creating your own Python module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05d-exercises.html">
+   Exercises
   </a>
  </li>
 </ul>
@@ -294,7 +327,52 @@
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Interpretation of confidence intervals
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#confidence-interval-calculation">
+   Confidence interval calculation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-respiration-rates">
+   Comparing respiration rates
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power-analysis-and-experimental-design-if-time">
+   Power analysis and experimental design (if time)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-loop-cumulative-sum-1">
+   For loop - cumulative sum 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-loop-cumulative-sum-2">
+   For loop - cumulative sum 2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fibonacci-sequence-if-time">
+   Fibonacci sequence (if time)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-function-temperature-conversion">
+   Python function - temperature conversion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stokes-law-function">
+   Stokes law function
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -305,7 +383,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>Interpretation of confidence intervals</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -314,7 +392,52 @@
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Interpretation of confidence intervals
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#confidence-interval-calculation">
+   Confidence interval calculation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-respiration-rates">
+   Comparing respiration rates
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power-analysis-and-experimental-design-if-time">
+   Power analysis and experimental design (if time)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-loop-cumulative-sum-1">
+   For loop - cumulative sum 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-loop-cumulative-sum-2">
+   For loop - cumulative sum 2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fibonacci-sequence-if-time">
+   Fibonacci sequence (if time)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-function-temperature-conversion">
+   Python function - temperature conversion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stokes-law-function">
+   Stokes law function
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -324,21 +447,41 @@
             
               <div>
                 
-  <p><strong>Confidence intervals</strong></p>
-<ol class="simple">
-<li><p>Interpretation of confidence intervals</p></li>
-</ol>
-<p>On the poll, list your answers to the following questions.</p>
+  <div class="section" id="interpretation-of-confidence-intervals">
+<h1>Interpretation of confidence intervals<a class="headerlink" href="#interpretation-of-confidence-intervals" title="Permalink to this headline">¶</a></h1>
+<p>List your answers to the following true/false questions.</p>
 <p><img alt="Conf-Int-Q.png" src="_images/Conf-Int-Q.png" />
 <img alt="Conf-Int-TF.png" src="_images/Conf-Int-TF.png" /></p>
-<ol class="simple">
-<li><p>A set of 100 anchovy weight samples has a mean value of 13.95 g and a standard deviation of 9.52 g.</p></li>
-</ol>
+</div>
+<div class="section" id="confidence-interval-calculation">
+<h1>Confidence interval calculation<a class="headerlink" href="#confidence-interval-calculation" title="Permalink to this headline">¶</a></h1>
+<p>For this problem, avoid using <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> or any statistical functions. Feel free to use Python as a calculator.</p>
+<p>A set of 100 anchovy weight samples has a mean value of 13.95 g and a standard deviation of 9.52 g.</p>
 <p>a. Calculate the standard error.</p>
 <p>b. Calculate 95% confidence intervals for the mean.</p>
-<ol class="simple">
-<li><p>Write a for loop that prints out the cumulative sum of an array. For example, the cumulative sum of the array</p></li>
-</ol>
+</div>
+<div class="section" id="comparing-respiration-rates">
+<h1>Comparing respiration rates<a class="headerlink" href="#comparing-respiration-rates" title="Permalink to this headline">¶</a></h1>
+<p>For the problem below, use any function in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/stats.html"><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code></a> or other libraries such as <a class="reference external" href="https://pingouin-stats.org/">Pinguoin</a>.</p>
+<p>Water column respiration rates are measured in dark bottle incubations at two different stations on an oceanographic cruise. Three replicates are taken at each station. The values (in units of mL/L d<span class="math notranslate nohighlight">\(^{-1}\)</span>) are given below:</p>
+<p>Station A: <code class="docutils literal notranslate"><span class="pre">[0.45,</span> <span class="pre">0.77,</span> <span class="pre">0.71]</span></code></p>
+<p>Station B: <code class="docutils literal notranslate"><span class="pre">[0.54,</span> <span class="pre">0.43,</span> <span class="pre">0.36]</span></code></p>
+<p>Use an appropriate statistical test to determine whether there is a significant difference in the mean respiration rate between the two stations.</p>
+</div>
+<div class="section" id="power-analysis-and-experimental-design-if-time">
+<h1>Power analysis and experimental design (if time)<a class="headerlink" href="#power-analysis-and-experimental-design-if-time" title="Permalink to this headline">¶</a></h1>
+<p>You are studying the effects of a marine reserve on juvenile rockfish. Previous literature indicates that the juveniles of the species you are studying have a standard length of 70 +/- 30 mm (mean +/- standard deviation). The marine reserve will allow you to catch and release 20 fish for scientific purposes, and you plan on measuring the same number of fish outside the reserve for comparison.</p>
+<p>If your target power is 80% and your confidence level is 95%, what is the minimum difference in mean length you can expect to observe in the marine reserve? You can assume that the fish lengths are normally distributed.</p>
+<p>What is the probability of not observing a significant effect of this magnitude <em>if</em> there actually is one?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.stats</span> <span class="kn">import</span> <span class="n">power</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">power</span><span class="o">.</span><span class="n">tt_solve_power</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-loop-cumulative-sum-1">
+<h1>For loop - cumulative sum 1<a class="headerlink" href="#for-loop-cumulative-sum-1" title="Permalink to this headline">¶</a></h1>
+<p>Write a for loop that prints out the cumulative sum of an array. For example, the cumulative sum of the array</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -355,9 +498,10 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">cumsum</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Write a for loop that stores the cumulative sum of an array in another array. Use the <code class="docutils literal notranslate"><span class="pre">np.append()</span></code> function - see <code class="docutils literal notranslate"><span class="pre">help(np.append)</span></code> - and make sure that you have run <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>  at the top of your program in order to use this function.</p></li>
-</ol>
+</div>
+<div class="section" id="for-loop-cumulative-sum-2">
+<h1>For loop - cumulative sum 2<a class="headerlink" href="#for-loop-cumulative-sum-2" title="Permalink to this headline">¶</a></h1>
+<p>Write a for loop that stores the cumulative sum of an array in another array. Use the <code class="docutils literal notranslate"><span class="pre">np.append()</span></code> function - see <code class="docutils literal notranslate"><span class="pre">help(np.append)</span></code> - and make sure that you have run <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>  at the top of your program in order to use this function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 
 <span class="n">cumsum</span> <span class="o">=</span> <span class="mi">0</span>
@@ -369,27 +513,29 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">cumsum_array</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>(If time) Write a for loop that prints the first n numbers of the Fibonacci sequence:
+</div>
+<div class="section" id="fibonacci-sequence-if-time">
+<h1>Fibonacci sequence (if time)<a class="headerlink" href="#fibonacci-sequence-if-time" title="Permalink to this headline">¶</a></h1>
+<p>Write a for loop that prints the first n numbers of the Fibonacci sequence:
 1,1,2,3,5,8,13…
-Write out your algorithm first, and start with the following minimal code.</p></li>
-</ol>
+Write out your algorithm first, and start with the following minimal code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="c1"># insert code here</span>
 </pre></div>
 </div>
-<p><strong>Python functions</strong></p>
-<ol class="simple">
-<li><p>Create a function that converts temperature from degrees Celsius to degrees Fahrenheit.</p></li>
-<li><p>Use the function created above to convert the following array of temperature values from degrees F to degrees C. Avoid using a for loop.</p></li>
-</ol>
+</div>
+<div class="section" id="python-function-temperature-conversion">
+<h1>Python function - temperature conversion<a class="headerlink" href="#python-function-temperature-conversion" title="Permalink to this headline">¶</a></h1>
+<p>Create a function that converts temperature from degrees Celsius to degrees Fahrenheit.</p>
+<p>Use the function created above to convert the following array of temperature values from degrees F to degrees C. Avoid using a for loop.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temps_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">50.5</span><span class="p">,</span> <span class="mf">58.4</span><span class="p">,</span> <span class="mf">62.3</span><span class="p">,</span> <span class="mf">49.2</span><span class="p">])</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Stokes’ law predicts the settling velocity (or “terminal velocity”) of a sinking sphere, <span class="math notranslate nohighlight">\(v\)</span> (units: m/s). The theoretical velocity is based on the radius of the particle, <span class="math notranslate nohighlight">\(r\)</span> (units: m), the density of the particle  <span class="math notranslate nohighlight">\(\rho_p\)</span> (units: kg/m<span class="math notranslate nohighlight">\(^3\)</span>), the density of the ambient fluid <span class="math notranslate nohighlight">\(\rho_f\)</span>, the dynamic viscosity of the ambient fluid <span class="math notranslate nohighlight">\(\mu\)</span> (units: kg/(m*s)), and the acceleration due to gravity <span class="math notranslate nohighlight">\(g\)</span> (units: m/s<span class="math notranslate nohighlight">\(^2\)</span>):</p></li>
-</ol>
+</div>
+<div class="section" id="stokes-law-function">
+<h1>Stokes law function<a class="headerlink" href="#stokes-law-function" title="Permalink to this headline">¶</a></h1>
+<p>Stokes’ law predicts the settling velocity (or “terminal velocity”) of a sinking sphere, <span class="math notranslate nohighlight">\(v\)</span> (units: m/s). The theoretical velocity is based on the radius of the particle, <span class="math notranslate nohighlight">\(r\)</span> (units: m), the density of the particle  <span class="math notranslate nohighlight">\(\rho_p\)</span> (units: kg/m<span class="math notranslate nohighlight">\(^3\)</span>), the density of the ambient fluid <span class="math notranslate nohighlight">\(\rho_f\)</span>, the dynamic viscosity of the ambient fluid <span class="math notranslate nohighlight">\(\mu\)</span> (units: kg/(m*s)), and the acceleration due to gravity <span class="math notranslate nohighlight">\(g\)</span> (units: m/s<span class="math notranslate nohighlight">\(^2\)</span>):</p>
 <div class="math notranslate nohighlight">
 \[v = \frac{2}{9}\frac{(\rho_p-\rho_f)}{\mu}g r^2\]</div>
 <p>Use the following template to create a function that calculates the velocity predicted by Stokes law:</p>
@@ -398,13 +544,12 @@ Write out your algorithm first, and start with the following minimal code.</p></
     <span class="k">return</span> <span class="n">v</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Use your <code class="docutils literal notranslate"><span class="pre">stokes_law</span></code> function to estimate the settling velocity of the single-cell alga <em>Phaeocystis globosa</em>, assuming it is spherical. The radius of a typical cell is 46 <span class="math notranslate nohighlight">\(\mu m\)</span> and the typical cell density is 1091 kg/m<span class="math notranslate nohighlight">\(^3\)</span>. For standard seawater conditions (temperature = 10 deg C, practical salinity = 35) <span class="math notranslate nohighlight">\(\rho_f\)</span> = 1025 kg/m<span class="math notranslate nohighlight">\(^3\)</span>, <span class="math notranslate nohighlight">\(\mu =\)</span> 1.51 × 10<span class="math notranslate nohighlight">\(^{−3}\)</span> kg/(m*s).</p></li>
-</ol>
+<p>Use your <code class="docutils literal notranslate"><span class="pre">stokes_law</span></code> function to estimate the settling velocity of the single-cell alga <em>Phaeocystis globosa</em>, assuming it is spherical. The radius of a typical cell is 46 <span class="math notranslate nohighlight">\(\mu m\)</span> and the typical cell density is 1091 kg/m<span class="math notranslate nohighlight">\(^3\)</span>. For standard seawater conditions (temperature = 10 deg C, practical salinity = 35) <span class="math notranslate nohighlight">\(\rho_f\)</span> = 1025 kg/m<span class="math notranslate nohighlight">\(^3\)</span>, <span class="math notranslate nohighlight">\(\mu =\)</span> 1.51 × 10<span class="math notranslate nohighlight">\(^{−3}\)</span> kg/(m*s).</p>
 <p>Source: L. Peperzak, F. Colijn, R. Koeman, W. W. C. Gieskes, J. C. A. Joordens, Phytoplankton sinking rates in the Rhine region of freshwater influence, Journal of Plankton Research, Volume 25, Issue 4, April 2003, Pages 365–383, <a class="reference external" href="https://doi.org/10.1093/plankt/25.4.365">https://doi.org/10.1093/plankt/25.4.365</a></p>
 <ol class="simple">
 <li><p>Edit your function to use typical seawater values as defaults for  <code class="docutils literal notranslate"><span class="pre">rho_f</span></code> and <code class="docutils literal notranslate"><span class="pre">mu</span></code>.</p></li>
 </ol>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -437,6 +582,13 @@ Write out your algorithm first, and start with the following minimal code.</p></
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Functions</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="week05a-corr-regress-least-squares.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Correlation and linear regression</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
