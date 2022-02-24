@@ -31,5 +31,4 @@ parts:
    chapters:
    - file: week05a-corr-regress-least-squares
    - file: week05b-conditional-execution
-   - file: week05c-python-modules
-   - file: week05d-exercises
+   - file: week05c-exercises
