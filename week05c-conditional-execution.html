@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercises - Introduction to Python &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>Conditional execution &#8212; Data Analysis Techniques in Marine Science</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Modeling, sampling, confidence intervals" href="week03a-modeling-sampling.html" />
-    <link rel="prev" title="Introduction to Python" href="week02b-python-intro.html" />
+    <link rel="next" title="Exercises" href="week05d-exercises.html" />
+    <link rel="prev" title="Implementing linear regression in Python" href="week05b-wcoa-cruise-regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -125,7 +125,7 @@
   Week 2
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week02-probability-and-distributions.html">
    Probability and distributions
@@ -136,8 +136,8 @@
    Introduction to Python
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02c-exercises-python-intro.html">
    Exercises - Introduction to Python
   </a>
  </li>
@@ -201,7 +201,7 @@
   Week 5
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week05a-corr-regress-least-squares.html">
    Correlation and linear regression
@@ -212,8 +212,8 @@
    Implementing linear regression in Python
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week05c-conditional-execution.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Conditional execution
   </a>
  </li>
@@ -263,7 +263,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week02c-exercises-python-intro.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/week05c-conditional-execution.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -283,7 +283,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek02c-exercises-python-intro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek05c-conditional-execution.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -304,7 +304,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week02c-exercises-python-intro.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week05c-conditional-execution.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -327,43 +327,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#variable-assignment">
-   Variable assignment
+  <a class="reference internal nav-link" href="#if-else-statements">
+   If-else statements
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#types-of-numbers">
-   Types of numbers
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#type-overview">
-   Type overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#appending-variables">
-   Appending variables
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#slicing">
-   Slicing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dictionaries">
-   Dictionaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy-arrays">
-   Numpy arrays
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#standard-deviation-calculation">
-   Standard deviation calculation
+  <a class="reference internal nav-link" href="#exceptions">
+   Exceptions
   </a>
  </li>
 </ul>
@@ -376,7 +346,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercises - Introduction to Python</h1>
+                <h1>Conditional execution</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -387,43 +357,13 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#variable-assignment">
-   Variable assignment
+  <a class="reference internal nav-link" href="#if-else-statements">
+   If-else statements
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#types-of-numbers">
-   Types of numbers
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#type-overview">
-   Type overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#appending-variables">
-   Appending variables
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#slicing">
-   Slicing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dictionaries">
-   Dictionaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy-arrays">
-   Numpy arrays
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#standard-deviation-calculation">
-   Standard deviation calculation
+  <a class="reference internal nav-link" href="#exceptions">
+   Exceptions
   </a>
  </li>
 </ul>
@@ -435,79 +375,99 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercises-introduction-to-python">
-<h1>Exercises - Introduction to Python<a class="headerlink" href="#exercises-introduction-to-python" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="variable-assignment">
-<h2>Variable assignment<a class="headerlink" href="#variable-assignment" title="Permalink to this headline">¶</a></h2>
-<p>Without running any code, predict the output of the following three-line program.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">16</span> 
-<span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="mi">2</span>  
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> 
+  <div class="tex2jax_ignore mathjax_ignore section" id="conditional-execution">
+<h1>Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="if-else-statements">
+<h2>If-else statements<a class="headerlink" href="#if-else-statements" title="Permalink to this headline">¶</a></h2>
+<p><em>If</em> statements are used to execute a set of commands only under certain conditions. The syntax is shown below. Note that the commands to be run conditionally are indented with a tab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is positive&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;another line&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is negative&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="types-of-numbers">
-<h2>Types of numbers<a class="headerlink" href="#types-of-numbers" title="Permalink to this headline">¶</a></h2>
-<p>What type of value is 3.4 + 5? How can you find out using Python?</p>
-</div>
-<div class="section" id="type-overview">
-<h2>Type overview<a class="headerlink" href="#type-overview" title="Permalink to this headline">¶</a></h2>
-<p>What type of value (integer, floating point number, or character string) would you use to represent each of the following? There may be more than one good answer for each problem.</p>
-<p>a. Current population of a city.</p>
-<p>b. Average population of a city over time.</p>
-<p>c. Serial number of a piece of lab equipment.</p>
-<p>d. Time elapsed from the start of the year until now in days.</p>
-</div>
-<div class="section" id="appending-variables">
-<h2>Appending variables<a class="headerlink" href="#appending-variables" title="Permalink to this headline">¶</a></h2>
-<p>The following variables are assigned in Python:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">second</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
-<span class="n">third</span> <span class="o">=</span> <span class="s2">&quot;1.1&quot;</span>
-</pre></div>
-</div>
-<p>Which of the following will return the floating point number 2.0? Note: there may be more than one right answer.</p>
-<p>a. <code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">+</span> <span class="pre">float(second)</span></code></p>
-<p>b. <code class="docutils literal notranslate"><span class="pre">float(second)</span> <span class="pre">+</span> <span class="pre">float(third)</span></code></p>
-<p>c. <code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">+</span> <span class="pre">int(third)</span></code></p>
-<p>d. <code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">+</span> <span class="pre">int(float(third))</span></code></p>
-<p>e. <code class="docutils literal notranslate"><span class="pre">int(first)</span> <span class="pre">+</span> <span class="pre">int(float(third))</span></code></p>
-<p>f. <code class="docutils literal notranslate"><span class="pre">2.0</span> <span class="pre">*</span> <span class="pre">second</span></code></p>
-</div>
-<div class="section" id="slicing">
-<h2>Slicing<a class="headerlink" href="#slicing" title="Permalink to this headline">¶</a></h2>
-<p>Use slicing to access only the last four characters of a string or entries of a list. The following variables have been created in Python:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">string_for_slicing</span> <span class="o">=</span> <span class="s2">&quot;Observation date: 02-Feb-2013&quot;</span>
-<span class="n">list_for_slicing</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;fluorine&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">],</span>
-                    <span class="p">[</span><span class="s2">&quot;chlorine&quot;</span><span class="p">,</span> <span class="s2">&quot;Cl&quot;</span><span class="p">],</span>
-                    <span class="p">[</span><span class="s2">&quot;bromine&quot;</span><span class="p">,</span> <span class="s2">&quot;Br&quot;</span><span class="p">],</span>
-                    <span class="p">[</span><span class="s2">&quot;iodine&quot;</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">],</span>
-                    <span class="p">[</span><span class="s2">&quot;astatine&quot;</span><span class="p">,</span> <span class="s2">&quot;At&quot;</span><span class="p">]]</span>
-</pre></div>
-</div>
-<p>What Python code creates the following output? Would your solution work regardless of whether you knew beforehand the length of the string or list (e.g. if you wanted to apply the solution to a set of lists of different lengths)? If not, try to change your approach to make it more robust.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;2013&quot;</span>
-<span class="p">[[</span><span class="s2">&quot;chlorine&quot;</span><span class="p">,</span> <span class="s2">&quot;Cl&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;bromine&quot;</span><span class="p">,</span> <span class="s2">&quot;Br&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;iodine&quot;</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;astatine&quot;</span><span class="p">,</span> <span class="s2">&quot;At&quot;</span><span class="p">]]</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is positive
+another line
+done
 </pre></div>
 </div>
 </div>
-<div class="section" id="dictionaries">
-<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h2>
-<p>Add a new element to the <code class="docutils literal notranslate"><span class="pre">my_town</span></code> dictionary by creating a new key-value pair. The key should be <code class="docutils literal notranslate"><span class="pre">'restaurants'</span></code> and the value should be a list of names of eating establishments.</p>
 </div>
-<div class="section" id="numpy-arrays">
-<h2>Numpy arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">¶</a></h2>
-<p>Consider the following array of numbers:</p>
-<p><code class="docutils literal notranslate"><span class="pre">my_array</span> <span class="pre">=</span> <span class="pre">np.array([5.,7001.,-100,3.4,85.0004])</span></code></p>
-<p>Write your own Python code to calculate the mean of <code class="docutils literal notranslate"><span class="pre">my_array</span></code>. Make sure your code still works if the contents of <code class="docutils literal notranslate"><span class="pre">my_array</span></code> are changed to have different values, or a different number of values.</p>
-<p>Check the results of your code with the results of the built-in Numpy function, <code class="docutils literal notranslate"><span class="pre">np.mean</span></code>:</p>
-<p><code class="docutils literal notranslate"><span class="pre">np.mean(my_array)</span></code></p>
+<p>A chain of conditions can be created with <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> blocks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is positive&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is negative&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is zero&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="standard-deviation-calculation">
-<h2>Standard deviation calculation<a class="headerlink" href="#standard-deviation-calculation" title="Permalink to this headline">¶</a></h2>
-<p>Write your own Python code to calculate the standard deviation of <code class="docutils literal notranslate"><span class="pre">my_array</span></code>. Make sure your code still works if the contents of <code class="docutils literal notranslate"><span class="pre">my_array</span></code> are changed to have different values, or a different number of values.</p>
-<p>Check the results of your code with the results of the built-in Numpy function, <code class="docutils literal notranslate"><span class="pre">np.std</span></code>:</p>
-<p><code class="docutils literal notranslate"><span class="pre">np.std(my_array)</span></code></p>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is positive
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong></p>
+<p>Using conditional execution, calculate the absolute value of a number (not using the built-in <code class="docutils literal notranslate"><span class="pre">abs</span></code> function).</p>
+</div>
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Conditional execution - same category as if statements. The code in the <code class="docutils literal notranslate"><span class="pre">try</span></code> statement is run first. If an error occurs while running that code, the code under the <code class="docutils literal notranslate"><span class="pre">except</span></code> statement is run instead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;year&#39;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2022</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives an error, because strings cannot be combined with numbers. Execution of the program is stopped.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">ca730b97bf8a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+
+<span class="ne">TypeError</span>: can only concatenate str (not &quot;int&quot;) to str
+</pre></div>
+</div>
+</div>
+</div>
+<p>This tries the same code, and converts both variables to a string if an error occurs. Execution of the program continues.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">combined</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="n">combined</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+   
+<span class="nb">print</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>year2022
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -520,33 +480,33 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "ms263-21"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "ms263-21",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'ms263-21'</script>
 
               </div>
               
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="week02b-python-intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="week05b-wcoa-cruise-regression.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction to Python</p>
+            <p class="prev-next-title">Implementing linear regression in Python</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="week03a-modeling-sampling.html" title="next page">
+    <a class='right-next' id="next-link" href="week05d-exercises.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modeling, sampling, confidence intervals</p>
+        <p class="prev-next-title">Exercises</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

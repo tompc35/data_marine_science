@@ -40,14 +40,12 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 ### Week 5
 
 * [Correlation, general least squares regression](week05a-corr-regress-least-squares.ipynb)
-* [Conditional execution](week05b-conditional-execution.ipynb)
-* [Python modules](week05c-python-modules.ipynb)
+* [Implementing linear regression in Python](week05b-wcoa-cruise-regression.ipynb)
+* [Conditional execution](week05c-conditional-execution.ipynb)
 * [Exercises](week05d-exercises.ipynb)
 
 
 <!--*
-
-
 
 * [Week 5 - Correlation, general least squares regression](week05a-corr-regress-least-squares.ipynb)
 
