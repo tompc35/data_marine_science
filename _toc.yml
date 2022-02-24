@@ -30,5 +30,6 @@ parts:
  - caption: Week 5
    chapters:
    - file: week05a-corr-regress-least-squares
-   - file: week05b-conditional-execution
-   - file: week05c-exercises
+   - file: week05b-wcoa-cruise-regression
+   - file: week05c-conditional-execution
+   - file: week05d-exercises
