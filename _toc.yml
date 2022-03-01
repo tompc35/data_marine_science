@@ -33,3 +33,7 @@ parts:
    - file: week05b-wcoa-cruise-regression
    - file: week05c-conditional-execution
    - file: week05d-exercises
+ - caption: Week 6
+   chapters:
+   - file: week06a-multivariate-regression
+   - file: week06b-python-modules

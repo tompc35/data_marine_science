@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# ## Creating your own Python module
+# # Creating your own Python module
 # 
 # Up to this point, we have created functions and used them within the same Python script. However, what if we want to use those functions in another file, or another project entirely? To do this you can create your own module that can be imported in another Python scripts.
 # 
-# ### Running a file as a script from the shell command line
+# ## Running a file as a script from the shell command line
 # 
 # To show how modules work in Python, we start with a simple unit conversion module contained in the file [convert.py](scripts/convert.py):
 # 
@@ -36,7 +36,7 @@
 # 	print('32 degrees F:',temp_f2c(32),'C')
 # ```
 
-# #### Breaking down parts of the file
+# ### Breaking down parts of the file
 # 
 # This Python file has several parts. The first two lines are comment lines, and are therefore not run as Python code. However, they contain important information about the file and they are include automatically when you create a new file in Spyder. The first line,
 # 
@@ -63,7 +63,7 @@
 # 	print('do this stuff if run as script')
 # 	print('32 degrees F:',temp_f2c(32),'C')
 # ```
-# #### Running the file
+# ### Running the file
 # 
 # The part of the file above is only run as a script (not when it is imported as a module in another Python file, which is what will be demonstrated in the next section). In Spyder, this can be done with the "Run" button. Python scripts can also be run from the shell (e.g. Mac Terminal, or Git Bash shell). The convert.py file can be run by navigating to its directory in the shell and typing
 # 
@@ -80,7 +80,7 @@
 # 
 # Running a python file in this way executes all of the Python code in the file, including the contents of the section that starts with `if __name__ == '__main__':`
 # 
-# ### Importing as a module
+# ## Importing as a module
 # 
 # To show how to import the convert.py as a module, and use the functions in another file, we create a simple script called [myscript.py](scripts/myscript.py):
 # 
@@ -95,7 +95,7 @@
 # print(ctemp,'C is ',ftemp,'F')
 # ```
 # 
-# #### The import statement
+# ### The import statement
 # 
 # In the file above, the conversion module is imported with the statement:
 # 
@@ -108,7 +108,7 @@
 # ftemp = convert.temp_c2f(ftemp)
 # ```
 # 
-# #### Running the file
+# ### Running the file
 # 
 # This file can be run from the shell, with the command,
 # 
@@ -124,9 +124,15 @@
 # 
 # It is also important to note what is code is _not_ run, which is the contents of the `if __name__ == '__main__':` section of convert.py. When a Python file is imported as a module, this part of the code is not run. This is a good place to put demonstrations of functions in a module, or tests.
 # 
-# #### Exercises
+# ## Exercises
 # 
 # * Write two more unit conversion functions (converting one way and back).
 # * Use one in the `if __name__ == '__main__':` section of convert.py
 # * Use the other in myscript.py
 # * Run these files from the shell, and see what parts of the code are run
+
+# In[ ]:
+
+
+
+
