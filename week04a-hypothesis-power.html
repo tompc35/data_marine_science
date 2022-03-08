@@ -242,6 +242,38 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07a-anova.html">
+   Analysis of variance (ANOVA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07b-nonparam.html">
+   Non-parametric statistical tests
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07c_generalized_linear_model.html">
+   The generalized linear model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07d-stats-examples.html">
+   Statistics example problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07e-example-comparing-wcoa-temperature.html">
+   Example: comparing temperature in three regions
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -766,7 +798,7 @@ lower critical t value = -3.1824463052842638
 <div class="section" id="one-sample-t-test">
 <h2>One-sample t-test<a class="headerlink" href="#one-sample-t-test" title="Permalink to this headline">¶</a></h2>
 <p>The example described above, in which a sample mean is compared with a single value (possibly a known value or a theoretical result), is called a <strong>one-sample t-test</strong>. All t-tests assumes that the samples are drawn from a <strong>normally-distributed</strong> population.</p>
-<p>In Python, a one sample <span class="math notranslate nohighlight">\(t\)</span>-test can be conducted with the function <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp()</span></code>. Given a set of values <code class="docutils literal notranslate"><span class="pre">x</span></code> and a population mean, <span class="math notranslate nohighlight">\(\mu\)</span> or <code class="docutils literal notranslate"><span class="pre">popmean</span></code>, this function returns the <span class="math notranslate nohighlight">\(t\)</span>-statistic and a <span class="math notranslate nohighlight">\(p\)</span>-value. The <span class="math notranslate nohighlight">\(p\)</span>-value is the probability of obtaining a <span class="math notranslate nohighlight">\(t\)</span>-statistic of that magnitude, or more extreme if the null hypothesis is true. If the <span class="math notranslate nohighlight">\(p\)</span>-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span> then the null hypothesis can be rejected.</p>
+<p>In Python, a one sample <span class="math notranslate nohighlight">\(t\)</span>-test can be conducted with the function <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp()</span></code>. Given a set of values <code class="docutils literal notranslate"><span class="pre">x</span></code> and a population mean, <span class="math notranslate nohighlight">\(\mu\)</span> or <code class="docutils literal notranslate"><span class="pre">popmean</span></code>, this function returns the <span class="math notranslate nohighlight">\(t\)</span>-statistic and a <span class="math notranslate nohighlight">\(p\)</span>-value. The <span class="math notranslate nohighlight">\(p\)</span>-value is the probability of obtaining a <span class="math notranslate nohighlight">\(t\)</span>-statistic of that magnitude, or more extreme, in the hypothetical case the null hypothesis is true. If the <span class="math notranslate nohighlight">\(p\)</span>-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span> then the null hypothesis is rejected.</p>
 <p>Looking at an example where we have three samples, and we are comparing with a known value <span class="math notranslate nohighlight">\(\mu_0\)</span> = 10.0</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -813,7 +845,7 @@ p: 0.529
 </div>
 </div>
 <p>we see that the <span class="math notranslate nohighlight">\(t\)</span>-statistic is much closer to zero, and the <span class="math notranslate nohighlight">\(p\)</span>-value is is much higher. In this case, the null hypothesis cannot be rejected at the 95% confidence level (or even a far more lenient 60% confidence level).</p>
-<p>The p-value is related to the cumulative probability of the t-statistic. The p-value is the probability of obtaining a certain value of t, or more extreme. The cumulative probability is the probability of obtaining a certain value of t or less when taking random samples from a normal distribution.</p>
+<p>The p-value is related to the cumulative probability of the t-statistic. The p-value is the probability of obtaining a certain value of t, or more extreme, in the hypothetical case that the null hypothesis is true. The cumulative probability is the probability of obtaining a certain value of t or less when taking random samples from a normal distribution (again, in the hypothetical case that the null hypothesis is true).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tcdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mf">0.756</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -827,7 +859,7 @@ p: 0.529
 </div>
 </div>
 </div>
-<p>There is a probability of 0.264 of randomly obtaining <span class="math notranslate nohighlight">\(t\)</span> value of -0.756 or less. However, there is twice as much probability (p = 0.529) of obtaining a more extreme value (<span class="math notranslate nohighlight">\(t \leq\)</span> -0.756 <em>or</em> <span class="math notranslate nohighlight">\(t \geq\)</span> -0.756).</p>
+<p>There is a probability of 0.264 of randomly obtaining <span class="math notranslate nohighlight">\(t\)</span> value of -0.756 or less if the null hypothesis is true. However, there is twice as much probability (p = 0.529) of obtaining a more extreme value (<span class="math notranslate nohighlight">\(t \leq\)</span> -0.756 or <span class="math notranslate nohighlight">\(t \geq\)</span> -0.756).</p>
 </div>
 <div class="section" id="one-tailed-vs-two-tailed-tests">
 <h2>One-tailed vs. two-tailed tests<a class="headerlink" href="#one-tailed-vs-two-tailed-tests" title="Permalink to this headline">¶</a></h2>
@@ -858,7 +890,7 @@ p: 0.529
 <p>When using a function such as <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp()</span></code> to do a one-tailed test, here is how to interpret the output:</p>
 <ul class="simple">
 <li><p>Reject <span class="math notranslate nohighlight">\(H_o\)</span> only if the value of t has the correct sign</p></li>
-<li><p>If t does have the correct sign, reject H_o if <strong>1/2 the p-value</strong> is less than <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>If t does have the correct sign, reject <span class="math notranslate nohighlight">\(H_o\)</span> if 1/2 the p-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
 </ul>
 </div>
 <div class="section" id="two-sample-t-test-comparing-pairs-of-populations">
@@ -1038,6 +1070,11 @@ p: 0.529
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/outdated/utils.py:14: OutdatedPackageWarning: The package pingouin is out of date. Your version is 0.5.0, the latest is 0.5.1.
+Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
+  return warn(
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {

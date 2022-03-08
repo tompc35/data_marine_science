@@ -1,0 +1,1647 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The generalized linear model &#8212; Data Analysis Techniques in Marine Science</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Statistics example problems" href="week07d-stats-examples.html" />
+    <link rel="prev" title="Non-parametric statistical tests" href="week07b-nonparam.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/course-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Data Analysis Techniques in Marine Science
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Before class
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software-installation/README.html">
+   Setup and software installation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week01-introduction.html">
+   Sampling and statistics: Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02-probability-and-distributions.html">
+   Probability and distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02b-python-intro.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02c-exercises-python-intro.html">
+   Exercises - Introduction to Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03a-modeling-sampling.html">
+   Modeling, sampling, confidence intervals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03b-boolean.html">
+   Boolean logic in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03c-cruise-data-analysis.html">
+   Cruise data analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03d-exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04a-hypothesis-power.html">
+   Hypothesis testing and Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04b-loops.html">
+   Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04c-python-functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04d-exercises.html">
+   Interpretation of confidence intervals
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05a-corr-regress-least-squares.html">
+   Correlation and linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05b-wcoa-cruise-regression.html">
+   Implementing linear regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05c-conditional-execution.html">
+   Conditional execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05d-exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week06a-multivariate-regression.html">
+   Multivariate regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week06b-python-modules.html">
+   Creating your own Python module
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 7
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07a-anova.html">
+   Analysis of variance (ANOVA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07b-nonparam.html">
+   Non-parametric statistical tests
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The generalized linear model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07d-stats-examples.html">
+   Statistics example problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07e-example-comparing-wcoa-temperature.html">
+   Example: comparing temperature in three regions
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/week07c_generalized_linear_model.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek07c_generalized_linear_model.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week07c_generalized_linear_model.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-statistical-tests-as-linear-models">
+   Common statistical tests as linear models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resources">
+     Resources
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparing-two-sample-means-another-example">
+       Comparing two sample means (another example)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Comparing two sample means (another example)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparing-one-sample-mean-to-a-single-value">
+       Comparing one sample mean to a single value
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#method-1-one-sample-t-test">
+         Method 1: one sample t-test
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#method-2-generalized-linear-model">
+         Method 2: generalized linear model
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparing-two-sample-means">
+       Comparing two sample means
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#method-1-t-test">
+         Method 1: t-test
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id2">
+         Method 2: generalized linear model
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Comparing two sample means (another example)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparing-three-sample-means-another-example">
+       Comparing three sample means (another example)
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#create-a-categorical-variable-for-the-region">
+         Create a categorical variable for the region
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#box-plot">
+         Box plot
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#analysis">
+         Analysis
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The generalized linear model</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-statistical-tests-as-linear-models">
+   Common statistical tests as linear models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resources">
+     Resources
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparing-two-sample-means-another-example">
+       Comparing two sample means (another example)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Comparing two sample means (another example)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparing-one-sample-mean-to-a-single-value">
+       Comparing one sample mean to a single value
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#method-1-one-sample-t-test">
+         Method 1: one sample t-test
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#method-2-generalized-linear-model">
+         Method 2: generalized linear model
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparing-two-sample-means">
+       Comparing two sample means
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#method-1-t-test">
+         Method 1: t-test
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id2">
+         Method 2: generalized linear model
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Comparing two sample means (another example)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparing-three-sample-means-another-example">
+       Comparing three sample means (another example)
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#create-a-categorical-variable-for-the-region">
+         Create a categorical variable for the region
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#box-plot">
+         Box plot
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#analysis">
+         Analysis
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="the-generalized-linear-model">
+<h1>The generalized linear model<a class="headerlink" href="#the-generalized-linear-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="reference">
+<h2>Reference:<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://statsthinking21.org">http://statsthinking21.org</a></p>
+<ul class="simple">
+<li><p>The general linear model</p></li>
+<li><p>Comparing means</p></li>
+</ul>
+</div>
+<div class="section" id="common-statistical-tests-as-linear-models">
+<h2>Common statistical tests as linear models<a class="headerlink" href="#common-statistical-tests-as-linear-models" title="Permalink to this headline">¶</a></h2>
+<p>Many statistical tests can be though of as implementations of the generalized linear model. Thinking of tests as part of a class of linear models can be more intuitive than thinking about how each test works individually.</p>
+<div class="section" id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h3>
+<p>This approach is taken in Chapter 28 of <em>Statistical Thinking for the 21st Century</em> on comparing means:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://statsthinking21.org/comparing-means.html">http://statsthinking21.org/comparing-means.html</a></p></li>
+</ul>
+<p>A blog post by Jonas Kristoffer Lindeløv explains this approach for a wide array of statistical tests. Implementation of the statistical functions and linear models, with interpretations, are provided in both R and Python.</p>
+<ul class="simple">
+<li><p>Original post (using R): <a class="reference external" href="https://lindeloev.github.io/tests-as-linear/">https://lindeloev.github.io/tests-as-linear/</a></p></li>
+<li><p>Python port: <a class="reference external" href="https://eigenfoo.xyz/tests-as-linear/">https://eigenfoo.xyz/tests-as-linear/</a></p></li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>The following examples show different ways of comparing means, using data from the 2007 West Coast Ocean Acidification cruise. The examples use quality controlled data from 0-10 dbar (upper 10m of the water column).</p>
+<div class="section" id="comparing-two-sample-means-another-example">
+<h4>Comparing two sample means (another example)<a class="headerlink" href="#comparing-two-sample-means-another-example" title="Permalink to this headline">¶</a></h4>
+<p>The following shows the same calculations for temperature. In this case, the null hypothesis can be rejected at the 95% confidence level, and the 95% confidence intervals for the model slope do <em>not</em> overlap with zero.</p>
+<p>Load 2007 data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="kn">import</span> <span class="nn">pingouin</span> <span class="k">as</span> <span class="nn">pg</span>
+
+<span class="kn">import</span> <span class="nn">PyCO2SYS</span> <span class="k">as</span> <span class="nn">pyco2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/outdated/utils.py:14: OutdatedPackageWarning: The package pingouin is out of date. Your version is 0.5.0, the latest is 0.5.1.
+Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
+  return warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename07</span> <span class="o">=</span> <span class="s1">&#39;data/wcoa_cruise_2007/32WC20070511.exc.csv&#39;</span>
+<span class="n">df07</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename07</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="mi">29</span><span class="p">,</span><span class="n">na_values</span><span class="o">=-</span><span class="mi">999</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use the PyCO2SYS package to calculate seawater carbon chemistry parameters.</p>
+<p><a class="reference external" href="https://pyco2sys.readthedocs.io/en/latest/">https://pyco2sys.readthedocs.io/en/latest/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c07</span> <span class="o">=</span> <span class="n">pyco2</span><span class="o">.</span><span class="n">sys</span><span class="p">(</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;ALKALI&#39;</span><span class="p">],</span> <span class="n">df07</span><span class="p">[</span><span class="s1">&#39;TCARBN&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
+               <span class="n">salinity</span><span class="o">=</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;CTDSAL&#39;</span><span class="p">],</span> <span class="n">temperature</span><span class="o">=</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">],</span> 
+                <span class="n">pressure</span><span class="o">=</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;CTDPRS&#39;</span><span class="p">])</span>
+
+<span class="n">df07</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c07</span><span class="p">[</span><span class="s1">&#39;saturation_aragonite&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/autograd/tracer.py:48: RuntimeWarning: invalid value encountered in sqrt
+  return f_raw(*args, **kwargs)
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:99: RuntimeWarning: invalid value encountered in sqrt
+  lnKF = 1590.2 / TempK - 12.641 + 1.525 * IonS ** 0.5
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:577: RuntimeWarning: overflow encountered in power
+  K1 = 10.0 ** -(pK1)
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:583: RuntimeWarning: overflow encountered in power
+  K2 = 10.0 ** -(pK2)
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:603: RuntimeWarning: overflow encountered in power
+  K1 = 10.0 ** -pK1
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:611: RuntimeWarning: overflow encountered in power
+  K2 = 10.0 ** -pK2
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:636: RuntimeWarning: overflow encountered in power
+  K1 = 10.0 ** -pK1
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:641: RuntimeWarning: overflow encountered in power
+  K2 = 10.0 ** -pK2
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:653: RuntimeWarning: overflow encountered in power
+  K1 = 10.0 ** -pK1
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:658: RuntimeWarning: overflow encountered in power
+  K2 = 10.0 ** -pK2
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:715: RuntimeWarning: overflow encountered in power
+  K2 = 10.0 ** -pK2
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/solubility.py:41: RuntimeWarning: overflow encountered in power
+  KAr = 10.0 ** logKAr  # this is in (mol/kg-SW)^2
+/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/solubility.py:25: RuntimeWarning: overflow encountered in power
+  KCa = 10.0 ** logKCa  # this is in (mol/kg-SW)^2 at zero pressure
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>Comparing two sample means (another example)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>The following shows the same calculations for temperature. In this case, the null hypothesis can be rejected at the 95% confidence level, and the 95% confidence intervals for the model slope do <em>not</em> overlap with zero.</p>
+</div>
+<div class="section" id="comparing-one-sample-mean-to-a-single-value">
+<h4>Comparing one sample mean to a single value<a class="headerlink" href="#comparing-one-sample-mean-to-a-single-value" title="Permalink to this headline">¶</a></h4>
+<p>In this example the goal is to test whether the mean aragonite saturation state is different from a value of 1, a critical threshold for the ability of organisms to form calcium carbonate shells.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\bar{\Omega}_A =\)</span> 1</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_A\)</span>: <span class="math notranslate nohighlight">\(\bar{\Omega}_A \neq\)</span> 1</p></li>
+</ul>
+<p>The first step is to create a subset of good data from the upper 10m.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iisurf07</span> <span class="o">=</span> <span class="p">((</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;CTDPRS&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span>
+      <span class="p">(</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;NITRAT_FLAG_W&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;PHSPHT_FLAG_W&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="o">&amp;</span> <span class="p">(</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;CTDOXY_FLAG_W&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;CTDSAL_FLAG_W&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> 
+        <span class="o">&amp;</span> <span class="p">(</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;ALKALI_FLAG_W&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;TCARBN_FLAG_W&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">df07surf</span> <span class="o">=</span> <span class="n">df07</span><span class="p">[</span><span class="n">iisurf07</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A box plot is one way of showing the distribution of <span class="math notranslate nohighlight">\(\Omega_A\)</span> values.</p>
+<ul class="simple">
+<li><p>Orange line: median, or 50th percentile</p></li>
+<li><p>Upper/lower limits on box: interquartile range, or 75th/25th percentiles</p></li>
+<li><p>Whiskers: each have length 1.5*interquartile range (pyplot default)</p></li>
+<li><p>Circles: extreme values</p></li>
+<li><p>Green triangle: mean</p></li>
+<li><p>Notches on box: 95% confidence intervals for median</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df07</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">][</span><span class="n">iisurf07</span><span class="p">]),</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2007&#39;</span><span class="p">],</span><span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">notch</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$\Omega_A$ - upper 10m 2007&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;$\\Omega_A$ - upper 10m 2007&#39;)
+</pre></div>
+</div>
+<img alt="_images/week07c_generalized_linear_model_12_1.png" src="_images/week07c_generalized_linear_model_12_1.png" />
+</div>
+</div>
+<div class="section" id="method-1-one-sample-t-test">
+<h5>Method 1: one sample t-test<a class="headerlink" href="#method-1-one-sample-t-test" title="Permalink to this headline">¶</a></h5>
+<p>A one-sample t-test can be used to test whether the null hypothesis can be rejected at the 95% confidence level (<span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">]),</span><span class="n">popmean</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ttest_1sampResult(statistic=27.742288359723034, pvalue=4.457126416644256e-58)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="method-2-generalized-linear-model">
+<h5>Method 2: generalized linear model<a class="headerlink" href="#method-2-generalized-linear-model" title="Permalink to this headline">¶</a></h5>
+<p>Alternatively, this test can be framed in terms of a general linear model</p>
+<div class="math notranslate nohighlight">
+\[ \hat{y} = \hat{a}_1 + \hat{a}_2 x ,\]</div>
+<p>In this application, <span class="math notranslate nohighlight">\(y\)</span> represents the <span class="math notranslate nohighlight">\(\Omega_A\)</span> data. There is only one group, so we can set <span class="math notranslate nohighlight">\(x = 0\)</span> for all values, making the slope parameter <span class="math notranslate nohighlight">\(\hat{a}_2\)</span> irrelevant. The model then reduces to</p>
+<div class="math notranslate nohighlight">
+\[ \hat{y} = \hat{a}_1 ,\]</div>
+<p>or a model for the intercept parameter only. This equation can also be expressed as</p>
+<div class="math notranslate nohighlight">
+\[ \hat{y} = \hat{a}_1 \times 1.\]</div>
+<p>This model for the data in terms of a constant intercept can be implemented with the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;OmegaA ~ 1&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df07surf</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The summary of the results shows that the intercept is 2.33, which is also the mean of the data. The 95% confidence intervals do not overlap with 1, which means that the null hypothesis can be rejected at <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05. This approach to hypothesis testing will give the same results as the one sample t-test for <span class="math notranslate nohighlight">\(N\)</span> &gt; 14.</p>
+<p>Notice that the test statistic <span class="math notranslate nohighlight">\(t\)</span> is different from the one sample t-test. This is because <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> automatically tests whether parameters are different from <em>zero</em>, while in this case we are interested in whether the mean/intercept is different from <em>one</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>OmegaA</td>      <th>  R-squared:         </th> <td>   0.000</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.000</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>     nan</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 08 Mar 2022</td> <th>  Prob (F-statistic):</th>  <td>   nan</td> 
+</tr>
+<tr>
+  <th>Time:</th>                 <td>14:46:25</td>     <th>  Log-Likelihood:    </th> <td> -102.08</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   138</td>      <th>  AIC:               </th> <td>   206.2</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   137</td>      <th>  BIC:               </th> <td>   209.1</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     0</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>    2.2017</td> <td>    0.043</td> <td>   50.827</td> <td> 0.000</td> <td>    2.116</td> <td>    2.287</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 7.228</td> <th>  Durbin-Watson:     </th> <td>   0.655</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.027</td> <th>  Jarque-Bera (JB):  </th> <td>  11.596</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.177</td> <th>  Prob(JB):          </th> <td> 0.00303</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 4.375</td> <th>  Cond. No.          </th> <td>    1.00</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="comparing-two-sample-means">
+<h4>Comparing two sample means<a class="headerlink" href="#comparing-two-sample-means" title="Permalink to this headline">¶</a></h4>
+<p>We can also apply the generalized linear model approach when comparing two means. In this case, we will examine whether there is a statistically significant difference between the mean of <span class="math notranslate nohighlight">\(\Omega_A\)</span> to the north and south of Cape Mendocino. At a latitude of 40.4<span class="math notranslate nohighlight">\(^o\)</span>N, Cape Mendocino represents a sharp transition point in many oceanographic processes and water masses.</p>
+<p>The first steps are to make two subsets based on latitude, and then visualize the results in a box plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new boolean variable in the df07surf dataframe</span>
+<span class="n">df07surf</span> <span class="o">=</span> <span class="n">df07</span><span class="p">[</span><span class="n">iisurf07</span><span class="p">]</span>
+<span class="n">df07surf</span> <span class="o">=</span> <span class="n">df07surf</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">is_northern</span> <span class="o">=</span> <span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">40.4</span><span class="p">);</span>
+
+<span class="n">iinorth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df07surf</span><span class="o">.</span><span class="n">is_northern</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">iisouth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df07surf</span><span class="o">.</span><span class="n">is_northern</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">][</span><span class="n">iisouth</span><span class="p">],</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">][</span><span class="n">iinorth</span><span class="p">]],</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0</span><span class="se">\n</span><span class="s1">(South)&#39;</span><span class="p">,</span><span class="s1">&#39;1</span><span class="se">\n</span><span class="s1">(North)&#39;</span><span class="p">],</span><span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">notch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$\Omega_A$ - upper 10m 2007&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;$\\Omega_A$ - upper 10m 2007&#39;)
+</pre></div>
+</div>
+<img alt="_images/week07c_generalized_linear_model_23_1.png" src="_images/week07c_generalized_linear_model_23_1.png" />
+</div>
+</div>
+<div class="section" id="method-1-t-test">
+<h5>Method 1: t-test<a class="headerlink" href="#method-1-t-test" title="Permalink to this headline">¶</a></h5>
+<p>There is a difference of 0.104 in the mean of <span class="math notranslate nohighlight">\(\Omega_A\)</span> between the two regions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">][</span><span class="n">iinorth</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">][</span><span class="n">iisouth</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.03056105006487364
+</pre></div>
+</div>
+</div>
+</div>
+<p>Is this difference statistically significant? A Student’s t-test can be used to test whether the null hypothesis of no difference can be rejected at the 95% confidence level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">][</span><span class="n">iinorth</span><span class="p">],</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">][</span><span class="n">iisouth</span><span class="p">],</span><span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ttest_indResult(statistic=-0.3235609219137568, pvalue=0.7467674907175257)
+</pre></div>
+</div>
+</div>
+</div>
+<p>A Welch’s t-test relaxes the assumption of equal variance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">][</span><span class="n">iinorth</span><span class="p">],</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;OmegaA&#39;</span><span class="p">][</span><span class="n">iisouth</span><span class="p">],</span><span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ttest_indResult(statistic=-0.30410900939221397, pvalue=0.7619693293723315)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h5>Method 2: generalized linear model<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
+<p>This test can also be framed in terms of a general linear model</p>
+<div class="math notranslate nohighlight">
+\[ \hat{y} = \hat{a}_1 + \hat{a}_2 x .\]</div>
+<p>Again, <span class="math notranslate nohighlight">\(\hat{y}\)</span> is a model for the aragonite saturation state data. In this case, we can think of the southern data points as having <span class="math notranslate nohighlight">\(x = 0\)</span> and the northern data points as having <span class="math notranslate nohighlight">\(x = 1\)</span>.</p>
+<p>In this model, the intercept parameter <span class="math notranslate nohighlight">\(\hat{a}_1\)</span> is the mean of the points with <span class="math notranslate nohighlight">\(x = 0\)</span>, the southern points.</p>
+<p>The slope parameter <span class="math notranslate nohighlight">\(\hat{a}_2\)</span> is equal to the difference between the means of the two groups.</p>
+<div class="math notranslate nohighlight">
+\[ slope = \frac{\Delta\bar{y}}{\Delta x} = \frac{\Delta\bar{y}}{1} = \Delta\bar{y}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;OmegaA ~ is_northern&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df07surf</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results are summarized below. The slope parameter <span class="math notranslate nohighlight">\(\hat{a}_2\)</span> in our model is the coefficient for the <code class="docutils literal notranslate"><span class="pre">is_northern</span></code> variable. This is a Boolean variable that is equal to 0 (<code class="docutils literal notranslate"><span class="pre">False</span></code>) for southern points and 1 (<code class="docutils literal notranslate"><span class="pre">True</span></code>) for northern points. Notice that this coefficient is equal to 0.104, which the same as the difference between the two means.</p>
+<p>Also notice that the 95% confidence intervals (shown as the <code class="docutils literal notranslate"><span class="pre">[0.025</span> <span class="pre">0.975]</span></code> interval) overlap 0 for this parameter. This means that the difference is not statistically significant at the 95% confidence (<span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05) level. This summary also shows a t-statistic and p-value for this parameter, which are equivalent to the Student’s t-test result shown above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>OmegaA</td>      <th>  R-squared:         </th> <td>   0.001</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>  -0.007</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>  0.1047</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 08 Mar 2022</td> <th>  Prob (F-statistic):</th>  <td> 0.747</td> 
+</tr>
+<tr>
+  <th>Time:</th>                 <td>14:46:25</td>     <th>  Log-Likelihood:    </th> <td> -102.03</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   138</td>      <th>  AIC:               </th> <td>   208.1</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   136</td>      <th>  BIC:               </th> <td>   213.9</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+           <td></td>              <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>           <td>    2.2110</td> <td>    0.052</td> <td>   42.433</td> <td> 0.000</td> <td>    2.108</td> <td>    2.314</td>
+</tr>
+<tr>
+  <th>is_northern[T.True]</th> <td>   -0.0306</td> <td>    0.094</td> <td>   -0.324</td> <td> 0.747</td> <td>   -0.217</td> <td>    0.156</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 7.460</td> <th>  Durbin-Watson:     </th> <td>   0.655</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.024</td> <th>  Jarque-Bera (JB):  </th> <td>  12.047</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.189</td> <th>  Prob(JB):          </th> <td> 0.00242</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 4.397</td> <th>  Cond. No.          </th> <td>    2.42</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h4>Comparing two sample means (another example)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>The following shows the same calculations for temperature. In this case, the null hypothesis can be rejected at the 95% confidence level, and the 95% confidence intervals for the model slope do <em>not</em> overlap with zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">][</span><span class="n">iisouth</span><span class="p">],</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">][</span><span class="n">iinorth</span><span class="p">]],</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;South&#39;</span><span class="p">,</span><span class="s1">&#39;North&#39;</span><span class="p">],</span><span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">notch</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;CTDTMP - upper 10m 2007&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;CTDTMP - upper 10m 2007&#39;)
+</pre></div>
+</div>
+<img alt="_images/week07c_generalized_linear_model_36_1.png" src="_images/week07c_generalized_linear_model_36_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">][</span><span class="n">iinorth</span><span class="p">],</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">][</span><span class="n">iisouth</span><span class="p">],</span><span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ttest_indResult(statistic=-7.375689840798797, pvalue=1.4522086213500351e-11)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">][</span><span class="n">iinorth</span><span class="p">],</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">][</span><span class="n">iisouth</span><span class="p">],</span><span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ttest_indResult(statistic=-9.799130523807385, pvalue=1.7823812194777424e-17)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;CTDTMP ~ is_northern&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df07surf</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>CTDTMP</td>      <th>  R-squared:         </th> <td>   0.286</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.280</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   54.40</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 08 Mar 2022</td> <th>  Prob (F-statistic):</th> <td>1.45e-11</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>14:46:25</td>     <th>  Log-Likelihood:    </th> <td> -310.63</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   138</td>      <th>  AIC:               </th> <td>   625.3</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   136</td>      <th>  BIC:               </th> <td>   631.1</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+           <td></td>              <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>           <td>   13.6931</td> <td>    0.236</td> <td>   57.959</td> <td> 0.000</td> <td>   13.226</td> <td>   14.160</td>
+</tr>
+<tr>
+  <th>is_northern[T.True]</th> <td>   -3.1587</td> <td>    0.428</td> <td>   -7.376</td> <td> 0.000</td> <td>   -4.006</td> <td>   -2.312</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 4.510</td> <th>  Durbin-Watson:     </th> <td>   0.191</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.105</td> <th>  Jarque-Bera (JB):  </th> <td>   4.064</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.408</td> <th>  Prob(JB):          </th> <td>   0.131</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 3.202</td> <th>  Cond. No.          </th> <td>    2.42</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+</div>
+<div class="section" id="comparing-three-sample-means-another-example">
+<h4>Comparing three sample means (another example)<a class="headerlink" href="#comparing-three-sample-means-another-example" title="Permalink to this headline">¶</a></h4>
+<p>We can also compare more than two means. This would be an ANOVA analysis, which can also be expessed as a linear model.</p>
+<div class="section" id="create-a-categorical-variable-for-the-region">
+<h5>Create a categorical variable for the region<a class="headerlink" href="#create-a-categorical-variable-for-the-region" title="Permalink to this headline">¶</a></h5>
+<p>We will divide the data into three categories: north if the Columbia River, between the Columbia River and Golden Gate, and south of the Golden Gate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new variable called &quot;region&quot; with no values</span>
+<span class="n">df07surf</span> <span class="o">=</span> <span class="n">df07surf</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">region</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">df07surf</span><span class="p">))</span>
+<span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22      None
+46      None
+71      None
+95      None
+151     None
+        ... 
+2275    None
+2287    None
+2310    None
+2334    None
+2335    None
+Name: region, Length: 138, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># assign string values to region based on latitude</span>
+<span class="n">northern</span> <span class="o">=</span> <span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">46.2</span><span class="p">)</span>
+<span class="n">central</span> <span class="o">=</span> <span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">46.2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">37.8</span><span class="p">)</span>
+<span class="n">southern</span> <span class="o">=</span> <span class="p">(</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">37.8</span><span class="p">)</span> 
+
+<span class="n">df07surf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">northern</span><span class="p">,</span><span class="s1">&#39;region&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;north&#39;</span>
+<span class="n">df07surf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">central</span><span class="p">,</span><span class="s1">&#39;region&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;central&#39;</span>
+<span class="n">df07surf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">southern</span><span class="p">,</span><span class="s1">&#39;region&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;south&#39;</span>
+<span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22      north
+46      north
+71      north
+95      north
+151     north
+        ...  
+2275    south
+2287    south
+2310    south
+2334    south
+2335    south
+Name: region, Length: 138, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="box-plot">
+<h5>Box plot<a class="headerlink" href="#box-plot" title="Permalink to this headline">¶</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">][</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;north&#39;</span><span class="p">],</span>
+             <span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">][</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;central&#39;</span><span class="p">],</span>
+             <span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">][</span><span class="n">df07surf</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;south&#39;</span><span class="p">]],</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;north&#39;</span><span class="p">,</span><span class="s1">&#39;central&#39;</span><span class="p">,</span><span class="s1">&#39;south&#39;</span><span class="p">],</span><span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">notch</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;CTDTMP - upper 10m 2007&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[deg C]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;region&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;region&#39;)
+</pre></div>
+</div>
+<img alt="_images/week07c_generalized_linear_model_44_1.png" src="_images/week07c_generalized_linear_model_44_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="analysis">
+<h5>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h5>
+<p>Since we have three groups, we can perform a classic Fisher ANOVA on this data set, to test the null hypothesis of no difference.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">anova</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df07surf</span><span class="p">,</span><span class="n">dv</span><span class="o">=</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">,</span><span class="n">between</span><span class="o">=</span><span class="s1">&#39;region&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Source</th>
+      <th>ddof1</th>
+      <th>ddof2</th>
+      <th>F</th>
+      <th>p-unc</th>
+      <th>np2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>region</td>
+      <td>2</td>
+      <td>135</td>
+      <td>86.688737</td>
+      <td>6.087664e-25</td>
+      <td>0.562225</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>However, looking at the box plot, it appears that the groups do not have equal variances (heteroscedesticity). This suggests that a Welch ANOVA may be more appropriate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">welch_anova</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df07surf</span><span class="p">,</span><span class="n">dv</span><span class="o">=</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">,</span><span class="n">between</span><span class="o">=</span><span class="s1">&#39;region&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Source</th>
+      <th>ddof1</th>
+      <th>ddof2</th>
+      <th>F</th>
+      <th>p-unc</th>
+      <th>np2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>region</td>
+      <td>2</td>
+      <td>79.857577</td>
+      <td>117.8407</td>
+      <td>1.489427e-24</td>
+      <td>0.562225</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Both have very low p-values. Now we move on to a post-hoc test. Which post-hoc test to use? The Tukey test is a good choice for the classic ANOVA because it corrects for pairwise comparisons. However, it assumes equal variances. A Games-Howell post-hoc test is preferable in this case.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">pairwise_gameshowell</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df07surf</span><span class="p">,</span><span class="n">dv</span><span class="o">=</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">,</span><span class="n">between</span><span class="o">=</span><span class="s1">&#39;region&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>mean(A)</th>
+      <th>mean(B)</th>
+      <th>diff</th>
+      <th>se</th>
+      <th>T</th>
+      <th>df</th>
+      <th>pval</th>
+      <th>hedges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>central</td>
+      <td>north</td>
+      <td>10.791951</td>
+      <td>10.124478</td>
+      <td>0.667473</td>
+      <td>0.320915</td>
+      <td>2.079905</td>
+      <td>60.998772</td>
+      <td>0.102548</td>
+      <td>0.535267</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>central</td>
+      <td>south</td>
+      <td>10.791951</td>
+      <td>14.616919</td>
+      <td>-3.824968</td>
+      <td>0.361271</td>
+      <td>-10.587518</td>
+      <td>95.679603</td>
+      <td>0.001000</td>
+      <td>-2.047561</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>north</td>
+      <td>south</td>
+      <td>10.124478</td>
+      <td>14.616919</td>
+      <td>-4.492441</td>
+      <td>0.296634</td>
+      <td>-15.144727</td>
+      <td>88.746057</td>
+      <td>0.001000</td>
+      <td>-3.586874</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The p-values indicate that there is no statistically significant difference between the northern and central regions.</p>
+<p>Ho does this compare to pairwise t-tests? The t-test indicates that there is a statistically significant difference (barely) at <span class="math notranslate nohighlight">\(\alpha\)</span>=0.05 between the northern and central regions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">pairwise_ttests</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df07surf</span><span class="p">,</span><span class="n">dv</span><span class="o">=</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">,</span><span class="n">between</span><span class="o">=</span><span class="s1">&#39;region&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Contrast</th>
+      <th>A</th>
+      <th>B</th>
+      <th>Paired</th>
+      <th>Parametric</th>
+      <th>T</th>
+      <th>dof</th>
+      <th>alternative</th>
+      <th>p-unc</th>
+      <th>BF10</th>
+      <th>hedges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>region</td>
+      <td>central</td>
+      <td>north</td>
+      <td>False</td>
+      <td>True</td>
+      <td>2.079905</td>
+      <td>60.998772</td>
+      <td>two-sided</td>
+      <td>4.174356e-02</td>
+      <td>1.575</td>
+      <td>0.447480</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>region</td>
+      <td>central</td>
+      <td>south</td>
+      <td>False</td>
+      <td>True</td>
+      <td>-10.587518</td>
+      <td>95.679603</td>
+      <td>two-sided</td>
+      <td>8.500978e-18</td>
+      <td>2.726e+15</td>
+      <td>-1.944715</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>region</td>
+      <td>north</td>
+      <td>south</td>
+      <td>False</td>
+      <td>True</td>
+      <td>-15.144727</td>
+      <td>88.746057</td>
+      <td>two-sided</td>
+      <td>2.478834e-26</td>
+      <td>4.026e+23</td>
+      <td>-2.401071</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can also use statsmodels to perform this test as a linear model. Note that the F-statistic and Prob (F-statistic), a.k.a. p-value, are the same as the classic ANOVA.</p>
+<p>The regression coefficients in this case can be thought of as pairwise comparisons with the central region. Note that the confidence intervals of the regression coefficient with the north region overlap with zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">homoscedasticity</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df07surf</span><span class="p">,</span><span class="n">dv</span><span class="o">=</span><span class="s1">&#39;CTDTMP&#39;</span><span class="p">,</span><span class="n">group</span><span class="o">=</span><span class="s1">&#39;region&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>W</th>
+      <th>pval</th>
+      <th>equal_var</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>levene</th>
+      <td>9.765584</td>
+      <td>0.000109</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;CTDTMP ~ region&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df07surf</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>CTDTMP</td>      <th>  R-squared:         </th> <td>   0.562</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.556</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   86.69</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 08 Mar 2022</td> <th>  Prob (F-statistic):</th> <td>6.09e-25</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>14:46:25</td>     <th>  Log-Likelihood:    </th> <td> -276.85</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   138</td>      <th>  AIC:               </th> <td>   559.7</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   135</td>      <th>  BIC:               </th> <td>   568.5</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     2</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+         <td></td>            <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>       <td>   10.7920</td> <td>    0.284</td> <td>   37.991</td> <td> 0.000</td> <td>   10.230</td> <td>   11.354</td>
+</tr>
+<tr>
+  <th>region[T.north]</th> <td>   -0.6675</td> <td>    0.474</td> <td>   -1.409</td> <td> 0.161</td> <td>   -1.605</td> <td>    0.270</td>
+</tr>
+<tr>
+  <th>region[T.south]</th> <td>    3.8250</td> <td>    0.354</td> <td>   10.801</td> <td> 0.000</td> <td>    3.125</td> <td>    4.525</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 8.796</td> <th>  Durbin-Watson:     </th> <td>   0.310</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.012</td> <th>  Jarque-Bera (JB):  </th> <td>   4.392</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.204</td> <th>  Prob(JB):          </th> <td>   0.111</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.227</td> <th>  Cond. No.          </th> <td>    4.28</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="week07b-nonparam.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Non-parametric statistical tests</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="week07d-stats-examples.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Statistics example problems</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Tom Connolly<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

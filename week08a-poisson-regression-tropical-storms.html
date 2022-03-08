@@ -1,0 +1,970 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example: modeling tropical storm counts &#8212; Data Analysis Techniques in Marine Science</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/course-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Data Analysis Techniques in Marine Science
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Before class
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software-installation/README.html">
+   Setup and software installation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week01-introduction.html">
+   Sampling and statistics: Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02-probability-and-distributions.html">
+   Probability and distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02b-python-intro.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02c-exercises-python-intro.html">
+   Exercises - Introduction to Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03a-modeling-sampling.html">
+   Modeling, sampling, confidence intervals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03b-boolean.html">
+   Boolean logic in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03c-cruise-data-analysis.html">
+   Cruise data analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03d-exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04a-hypothesis-power.html">
+   Hypothesis testing and Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04b-loops.html">
+   Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04c-python-functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04d-exercises.html">
+   Interpretation of confidence intervals
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05a-corr-regress-least-squares.html">
+   Correlation and linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05b-wcoa-cruise-regression.html">
+   Implementing linear regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05c-conditional-execution.html">
+   Conditional execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05d-exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week06a-multivariate-regression.html">
+   Multivariate regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week06b-python-modules.html">
+   Creating your own Python module
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07a-anova.html">
+   Analysis of variance (ANOVA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07b-nonparam.html">
+   Non-parametric statistical tests
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07c_generalized_linear_model.html">
+   The generalized linear model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07d-stats-examples.html">
+   Statistics example problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07e-example-comparing-wcoa-temperature.html">
+   Example: comparing temperature in three regions
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/week08a-poisson-regression-tropical-storms.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek08a-poisson-regression-tropical-storms.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week08a-poisson-regression-tropical-storms.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Example: modeling tropical storm counts</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="example-modeling-tropical-storm-counts">
+<h1>Example: modeling tropical storm counts<a class="headerlink" href="#example-modeling-tropical-storm-counts" title="Permalink to this headline">¶</a></h1>
+<p>The number of tropical storms is an example of a variable that is not expected to be normally distributed. Counts cannot be negative, are often skewed and tend to follow a Poisson distribution.</p>
+<p>This example follows the general approach of <a class="reference external" href="https://journals.ametsoc.org/view/journals/mwre/138/7/2010mwr3315.1.xml">Villarini et al. (2010)</a> in using Poisson regression to model the number of tropical storms based on climate indices.</p>
+<p>The goal of Poisson regression is to model a rate of occurrence, <span class="math notranslate nohighlight">\(\Lambda_i\)</span>, where the rate changes for each observation <span class="math notranslate nohighlight">\(i\)</span>. This model can be expressed as a generalized linear model (GLM) with a <em>logarithmic link function</em>.</p>
+<div class="math notranslate nohighlight">
+\[\log(\Lambda_i) = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + ... + \beta_n x_{ki}\]</div>
+<p>which is the same as</p>
+<div class="math notranslate nohighlight">
+\[\Lambda_i = \exp(\beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + ... + \beta_n x_{ki})\]</div>
+<p>This is a model for the rate of occurrence <span class="math notranslate nohighlight">\(\Lambda_i\)</span> as a function of <span class="math notranslate nohighlight">\(k\)</span> predictor variables. In this example, the rate of occurrence <span class="math notranslate nohighlight">\(\Lambda_i\)</span> is the number of storm counts per year and each climate index is a predictor variable.</p>
+<ul class="simple">
+<li><p>The logarithmic link function is useful because <span class="math notranslate nohighlight">\(\log(\Lambda_i)\)</span> can be positive or negative, but <span class="math notranslate nohighlight">\(\Lambda_i\)</span> must be positive</p></li>
+<li><p>If the data being modeled is a standard Poisson random variable, the model simplifies to <span class="math notranslate nohighlight">\(\Lambda_i = \exp({\beta_0})\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We use a special function to load the climate indices from NOAA.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_psl_file</span><span class="p">(</span><span class="n">psl_file</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Read a data file in in NOAA Physical Sciences Laboratory (PSL) format</span>
+<span class="sd">    </span>
+<span class="sd">    Input: String containing the path to a PSL data file</span>
+<span class="sd">    Returns: Pandas dataframe with monthly data in columns and the year as the index</span>
+<span class="sd">    </span>
+<span class="sd">    For a description of the PSL format see: https://psl.noaa.gov/gcos_wgsp/Timeseries/standard/</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">psl_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">all_lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">start_year</span> <span class="o">=</span> <span class="n">all_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">end_year</span> <span class="o">=</span> <span class="n">all_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">all_lines</span><span class="p">)):</span>
+        <span class="n">stri</span> <span class="o">=</span> <span class="n">all_lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">end_year</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">stri</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">end_index</span> <span class="o">=</span> <span class="n">i</span>
+
+    <span class="n">missing_val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">all_lines</span><span class="p">[</span><span class="n">end_index</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">nrows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">end_year</span><span class="p">)</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">start_year</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">psl_file</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nrows</span><span class="o">=</span><span class="n">nrows</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">na_values</span><span class="o">=</span><span class="n">missing_val</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">})</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfsoi</span> <span class="o">=</span> <span class="n">read_psl_file</span><span class="p">(</span><span class="s1">&#39;data/tropical-storms/soi.data&#39;</span><span class="p">)</span>
+<span class="n">dftna</span> <span class="o">=</span> <span class="n">read_psl_file</span><span class="p">(</span><span class="s1">&#39;data/tropical-storms/tna.data&#39;</span><span class="p">)</span>
+<span class="n">dfnao</span> <span class="o">=</span> <span class="n">read_psl_file</span><span class="p">(</span><span class="s1">&#39;data/tropical-storms/nao.data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Load the tropical storm data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dftrop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/tropical-storms/tropical.txt&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">dftrop</span> <span class="o">=</span> <span class="n">dftrop</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tropical storms do not happen in winter, so we average the climate indices during the relevant months.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dftrop</span><span class="p">[</span><span class="s1">&#39;SOI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfsoi</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dftrop</span><span class="p">[</span><span class="s1">&#39;TNA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dftna</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dftrop</span><span class="p">[</span><span class="s1">&#39;NAO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfnao</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>How would you find the NAO averaged over July-September?</p></li>
+<li><p>How would you find the NAO for years 2010-2020, averaged over July-September?</p></li>
+<li><p>How would you use <code class="docutils literal notranslate"><span class="pre">dfnao.iloc</span></code> to achieve the same result?</p></li>
+</ul>
+<p>Drop all rows with any NaN values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">dftrop</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>NamedStorms</th>
+      <th>NamedStormDays</th>
+      <th>Hurricanes</th>
+      <th>HurricaneDays</th>
+      <th>MajorHurricanes</th>
+      <th>MajorHurricaneDays</th>
+      <th>AccumulatedCycloneEnergy</th>
+      <th>SOI</th>
+      <th>TNA</th>
+      <th>NAO</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1951</th>
+      <td>1951</td>
+      <td>12</td>
+      <td>67.00</td>
+      <td>8</td>
+      <td>34.25</td>
+      <td>3</td>
+      <td>4.50</td>
+      <td>126.3</td>
+      <td>-0.40</td>
+      <td>0.155</td>
+      <td>-0.925</td>
+    </tr>
+    <tr>
+      <th>1952</th>
+      <td>1952</td>
+      <td>11</td>
+      <td>45.75</td>
+      <td>5</td>
+      <td>15.50</td>
+      <td>2</td>
+      <td>2.50</td>
+      <td>69.1</td>
+      <td>1.20</td>
+      <td>0.205</td>
+      <td>-0.545</td>
+    </tr>
+    <tr>
+      <th>1953</th>
+      <td>1953</td>
+      <td>14</td>
+      <td>61.75</td>
+      <td>7</td>
+      <td>19.00</td>
+      <td>3</td>
+      <td>5.00</td>
+      <td>98.5</td>
+      <td>-1.30</td>
+      <td>0.120</td>
+      <td>0.425</td>
+    </tr>
+    <tr>
+      <th>1954</th>
+      <td>1954</td>
+      <td>16</td>
+      <td>57.00</td>
+      <td>7</td>
+      <td>26.00</td>
+      <td>3</td>
+      <td>7.00</td>
+      <td>104.4</td>
+      <td>0.50</td>
+      <td>0.045</td>
+      <td>0.015</td>
+    </tr>
+    <tr>
+      <th>1955</th>
+      <td>1955</td>
+      <td>13</td>
+      <td>85.50</td>
+      <td>9</td>
+      <td>43.00</td>
+      <td>4</td>
+      <td>8.50</td>
+      <td>164.7</td>
+      <td>1.95</td>
+      <td>-0.065</td>
+      <td>-0.530</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>2016</td>
+      <td>15</td>
+      <td>81.00</td>
+      <td>7</td>
+      <td>27.75</td>
+      <td>4</td>
+      <td>10.25</td>
+      <td>141.3</td>
+      <td>0.90</td>
+      <td>0.385</td>
+      <td>-0.400</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>2017</td>
+      <td>17</td>
+      <td>93.00</td>
+      <td>10</td>
+      <td>51.75</td>
+      <td>6</td>
+      <td>19.25</td>
+      <td>224.9</td>
+      <td>-0.15</td>
+      <td>0.590</td>
+      <td>-0.685</td>
+    </tr>
+    <tr>
+      <th>2018</th>
+      <td>2018</td>
+      <td>15</td>
+      <td>87.25</td>
+      <td>8</td>
+      <td>26.75</td>
+      <td>2</td>
+      <td>5.00</td>
+      <td>129.0</td>
+      <td>0.20</td>
+      <td>-0.440</td>
+      <td>1.715</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>2019</td>
+      <td>18</td>
+      <td>68.50</td>
+      <td>6</td>
+      <td>23.25</td>
+      <td>3</td>
+      <td>10.00</td>
+      <td>129.8</td>
+      <td>-0.70</td>
+      <td>0.210</td>
+      <td>-1.585</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>2020</td>
+      <td>30</td>
+      <td>118.00</td>
+      <td>13</td>
+      <td>34.75</td>
+      <td>6</td>
+      <td>8.75</td>
+      <td>179.8</td>
+      <td>0.05</td>
+      <td>0.620</td>
+      <td>-0.085</td>
+    </tr>
+  </tbody>
+</table>
+<p>70 rows × 11 columns</p>
+</div></div></div>
+</div>
+<p>Histogram of the named storm counts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NamedStorms&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/week08a-poisson-regression-tropical-storms_14_1.png" src="_images/week08a-poisson-regression-tropical-storms_14_1.png" />
+</div>
+</div>
+<p>Poisson distribution - model as a constant</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">glm</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;NamedStorms ~ 1&#39;</span><span class="p">,</span>
+                 <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                 <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">Poisson</span><span class="p">())</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>Generalized Linear Model Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>      <td>NamedStorms</td>   <th>  No. Observations:  </th>  <td>    70</td> 
+</tr>
+<tr>
+  <th>Model:</th>                  <td>GLM</td>       <th>  Df Residuals:      </th>  <td>    69</td> 
+</tr>
+<tr>
+  <th>Model Family:</th>         <td>Poisson</td>     <th>  Df Model:          </th>  <td>     0</td> 
+</tr>
+<tr>
+  <th>Link Function:</th>          <td>log</td>       <th>  Scale:             </th> <td>  1.0000</td>
+</tr>
+<tr>
+  <th>Method:</th>                <td>IRLS</td>       <th>  Log-Likelihood:    </th> <td> -206.92</td>
+</tr>
+<tr>
+  <th>Date:</th>            <td>Tue, 08 Mar 2022</td> <th>  Deviance:          </th> <td>  113.91</td>
+</tr>
+<tr>
+  <th>Time:</th>                <td>14:46:35</td>     <th>  Pearson chi2:      </th>  <td>  123.</td> 
+</tr>
+<tr>
+  <th>No. Iterations:</th>          <td>4</td>        <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>    2.4979</td> <td>    0.034</td> <td>   72.869</td> <td> 0.000</td> <td>    2.431</td> <td>    2.565</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">Intercept</span><span class="p">)</span>
+<span class="n">pmf_poisson</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">mu</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NamedStorms&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">pmf_poisson</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fac36ee3ee0&gt;]
+</pre></div>
+</div>
+<img alt="_images/week08a-poisson-regression-tropical-storms_17_1.png" src="_images/week08a-poisson-regression-tropical-storms_17_1.png" />
+</div>
+</div>
+<p>Poisson regression model, including a linear temporal trend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">glm</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;NamedStorms ~ Year + NAO + SOI + TNA&#39;</span><span class="p">,</span>
+                 <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                 <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">Poisson</span><span class="p">())</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>Generalized Linear Model Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>      <td>NamedStorms</td>   <th>  No. Observations:  </th>  <td>    70</td> 
+</tr>
+<tr>
+  <th>Model:</th>                  <td>GLM</td>       <th>  Df Residuals:      </th>  <td>    65</td> 
+</tr>
+<tr>
+  <th>Model Family:</th>         <td>Poisson</td>     <th>  Df Model:          </th>  <td>     4</td> 
+</tr>
+<tr>
+  <th>Link Function:</th>          <td>log</td>       <th>  Scale:             </th> <td>  1.0000</td>
+</tr>
+<tr>
+  <th>Method:</th>                <td>IRLS</td>       <th>  Log-Likelihood:    </th> <td> -186.77</td>
+</tr>
+<tr>
+  <th>Date:</th>            <td>Tue, 08 Mar 2022</td> <th>  Deviance:          </th> <td>  73.614</td>
+</tr>
+<tr>
+  <th>Time:</th>                <td>14:46:36</td>     <th>  Pearson chi2:      </th>  <td>  73.3</td> 
+</tr>
+<tr>
+  <th>No. Iterations:</th>          <td>4</td>        <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   -8.9786</td> <td>    3.621</td> <td>   -2.480</td> <td> 0.013</td> <td>  -16.076</td> <td>   -1.881</td>
+</tr>
+<tr>
+  <th>Year</th>      <td>    0.0057</td> <td>    0.002</td> <td>    3.154</td> <td> 0.002</td> <td>    0.002</td> <td>    0.009</td>
+</tr>
+<tr>
+  <th>NAO</th>       <td>   -0.0267</td> <td>    0.048</td> <td>   -0.558</td> <td> 0.577</td> <td>   -0.120</td> <td>    0.067</td>
+</tr>
+<tr>
+  <th>SOI</th>       <td>    0.0620</td> <td>    0.037</td> <td>    1.654</td> <td> 0.098</td> <td>   -0.011</td> <td>    0.135</td>
+</tr>
+<tr>
+  <th>TNA</th>       <td>    0.3563</td> <td>    0.096</td> <td>    3.729</td> <td> 0.000</td> <td>    0.169</td> <td>    0.544</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept   -8.978558
+Year         0.005747
+NAO         -0.026677
+SOI          0.061967
+TNA          0.356328
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Create a Python variable <code class="docutils literal notranslate"><span class="pre">y</span></code> that contains the observed count data.</p></li>
+<li><p>Create a Python variable <code class="docutils literal notranslate"><span class="pre">yhat</span></code> that contains the modeled count data (use the parameters in <code class="docutils literal notranslate"><span class="pre">beta</span></code>).</p></li>
+<li><p>Make plots comparing the observed and modeled counts.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ms263-21"
+        },
+        kernelOptions: {
+            kernelName: "ms263-21",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ms263-21'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Tom Connolly<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
