@@ -44,6 +44,17 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 * [Conditional execution](week05c-conditional-execution.ipynb)
 * [Exercises](week05d-exercises.ipynb)
 
+### Week 6
+* [Multivariate regression](week06a-multivariate-regression.ipynb)
+* [Python modules](week06b-python-modules.ipynb)
+
+### Week 7   
+* [Analysis of variance (ANOVA)](week07a-anova.ipynb)
+* [Non-parametric statistical tests](week07b-nonparam.ipynb)
+* [The generalized linear model](week07c_generalized_linear_model.ipynb)
+* [Statistics example problems](week07d-stats-examples.ipynb)
+* [Example: comparing temperature in three regions](week07e-example-comparing-wcoa-temperature)
+
 
 <!--*
 

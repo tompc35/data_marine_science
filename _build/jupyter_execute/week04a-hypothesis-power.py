@@ -140,7 +140,7 @@ stats.t.cdf(tupper,N-1)
 # 
 # The example described above, in which a sample mean is compared with a single value (possibly a known value or a theoretical result), is called a __one-sample t-test__. All t-tests assumes that the samples are drawn from a __normally-distributed__ population.
 # 
-# In Python, a one sample $t$-test can be conducted with the function `stats.ttest_1samp()`. Given a set of values `x` and a population mean, $\mu$ or `popmean`, this function returns the $t$-statistic and a $p$-value. The $p$-value is the probability of obtaining a $t$-statistic of that magnitude, or more extreme if the null hypothesis is true. If the $p$-value is less than $\alpha$ then the null hypothesis can be rejected.
+# In Python, a one sample $t$-test can be conducted with the function `stats.ttest_1samp()`. Given a set of values `x` and a population mean, $\mu$ or `popmean`, this function returns the $t$-statistic and a $p$-value. The $p$-value is the probability of obtaining a $t$-statistic of that magnitude, or more extreme, in the hypothetical case the null hypothesis is true. If the $p$-value is less than $\alpha$ then the null hypothesis is rejected.
 
 # Looking at an example where we have three samples, and we are comparing with a known value $\mu_0$ = 10.0
 
@@ -174,7 +174,7 @@ print("p:",round(p,3))
 
 # we see that the $t$-statistic is much closer to zero, and the $p$-value is is much higher. In this case, the null hypothesis cannot be rejected at the 95% confidence level (or even a far more lenient 60% confidence level). 
 
-# The p-value is related to the cumulative probability of the t-statistic. The p-value is the probability of obtaining a certain value of t, or more extreme. The cumulative probability is the probability of obtaining a certain value of t or less when taking random samples from a normal distribution. 
+# The p-value is related to the cumulative probability of the t-statistic. The p-value is the probability of obtaining a certain value of t, or more extreme, in the hypothetical case that the null hypothesis is true. The cumulative probability is the probability of obtaining a certain value of t or less when taking random samples from a normal distribution (again, in the hypothetical case that the null hypothesis is true). 
 
 # In[6]:
 
@@ -183,7 +183,7 @@ tcdf = stats.t.cdf(-0.756,2)
 print("cumulative probability:",round(tcdf,3))
 
 
-# There is a probability of 0.264 of randomly obtaining $t$ value of -0.756 or less. However, there is twice as much probability (p = 0.529) of obtaining a more extreme value ($t \leq$ -0.756 _or_ $t \geq$ -0.756).
+# There is a probability of 0.264 of randomly obtaining $t$ value of -0.756 or less if the null hypothesis is true. However, there is twice as much probability (p = 0.529) of obtaining a more extreme value ($t \leq$ -0.756 or $t \geq$ -0.756).
 
 # ## One-tailed vs. two-tailed tests
 # 
@@ -214,7 +214,7 @@ plt.fill_between(tvalues[upperi],tpdf[upperi],facecolor='red');
 # When using a function such as `stats.ttest_1samp()` to do a one-tailed test, here is how to interpret the output:
 # 
 # * Reject $H_o$ only if the value of t has the correct sign
-# * If t does have the correct sign, reject H_o if __1/2 the p-value__ is less than $\alpha$
+# * If t does have the correct sign, reject $H_o$ if 1/2 the p-value is less than $\alpha$
 
 # ## Two-sample t-test: comparing pairs of populations
 # 

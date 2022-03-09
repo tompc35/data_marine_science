@@ -37,3 +37,10 @@ parts:
    chapters:
    - file: week06a-multivariate-regression
    - file: week06b-python-modules
+ - caption: Week 7
+   chapters:
+   - file: week07a-anova
+   - file: week07b-nonparam
+   - file: week07c_generalized_linear_model
+   - file: week07d-stats-examples
+   - file: week07e-example-comparing-wcoa-temperature

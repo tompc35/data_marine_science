@@ -136,3 +136,81 @@
 # 
 # This test statistic can be compared with a critical F value, which depends on significance level $\alpha$ and the degrees of freedom in the numerator and denominator. If F is larger, then error is small. Find F using statistical tables, or `stats.f.ppf` in Python.
 # 
+
+# ## Multiple regression example: modeling aragonite saturation state
+# 
+# 
+# ![images/arag_sat.png](images/arag_sat.png)
+# 
+# Source: Feeley et al. (2208) Evidence for upwelling of corrosive acidification water onto the continental shelf, Science
+# 
+# At Aragonite staturation state > 1 aragonite (calcium carbonate will dissolve in seawater)
+# 
+# Is there a way to estimate aragonite saturation state $\Omega_{Ar}$ based on more commonly measured parameters?
+# 
+# $$\Omega = \frac{[Ca^{2+}][CO_3^{2-}]}{K'_{sp}}$$
+# 
+# Where $K'_{sp}$ is the stoichiometric solubility product function of T,S,pr and mineral phase (aragonite, calcite)
+# 
+# $[Ca^{2+}]$  doesn't change much<br>
+# $[CO_3^{2+}]$ can be calculated from chemical measurements of DIC, $pCO_2$, total alkalinity and pH (at least two of these 4 parameters).
+# 
+# #### Models
+# 
+# Juranek et al. (2009) describe a set of least squares regression models for aragonite saturation state, based on more commonly measured oceangraphic variables (temperature, salinity, pressure, oxygen and nitrate).
+# 
+# Juranek, L. W., R. A. Feely, W. T. Peterson, S. R. Alin, B. Hales, K. Lee, C. L. Sabine, and J. Peterson, 2009: A novel method for determination of aragonite saturation state on the continental shelf of central Oregon using multi-parameter relationships with hydrographic data. Geophys. Res. Lett., 36, doi:10.1029/2009GL040778.
+# 
+# ##### Model 1 
+# 
+# $$\Omega_{arag}^e = \beta_0 + \beta_1T + \beta_2S + \beta_3P + \beta_4O_2 + \beta_5NO_3^-$$
+# 
+# * Has high $R_a^2$ ("adjusted" $R^2$)
+# * High "variance inflation factor"
+# * Indicates multiple collinearity
+# * Coefficients are ambiguous and not meaningful - When you add more data, you get will get a different answer (this is bad!)
+# 
+# ##### Adjusted $R^2$
+# 
+# Accounts for reduction of degrees of freedom when using multiple predictor variables.
+# 
+# $$R_a^2 = R^2 - (1-R^2)\frac{k}{n-k-1}$$
+# 
+# $$= 1 - \frac{MSE}{MST}$$
+# 
+# If the MSE is low, the adjusted R-squared is going to be high. The more observations you have, the less this adjustment matters.
+# 
+# 
+# ##### Variance Inflation Factor
+# 
+# Variance Inflation Factor
+# 
+# $$VIF  = \frac{1}{1 - R^2}$$ 
+# 
+# where $R^2 $ from regression of predictor variables against other predictor variables. There is no clear "cut-off" that defines high VIF, but greater than 5 (and definitely greater than 10) is generally considered high.
+# 
+# ![images/arag_sat_table.png](images/arag_sat_table.png)
+# 
+# ##### Final Model
+# 
+# $$\Omega_{arag}^e = \alpha_0 + \alpha_1(O_2 - O_{2,r}) + \alpha_2(T - T_r) \times (O_2 - O_{2,r})$$
+# 
+# * Less variables, avoids multiple collinearity
+# * Includes interaction term
+# * Reference values ($T_r$ and $O_{2,r}$) keep product from getting too big
+# * Using variables with differing magnitudes can lead to problems like round-off errors
+# * Standardizing variables (using z-scores) another common strategy
+# 
+# ![images/arag_sat_final.png](images/arag_sat_final.png)
+# 
+# 
+# __Aragonite saturation state__
+# 
+# _Red contours:_ from measured DIC and total alkalinaity
+# 
+# _Blue contours:_ Multiple regression model
+# 
+# __Application of the model to time series that do not have direct observations of the carbonate system parameters__
+# 
+# ![images/arag_sat_ts.png](images/arag_sat_ts.png)
+# 
