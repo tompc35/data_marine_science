@@ -23,7 +23,7 @@ df07 = pd.read_csv(filename07,header=29,na_values=-999,parse_dates=[[6,7]])
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/var/folders/67/t9t76vyd78qgn_kwjr1_76yr0000gn/T/ipykernel_9723/425823264.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/67/t9t76vyd78qgn_kwjr1_76yr0000gn/T/ipykernel_81962/425823264.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0mfilename07[0m [0;34m=[0m [0;34m'wcoa_cruise_2007/32WC20070511.exc.csv'[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mdf07[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0mfilename07[0m[0;34m,[0m[0mheader[0m[0;34m=[0m[0;36m29[0m[0;34m,[0m[0mna_values[0m[0;34m=[0m[0;34m-[0m[0;36m999[0m[0;34m,[0m[0mparse_dates[0m[0;34m=[0m[0;34m[[0m[0;34m[[0m[0;36m6[0m[0;34m,[0m[0;36m7[0m[0;34m][0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m

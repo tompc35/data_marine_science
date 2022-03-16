@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Conditional execution &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>Optimization and nonlinear modeling &#8212; Data Analysis Techniques in Marine Science</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,8 +53,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Exercises" href="week05d-exercises.html" />
-    <link rel="prev" title="Implementing linear regression in Python" href="week05b-wcoa-cruise-regression.html" />
+    <link rel="next" title="Example: Modeling exponential growth" href="week08d-us-population-example.html" />
+    <link rel="prev" title="Poisson regression example" href="week08b-poisson-regression-tropical-storms.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -201,7 +203,7 @@
   Week 5
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week05a-corr-regress-least-squares.html">
    Correlation and linear regression
@@ -212,8 +214,8 @@
    Implementing linear regression in Python
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05c-conditional-execution.html">
    Conditional execution
   </a>
  </li>
@@ -277,7 +279,7 @@
   Week 8
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week08a-error-propagation.html">
    Error propagation
@@ -288,8 +290,8 @@
    Poisson regression example
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week08c-optimization.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Optimization and nonlinear modeling
   </a>
  </li>
@@ -339,7 +341,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week05c-conditional-execution.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/week08c-optimization.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -359,7 +361,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek05c-conditional-execution.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek08c-optimization.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -380,7 +382,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week05c-conditional-execution.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week08c-optimization.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -403,14 +405,38 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#if-else-statements">
-   If-else statements
+  <a class="reference internal nav-link" href="#parameter-estimation-linear-fit">
+   Parameter estimation: linear fit
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exceptions">
-   Exceptions
+  <a class="reference internal nav-link" href="#parameter-estimation-nonlinear-fit">
+   Parameter estimation: nonlinear fit
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-the-parameters">
+   Finding the parameters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goal-minimize-j">
+     Goal: minimize J
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optimization-with-two-parameters">
+     Optimization with two parameters
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-exponential-growth">
+       Example: exponential growth
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -422,7 +448,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Conditional execution</h1>
+                <h1>Optimization and nonlinear modeling</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -433,14 +459,38 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#if-else-statements">
-   If-else statements
+  <a class="reference internal nav-link" href="#parameter-estimation-linear-fit">
+   Parameter estimation: linear fit
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exceptions">
-   Exceptions
+  <a class="reference internal nav-link" href="#parameter-estimation-nonlinear-fit">
+   Parameter estimation: nonlinear fit
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-the-parameters">
+   Finding the parameters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goal-minimize-j">
+     Goal: minimize J
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optimization-with-two-parameters">
+     Optimization with two parameters
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-exponential-growth">
+       Example: exponential growth
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -451,97 +501,93 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="conditional-execution">
-<h1>Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="if-else-statements">
-<h2>If-else statements<a class="headerlink" href="#if-else-statements" title="Permalink to this headline">¶</a></h2>
-<p><em>If</em> statements are used to execute a set of commands only under certain conditions. The syntax is shown below. Note that the commands to be run conditionally are indented with a tab.</p>
-<div class="cell docutils container">
+  <div class="tex2jax_ignore mathjax_ignore section" id="optimization-and-nonlinear-modeling">
+<h1>Optimization and nonlinear modeling<a class="headerlink" href="#optimization-and-nonlinear-modeling" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="parameter-estimation-linear-fit">
+<h2>Parameter estimation: linear fit<a class="headerlink" href="#parameter-estimation-linear-fit" title="Permalink to this headline">¶</a></h2>
+<p>For <em>linear</em> problems, you can set up a design matrix and use the least squares fit. Examples we have already discussed include:</p>
+<ul class="simple">
+<li><p>Linear regression: <span class="math notranslate nohighlight">\(y = mx + b\)</span></p></li>
+<li><p>Multiple linear regression: <span class="math notranslate nohighlight">\(y = b_0 + b_1x_1 + b_2x_2\)</span></p></li>
+<li><p>Multiple linear regression with interaction term: <span class="math notranslate nohighlight">\(y = b_0 + b_1x_1 + b_2x_2 + b_3x_1x_2\)</span></p></li>
+<li><p>Harmonic fit: <span class="math notranslate nohighlight">\(y = a_1 + a_2 \sin(x) + a_3 \cos(x)\)</span></p></li>
+</ul>
+<p>The problems are all classified as linear, even if the functions do not describe only straight lines, because the unknown coefficients are on the outside the terms in the equation.</p>
+</div>
+<div class="section" id="parameter-estimation-nonlinear-fit">
+<h2>Parameter estimation: nonlinear fit<a class="headerlink" href="#parameter-estimation-nonlinear-fit" title="Permalink to this headline">¶</a></h2>
+<p>A simple function that requires a non-linear fit is a model for exponential growth.</p>
+<ul class="simple">
+<li><p>Exponential growth: <span class="math notranslate nohighlight">\(y = a_1 e^{a_2 x} = a_1 \exp({a_2 x})\)</span></p></li>
+</ul>
+<p>In this case, it is not possible to directly solve for <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span> with <code class="docutils literal notranslate"><span class="pre">np.linalg.lstsq</span></code> (the “design matrix” approach that can be used for multivariate regression or harmonic analysis).</p>
+</div>
+<div class="section" id="finding-the-parameters">
+<h2>Finding the parameters<a class="headerlink" href="#finding-the-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Two ways:</p>
+<ol class="simple">
+<li><p>Log Transform -&gt; linear fit</p></li>
+<li><p>optimization (iterative methods)</p></li>
+</ol>
+<p>The optimization approach minimizes a <em>cost function</em>, <span class="math notranslate nohighlight">\(J\)</span>, which is usually the squared sum of errors.</p>
+<p><span class="math notranslate nohighlight">\(J = \sum^N_{i=1} w_i(\hat{y}_i - y_i)^2\)</span></p>
+<p><span class="math notranslate nohighlight">\(w_i\)</span> is the weight for each data points</p>
+<p><span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the model estimate</p>
+<p><span class="math notranslate nohighlight">\(y_i\)</span> is the observation</p>
+<p><span class="math notranslate nohighlight">\(J\)</span> can also be thought of as a chi-square variable since it is the sum of squares.</p>
+<div class="section" id="goal-minimize-j">
+<h3>Goal: minimize J<a class="headerlink" href="#goal-minimize-j" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is positive&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;another line&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is negative&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is positive
-another line
-done
-</pre></div>
-</div>
-</div>
-</div>
-<p>A chain of conditions can be created with <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> blocks.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is positive&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is negative&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is zero&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is positive
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise:</strong></p>
-<p>Using conditional execution, calculate the absolute value of a number (not using the built-in <code class="docutils literal notranslate"><span class="pre">abs</span></code> function).</p>
-</div>
-<div class="section" id="exceptions">
-<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
-<p>Conditional execution - same category as if statements. The code in the <code class="docutils literal notranslate"><span class="pre">try</span></code> statement is run first. If an error occurs while running that code, the code under the <code class="docutils literal notranslate"><span class="pre">except</span></code> statement is run instead.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;year&#39;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">2022</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>This gives an error, because strings cannot be combined with numbers. Execution of the program is stopped.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">ca730b97bf8a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="ne">TypeError</span>: can only concatenate str (not &quot;int&quot;) to str
-</pre></div>
-</div>
-</div>
-</div>
-<p>This tries the same code, and converts both variables to a string if an error occurs. Execution of the program continues.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">combined</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-    <span class="n">combined</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-   
-<span class="nb">print</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
+<span class="c1"># plot an idealized polynomial cost function for illustrative purposes</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mf">0.02</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mf">1.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mf">3.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;global minimum&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mf">1.2</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;local minimum&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">2.7</span><span class="p">,</span><span class="o">-</span><span class="mf">0.55</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;parameter, $p$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;cost function, $J$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>year2022
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
+<img alt="_images/week08c-optimization_2_1.png" src="_images/week08c-optimization_2_1.png" />
+</div>
+</div>
+<p>The figure above shows the cost function (<span class="math notranslate nohighlight">\(J\)</span>, y-axis) for a model that depends on one parameter(<span class="math notranslate nohighlight">\(p\)</span>, x-axis).</p>
+<p>The minimum J must occur when:</p>
+<p><span class="math notranslate nohighlight">\(\frac{\partial J}{\partial p } = 0\)</span></p>
+<p>Note that there can be only one global minimum but many local minima. If a cost function is noisy, with many local minima, the parameter optimization problem becomes difficult. Constraining the range of possble parameter values is one way to make the problem easier. There are many algorithms for finding the minimum in <span class="math notranslate nohighlight">\(J\)</span>. The best approach depends on the problem and the structure of the cost function.</p>
+</div>
+<div class="section" id="optimization-with-two-parameters">
+<h3>Optimization with two parameters<a class="headerlink" href="#optimization-with-two-parameters" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-exponential-growth">
+<h4>Example: exponential growth<a class="headerlink" href="#example-exponential-growth" title="Permalink to this headline">¶</a></h4>
+<p><span class="math notranslate nohighlight">\(y = a_1 e^{a_2x}\)</span> - modeling exponential growth</p>
+<p>This equation means that overall growth rate depends on the population size. For example, if we were trying to model a phytoplankton population, <span class="math notranslate nohighlight">\(P\)</span>, then the overall growth rate of the population could be expressed as:</p>
+<p><span class="math notranslate nohighlight">\(\frac{dP}{dt} = \mu P\)</span>,</p>
+<p>where the constant <span class="math notranslate nohighlight">\(\mu\)</span> is the specific growth rate <span class="math notranslate nohighlight">\([d^{-1}]\)</span>. It is related to the doubling time of the population<br></p>
+<p><span class="math notranslate nohighlight">\(\mu = \frac{\ln(2)}{\text{doubling time}}\)</span>.</p>
+<p>The analytical solution for the population as a function of time is:</p>
+<p><span class="math notranslate nohighlight">\(P(t) = P_0 e^{\mu t}\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(P_0\)</span> is the initial population at <span class="math notranslate nohighlight">\(t = 0\)</span>.</p>
+<p>If there are two unknown parameters he cost function can be visualized as a topography in <em>parameter space</em>. Local minima in <span class="math notranslate nohighlight">\(J\)</span> are found in the valleys of the topography. For three dimensions or more, it is harder to visualize the cost function in <em>parameter hyperspace</em>, but the idea is the same.</p>
+<p><img alt="'images/cost_fxn_3.png'" src="_images/cost_fxn_3.png" /></p>
+<p><a class="reference external" href="http://www.scipy-lectures.org/advanced/mathematical_optimization/">http://www.scipy-lectures.org/advanced/mathematical_optimization/</a></p>
+<p>For two parameters, the optimization problem becomes difficult if the minimum is in a long valley rather than a deep hole. Sometimes this issue can be avoided by scaling the parameters so that their values are of the same order (similar to the approach of standardizing variables in the multiple linear regression problem).</p>
+<p>The details of different types of algorithms, and their implementation in Python, can be found at <a class="reference external" href="http://www.scipy-lectures.org/advanced/mathematical_optimization/">http://www.scipy-lectures.org/advanced/mathematical_optimization/</a></p>
 </div>
 </div>
 </div>
@@ -556,33 +602,33 @@ done
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "ms263-21"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "ms263-21",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'ms263-21'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="week05b-wcoa-cruise-regression.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="week08b-poisson-regression-tropical-storms.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Implementing linear regression in Python</p>
+            <p class="prev-next-title">Poisson regression example</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="week05d-exercises.html" title="next page">
+    <a class='right-next' id="next-link" href="week08d-us-population-example.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercises</p>
+        <p class="prev-next-title">Example: Modeling exponential growth</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
