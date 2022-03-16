@@ -44,3 +44,9 @@ parts:
    - file: week07c_generalized_linear_model
    - file: week07d-stats-examples
    - file: week07e-example-comparing-wcoa-temperature
+ - caption: Week 8
+   chapters:
+   - file: week08a-error-propagation
+   - file: week08b-poisson-regression-tropical-storms
+   - file: week08c-optimization
+   - file: week08d-us-population-example

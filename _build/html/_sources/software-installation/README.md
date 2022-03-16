@@ -126,6 +126,14 @@ conda install jupyter jupyterlab pandas xarray netCDF4 cartopy cmocean gsw sciki
 
 Here, `conda` is the name of the package management program and `install` is a command given to this program, followed by the names of programs to install. A description of the packages that you have just installed can be found [here](package-list.md).
 
+## Update pingouin
+
+Make sure you have the latest version of the pingouin statistical package. Enter this command to update:
+
+```
+conda update pingouin
+```
+
 ## Install ipyml
 
 This optional tool enhances plots by making them interactive. Enter this command to install:

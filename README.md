@@ -55,6 +55,11 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 * [Statistics example problems](week07d-stats-examples.ipynb)
 * [Example: comparing temperature in three regions](week07e-example-comparing-wcoa-temperature)
 
+### Week 8
+* [Error propagation](week08a-error-propagation.ipynb)
+* [Poisson regression example](week08b-poisson-regression-tropical-storms.ipynb)
+* [Optimization and nonlinear modeling](week08c-optimization.ipynb)
+* [Population growth and optimizing exponential fits](week08d-us-population-example.ipynb)
 
 <!--*
 

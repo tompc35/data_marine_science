@@ -274,6 +274,33 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 8
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week08a-error-propagation.html">
+   Error propagation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week08b-poisson-regression-tropical-storms.html">
+   Poisson regression example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week08c-optimization.html">
+   Optimization and nonlinear modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week08d-us-population-example.html">
+   Example: Modeling exponential growth
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -458,18 +485,18 @@ Data are grouped into different genotypes, within those groupings, sex is segreg
 <li><p><span class="math notranslate nohighlight">\(H_a\)</span>: One mean will be different from any of the others</p></li>
 </ul>
 <p>Three different types of CTDs in a water bath, each has four different measurements
-( Does not require the same number of samples within each population</p>
+(does not require the same number of samples within each population)</p>
 <p>Use the F-statistic: The ratio of the variances of two groups of samples taken from a normal distribution follows an <em>F</em> distribution</p>
 <div class="math notranslate nohighlight">
 \[ F = \frac{s_1^2}{s_2^2}\]</div>
 <p>The F distribution can be used to test whether variances are  significantly different. In the case of ANOVA, we want to test whether the variance of differences between different groups is larger than the variance within groups.</p>
-<p>Sum of Squares Between: <strong>SSB</strong> $<span class="math notranslate nohighlight">\(\sum_{j=1}^J{N_j(\bar{y_j}-\bar{y})^2}\)</span><span class="math notranslate nohighlight">\( where \)</span>\bar{y_j}<span class="math notranslate nohighlight">\( is the mean of each population and \)</span>\bar{y}$ is the mean of all samples</p>
-<p>Mean Square Between: <strong>MSB</strong> $<span class="math notranslate nohighlight">\(\frac{SSB}{J-1}\)</span>$</p>
+<p>Sum of Squares Between: SSB = <span class="math notranslate nohighlight">\(\sum_{j=1}^J{N_j(\bar{y_j}-\bar{y})^2}\)</span> where <span class="math notranslate nohighlight">\(\bar{y_j}\)</span> is the mean of each population and <span class="math notranslate nohighlight">\(\bar{y}\)</span> is the mean of all samples</p>
+<p>Mean Square Between: MSB = <span class="math notranslate nohighlight">\(\frac{SSB}{J-1}\)</span></p>
 <p><span class="math notranslate nohighlight">\(J-1\)</span> is the degrees of freedom in calculating MSB.</p>
-<p>Sum of Squares Within: <strong>SSW</strong> $<span class="math notranslate nohighlight">\( \sum_{j=1}^J{\sum_{i=1}^{N_j}}({y_{ij}} - \bar{y}_i)^2\)</span>$</p>
-<p>Mean Square Within: <strong>MSW</strong> $<span class="math notranslate nohighlight">\( \frac{SSW} {(\sum_{j=1}^J { N_j}) -J }\)</span>$</p>
+<p>Sum of Squares Within: SSW = <span class="math notranslate nohighlight">\( \sum_{j=1}^J{\sum_{i=1}^{N_j}}({y_{ij}} - \bar{y}_j)^2\)</span></p>
+<p>Mean Square Within: MSW = <span class="math notranslate nohighlight">\( \frac{SSW} {(\sum_{j=1}^J { N_j}) -J }\)</span></p>
 <p><span class="math notranslate nohighlight">\(\sum_{j=1}^J ({ N_j} -J )\)</span> is the degrees of freedom in calculating MSW. This is the total number of samples minus the number of groups.</p>
-<p>F-Distribution: $<span class="math notranslate nohighlight">\( F =\frac{MSB}{MSW}\)</span>$</p>
+<p>F-Distribution: <span class="math notranslate nohighlight">\(F =\frac{MSB}{MSW}\)</span></p>
 <p>The null hypothesis can be rejected if F is large. This is a one-tailed test, since small values of F do not lead to a rejection of the null hypothesis. The region of rejection is is above some critical level, which is determined by the confidence level and the degrees of freedon in the numerator and denominator.</p>
 </div>
 <div class="section" id="popular-post-hoc-tests">
