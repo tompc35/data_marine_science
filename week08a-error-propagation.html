@@ -301,6 +301,33 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 9
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09a-PCA-EOF.html">
+   Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09b-MDS.html">
+   Multidimensional Scaling Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09c-ndbc-wind.html">
+   NDBC data - analysis of wind vector time series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09d-monterey_bay_kelp.html">
+   Monterey Bay Kelp PCA
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -605,7 +632,7 @@ Each of those variables has a measure of uncertainty: <br>
 <div class="section" id="power">
 <h3>Power<a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h3>
 <p><span class="math notranslate nohighlight">\(y = a^m\)</span></p>
-<p><span class="math notranslate nohighlight">\((\frac{\sigma_y}{y})^2 = m (\frac{\sigma_a}{a})^2\)</span></p>
+<p><span class="math notranslate nohighlight">\((\frac{\sigma_y}{y})^2 = (m \frac{\sigma_a}{a})^2\)</span></p>
 </div>
 <div class="section" id="natural-log">
 <h3>Natural log<a class="headerlink" href="#natural-log" title="Permalink to this headline">¶</a></h3>
@@ -662,14 +689,14 @@ Each of those variables has a measure of uncertainty: <br>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">ufloat</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">d</span> <span class="o">=</span> <span class="n">ufloat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">ufloat</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">V</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
 <span class="n">V</span><span class="o">.</span><span class="n">std_dev</span><span class="o">/</span><span class="n">V</span><span class="o">.</span><span class="n">nominal_value</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.30000000000000004
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.029999999999999995
 </pre></div>
 </div>
 </div>

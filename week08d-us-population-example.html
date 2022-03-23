@@ -53,6 +53,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)" href="week09a-PCA-EOF.html" />
     <link rel="prev" title="Optimization and nonlinear modeling" href="week08c-optimization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -297,6 +298,33 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Example: Modeling exponential growth
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 9
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09a-PCA-EOF.html">
+   Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09b-MDS.html">
+   Multidimensional Scaling Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09c-ndbc-wind.html">
+   NDBC data - analysis of wind vector time series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09d-monterey_bay_kelp.html">
+   Monterey Bay Kelp PCA
   </a>
  </li>
 </ul>
@@ -620,8 +648,14 @@
 <p>The first step in this process is to define the function that you want to fit to data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exponential_growth</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;computes f = a*exp(b*x)&#39;&#39;&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exponential_growth</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;inputs:</span>
+<span class="sd">    t - vector of times</span>
+<span class="sd">    a1 - initial population at time 0</span>
+<span class="sd">    a2 - specific growth rate</span>
+<span class="sd">    </span>
+<span class="sd">    returns: modeled population based on exponential growth</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1"># insert code here</span>
     <span class="k">return</span> <span class="n">f</span>
 </pre></div>
@@ -637,8 +671,13 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function exponential_growth in module __main__:
 
-exponential_growth(x, a, b)
-    computes f = a*exp(b*x)
+exponential_growth(t, a1, a2)
+    inputs:
+    t - vector of times
+    a1 - initial population at time 0
+    a2 - specific growth rate
+    
+    returns: modeled population based on exponential growth
 </pre></div>
 </div>
 </div>
@@ -653,14 +692,14 @@ exponential_growth(x, a, b)
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">67</span><span class="o">/</span><span class="n">t9t76vyd78qgn_kwjr1_76yr0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_82060</span><span class="o">/</span><span class="mf">2852909755.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">67</span><span class="o">/</span><span class="n">t9t76vyd78qgn_kwjr1_76yr0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_34479</span><span class="o">/</span><span class="mf">2852909755.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fvalues</span> <span class="o">=</span> <span class="n">exponential_growth</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">fvalues</span><span class="p">)</span>
 
-<span class="nn">/var/folders/67/t9t76vyd78qgn_kwjr1_76yr0000gn/T/ipykernel_82060/3854474781.py</span> in <span class="ni">exponential_growth</span><span class="nt">(x, a, b)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="sd">&#39;&#39;&#39;computes f = a*exp(b*x)&#39;&#39;&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="c1"># insert code here</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="k">return</span> <span class="n">f</span>
+<span class="nn">/var/folders/67/t9t76vyd78qgn_kwjr1_76yr0000gn/T/ipykernel_34479/3487471894.py</span> in <span class="ni">exponential_growth</span><span class="nt">(t, a1, a2)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="s1">&#39;&#39;&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="s1">     # insert code here</span>
+<span class="ne">---&gt; </span><span class="mi">10</span><span class="s1">     return f</span>
 
 <span class="ne">NameError</span>: name &#39;f&#39; is not defined
 </pre></div>
@@ -786,6 +825,13 @@ exponential_growth(x, a, b)
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Optimization and nonlinear modeling</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="week09a-PCA-EOF.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
