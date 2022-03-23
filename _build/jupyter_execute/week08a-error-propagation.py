@@ -64,7 +64,7 @@
 # 
 # $y = a^m$
 # 
-# $(\frac{\sigma_y}{y})^2 = m (\frac{\sigma_a}{a})^2$
+# $(\frac{\sigma_y}{y})^2 = (m \frac{\sigma_a}{a})^2$
 # 
 # ### Natural log 
 # 
@@ -139,7 +139,7 @@
 from uncertainties import ufloat
 import numpy as np
 
-d = ufloat(1,0.1)
+d = ufloat(10,0.1)
 V = (4/3)*np.pi*(0.5*d)**3
 V.std_dev/V.nominal_value
 
