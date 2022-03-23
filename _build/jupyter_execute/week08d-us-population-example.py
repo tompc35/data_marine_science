@@ -107,8 +107,14 @@ plt.ylabel('$a_1$')
 # In[7]:
 
 
-def exponential_growth(x,a,b):
-    '''computes f = a*exp(b*x)'''
+def exponential_growth(t,a1,a2):
+    '''inputs:
+    t - vector of times
+    a1 - initial population at time 0
+    a2 - specific growth rate
+    
+    returns: modeled population based on exponential growth
+    '''
     # insert code here
     return f
 

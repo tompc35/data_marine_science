@@ -50,3 +50,9 @@ parts:
    - file: week08b-poisson-regression-tropical-storms
    - file: week08c-optimization
    - file: week08d-us-population-example
+ - caption: Week 9
+   chapters:
+   - file: week09a-PCA-EOF
+   - file: week09b-MDS
+   - file: week09c-ndbc-wind
+   - file: week09d-monterey_bay_kelp

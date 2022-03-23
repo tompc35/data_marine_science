@@ -61,6 +61,12 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 * [Optimization and nonlinear modeling](week08c-optimization.ipynb)
 * [Population growth and optimizing exponential fits](week08d-us-population-example.ipynb)
 
+### Week 9
+* [Principal component analysis (PCA) and empirical orthoginal functions](week09a-PCA-EOF.ipynb)
+* [Multidimensional scaling analysis](week09b-MDS.ipynb)
+* [Example: NDBC wind](week09c-ndbc-wind.ipynb)
+* [Example: Monterey Bay Kelp PCA](week09d-monterey_bay_kelp.ipynb)
+
 <!--*
 
 * [Week 5 - Correlation, general least squares regression](week05a-corr-regress-least-squares.ipynb)
