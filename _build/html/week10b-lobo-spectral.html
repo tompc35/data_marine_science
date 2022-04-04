@@ -1,0 +1,930 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spectral analysis example &#8212; Data Analysis Techniques in Marine Science</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Spectral Analysis" href="week10a-spectral-analysis.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/course-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Data Analysis Techniques in Marine Science
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Before class
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software-installation/README.html">
+   Setup and software installation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week01-introduction.html">
+   Sampling and statistics: Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02-probability-and-distributions.html">
+   Probability and distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02b-python-intro.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week02c-exercises-python-intro.html">
+   Exercises - Introduction to Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03a-modeling-sampling.html">
+   Modeling, sampling, confidence intervals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03b-boolean.html">
+   Boolean logic in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03c-cruise-data-analysis.html">
+   Cruise data analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week03d-exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04a-hypothesis-power.html">
+   Hypothesis testing and Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04b-loops.html">
+   Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04c-python-functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week04d-exercises.html">
+   Interpretation of confidence intervals
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05a-corr-regress-least-squares.html">
+   Correlation and linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05b-wcoa-cruise-regression.html">
+   Implementing linear regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05c-conditional-execution.html">
+   Conditional execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05d-exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week06a-multivariate-regression.html">
+   Multivariate regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week06b-python-modules.html">
+   Creating your own Python module
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07a-anova.html">
+   Analysis of variance (ANOVA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07b-nonparam.html">
+   Non-parametric statistical tests
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07c_generalized_linear_model.html">
+   The generalized linear model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07d-stats-examples.html">
+   Statistics example problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week07e-example-comparing-wcoa-temperature.html">
+   Example: comparing temperature in three regions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 8
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week08a-error-propagation.html">
+   Error propagation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week08b-poisson-regression-tropical-storms.html">
+   Poisson regression example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week08c-optimization.html">
+   Optimization and nonlinear modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week08d-us-population-example.html">
+   Example: Modeling exponential growth
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 9
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09a-PCA-EOF.html">
+   Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09b-MDS.html">
+   Multidimensional Scaling Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09c-ndbc-wind.html">
+   NDBC data - analysis of wind vector time series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week09d-monterey_bay_kelp.html">
+   Monterey Bay Kelp PCA
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 10
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week10a-spectral-analysis.html">
+   Spectral Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Spectral analysis example
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/week10b-lobo-spectral.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek10b-lobo-spectral.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week10b-lobo-spectral.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mbari-data-from-elkhorn-slough">
+   MBARI data from Elkhorn Slough
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-the-data">
+   Loading the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-data">
+   Plotting the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-fourier-transform">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fast-fourier-transform-alogorithm">
+   Fast Fourier Transform alogorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power-spectrum">
+   Power spectrum
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-method-the-easy-way">
+     Alternative method (the easy way)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#critique">
+   Critique
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Spectral analysis example</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mbari-data-from-elkhorn-slough">
+   MBARI data from Elkhorn Slough
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-the-data">
+   Loading the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-data">
+   Plotting the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-fourier-transform">
+   Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fast-fourier-transform-alogorithm">
+   Fast Fourier Transform alogorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power-spectrum">
+   Power spectrum
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-method-the-easy-way">
+     Alternative method (the easy way)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#critique">
+   Critique
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="spectral-analysis-example">
+<h1>Spectral analysis example<a class="headerlink" href="#spectral-analysis-example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mbari-data-from-elkhorn-slough">
+<h2>MBARI data from Elkhorn Slough<a class="headerlink" href="#mbari-data-from-elkhorn-slough" title="Permalink to this headline">¶</a></h2>
+<p>To demonstrate how the Fourier transform can be calculated numerically to create a power spectrum, we use data from the Land Ocean Biogeochemical Observatory in Elkhorn Slough. The data come from the L01 buoy just up channel from the Highway 1 bridge. This buoy is maintained by Dr. Ken Johnson’s Chemical Sensors group at MBARI, which develops new technology in order to understand high-frequency fluctuations in biogeochemical parameters over long time periods.</p>
+<img src="images/loboarray_small.jpg" width="400">
+<p>The data can be downloaded in text format at this site:
+<a class="reference external" href="http://www3.mbari.org/lobo/getLOBOdata.htm">http://www3.mbari.org/lobo/getLOBOdata.htm</a></p>
+</div>
+<div class="section" id="loading-the-data">
+<h2>Loading the data<a class="headerlink" href="#loading-the-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;data/MBARI_LOBO/L01SURF_subset.txt&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">skip_header</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After loading the data, missing values are replaced with NaNs and three variables are created from the larger data set: time (days since 1/1/1900), nitrate (<span class="math notranslate nohighlight">\(\mu\)</span>M) and water depth (m). These data are a small continuous subset of the multi-year time series from 1 January - 22 March 2007.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flagi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="o">&gt;</span><span class="mf">1E100</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="n">flagi</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">nitrate</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">waterdep</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-the-data">
+<h2>Plotting the data<a class="headerlink" href="#plotting-the-data" title="Permalink to this headline">¶</a></h2>
+<p>First, it is always helpful to plot the data in the time domain to get a visual sense of the variability. The data set is about 80 days long. The water depth plot primarily shows the tides, which have a fortnightly spring-neap cycle. The nitrate data also show high-frequency variability due to the tides, but there are also irregular pulses of high nitate. This is the winter season, and freshwater runoff from storms can have very high nitrate concentrations because of of all the agriculture in the watershed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">waterdep</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;water depth [m]&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">nitrate</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;nitrate [$\mu$M]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;nitrate [$\\mu$M]&#39;)
+</pre></div>
+</div>
+<img alt="_images/week10b-lobo-spectral_6_1.png" src="_images/week10b-lobo-spectral_6_1.png" />
+<img alt="_images/week10b-lobo-spectral_6_2.png" src="_images/week10b-lobo-spectral_6_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="discrete-fourier-transform">
+<h2>Discrete Fourier Transform<a class="headerlink" href="#discrete-fourier-transform" title="Permalink to this headline">¶</a></h2>
+<p>Now we calculate the Fourier transform of the data. Because we are using a finite number of data points, this is a discrete Fourier transform (DFT).</p>
+<p>We start with <span class="math notranslate nohighlight">\(N\)</span> data points in a time series <span class="math notranslate nohighlight">\(y_n = [y_0,y_1,y_2,...,y_{N-1}]\)</span>. The discrete Fourier transform will consist of <span class="math notranslate nohighlight">\(N\)</span> values <span class="math notranslate nohighlight">\(Y_k  = [Y_0,Y_1,Y_2,...,Y_{N-1}]\)</span>. These values are complex, with a real part and imaginary part,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}Y_k = (\alpha_k +i \beta_k)$$.\\The values of the discrete Fourier transform in Python correspond to this equation:\\$$Y_k = \sum^{N-1}_{n=0}{y_n}\exp{\left(-i2 \pi \frac{kn}{N} \right)}\end{aligned}\end{align} \]</div>
+<p>The original time series values can be reconstructed from these values using the inverse Fourier transform:</p>
+<div class="math notranslate nohighlight">
+\[y_n = \frac{1}{N}\sum^{N-1}_{n=0}{Y_k}\exp{\left(i2 \pi \frac{kn}{N} \right)}\]</div>
+<p>The meaning of these equations is explained in more detail below using the LOBO dataset as an example. Sometimes these equations are scaled differently, for example, with <span class="math notranslate nohighlight">\(1/N\)</span> in front of the Fourier transform instaead of its inverse transform. These equations show the particular form used in Python, but can be different if you are programming in MATLAB. The important thing is that the form is documented, and that the inverse gets you back the original time series.</p>
+</div>
+<div class="section" id="fast-fourier-transform-alogorithm">
+<h2>Fast Fourier Transform alogorithm<a class="headerlink" href="#fast-fourier-transform-alogorithm" title="Permalink to this headline">¶</a></h2>
+<p>The DFT is computed numerically using the Fast Fourier Transform (FFT) algorithm, developed by Cooley and Tukey in 1965<span class="math notranslate nohighlight">\(^1\)</span>. The intuitive (slow) algorithm for fitting sines and cosines to the data and calculating the coeffiecients involves <span class="math notranslate nohighlight">\(O(N^2)\)</span> operations, where <span class="math notranslate nohighlight">\(N\)</span> is the number of data points. The Cooley and Tukey FFT alogorithm involves <span class="math notranslate nohighlight">\(O(N\log(N))\)</span> operations, which is a huge imporovement.</p>
+<p><span class="math notranslate nohighlight">\(^1\)</span> Actually, Carl Friedrich Gauss discovered this algorithm in 1805 and used it to analyze asteroid trajectories. However, he apparently did not realize the full implications of his algorithm on computional cost, even though he was doing his computations by hand. Cooley and Tukey discovered the same algorithm independently and studied its impacts on computational efficiency. (source: <a class="reference external" href="https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm">Wikipedia</a>)</p>
+<p>Here is how we compute the DFT of the water depth time series in Python, using the FFT algorithm:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wd_fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">waterdep</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That wasn’t too hard! This function wraps the complexity of the FFT numerical algorithm into a simple command. But, we still have to understand the discrete Fourier transform in order to interpret the output.</p>
+<p>Note that the length of the DFT output array is the same length as the orginal data array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">waterdep</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of values in time series = &#39;</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of values in discrete Fourier transform = &#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">wd_fft</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of values in time series =  1932
+number of values in discrete Fourier transform =  1932
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, it is important to remember that the DFT coefficients are <em>complex-valued</em>, that is, they have a real and imaginary part. Lets look at the first five values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">wd_fft</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.69295600e+04 +0.j         -1.27189536e+01-59.52415828j
+  1.98163773e+01 +0.61386253j  5.67021868e+00-15.44332206j
+  6.61725082e+00 -4.52031655j]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To visualize all of the Fourier coefficients, we can plot both the real and imaginary parts. These complex-valued coefficients contain information about the <em>magnitude</em> and <em>phase</em> of the sines and cosines that are fit to the data at each frequency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">wd_fft</span><span class="p">),</span><span class="s1">&#39;b-o&#39;</span><span class="p">,</span><span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">wd_fft</span><span class="p">),</span><span class="s1">&#39;r-o&#39;</span><span class="p">,</span><span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span><span class="mi">500</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;real part&#39;</span><span class="p">,</span><span class="s1">&#39;imaginary part&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;discrete Fourier transform of water depth&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[m]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;[m]&#39;)
+</pre></div>
+</div>
+<img alt="_images/week10b-lobo-spectral_15_1.png" src="_images/week10b-lobo-spectral_15_1.png" />
+</div>
+</div>
+<p>The FFT function does not automatically tell us which frequencies correspond with these coefficients. They are ordered in a very specific manner.</p>
+<ul class="simple">
+<li><p>The first coefficient in the array (index 0) is the coefficient for the <em>zero</em> frequency. In other words, it is a constant. It has no imaginary part, which can be seen in the first few values of the output array printed above.</p></li>
+<li><p>The next N/2 values in the array are the coefficients for positive frequencies. The second value in the array (index 1) correspeonds to the fundamental frequency. The middle value in the array (index N/2) corresponds to the Nyquist frequency.</p></li>
+<li><p>The values in the second half of the array correspond to negative frequencies. The last value in the array (index N-1) corresponds to the negative fundamental frequency. The coefficients for the Nyquist frequency are shared between the positive and negative frequencies.</p></li>
+</ul>
+<p>Note that the coefficients for fitting sines and cosines to a time series do not necessarily have to be ordered in the particular way, nor do they need to be expressed as complex numbers. However, this is the standard practice that has evolved over a rich history of mathematically transforming between the time and frequency domains starting with Fourier.</p>
+<p>The results are easier to understand if we use the <code class="docutils literal notranslate"><span class="pre">np.fft.fftfreq</span></code> function to obtain the corresponding frequencies, then plot the real and imaginary parts of the coefficients as a function of frequency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deltat</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">deltat</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">wd_fft</span><span class="p">),</span><span class="s1">&#39;b-o&#39;</span><span class="p">,</span><span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">wd_fft</span><span class="p">),</span><span class="s1">&#39;r-o&#39;</span><span class="p">,</span><span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">400</span><span class="p">,</span><span class="mi">400</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;real part&#39;</span><span class="p">,</span><span class="s1">&#39;imaginary part&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;frequency [cpd]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[m]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;discrete Fourier transform of water depth&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">wd_fft</span><span class="p">),</span><span class="s1">&#39;b-o&#39;</span><span class="p">,</span><span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">wd_fft</span><span class="p">),</span><span class="s1">&#39;r-o&#39;</span><span class="p">,</span><span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">400</span><span class="p">,</span><span class="mi">400</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;real part&#39;</span><span class="p">,</span><span class="s1">&#39;imaginary part&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;frequency [cpd]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[m]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;discrete Fourier transform of water depth </span><span class="se">\n</span><span class="s1"> lower frequencies, positive and negative&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;discrete Fourier transform of water depth \n lower frequencies, positive and negative&#39;)
+</pre></div>
+</div>
+<img alt="_images/week10b-lobo-spectral_17_1.png" src="_images/week10b-lobo-spectral_17_1.png" />
+<img alt="_images/week10b-lobo-spectral_17_2.png" src="_images/week10b-lobo-spectral_17_2.png" />
+</div>
+</div>
+<p>Looking at just the lower frequencies that dominate the variance in the data, several patterns become more clear.</p>
+<ul class="simple">
+<li><p>The zero frequency coefficient is really big (off the scale). It is usually best to remove the mean of the time series before taking the FFT to avoid a large value of this constant, as well as potential round-off errors.</p></li>
+<li><p>Most of the coefficients are close to zero, except at positive and neagtive frequencies around 1 cpd and 2 cpd. These frequencies correspond to the dominant tides.</p></li>
+<li><p>There is symmetry between the positive and negative coefficients. The real parts are mirror images of each other. The imaginary parts are equal but opposite.</p></li>
+</ul>
+<p>This type of symmetry is refered to as <em>Hermitian</em>. For each complex coefficient <span class="math notranslate nohighlight">\(Y_k = (\alpha_k + \beta_k i)\)</span> at a positive frequency <span class="math notranslate nohighlight">\(f_k\)</span>, the coefficient for the negative of that frequency <span class="math notranslate nohighlight">\(-f_k\)</span> is the <em>complex conjugate</em> <span class="math notranslate nohighlight">\(Y_k^* = (\alpha_k - \beta_k i)\)</span>.</p>
+<p>What are these negative frequencies? They are what you would get if you flipped the time series around before fitting sines and cosines. Because the cosine function <span class="math notranslate nohighlight">\(\cos(t)\)</span> is a mirror image of itself for positive and negative times, you get the same answer for a negative frequency (going backward in time) as you do for a positive frequncy (going forward in time). In a sine function <span class="math notranslate nohighlight">\(\sin(t)\)</span>, the values for negative times are the negative of the values for positive times.</p>
+<p>The output will always be Hermitian as long as all of the input values are real. The symmetry breaks down if the input values are complex. Complex values are sometimes used to represent vectors, like current velocities. We will only briefly touch on the analysis of complex vectors in this course.</p>
+<p>If the inputs are real, like the scalar values of water depth that we are analyzing here, then it is clear that the coefficients for positive and negative frequencies are redundant. If we have <span class="math notranslate nohighlight">\(N\)</span> real input values in the time domain, we get independent <span class="math notranslate nohighlight">\(N\)</span> numbers representing the same time series in the frequency domain (some real, some imaginary).</p>
+</div>
+<div class="section" id="power-spectrum">
+<h2>Power spectrum<a class="headerlink" href="#power-spectrum" title="Permalink to this headline">¶</a></h2>
+<p>The discrete Fourier transform gives information about the magnitude and phase of sine and cosine waves at different frequencies that contribute to the overall signal. The information in the DFT can be used to completely reconstruct the orininal signal in the time domain. However, often we are most interested in the magnitude, rather than phase (or timing) of the different components. The power spectrum <span class="math notranslate nohighlight">\(S_k(f)\)</span> is a common way of expressing the magnitude of the components at different frequencies.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{aligned}
+S_k(f) &amp;= \frac{2\Delta t}{N} \left| Y_k \right| \\
+       &amp;= \frac{\Delta t}{N} \left( \alpha_k^2 + \beta_k^2 \right)
+\end{aligned}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">deltat</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">wd_fft</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>The scaling factor (<span class="math notranslate nohighlight">\(2 \Delta t /N\)</span>) is chosen so that the integral of <span class="math notranslate nohighlight">\(S_k\)</span> over all of the different frequencies <span class="math notranslate nohighlight">\(f_k\)</span>  is equal to the variance of the original signal. Each value in the power spectrum can be thought of as the contribution of the component at that specific frequency to the total variance in the time series,</p>
+<div class="math notranslate nohighlight">
+\[ \sigma^2_{y, tot} = \sum^{N/2}_{k=0} S_k \Delta f, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta f = f_f\)</span> is the difference between frequencies, which is equal to the fundamental frequency.</p>
+<p>The power spectrum is plotted on a log-log scale to help visualize the different components. We will also see later that plotting on a log scale simplifies the plotting of confidence intervals to distinguish statistically significant peaks in the spectrum.</p>
+<p>The values of <span class="math notranslate nohighlight">\(S_k\)</span> describe the <em>power spectral density</em> (PSD). The values have units of the original units of the time series squared, divided by the units of frequency. In this case, the original units for the time series of water depth are in meters and we are using cpd for the units of frequency, so the PSD units are m<span class="math notranslate nohighlight">\(^2\)</span>/cpd.</p>
+<p>This type of plot is also called a <em>periodogram</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)],</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;frequency [cpd]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PSD [m$^2$/cpd]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1e-9</span><span class="p">,</span><span class="mf">1e2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">1e-2</span><span class="p">,</span><span class="mf">1.5e1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;water level periodogram&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;water level periodogram&#39;)
+</pre></div>
+</div>
+<img alt="_images/week10b-lobo-spectral_22_1.png" src="_images/week10b-lobo-spectral_22_1.png" />
+</div>
+</div>
+<p>The power spectrum shows peaks near the 1 cpd and 2 cpd frequencies. Again, these correspond to the dominant tidal constituents that contribute to variance in water level.</p>
+<p>Zooming in and looking more closely at these peaks shows that there are actually several different peaks near the 1 cpd and 2 cpd frequencies. This is to be expected from the combination of tidal forces due to the sun and moon.</p>
+<p>The frequency resolution (how finely spaced the different frequencies are on the horizontal axis) is determined by the record length <span class="math notranslate nohighlight">\(T\)</span>. The fundamental frequency is <span class="math notranslate nohighlight">\(f_f = 1/T\)</span>. The rest of the frequencies are harmonics, or multiples, of this frequency: <span class="math notranslate nohighlight">\(1/T,2/T, 3/T, 4/T,...,N/(2T)\)</span>. A longer record length means that <span class="math notranslate nohighlight">\(1/T\)</span> is smaller and this set of frequencies is more finely spaced. The point is, we can only distinguish between these tidal constituents with slightly different frequencies because we have a long record length (about 80 days).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)],</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;frequency [cpd]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PSD [m$^2$/cpd]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1e-9</span><span class="p">,</span><span class="mf">1e2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">5e-1</span><span class="p">,</span><span class="mf">5e0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;water level periodogram&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;water level periodogram&#39;)
+</pre></div>
+</div>
+<img alt="_images/week10b-lobo-spectral_24_1.png" src="_images/week10b-lobo-spectral_24_1.png" />
+</div>
+</div>
+<div class="section" id="alternative-method-the-easy-way">
+<h3>Alternative method (the easy way)<a class="headerlink" href="#alternative-method-the-easy-way" title="Permalink to this headline">¶</a></h3>
+<p>The steps above are meant to illustrate how the periodogram is connected to the discrete Fourier transform of the data. The signal processing library of SciPy includes a function that makes it much easier to compute the periodogram directly. It is called <code class="docutils literal notranslate"><span class="pre">periodogram</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">fs</span></code> argument is the sampling frequency (you can use whatever units you want as long as the value is consistent with the data. This function returns the frequency array (positive values only) and the corresponding PSD array. The values correspond exactly with those found above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">periodogram</span>
+
+<span class="n">fp</span><span class="p">,</span><span class="n">Sp</span> <span class="o">=</span> <span class="n">periodogram</span><span class="p">(</span><span class="n">waterdep</span><span class="p">,</span><span class="n">fs</span><span class="o">=</span><span class="mf">24.</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)],</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">Sp</span><span class="p">,</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;frequency [cpd]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PSD [m$^2$/cpd]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1e-9</span><span class="p">,</span><span class="mf">1e2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">1e-2</span><span class="p">,</span><span class="mf">1.5e1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;water level periodogram&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;water level periodogram&#39;)
+</pre></div>
+</div>
+<img alt="_images/week10b-lobo-spectral_26_1.png" src="_images/week10b-lobo-spectral_26_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Compute the periodogram for the LOBO nitrate data. Label the y-axis with the correct units. Compare the spectrum with that of the water level spectrum. What are some similarities and differences?</p></li>
+</ul>
+</div>
+<div class="section" id="critique">
+<h2>Critique<a class="headerlink" href="#critique" title="Permalink to this headline">¶</a></h2>
+<p>Although we have succussfully plotted the periodogram of the data, there are two major issues with the <em>raw</em> periodogram as we calculated above straight from the FFT results.</p>
+<ol class="simple">
+<li><p>It is noisy (random error)</p></li>
+<li><p>It is biased (systematic error)</p></li>
+</ol>
+<p>Although this method is very useful for describing practical Fourier analysis conceptually, there are issues with it in practice. These problems led John W. Tukey (co-inventor of the FFT) to remark on the perils of using this method quantitatively:</p>
+<blockquote>
+<div><p>“More lives have been lost looking at the raw periodogram than by any other action involving time series.”</p>
+</div></blockquote>
+<p>In <span class="xref myst">Part 2</span> of this tutorial, we will expand on this basic method to show ways of improving on this basic method of computing the power spectrum.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="week10a-spectral-analysis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Spectral Analysis</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Tom Connolly<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -56,3 +56,7 @@ parts:
    - file: week09b-MDS
    - file: week09c-ndbc-wind
    - file: week09d-monterey_bay_kelp
+ - caption: Week 10
+   chapters:
+   - file: week10a-spectral-analysis
+   - file: week10b-lobo-spectral

@@ -53,6 +53,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Spectral Analysis" href="week10a-spectral-analysis.html" />
     <link rel="prev" title="NDBC data - analysis of wind vector time series" href="week09c-ndbc-wind.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -327,6 +328,23 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 10
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week10a-spectral-analysis.html">
+   Spectral Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week10b-lobo-spectral.html">
+   Spectral analysis example
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -475,8 +493,8 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pca-step-3-covariance-or-correlation-matrix">
-   PCA Step 3: covariance (or correlation) matrix
+  <a class="reference internal nav-link" href="#pca-step-3-extract-eigenvalues-and-eigenvectors">
+   PCA Step 3: extract eigenvalues and eigenvectors
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -556,8 +574,8 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pca-step-3-covariance-or-correlation-matrix">
-   PCA Step 3: covariance (or correlation) matrix
+  <a class="reference internal nav-link" href="#pca-step-3-extract-eigenvalues-and-eigenvectors">
+   PCA Step 3: extract eigenvalues and eigenvectors
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -770,8 +788,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="pca-step-3-covariance-or-correlation-matrix">
-<h1>PCA Step 3: covariance (or correlation) matrix<a class="headerlink" href="#pca-step-3-covariance-or-correlation-matrix" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pca-step-3-extract-eigenvalues-and-eigenvectors">
+<h1>PCA Step 3: extract eigenvalues and eigenvectors<a class="headerlink" href="#pca-step-3-extract-eigenvalues-and-eigenvectors" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[RV = V\Lambda\]</div>
 <p>The eigenvalues are in the matrix <span class="math notranslate nohighlight">\(\Lambda\)</span></p>
@@ -826,7 +844,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">67</span><span class="o">/</span><span class="n">t9t76vyd78qgn_kwjr1_76yr0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_34503</span><span class="o">/</span><span class="mf">1808603681.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">67</span><span class="o">/</span><span class="n">t9t76vyd78qgn_kwjr1_76yr0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_9893</span><span class="o">/</span><span class="mf">1808603681.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OD&#39;</span><span class="p">,</span><span class="s1">&#39;BD&#39;</span><span class="p">,</span><span class="s1">&#39;LTD&#39;</span><span class="p">,</span><span class="s1">&#39;W&#39;</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">txt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">variables</span><span class="p">):</span>
 <span class="ne">---&gt; </span><span class="mi">10</span>     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]],[</span><span class="mi">0</span><span class="p">,</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
@@ -885,6 +903,13 @@
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">NDBC data - analysis of wind vector time series</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="week10a-spectral-analysis.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spectral Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

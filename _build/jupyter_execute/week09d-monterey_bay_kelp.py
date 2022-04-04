@@ -111,7 +111,7 @@ plt.ylabel('depth [m]')
 # insert code here
 
 
-# ## PCA Step 3: covariance (or correlation) matrix
+# ## PCA Step 3: extract eigenvalues and eigenvectors
 # 
 # $$RV = V\Lambda$$
 # 

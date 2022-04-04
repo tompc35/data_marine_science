@@ -67,6 +67,10 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 * [Example: NDBC wind](week09c-ndbc-wind.ipynb)
 * [Example: Monterey Bay Kelp PCA](week09d-monterey_bay_kelp.ipynb)
 
+### Week 10
+* [Week 10 - Spectral analysis](week10a-spectral-analysis.ipynb)
+* [Week 10 Lab - Elkhorn Slough spectral analysis - Part 1](week10b-lobo-spectral.ipynb)
+
 <!--*
 
 * [Week 5 - Correlation, general least squares regression](week05a-corr-regress-least-squares.ipynb)

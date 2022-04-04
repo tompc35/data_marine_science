@@ -387,9 +387,3 @@ plt.legend(['$\\tau^{sx}$','$\\tau^{sy}$'])
 # * In the `ncfile` variable above, replace 46042 with the new buoy ID number.
 # * Identify a time when the wind is favorable for upwelling.
 # * What rotation angle did you use?
-
-# In[ ]:
-
-
-
-

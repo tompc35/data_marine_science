@@ -103,6 +103,8 @@
 # \end{bmatrix}$$
 # 
 # where units are in $\frac{cm^2}{s^2}$
+# 
+# Calculating the covariance matrix can also be done in Python with the numpy.cov() function. 
 
 # #### 3. Extracting the eigenvalues and eigenvectors from the covariance matrix
 # 
@@ -179,6 +181,8 @@
 # Factor loading is another common terminology encountered in EOFs, and refers to the larger spread of data in the first eigenvector (original example v') than in the second (u')and thereby quantifying their relative importance and are defined by:
 # 
 # $A =  V \sqrt{\Lambda}$
+# 
+# Factor loading can be visualized as the length of a PC vectors, whereby PC1 would have a longer vector compared to PC2 (see Emery and Thompson PCA figure above). 
 
 # ## 3-D visualization of principal components
 # 
