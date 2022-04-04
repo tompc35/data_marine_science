@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Optimization and nonlinear modeling &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>Spectral Analysis &#8212; Data Analysis Techniques in Marine Science</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Example: Modeling exponential growth" href="week08d-us-population-example.html" />
-    <link rel="prev" title="Poisson regression example" href="week08b-poisson-regression-tropical-storms.html" />
+    <link rel="next" title="Spectral analysis example" href="week10b-lobo-spectral.html" />
+    <link rel="prev" title="Monterey Bay Kelp PCA" href="week09d-monterey_bay_kelp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -279,7 +279,7 @@
   Week 8
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week08a-error-propagation.html">
    Error propagation
@@ -290,8 +290,8 @@
    Poisson regression example
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week08c-optimization.html">
    Optimization and nonlinear modeling
   </a>
  </li>
@@ -333,9 +333,9 @@
   Week 10
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="week10a-spectral-analysis.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Spectral Analysis
   </a>
  </li>
@@ -385,7 +385,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week08c-optimization.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/week10a-spectral-analysis.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -405,7 +405,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek08c-optimization.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek10a-spectral-analysis.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -426,7 +426,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week08c-optimization.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week10a-spectral-analysis.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -449,38 +449,48 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parameter-estimation-linear-fit">
-   Parameter estimation: linear fit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parameter-estimation-nonlinear-fit">
-   Parameter estimation: nonlinear fit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finding-the-parameters">
-   Finding the parameters
+  <a class="reference internal nav-link" href="#math-review-complex-numbers">
+   Math review - complex numbers
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goal-minimize-j">
-     Goal: minimize J
+    <a class="reference internal nav-link" href="#complex-conjugate">
+     Complex Conjugate
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terminology">
+   Terminology
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#monochromatic-signals">
+     Monochromatic signals
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#optimization-with-two-parameters">
-     Optimization with two parameters
+    <a class="reference internal nav-link" href="#non-monochromatic-signals">
+     Non-monochromatic signals
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#example-exponential-growth">
-       Example: exponential growth
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practical-limitations">
+     Practical Limitations
+    </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fourier-analysis">
+   Fourier Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-fourier-analysis">
+   Discrete Fourier Analysis
+  </a>
  </li>
 </ul>
 
@@ -492,7 +502,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Optimization and nonlinear modeling</h1>
+                <h1>Spectral Analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -503,38 +513,48 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parameter-estimation-linear-fit">
-   Parameter estimation: linear fit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parameter-estimation-nonlinear-fit">
-   Parameter estimation: nonlinear fit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finding-the-parameters">
-   Finding the parameters
+  <a class="reference internal nav-link" href="#math-review-complex-numbers">
+   Math review - complex numbers
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goal-minimize-j">
-     Goal: minimize J
+    <a class="reference internal nav-link" href="#complex-conjugate">
+     Complex Conjugate
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terminology">
+   Terminology
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#monochromatic-signals">
+     Monochromatic signals
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#optimization-with-two-parameters">
-     Optimization with two parameters
+    <a class="reference internal nav-link" href="#non-monochromatic-signals">
+     Non-monochromatic signals
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#example-exponential-growth">
-       Example: exponential growth
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practical-limitations">
+     Practical Limitations
+    </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fourier-analysis">
+   Fourier Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-fourier-analysis">
+   Discrete Fourier Analysis
+  </a>
  </li>
 </ul>
 
@@ -545,95 +565,94 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="optimization-and-nonlinear-modeling">
-<h1>Optimization and nonlinear modeling<a class="headerlink" href="#optimization-and-nonlinear-modeling" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="parameter-estimation-linear-fit">
-<h2>Parameter estimation: linear fit<a class="headerlink" href="#parameter-estimation-linear-fit" title="Permalink to this headline">¶</a></h2>
-<p>For <em>linear</em> problems, you can set up a design matrix and use the least squares fit. Examples we have already discussed include:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="spectral-analysis">
+<h1>Spectral Analysis<a class="headerlink" href="#spectral-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="math-review-complex-numbers">
+<h2>Math review - complex numbers<a class="headerlink" href="#math-review-complex-numbers" title="Permalink to this headline">¶</a></h2>
+<p>Complex numbers are used to represent numbers in 2 dimensional space.</p>
+<p>example 5+2<span class="math notranslate nohighlight">\(i\)</span>, where <span class="math notranslate nohighlight">\(i=\sqrt{-1}\)</span></p>
+<p>real part: <span class="math notranslate nohighlight">\(x\)</span>=5</p>
+<p>imaginary part: <span class="math notranslate nohighlight">\(y\)</span>=2</p>
+<p><span class="math notranslate nohighlight">\(z\)</span>=5+2<span class="math notranslate nohighlight">\(i\)</span></p>
+<p>Complex numbers can be thought of as vectors in two dimensional space. In the formula above, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> can be thought of as the components of a vector <span class="math notranslate nohighlight">\(z\)</span>. We can also think about complex numbers as vectors with a magnitude(<span class="math notranslate nohighlight">\(r\)</span>) and angle/phase (<span class="math notranslate nohighlight">\(\phi\)</span>). Trigonometry can be used to describe the relationship between these two types of vector representation.</p>
+<p><span class="math notranslate nohighlight">\(x=rcos\phi\)</span></p>
+<p><span class="math notranslate nohighlight">\(y=rsin\phi\)</span></p>
+<p><span class="math notranslate nohighlight">\(r=|z|=\sqrt{x^2+y^2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\frac{y}{x}=tan\phi\)</span></p>
+<p><span class="math notranslate nohighlight">\(\phi=tan^-1(\frac{y}{x})\)</span></p>
+<p><span class="math notranslate nohighlight">\(=rcos\phi+i(rsin\phi)\)</span></p>
+<p><span class="math notranslate nohighlight">\(=r(cos\phi+isin\phi)\)</span></p>
+<p><span class="math notranslate nohighlight">\(z=re^{i\phi}\)</span></p>
+<p>This final formula shows how the complex number can be expressed compactly in terms of its magnitude and angle.</p>
+<p>Although we often think of exponential functions as growth or decay, an exponential with an imaginary exponent describes oscillations (i.e. sines and consines). The literature on spectral analysis often uses this type of equation.</p>
+<div class="section" id="complex-conjugate">
+<h3>Complex Conjugate<a class="headerlink" href="#complex-conjugate" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(z=x+iy\)</span></p>
+<p><span class="math notranslate nohighlight">\(z^*=x-iy\)</span></p>
+<p><span class="math notranslate nohighlight">\(|z|^2=zz^*\)</span></p>
+<p><span class="math notranslate nohighlight">\(=(x+iy)(x-iy)\)</span></p>
+<p><span class="math notranslate nohighlight">\(=x^2-ixy+ixy+y^2\)</span></p>
+<p><span class="math notranslate nohighlight">\(=x^2+y^2\)</span></p>
+</div>
+</div>
+<div class="section" id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monochromatic-signals">
+<h3>Monochromatic signals<a class="headerlink" href="#monochromatic-signals" title="Permalink to this headline">¶</a></h3>
+<p>Monochromatic = “one color”</p>
+<p>A wave with a single frequency (f=1/t)</p>
+<p>Time series of a surface elevation variation <span class="math notranslate nohighlight">\(\eta(t)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\eta(t)=\eta_{max}cos(2\pi ft)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\eta(t)=\eta_{max}cos(2\pi ft-\phi)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\eta(t)=\alpha cos(2\pi ft)+\beta sin(2\pi ft)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\eta_{max}=\sqrt{\alpha^2+\beta^2}\)</span></p>
+</div>
+<div class="section" id="non-monochromatic-signals">
+<h3>Non-monochromatic signals<a class="headerlink" href="#non-monochromatic-signals" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(\eta(t)=\bar\eta + \eta_{max}cos(2\pi ft-\phi_1)+\eta_{max}cos(4\pi ft-\phi_2)+ \eta_{max}cos(6\pi ft-\phi_3)\)</span></p>
+<p>becomes</p>
+<p><span class="math notranslate nohighlight">\(\eta(t)=\bar\eta+\sum^3_{j=1}\eta_{max_j} cos(2\pi f j t-\phi_i)\)</span></p>
+<p>or</p>
+<p><span class="math notranslate nohighlight">\(\eta(t)=\bar\eta+\sum^3_{j=1}[\alpha_j cos(2\pi f j t)+\beta_j(2\pi f j t)]\)</span></p>
+<p>An infinite number of sin waves can be added to each other to make any signal in existence. This includes both repeating waveforms and non repeating waveforms.</p>
+</div>
+<div class="section" id="practical-limitations">
+<h3>Practical Limitations<a class="headerlink" href="#practical-limitations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Linear regression: <span class="math notranslate nohighlight">\(y = mx + b\)</span></p></li>
-<li><p>Multiple linear regression: <span class="math notranslate nohighlight">\(y = b_0 + b_1x_1 + b_2x_2\)</span></p></li>
-<li><p>Multiple linear regression with interaction term: <span class="math notranslate nohighlight">\(y = b_0 + b_1x_1 + b_2x_2 + b_3x_1x_2\)</span></p></li>
-<li><p>Harmonic fit: <span class="math notranslate nohighlight">\(y = a_1 + a_2 \sin(x) + a_3 \cos(x)\)</span></p></li>
+<li><p>In practice we cannot fit an infinite set of sines and cosines to a time series that we collect in the ocean</p></li>
+<li><p>With a limited set of discrete observations, only a limited set of frequencies can be fit to the data</p></li>
+<li><p>The lowest frequency (longest period) also called the fundamental frequency</p></li>
 </ul>
-<p>The problems are all classified as linear, even if the functions do not describe only straight lines, because the unknown coefficients are on the outside the terms in the equation.</p>
-</div>
-<div class="section" id="parameter-estimation-nonlinear-fit">
-<h2>Parameter estimation: nonlinear fit<a class="headerlink" href="#parameter-estimation-nonlinear-fit" title="Permalink to this headline">¶</a></h2>
-<p>A simple function that requires a non-linear fit is a model for exponential growth.</p>
-<ul class="simple">
-<li><p>Exponential growth: <span class="math notranslate nohighlight">\(y = a_1 e^{a_2 x} = a_1 \exp({a_2 x})\)</span></p></li>
-</ul>
-<p>In this case, it is not possible to directly solve for <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span> with <code class="docutils literal notranslate"><span class="pre">np.linalg.lstsq</span></code> (the “design matrix” approach that can be used for multivariate regression or harmonic analysis).</p>
-</div>
-<div class="section" id="finding-the-parameters">
-<h2>Finding the parameters<a class="headerlink" href="#finding-the-parameters" title="Permalink to this headline">¶</a></h2>
-<p>Two ways:</p>
-<ol class="simple">
-<li><p>Log Transform -&gt; linear fit</p></li>
-<li><p>optimization (iterative methods)</p></li>
-</ol>
-<p>The optimization approach minimizes a <em>cost function</em>, <span class="math notranslate nohighlight">\(J\)</span>, which is usually the squared sum of errors.</p>
-<p><span class="math notranslate nohighlight">\(J = \sum^N_{i=1} w_i(\hat{y}_i - y_i)^2\)</span></p>
-<p><span class="math notranslate nohighlight">\(w_i\)</span> is the weight for each data points</p>
-<p><span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the model estimate</p>
-<p><span class="math notranslate nohighlight">\(y_i\)</span> is the observation</p>
-<p><span class="math notranslate nohighlight">\(J\)</span> can also be thought of as a chi-square variable since it is the sum of squares.</p>
-<div class="section" id="goal-minimize-j">
-<h3>Goal: minimize J<a class="headerlink" href="#goal-minimize-j" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># plot an idealized polynomial cost function for illustrative purposes</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mf">0.02</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mf">1.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mf">3.5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;global minimum&#39;</span><span class="p">,</span>
-            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mf">1.2</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
-            <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;local minimum&#39;</span><span class="p">,</span>
-            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">2.7</span><span class="p">,</span><span class="o">-</span><span class="mf">0.55</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
-            <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;parameter, $p$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;cost function, $J$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
-</pre></div>
+<p><span class="math notranslate nohighlight">\(f_f=\frac{1}{t_{max}}\)</span> where <span class="math notranslate nohighlight">\(t_{max}\)</span> =record length</p>
+<p>or</p>
+<p><span class="math notranslate nohighlight">\(f_f=\frac{1}{N\Delta t}\)</span> where <span class="math notranslate nohighlight">\(\Delta t\)</span> =sampling interval and <span class="math notranslate nohighlight">\(N\)</span> is the number of samples.</p>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
+<div class="section" id="fourier-analysis">
+<h2>Fourier Analysis<a class="headerlink" href="#fourier-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Model a time series <span class="math notranslate nohighlight">\(y(t)\)</span> with the “harmonics” of the fundamental frequency</p>
+<p><span class="math notranslate nohighlight">\(f_f, 2f_f, 3f_f, 4f_f...\frac{N}{2}f_f\)</span></p>
+<p>These frequencies range from the lowest frequency we measured (the fundamental frequency) to the highest frequency (the Nyquist frequency).</p>
+<p>At each frequency <span class="math notranslate nohighlight">\(f_k\)</span> the wave has variance:</p>
+<p><span class="math notranslate nohighlight">\(\sigma^2_{y_k}=\frac{1}{2}(\alpha^2_k+\beta^2_k)\)</span></p>
+<p>Total variance ove <span class="math notranslate nohighlight">\(y(t) =\frac{1}{2}y^2_{maxk}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\sigma^2_{y_{total}}= \frac{1}{2}\sum^{N/2}_{k=1}(\alpha^2_k+\beta^2_k)\)</span></p>
+<p>The waves with greater amplitude contribute more to the variance of the time series.</p>
 </div>
-<img alt="_images/week08c-optimization_2_1.png" src="_images/week08c-optimization_2_1.png" />
-</div>
-</div>
-<p>The figure above shows the cost function (<span class="math notranslate nohighlight">\(J\)</span>, y-axis) for a model that depends on one parameter(<span class="math notranslate nohighlight">\(p\)</span>, x-axis).</p>
-<p>The minimum J must occur when:</p>
-<p><span class="math notranslate nohighlight">\(\frac{\partial J}{\partial p } = 0\)</span></p>
-<p>Note that there can be only one global minimum but many local minima. If a cost function is noisy, with many local minima, the parameter optimization problem becomes difficult. Constraining the range of possble parameter values is one way to make the problem easier. There are many algorithms for finding the minimum in <span class="math notranslate nohighlight">\(J\)</span>. The best approach depends on the problem and the structure of the cost function.</p>
-</div>
-<div class="section" id="optimization-with-two-parameters">
-<h3>Optimization with two parameters<a class="headerlink" href="#optimization-with-two-parameters" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="example-exponential-growth">
-<h4>Example: exponential growth<a class="headerlink" href="#example-exponential-growth" title="Permalink to this headline">¶</a></h4>
-<p><span class="math notranslate nohighlight">\(y = a_1 e^{a_2x}\)</span> - modeling exponential growth</p>
-<p>This equation means that overall growth rate depends on the population size. For example, if we were trying to model a phytoplankton population, <span class="math notranslate nohighlight">\(P\)</span>, then the overall growth rate of the population could be expressed as:</p>
-<p><span class="math notranslate nohighlight">\(\frac{dP}{dt} = \mu P\)</span>,</p>
-<p>where the constant <span class="math notranslate nohighlight">\(\mu\)</span> is the specific growth rate <span class="math notranslate nohighlight">\([d^{-1}]\)</span>. It is related to the doubling time of the population<br></p>
-<p><span class="math notranslate nohighlight">\(\mu = \frac{\ln(2)}{\text{doubling time}}\)</span>.</p>
-<p>The analytical solution for the population as a function of time is:</p>
-<p><span class="math notranslate nohighlight">\(P(t) = P_0 e^{\mu t}\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(P_0\)</span> is the initial population at <span class="math notranslate nohighlight">\(t = 0\)</span>.</p>
-<p>If there are two unknown parameters he cost function can be visualized as a topography in <em>parameter space</em>. Local minima in <span class="math notranslate nohighlight">\(J\)</span> are found in the valleys of the topography. For three dimensions or more, it is harder to visualize the cost function in <em>parameter hyperspace</em>, but the idea is the same.</p>
-<p><img alt="'images/cost_fxn_3.png'" src="_images/cost_fxn_3.png" /></p>
-<p><a class="reference external" href="http://www.scipy-lectures.org/advanced/mathematical_optimization/">http://www.scipy-lectures.org/advanced/mathematical_optimization/</a></p>
-<p>For two parameters, the optimization problem becomes difficult if the minimum is in a long valley rather than a deep hole. Sometimes this issue can be avoided by scaling the parameters so that their values are of the same order (similar to the approach of standardizing variables in the multiple linear regression problem).</p>
-<p>The details of different types of algorithms, and their implementation in Python, can be found at <a class="reference external" href="http://www.scipy-lectures.org/advanced/mathematical_optimization/">http://www.scipy-lectures.org/advanced/mathematical_optimization/</a></p>
-</div>
-</div>
+<div class="section" id="discrete-fourier-analysis">
+<h2>Discrete Fourier Analysis<a class="headerlink" href="#discrete-fourier-analysis" title="Permalink to this headline">¶</a></h2>
+<p>The Fourier coefficients of a sequence, or time series, <span class="math notranslate nohighlight">\(y = [y_0,y_1,y_2,...,y_{N-1}]\)</span> can be defined as</p>
+<p><span class="math notranslate nohighlight">\(Y_k=\sum^{N-1}_{n=0}y_ne^{-i2\pi kn/N}\)</span></p>
+<p>For each frequency, the Fourier coeffient is the sum of (all function values <span class="math notranslate nohighlight">\(\times\)</span> sines and cosines) over all N.</p>
+<p>The sum of (all function values x sines and cosines) is the same as computing the covariance between the function and sine/cosine waves.</p>
+<p>In general, the Fourier coefficients are complex numbers which describe both the coefficients for both the sine and cosine waves.</p>
+<p>Computing these sums for all fequencies gives a set of Fourier coefficients.</p>
+<p><span class="math notranslate nohighlight">\(Y_k =[Y_0,Y_1,Y_2,....Y_{N/2},......Y_{N-1}]\)</span></p>
+<p>The intuitive method of computing these coefficients would be to loop through all frequencies and compute the covaraince for each frequency. This requires <span class="math notranslate nohighlight">\(N^2\)</span> operations.</p>
+<p>The “fast Fourrier transform” (FFT) requires only <span class="math notranslate nohighlight">\(N\log(N)\)</span> coperations</p>
+<p>Inverse DFT gets the time series back to is original form
+<span class="math notranslate nohighlight">\(Y_n=\frac{1}{N}\sum^{N-1}_{n=0}y_ne^{i2\pi kn/N}\)</span></p>
+<p>The Discrete Fourier Transform and Inverse DFT may be shown with different scalings (i.e. there is not always a factor 1/N in the equation above). The form used varies by book and programming language. However, the equations should always be internally consists, so that the Inverse DFT always returns the original time series.</p>
 </div>
 </div>
 
@@ -662,17 +681,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="week08b-poisson-regression-tropical-storms.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="week09d-monterey_bay_kelp.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Poisson regression example</p>
+            <p class="prev-next-title">Monterey Bay Kelp PCA</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="week08d-us-population-example.html" title="next page">
+    <a class='right-next' id="next-link" href="week10b-lobo-spectral.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Example: Modeling exponential growth</p>
+        <p class="prev-next-title">Spectral analysis example</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

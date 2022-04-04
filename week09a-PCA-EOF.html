@@ -328,6 +328,23 @@
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 10
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week10a-spectral-analysis.html">
+   Spectral Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week10b-lobo-spectral.html">
+   Spectral analysis example
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -773,6 +790,7 @@ c_{vu} &amp; c_{vv}\\
 -302.4 &amp; 324\\
 \end{bmatrix}\end{split}\]</div>
 <p>where units are in <span class="math notranslate nohighlight">\(\frac{cm^2}{s^2}\)</span></p>
+<p>Calculating the covariance matrix can also be done in Python with the numpy.cov() function.</p>
 </div>
 </div>
 <div class="section" id="extracting-the-eigenvalues-and-eigenvectors-from-the-covariance-matrix">
@@ -834,6 +852,7 @@ v_{31} &amp; v_{32} &amp; v_{33} &amp; \cdots\\
 <p>For this example, this would create new variables for alongshore and cross-shore velocity. This is the same data, just rotated into a new set of axes, where alongshore is defined by the axis of maximum variance (the major axis).</p>
 <p>Factor loading is another common terminology encountered in EOFs, and refers to the larger spread of data in the first eigenvector (original example v’) than in the second (u’)and thereby quantifying their relative importance and are defined by:</p>
 <p><span class="math notranslate nohighlight">\(A =  V \sqrt{\Lambda}\)</span></p>
+<p>Factor loading can be visualized as the length of a PC vectors, whereby PC1 would have a longer vector compared to PC2 (see Emery and Thompson PCA figure above).</p>
 </div>
 </div>
 <div class="section" id="d-visualization-of-principal-components">
