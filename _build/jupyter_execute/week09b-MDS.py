@@ -96,7 +96,7 @@ distmatrix
 # - transform the dissimilarity matrix
 # $d^*_{ij} = \frac{1}{2}d^2_{ij}$
 # - center the dissimilarity matrix
-# $\delta^*_{ij} = d^*_{ij}-d^*_{i}-d^*_{ij}+d^*$
+# $\delta^*_{ij} = d^*_{ij}-\bar{d}^*_{i}-\bar{d}^*_{j}+d^*$
 # 
 # - compute the eigenvectors and eigenvalues
 # - if the dissimilarity index is euclidean distance, this is mathematically equivalent to PCA
