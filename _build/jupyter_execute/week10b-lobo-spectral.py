@@ -59,15 +59,15 @@ plt.title('nitrate [$\mu$M]')
 # 
 # We start with $N$ data points in a time series $y_n = [y_0,y_1,y_2,...,y_{N-1}]$. The discrete Fourier transform will consist of $N$ values $Y_k  = [Y_0,Y_1,Y_2,...,Y_{N-1}]$. These values are complex, with a real part and imaginary part, 
 # 
-# $$Y_k = (\alpha_k +i \beta_k)$$.
+# $Y_k = (\alpha_k +i \beta_k)$.
 # 
 # The values of the discrete Fourier transform in Python correspond to this equation:
 # 
-# $$Y_k = \sum^{N-1}_{n=0}{y_n}\exp{\left(-i2 \pi \frac{kn}{N} \right)}$$
+# $Y_k = \sum^{N-1}_{n=0}{y_n}\exp{\left(-i2 \pi \frac{kn}{N} \right)}$
 # 
 # The original time series values can be reconstructed from these values using the inverse Fourier transform:
 # 
-# $$y_n = \frac{1}{N}\sum^{N-1}_{n=0}{Y_k}\exp{\left(i2 \pi \frac{kn}{N} \right)}$$
+# $y_n = \frac{1}{N}\sum^{N-1}_{n=0}{Y_k}\exp{\left(i2 \pi \frac{kn}{N} \right)}$
 # 
 # The meaning of these equations is explained in more detail below using the LOBO dataset as an example. Sometimes these equations are scaled differently, for example, with $1/N$ in front of the Fourier transform instaead of its inverse transform. These equations show the particular form used in Python, but can be different if you are programming in MATLAB. The important thing is that the form is documented, and that the inverse gets you back the original time series.
 
