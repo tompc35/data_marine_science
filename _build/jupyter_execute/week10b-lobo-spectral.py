@@ -7,7 +7,7 @@
 # 
 # To demonstrate how the Fourier transform can be calculated numerically to create a power spectrum, we use data from the Land Ocean Biogeochemical Observatory in Elkhorn Slough. The data come from the L01 buoy just up channel from the Highway 1 bridge. This buoy is maintained by Dr. Ken Johnson's Chemical Sensors group at MBARI, which develops new technology in order to understand high-frequency fluctuations in biogeochemical parameters over long time periods.
 # 
-# <img src="images/loboarray_small.jpg" width="400">
+# ![images/loboarray_small.jpg](images/loboarray_small.jpg)
 # 
 # The data can be downloaded in text format at this site:
 # http://www3.mbari.org/lobo/getLOBOdata.htm
@@ -270,9 +270,3 @@ plt.title('water level periodogram')
 # >"More lives have been lost looking at the raw periodogram than by any other action involving time series."
 # 
 # In [Part 2](week10b_lobo_spectral_part2.ipynb) of this tutorial, we will expand on this basic method to show ways of improving on this basic method of computing the power spectrum.
-
-# In[ ]:
-
-
-
-

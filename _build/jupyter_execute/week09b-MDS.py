@@ -106,8 +106,8 @@ distmatrix
 # - preserves rank of distance
 # - minimizes stress
 # 
-# <img src='images/pcoa.png' width="500">
-# <img src='images/pcoa_iterative.png' width="500">
+# ![images/pcoa.png](images/pcoa.png)
+# ![images/pcoa_iterative.png](images/pcoa_iterative.png)
 # 
 # [source] http://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-components-analysis-and-multidimensional
 # 
