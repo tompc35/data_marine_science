@@ -60,3 +60,6 @@ parts:
    chapters:
    - file: week10a-spectral-analysis
    - file: week10b-lobo-spectral
+ - caption: Week 11
+   chapters:
+   - file: week11a-lobo-spectral-part2
