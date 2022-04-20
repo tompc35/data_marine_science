@@ -63,3 +63,8 @@ parts:
  - caption: Week 11
    chapters:
    - file: week11a-lobo-spectral-part2
+ - caption: Week 12
+   chapters:
+   - file: week12a-spatial-analysis
+   - file: week12b-interpolation
+   - file: week12c-mapping-intro

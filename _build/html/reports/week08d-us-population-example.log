@@ -23,11 +23,11 @@ print(fvalues)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/67/t9t76vyd78qgn_kwjr1_76yr0000gn/T/ipykernel_16894/2852909755.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/67/t9t76vyd78qgn_kwjr1_76yr0000gn/T/ipykernel_60367/2852909755.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0mfvalues[0m [0;34m=[0m [0mexponential_growth[0m[0;34m([0m[0mnp[0m[0;34m.[0m[0marray[0m[0;34m([0m[0;34m[[0m[0;36m0[0m[0;34m,[0m[0;36m1[0m[0;34m][0m[0;34m)[0m[0;34m,[0m[0;36m10[0m[0;34m,[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m [0mprint[0m[0;34m([0m[0mfvalues[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/var/folders/67/t9t76vyd78qgn_kwjr1_76yr0000gn/T/ipykernel_16894/3487471894.py[0m in [0;36mexponential_growth[0;34m(t, a1, a2)[0m
+[0;32m/var/folders/67/t9t76vyd78qgn_kwjr1_76yr0000gn/T/ipykernel_60367/3487471894.py[0m in [0;36mexponential_growth[0;34m(t, a1, a2)[0m
 [1;32m      8[0m     '''
 [1;32m      9[0m     [0;31m# insert code here[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 10[0;31m     [0;32mreturn[0m [0mf[0m[0;34m[0m[0;34m[0m[0m

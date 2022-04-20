@@ -74,6 +74,11 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 ### Week 11
 * [Week 11 Lab - Elkhorn Slough spectral analysis - Part 2](week11a-lobo-spectral-part2.ipynb)
 
+### Week 12
+* [Week 12 - Spatial analysis](week12a-spatial-analysis.ipynb)
+* [Week 12 - Interpolation](week12b-interpolation.ipynb)
+* [Week 12 - Mapping examples](week12c-mapping-intro.ipynb)
+
 <!--*
 
 * [Week 5 - Correlation, general least squares regression](week05a-corr-regress-least-squares.ipynb)
