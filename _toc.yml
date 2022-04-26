@@ -68,3 +68,7 @@ parts:
    - file: week12a-spatial-analysis
    - file: week12b-interpolation
    - file: week12c-mapping-intro
+ - caption: Week 13
+   chapters:
+   - file: week13a-filtering
+   - file: week13b-image-analysis

@@ -79,6 +79,11 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 * [Week 12 - Interpolation](week12b-interpolation.ipynb)
 * [Week 12 - Mapping examples](week12c-mapping-intro.ipynb)
 
+### Week 13
+* [Week 13 - Convolution and filtering](week13a-filtering.ipynb)
+* [Week 13 - Image analysis](week13b-image-analysis.ipynb)
+
+
 <!--*
 
 * [Week 5 - Correlation, general least squares regression](week05a-corr-regress-least-squares.ipynb)
