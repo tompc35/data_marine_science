@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>Git Reference &#8212; Data Analysis Techniques in Marine Science</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,6 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setup and software installation" href="../software-installation/README.html" />
+    <link rel="prev" title="Data Analysis Techniques in Marine Science" href="../README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -99,9 +101,9 @@
   Git reference
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../git-reference/README.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Git Reference
   </a>
  </li>
@@ -113,7 +115,7 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
+  <a class="reference internal" href="../software-installation/README.html">
    Setup and software installation
   </a>
  </li>
@@ -444,7 +446,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/software-installation/package-list.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/git-reference/README.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -464,7 +466,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fsoftware-installation/package-list.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fgit-reference/README.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -489,7 +491,44 @@
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#push-changes-to-a-remote-repository-quick-steps">
+   Push changes to a remote repository: quick steps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ignoring-and-removing-files-from-your-repository">
+   Ignoring and removing files from your repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initialize-a-local-repository-on-your-computer">
+   Initialize a local repository on your computer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-a-remote-repository-on-github">
+   Set up a remote repository on GitHub
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#delete-a-local-git-repository-on-your-computer">
+   Delete a local git repository on your computer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mac">
+     Mac
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows">
+     Windows
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -500,7 +539,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>Git Reference</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -509,7 +548,44 @@
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#push-changes-to-a-remote-repository-quick-steps">
+   Push changes to a remote repository: quick steps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ignoring-and-removing-files-from-your-repository">
+   Ignoring and removing files from your repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initialize-a-local-repository-on-your-computer">
+   Initialize a local repository on your computer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-a-remote-repository-on-github">
+   Set up a remote repository on GitHub
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#delete-a-local-git-repository-on-your-computer">
+   Delete a local git repository on your computer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mac">
+     Mac
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows">
+     Windows
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -519,19 +595,85 @@
             
               <div>
                 
-  <p>Here is a list of the programs and Python packages that you have installed. We will not use all of them right away. You do not need to download anything from the following links, they are only provided for informational purposes.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="git-reference">
+<h1>Git Reference<a class="headerlink" href="#git-reference" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="#push-changes-to-a-remote-repository-quick-steps">Push changes to a remote repository: quick steps</a></p>
+<p><a class="reference external" href="#initialize-a-local-repository-on-your-computer">Initialize a local repository on your computer</a></p>
+<p><a class="reference external" href="#set-up-a-remote-repository-on-github">Set up a remote repository on GitHub</a></p>
+<p><a class="reference external" href="#delete-a-local-git-repository-on-your-computer">Delete a local git repository on your computer</a></p>
+<div class="section" id="push-changes-to-a-remote-repository-quick-steps">
+<h2>Push changes to a remote repository: quick steps<a class="headerlink" href="#push-changes-to-a-remote-repository-quick-steps" title="Permalink to this headline">¶</a></h2>
+<p>If you have already <a class="reference external" href="#initialize-a-local-repository-on-your-computer">initialized a local repository on your computer</a> and <a class="reference external" href="#set-up-a-remote-repository-on-github">set up a remote repository on GitHub</a>, running the three commands below in your local project directory will add all new files and changes and push them to GitHub.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Write a descriptive commit message here.&quot;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code> adds all files in the working directory and subdirectory to the repository. You can also add specific files.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">file1</span><span class="o">.</span><span class="n">txt</span> <span class="n">file2</span><span class="o">.</span><span class="n">txt</span> <span class="n">file3</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><strong>Replace the commit message between the quotes with a brief description of the changes that you have made.</strong></p>
+</div>
+<div class="section" id="ignoring-and-removing-files-from-your-repository">
+<h2>Ignoring and removing files from your repository<a class="headerlink" href="#ignoring-and-removing-files-from-your-repository" title="Permalink to this headline">¶</a></h2>
+<p><strong>Ignoring files</strong></p>
+<p>Create a text file called <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> and place it in the main directory of your project. The contents of the file should contain a list of files (or file patterns) that are on your computer, but do not want to share with others (e.g. <code class="docutils literal notranslate"><span class="pre">.DS_Store</span></code>,<code class="docutils literal notranslate"><span class="pre">Thumbs.db</span></code>,<code class="docutils literal notranslate"><span class="pre">*.pyc</span></code>).</p>
+<p>For more information: <a class="reference external" href="https://www.atlassian.com/git/tutorials/gitignore">https://www.atlassian.com/git/tutorials/gitignore</a></p>
+<p><strong>Removing files from your repository without removing them from your computer</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rm</span> <span class="o">--</span><span class="n">cached</span> <span class="n">file1</span><span class="o">.</span><span class="n">txt</span> <span class="n">file2</span><span class="o">.</span><span class="n">txt</span> <span class="n">file3</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialize-a-local-repository-on-your-computer">
+<h2>Initialize a local repository on your computer<a class="headerlink" href="#initialize-a-local-repository-on-your-computer" title="Permalink to this headline">¶</a></h2>
+<p>Run the following command in your local project directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">init</span>
+</pre></div>
+</div>
+<p>You only have to do this once for each project. You do not have to run this command in sub-directories.</p>
+</div>
+<div class="section" id="set-up-a-remote-repository-on-github">
+<h2>Set up a remote repository on GitHub<a class="headerlink" href="#set-up-a-remote-repository-on-github" title="Permalink to this headline">¶</a></h2>
+<p>Go to your GitHub account page</p>
+<p>Click the green “New” button</p>
+<p>Enter a name for the repository and select whether the repository will be public or private</p>
+<p>In the project directory on your local computer, run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">user</span><span class="o">-</span><span class="n">name</span><span class="o">/</span><span class="n">repository</span><span class="o">-</span><span class="n">name</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p><strong>Replace the address above with the address of the remote repository you created on GitHub.</strong></p>
+<p>If you have not done so already, <a class="reference external" href="#initialize-a-local-repository-on-your-computer">initialize a local repository on your computer</a></p>
+<p>Follow the quick steps to <a class="reference external" href="#push-changes-to-a-remote-repository-quick-steps">push changes to a remote repository</a></p>
+<p>You only have to do this once for each project.</p>
+</div>
+<div class="section" id="delete-a-local-git-repository-on-your-computer">
+<h2>Delete a local git repository on your computer<a class="headerlink" href="#delete-a-local-git-repository-on-your-computer" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you may want to delete a local git repository that you have already created with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>. You want to keep the files, but undo everything that has been done with git. This situation might arise if you make a mistake, like initializing in the wrong directory. Deleting the repository allows you to start over.</p>
+<p>There is no special command for deleting a local repository. Instead, you need to delete the hidden <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory that was created when you ran <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>. This is where git stores all files related to your project.</p>
+<p>Deleting the <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory can be done on the command line. However, the instructions here demonstrate how to do this in the file browser because there is less chance of making a catastrophic error. The directions depend on the operating system (scroll down for Windows).</p>
+<div class="section" id="mac">
+<h3>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h3>
+<p>In the Finder, navigate to your main project directory (the one where you ran <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>).</p>
+<p><img alt="planets directory" src="../_images/planets-dir.png" /></p>
+<p>To show the hidden files, type <kbd>command</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd></p>
+<p><img alt="planets directory - hidden files" src="../_images/planets-dir-hidden.png" /></p>
+<p>Delete the <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory.</p>
+<p><img alt="planets directory" src="../_images/planets-dir-delete.png" /></p>
+<p>Your local git repository has been deleted. You can now start over and <a class="reference external" href="#initialize-a-local-repository-on-your-computer">initialize a new repository</a></p>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://git-scm.com/">Git</a> - A version control system. This program is like a powerful “tracked changes” system for coding and software development. It is the engine behind Github, which is designed to facilitate remote collaboration between collaborators.</p></li>
-<li><p><a class="reference external" href="https://jupyter.org/">Jupyter</a> - The Jupyter Notebook is a program that allows you run Python code, write formatted text and create interactive visualizations. It runs in a web browser, but uses the resources on your computer and does not require an internet connection. Jupyter Notebooks can also run other programming languages besides Python.</p></li>
-<li><p><a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/">JupyterLab</a> - JupyterLab is a user interface that builds on the Jupyter Notebook, but has more interactive features.</p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/about.html">Pandas</a> - Python data analysis package. Great for working with data in spreadsheets and csv files.</p></li>
-<li><p><a class="reference external" href="http://xarray.pydata.org/en/stable/index.html">Xarray</a> - Package for working with multidimensional data (e.g. data with latitude, longitude, depth and time coordinates). Useful for many data sets in the geosciences, especially data in NetCDF format (see below).</p></li>
-<li><p><a class="reference external" href="http://unidata.github.io/netcdf4-python/">NetCDF4</a> - A Python package for reading NetCDF files, a common data format in the geosciences.</p></li>
-<li><p><a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a> - Python package for geospatial analysis and creating maps.</p></li>
-<li><p><a class="reference external" href="https://matplotlib.org/cmocean/">cmocean</a> -  Beautiful colormaps for oceanography.</p></li>
-<li><p><a class="reference external" href="https://scikit-image.org/">scikit-image</a> - Image processing in Python.</p></li>
-<li><p><a class="reference external" href="https://www.statsmodels.org">statsmodels</a> - Python package for statistical modeling. Works well with Pandas dataframes and has option to use R-style formulas.</p></li>
+<li><p>Open File Explorer from the taskbar. Navigate to your main project directory (the one where you ran <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>).</p></li>
+<li><p>Select <em>View &gt; Options &gt; Change folder</em> and search options.</p></li>
+<li><p>Select the View tab and, in <em>Advanced settings</em>, select <em>Show hidden files, folders, and drives</em> and <em>OK</em>.</p></li>
+<li><p>Delete the <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory. Your local git repository has been deleted. You can now start over and <a class="reference external" href="#initialize-a-local-repository-on-your-computer">initialize a new repository</a></p></li>
 </ul>
+<p>Source for instructions on viewing hidden files and folders: <a class="reference external" href="https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5">Microsoft support</a></p>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -546,7 +688,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./software-installation"
+            path: "./git-reference"
         },
         predefinedOutput: true
     }
@@ -557,7 +699,21 @@
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data Analysis Techniques in Marine Science</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../software-installation/README.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Setup and software installation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>

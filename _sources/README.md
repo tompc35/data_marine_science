@@ -8,10 +8,13 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mlmldata2020/course-notes/master)-->
 
-## Course Schedule
+## Software
 
-### Before class
+* [Git reference](git-reference/README.md)
+
 * [Installing software](software-installation/README.md)
+
+## Course Schedule
 
 ### Week 1
 * [Introduction to sampling and statistics](week01-introduction.ipynb)

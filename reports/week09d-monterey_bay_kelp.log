@@ -32,7 +32,7 @@ for i,txt in enumerate(variables):
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/67/t9t76vyd78qgn_kwjr1_76yr0000gn/T/ipykernel_17517/1808603681.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/67/t9t76vyd78qgn_kwjr1_76yr0000gn/T/ipykernel_18327/1808603681.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      8[0m [0mvariables[0m [0;34m=[0m [0;34m[[0m[0;34m'OD'[0m[0;34m,[0m[0;34m'BD'[0m[0;34m,[0m[0;34m'LTD'[0m[0;34m,[0m[0;34m'W'[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
 [1;32m      9[0m [0;32mfor[0m [0mi[0m[0;34m,[0m[0mtxt[0m [0;32min[0m [0menumerate[0m[0;34m([0m[0mvariables[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 10[0;31m     [0mplt[0m[0;34m.[0m[0mplot[0m[0;34m([0m[0;34m[[0m[0;36m0[0m[0;34m,[0m[0mA[0m[0;34m[[0m[0mi[0m[0;34m,[0m[0;36m0[0m[0;34m][0m[0;34m][0m[0;34m,[0m[0;34m[[0m[0;36m0[0m[0;34m,[0m[0mA[0m[0;34m[[0m[0mi[0m[0;34m,[0m[0;36m1[0m[0;34m][0m[0;34m][0m[0;34m,[0m[0;34m'-'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
