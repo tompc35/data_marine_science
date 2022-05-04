@@ -46,9 +46,9 @@
 # 
 # *Note:* Images in this section come from the excellent source at http://www.labbookpages.co.uk/audio/firWindowing.html
 # 
-# For white noise (equal energy at all frequencies) <br>
-# * all energy in low frequencies (__pass band__) retrained<br>
-# * all energy in high frequencies (__stop band__) removed<br>
+# For white noise (equal energy at all frequencies)
+# * all energy in low frequencies (__pass band__) retrained
+# * all energy in high frequencies (__stop band__) removed
 # 
 # ![images/filtering2.png](images/filtering2.png)
 # 

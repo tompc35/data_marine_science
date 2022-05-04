@@ -4,7 +4,11 @@
 format: jb-book
 root: README
 parts:
- - caption: Before class
+
+ - caption: Git reference
+   chapters:
+   - file: git-reference/README
+ - caption: Software installation
    chapters:
    - file: software-installation/README
  - caption: Week 1
@@ -72,3 +76,6 @@ parts:
    chapters:
    - file: week13a-filtering
    - file: week13b-image-analysis
+ - caption: Week 14
+   chapters:
+   - file: week14-python-packages

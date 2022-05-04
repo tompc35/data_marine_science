@@ -8,10 +8,13 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mlmldata2020/course-notes/master)-->
 
-## Course Schedule
+## Software
 
-### Before class
+* [Git reference](git-reference/README.md)
+
 * [Installing software](software-installation/README.md)
+
+## Course Schedule
 
 ### Week 1
 * [Introduction to sampling and statistics](week01-introduction.ipynb)
@@ -82,6 +85,9 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 ### Week 13
 * [Week 13 - Convolution and filtering](week13a-filtering.ipynb)
 * [Week 13 - Image analysis](week13b-image-analysis.ipynb)
+
+### Week 14
+* [Week 14 - Python packages](week14-python-packages.ipynb)
 
 
 <!--*
