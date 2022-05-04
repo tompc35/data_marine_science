@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercises &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>Python packages &#8212; Data Analysis Techniques in Marine Science</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Multivariate regression" href="week06a-multivariate-regression.html" />
-    <link rel="prev" title="Conditional execution" href="week05c-conditional-execution.html" />
+    <link rel="prev" title="Image Analysis" href="week13b-image-analysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -213,7 +212,7 @@
   Week 5
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week05a-corr-regress-least-squares.html">
    Correlation and linear regression
@@ -229,8 +228,8 @@
    Conditional execution
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="week05d-exercises.html">
    Exercises
   </a>
  </li>
@@ -411,9 +410,9 @@
   Week 14
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="week14-python-packages.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Python packages
   </a>
  </li>
@@ -458,7 +457,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week05d-exercises.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/week14-python-packages.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -478,7 +477,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek05d-exercises.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek14-python-packages.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -499,7 +498,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week05d-exercises.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week14-python-packages.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -522,18 +521,18 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#week-5">
-   Week 5
+  <a class="reference internal nav-link" href="#importing-a-module-located-in-a-another-directory-two-options">
+   Importing a module located in a another directory - two options
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conditional-execution">
-     Conditional execution
+    <a class="reference internal nav-link" href="#option-1-setting-your-path">
+     Option 1: Setting your PATH
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#grain-size-classification-if-time">
-     Grain size classification (if time)
+    <a class="reference internal nav-link" href="#option-2-better-creating-a-package">
+     Option #2 (better): Creating a package
     </a>
    </li>
   </ul>
@@ -548,7 +547,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercises</h1>
+                <h1>Python packages</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -559,18 +558,18 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#week-5">
-   Week 5
+  <a class="reference internal nav-link" href="#importing-a-module-located-in-a-another-directory-two-options">
+   Importing a module located in a another directory - two options
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conditional-execution">
-     Conditional execution
+    <a class="reference internal nav-link" href="#option-1-setting-your-path">
+     Option 1: Setting your PATH
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#grain-size-classification-if-time">
-     Grain size classification (if time)
+    <a class="reference internal nav-link" href="#option-2-better-creating-a-package">
+     Option #2 (better): Creating a package
     </a>
    </li>
   </ul>
@@ -584,65 +583,70 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="week-5">
-<h2>Week 5<a class="headerlink" href="#week-5" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="conditional-execution">
-<h3>Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">¶</a></h3>
-<p>a. Calculate the absolute value of a number (not using the built-in abs function). Use the following code as a template (replace the dashes —– with code).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">------</span>
-<span class="k">if</span> <span class="o">-----</span><span class="p">:</span>
-    <span class="n">absx</span> <span class="o">=</span> <span class="o">-----</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">absx</span> <span class="o">=</span> <span class="o">-----</span>
+  <div class="tex2jax_ignore mathjax_ignore section" id="python-packages">
+<h1>Python packages<a class="headerlink" href="#python-packages" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="importing-a-module-located-in-a-another-directory-two-options">
+<h2>Importing a module located in a another directory - two options<a class="headerlink" href="#importing-a-module-located-in-a-another-directory-two-options" title="Permalink to this headline">¶</a></h2>
+<p>Often, the module that you want to import is not in the current directory you are working in. For example, you may want to have a set of useful functions stored in a <code class="docutils literal notranslate"><span class="pre">MyTools</span></code> directory somewhere on your computer, and be able to access those functions from multiple different project directories.</p>
+<div class="section" id="option-1-setting-your-path">
+<h3>Option 1: Setting your PATH<a class="headerlink" href="#option-1-setting-your-path" title="Permalink to this headline">¶</a></h3>
+<p>In order to import a module, Python has to know where to look for it. It knows to look in the current diectory (say, the directory from which you are running a script), but it does not search your entire computer.</p>
+<p>You can specify  directories where Python should look for modules.</p>
+<ul class="simple">
+<li><p>Add a directory (e.g. <code class="docutils literal notranslate"><span class="pre">path/to/MyTools</span></code>) to your PYTHONPATH with the following Python commands:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;path/to/MyTools&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A good way to keep track of things is to keep all of your useful modules in one directory on your computer, then add that single directory to your PATH. If you ever want to share your code with somebody else, it will help to not have files scattered all over your computer. See <a class="reference external" href="http://www.bdnyc.org/2012/09/editing-pythonpath-to-import-modules/">this blog post by Brown Dwarf Research</a>, where the above example came from, for more really useful information.</p>
+</div>
+<div class="section" id="option-2-better-creating-a-package">
+<h3>Option #2 (better): Creating a package<a class="headerlink" href="#option-2-better-creating-a-package" title="Permalink to this headline">¶</a></h3>
+<p>In the example above, if you edit your path using <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>, the changes are not permanent. There are several ways of adding modules to you path permanently. The best option, which works on any operating system, is to create and install your own package. To create a package called <code class="docutils literal notranslate"><span class="pre">mytools</span></code>, the basic directory stucture should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MyTools</span><span class="o">/</span>
+    <span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">mytools</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">convert</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">convert.py</span></code> is a Python file containing your useful functions in a module. The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file is empty (if you wish, it could be used to execute code upon importing the <code class="docutils literal notranslate"><span class="pre">mytools</span></code> package).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file describes the contents of the package, and the location of module files. An example of the contents of a minimal <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file is shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the absolute value of x is&#39;</span><span class="p">,</span><span class="n">absx</span><span class="p">)</span>
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mytools&#39;</span><span class="p">,</span> 
+      <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mytools&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>b. Using conditional execution, determine whether a user-provided integer x is even or odd and print the result (hint: the % operator calculates the remainder that occurs when dividing two numbers, e.g. the result of    7 % 3 is equal to 1).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>xin = input(&#39;Please enter a number:&#39;)
-x = int(xin)
-if ------:
-    --------
-else:
-    print(‘The number is odd’)
+<p>A more complete <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file would include more information describing the package:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mytools&#39;</span><span class="p">,</span> 
+      <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mytools&#39;</span><span class="p">],</span>
+      <span class="n">version</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+      <span class="n">author</span><span class="o">=</span><span class="s1">&#39;Tom Connolly&#39;</span><span class="p">,</span>
+      <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;tconnolly@mlml.calstate.edu&#39;</span><span class="p">,</span>
+      <span class="n">description</span><span class="o">=</span><span class="s1">&#39;A collection of useful Python tools.&#39;</span><span class="p">,</span>
+      <span class="n">license</span><span class="o">=</span><span class="s1">&#39;CC BY&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>c. Modify the code written in part b to use try and except statements to handle non-integer input gracefully. If the input is not an integer, the program should print a friendly message explaining what went wrong.</p>
-<p>d. (if time) Modify the code written in part b above to continue requesting input until an integer is provided.</p>
+<p>Once you have created the package, run this command in the shell (making sure the <code class="docutils literal notranslate"><span class="pre">MyTools</span></code> directory is your present working directory):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -e .
+</pre></div>
 </div>
-<div class="section" id="grain-size-classification-if-time">
-<h3>Grain size classification (if time)<a class="headerlink" href="#grain-size-classification-if-time" title="Permalink to this headline">¶</a></h3>
-<p>Write a function that takes sediment grain size as an input, then returns the Wentworth grain size classification based on the table below.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Grain Size</p></th>
-<th class="head"><p>Classification</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>&gt;= 256 mm</p></td>
-<td><p>Boulder</p></td>
-</tr>
-<tr class="row-odd"><td><p>64-256 mm</p></td>
-<td><p>Cobble</p></td>
-</tr>
-<tr class="row-even"><td><p>2-64 mm</p></td>
-<td><p>Gravel</p></td>
-</tr>
-<tr class="row-odd"><td><p>62.5 μm - 2 mm</p></td>
-<td><p>Sand</p></td>
-</tr>
-<tr class="row-even"><td><p>3.9-62.5 μm</p></td>
-<td><p>Silt</p></td>
-</tr>
-<tr class="row-odd"><td><p>0.98-3.9 μm</p></td>
-<td><p>Clay</p></td>
-</tr>
-</tbody>
-</table>
-<p>Test the program repeatedly to make sure it works for different input values.</p>
+<p>You can also run this command from the Python console if you precede it with a <code class="docutils literal notranslate"><span class="pre">!</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install -e .
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">!</span></code> tells Python to run the command in an operating system shell, rather than executing it as Python code.</p>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">pip</span></code> is a package manager (included in Anaconda), the -e indicates that the package should be installed in “developer mode” (so you do not have to re-run pip if you make changes,), and <code class="docutils literal notranslate"><span class="pre">.</span></code> indicates the present working directory. Now your package is installed and your tools are on the Python path and available to imported whenever you start up Python.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mytools</span> <span class="kn">import</span> <span class="n">convert</span>
+
+<span class="n">convert</span><span class="o">.</span><span class="n">f2c</span><span class="p">(</span><span class="mf">32.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The package described above is very basic. You can add many more module files to the <code class="docutils literal notranslate"><span class="pre">mytools</span></code> directory, in addition to <code class="docutils literal notranslate"><span class="pre">convert.py</span></code>. You can also add additional directories, if you have categories of modules that you want to organize within the package. If you want to share your package, you can put it on Github or even put it on the Python package index, so that others can automatically <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> it. More useful information on packages can be found at <a class="reference external" href="https://python-packaging.readthedocs.io/en/latest/">https://python-packaging.readthedocs.io/en/latest/</a></p>
 </div>
 </div>
 </div>
@@ -672,19 +676,12 @@ else:
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="week05c-conditional-execution.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="week13b-image-analysis.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Conditional execution</p>
+            <p class="prev-next-title">Image Analysis</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="week06a-multivariate-regression.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Multivariate regression</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

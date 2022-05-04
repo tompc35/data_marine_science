@@ -86,6 +86,8 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 * [Week 13 - Convolution and filtering](week13a-filtering.ipynb)
 * [Week 13 - Image analysis](week13b-image-analysis.ipynb)
 
+### Week 14
+* [Week 14 - Python packages](week14-python-packages.ipynb)
 
 <!--*
 
