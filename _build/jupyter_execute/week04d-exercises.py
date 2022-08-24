@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Exercises 
+# 
 # ### Interpretation of confidence intervals
 # 
 # List your answers to the following true/false questions.

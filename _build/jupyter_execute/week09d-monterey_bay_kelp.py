@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# ## Monterey Bay Kelp PCA
+# # Monterey Bay Kelp PCA
 # 
 # This example uses data from the supplementary material of:
 # 
@@ -12,7 +12,7 @@
 # 
 # Graham, M. H. (1997) Factors determining the upper limit of giant kelp, _Macrocystis pyrifera_ Agardh, along the Monterey Peninsula, central California, USA, _J. Exp. Mar. Bio. Ecol._, 218, 127-149.
 
-# #### Key concept
+# ### Key concept
 # 
 # The final exercise in this notebook is:
 # 
@@ -70,7 +70,7 @@ plt.ylabel('depth [m]')
 # 
 # * Instead of correlating with one variable, we will use PCA to create an "index" of common environmental variability.
 # 
-# #### Key concept (again)
+# ### Key concept (again)
 # 
 # The final exercise in this notebook is:
 # 

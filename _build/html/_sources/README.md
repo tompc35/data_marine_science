@@ -8,6 +8,10 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mlmldata2020/course-notes/master)-->
 
+```{tableofcontents}
+```
+
+<!--
 ## Software
 
 * [Git reference](git-reference/README.md)
@@ -88,7 +92,7 @@ An introductory resource for analyzing oceanographic data. Fundamental concepts 
 
 ### Week 14
 * [Week 14 - Python packages](week14-python-packages.ipynb)
-
+-->
 
 <!--*
 

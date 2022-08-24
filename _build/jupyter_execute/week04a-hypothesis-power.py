@@ -132,11 +132,11 @@ stats.t.cdf(tupper,N-1)
 # 
 # Power analysis is described later in these notes, after covering the basic statistical procedure of t-tests.
 
-# # Application of hypothesis testing: t-tests
+# ## Application of hypothesis testing: t-tests
 # 
 # The $t$-statistic is used to test whether sample means are different. It was was used by a statistician named William Sealy Gosset, who worked for the Guiness Brewery in Dublin in the early 20th century. He was interested in comparing the properties of ingredients of the beloved Irish stout with a small number of samples. To keep his corporate boss happy, Gosset published his statistical work under the pseudonym "Student". 
 # 
-# ## One-sample t-test
+# ### One-sample t-test
 # 
 # The example described above, in which a sample mean is compared with a single value (possibly a known value or a theoretical result), is called a __one-sample t-test__. All t-tests assumes that the samples are drawn from a __normally-distributed__ population.
 # 
@@ -185,7 +185,7 @@ print("cumulative probability:",round(tcdf,3))
 
 # There is a probability of 0.264 of randomly obtaining $t$ value of -0.756 or less if the null hypothesis is true. However, there is twice as much probability (p = 0.529) of obtaining a more extreme value ($t \leq$ -0.756 or $t \geq$ -0.756).
 
-# ## One-tailed vs. two-tailed tests
+# ### One-tailed vs. two-tailed tests
 # 
 # The two previous examples are both __two-tailed__ tests. The rejection region occupies both tails of the t-distribution. In a one tailed test, we only care about differences in a certain direction, for example:
 # 
@@ -216,7 +216,7 @@ plt.fill_between(tvalues[upperi],tpdf[upperi],facecolor='red');
 # * Reject $H_o$ only if the value of t has the correct sign
 # * If t does have the correct sign, reject $H_o$ if 1/2 the p-value is less than $\alpha$
 
-# ## Two-sample t-test: comparing pairs of populations
+# ### Two-sample t-test: comparing pairs of populations
 # 
 # A __two-sample t-test__ is used to test whether the means of two groups of samples are different.
 # 
@@ -285,7 +285,7 @@ plt.fill_between(tvalues[upperi],tpdf[upperi],facecolor='red');
 # 
 # Perform a Student's t-test to test the null hypothesis that the means are the same between these two years, for 95% confidence. You may assume that each daily average is an independent sample.
 
-# # Power analysis
+# ## Power analysis
 
 # Statistical power describes the probability of correctly accepting the null hypothesis, if it is false. A conventional target power is $(1 -  \beta) = 0.8$. This means that **if** the null hypothesis is false, there is a probability $\beta$ = 0.2 (one out of five chance) that the null hypothesis will be accepted incorrectly (Type II error). This would mean incorrectly inferring that there is no difference between two sets of samples.
 # 
@@ -359,7 +359,7 @@ print('N = ',round(nobs,3))
 
 # If the actual difference is 2 $\mu$M, then we will get a significant difference 80% of the time with $N$ = 51. This example is for a one-sample t-test, but other functions in the `power` library can be used for other statistical tests. The *Pingouin* package (see below) also has functions for computing power.
 
-# # Critiques of null hypothesis significance testing
+# ## Critiques of null hypothesis significance testing
 
 # * “The test of statistical significance in psychological research may be taken as an instance of a kind of essential mindlessness in the conduct of research” (Bakan, 1966)
 # 
@@ -375,7 +375,7 @@ print('N = ',round(nobs,3))
 # 
 # The p-value is commonly interpreted as $P(H|D)$, but in actuality it represents $P(D|H)$. These are not the same thing.
 
-# # Bayes factors
+# ## Bayes factors
 
 # The Bayes factor is an alternative metric which quantifies evidence in favor of an alternative hypothesis, over the null hypothesis (or vice-versa). Recall Bayes' theorem, in which the probability of a hypothesis ($H$) is updated given new data ($D$)
 # 
