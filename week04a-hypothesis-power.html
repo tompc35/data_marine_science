@@ -223,7 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week04d-exercises.html">
-   Interpretation of confidence intervals
+   Exercises
   </a>
  </li>
 </ul>
@@ -512,24 +512,6 @@ title="Launch on Binder"
 
       </li>
       
-      <li>
-        <a href="https://colab.research.google.com/github/tompc35/data_marine_science/blob/main/week04a-hypothesis-power.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
     </ul>
   </div>
 </div>
@@ -660,130 +642,121 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Hypothesis testing and Power
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hypothesis-testing">
+   Hypothesis testing
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hypothesis-testing">
-     Hypothesis testing
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#null-hypothesis-h-o">
+     1. Null Hypothesis
+     <span class="math notranslate nohighlight">
+      \(H_o\)
+     </span>
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#null-hypothesis-h-o">
-       1. Null Hypothesis
-       <span class="math notranslate nohighlight">
-        \(H_o\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#alternate-hypothesis-h-a">
-       2. Alternate hypothesis
-       <span class="math notranslate nohighlight">
-        \(H_a\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#test-statistic">
-       3. Test statistic
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#region-of-rejection-of-the-null-hypothesis">
-       4.  Region of rejection of the null hypothesis
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternate-hypothesis-h-a">
+     2. Alternate hypothesis
+     <span class="math notranslate nohighlight">
+      \(H_a\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-statistic">
+     3. Test statistic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#region-of-rejection-of-the-null-hypothesis">
+     4.  Region of rejection of the null hypothesis
+    </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#application-of-hypothesis-testing-t-tests">
    Application of hypothesis testing: t-tests
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#one-sample-t-test">
      One-sample t-test
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#one-tailed-vs-two-tailed-tests">
      One-tailed vs. two-tailed tests
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#two-sample-t-test-comparing-pairs-of-populations">
      Two-sample t-test: comparing pairs of populations
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#student-s-two-sample-t-test-equal-variances">
+     Student’s two- sample t-test (equal variances)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#welch-s-two-sample-t-test-unequal-variances">
+     Welch’s two sample t-test (unequal variances)
+    </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#student-s-two-sample-t-test-equal-variances">
-       Student’s two- sample t-test (equal variances)
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#python-implementation">
+       Python implementation
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#welch-s-two-sample-t-test-unequal-variances">
-       Welch’s two sample t-test (unequal variances)
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-comparing-means-of-current-meter-data">
+       Exercise: comparing means of current meter data
       </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#python-implementation">
-         Python implementation
-        </a>
-       </li>
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#exercise-comparing-means-of-current-meter-data">
-         Exercise: comparing means of current meter data
-        </a>
-       </li>
-      </ul>
      </li>
     </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#power-analysis">
    Power analysis
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-detecting-change-due-to-a-restoration-activity">
      Example: Detecting change due to a restoration activity
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#one-tailed-z-test-like-a-t-test-valid-for-a-large-n">
      One-tailed z-test (like a t-test, valid for a large N)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#resources-for-calculating-power">
      Resources for calculating power
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-detecting-small-differences-with-a-noisy-instrument">
      Example: detecting small differences with a noisy instrument
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#critiques-of-null-hypothesis-significance-testing">
    Critiques of null hypothesis significance testing
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bayes-factors">
    Bayes factors
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#details-of-the-bayes-factor-calculation-advanced">
      Details of the Bayes factor calculation (advanced)
     </a>
@@ -809,130 +782,121 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Hypothesis testing and Power
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hypothesis-testing">
+   Hypothesis testing
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hypothesis-testing">
-     Hypothesis testing
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#null-hypothesis-h-o">
+     1. Null Hypothesis
+     <span class="math notranslate nohighlight">
+      \(H_o\)
+     </span>
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#null-hypothesis-h-o">
-       1. Null Hypothesis
-       <span class="math notranslate nohighlight">
-        \(H_o\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#alternate-hypothesis-h-a">
-       2. Alternate hypothesis
-       <span class="math notranslate nohighlight">
-        \(H_a\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#test-statistic">
-       3. Test statistic
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#region-of-rejection-of-the-null-hypothesis">
-       4.  Region of rejection of the null hypothesis
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternate-hypothesis-h-a">
+     2. Alternate hypothesis
+     <span class="math notranslate nohighlight">
+      \(H_a\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-statistic">
+     3. Test statistic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#region-of-rejection-of-the-null-hypothesis">
+     4.  Region of rejection of the null hypothesis
+    </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#application-of-hypothesis-testing-t-tests">
    Application of hypothesis testing: t-tests
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#one-sample-t-test">
      One-sample t-test
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#one-tailed-vs-two-tailed-tests">
      One-tailed vs. two-tailed tests
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#two-sample-t-test-comparing-pairs-of-populations">
      Two-sample t-test: comparing pairs of populations
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#student-s-two-sample-t-test-equal-variances">
+     Student’s two- sample t-test (equal variances)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#welch-s-two-sample-t-test-unequal-variances">
+     Welch’s two sample t-test (unequal variances)
+    </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#student-s-two-sample-t-test-equal-variances">
-       Student’s two- sample t-test (equal variances)
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#python-implementation">
+       Python implementation
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#welch-s-two-sample-t-test-unequal-variances">
-       Welch’s two sample t-test (unequal variances)
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-comparing-means-of-current-meter-data">
+       Exercise: comparing means of current meter data
       </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#python-implementation">
-         Python implementation
-        </a>
-       </li>
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#exercise-comparing-means-of-current-meter-data">
-         Exercise: comparing means of current meter data
-        </a>
-       </li>
-      </ul>
      </li>
     </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#power-analysis">
    Power analysis
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-detecting-change-due-to-a-restoration-activity">
      Example: Detecting change due to a restoration activity
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#one-tailed-z-test-like-a-t-test-valid-for-a-large-n">
      One-tailed z-test (like a t-test, valid for a large N)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#resources-for-calculating-power">
      Resources for calculating power
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-detecting-small-differences-with-a-noisy-instrument">
      Example: detecting small differences with a noisy instrument
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#critiques-of-null-hypothesis-significance-testing">
    Critiques of null hypothesis significance testing
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bayes-factors">
    Bayes factors
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#details-of-the-bayes-factor-calculation-advanced">
      Details of the Bayes factor calculation (advanced)
     </a>
@@ -1074,12 +1038,11 @@ lower critical t value = -3.182446305284264
 <p>Power analysis is described later in these notes, after covering the basic statistical procedure of t-tests.</p>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="application-of-hypothesis-testing-t-tests">
-<h1>Application of hypothesis testing: t-tests<a class="headerlink" href="#application-of-hypothesis-testing-t-tests" title="Permalink to this headline">#</a></h1>
+<section id="application-of-hypothesis-testing-t-tests">
+<h2>Application of hypothesis testing: t-tests<a class="headerlink" href="#application-of-hypothesis-testing-t-tests" title="Permalink to this headline">#</a></h2>
 <p>The <span class="math notranslate nohighlight">\(t\)</span>-statistic is used to test whether sample means are different. It was was used by a statistician named William Sealy Gosset, who worked for the Guiness Brewery in Dublin in the early 20th century. He was interested in comparing the properties of ingredients of the beloved Irish stout with a small number of samples. To keep his corporate boss happy, Gosset published his statistical work under the pseudonym “Student”.</p>
 <section id="one-sample-t-test">
-<h2>One-sample t-test<a class="headerlink" href="#one-sample-t-test" title="Permalink to this headline">#</a></h2>
+<h3>One-sample t-test<a class="headerlink" href="#one-sample-t-test" title="Permalink to this headline">#</a></h3>
 <p>The example described above, in which a sample mean is compared with a single value (possibly a known value or a theoretical result), is called a <strong>one-sample t-test</strong>. All t-tests assumes that the samples are drawn from a <strong>normally-distributed</strong> population.</p>
 <p>In Python, a one sample <span class="math notranslate nohighlight">\(t\)</span>-test can be conducted with the function <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp()</span></code>. Given a set of values <code class="docutils literal notranslate"><span class="pre">x</span></code> and a population mean, <span class="math notranslate nohighlight">\(\mu\)</span> or <code class="docutils literal notranslate"><span class="pre">popmean</span></code>, this function returns the <span class="math notranslate nohighlight">\(t\)</span>-statistic and a <span class="math notranslate nohighlight">\(p\)</span>-value. The <span class="math notranslate nohighlight">\(p\)</span>-value is the probability of obtaining a <span class="math notranslate nohighlight">\(t\)</span>-statistic of that magnitude, or more extreme, in the hypothetical case the null hypothesis is true. If the <span class="math notranslate nohighlight">\(p\)</span>-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span> then the null hypothesis is rejected.</p>
 <p>Looking at an example where we have three samples, and we are comparing with a known value <span class="math notranslate nohighlight">\(\mu_0\)</span> = 10.0</p>
@@ -1145,7 +1108,7 @@ p: 0.529
 <p>There is a probability of 0.264 of randomly obtaining <span class="math notranslate nohighlight">\(t\)</span> value of -0.756 or less if the null hypothesis is true. However, there is twice as much probability (p = 0.529) of obtaining a more extreme value (<span class="math notranslate nohighlight">\(t \leq\)</span> -0.756 or <span class="math notranslate nohighlight">\(t \geq\)</span> -0.756).</p>
 </section>
 <section id="one-tailed-vs-two-tailed-tests">
-<h2>One-tailed vs. two-tailed tests<a class="headerlink" href="#one-tailed-vs-two-tailed-tests" title="Permalink to this headline">#</a></h2>
+<h3>One-tailed vs. two-tailed tests<a class="headerlink" href="#one-tailed-vs-two-tailed-tests" title="Permalink to this headline">#</a></h3>
 <p>The two previous examples are both <strong>two-tailed</strong> tests. The rejection region occupies both tails of the t-distribution. In a one tailed test, we only care about differences in a certain direction, for example:</p>
 <p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\mu \leq \mu_0\)</span></p>
 <p><span class="math notranslate nohighlight">\(H_a\)</span>: <span class="math notranslate nohighlight">\(\mu &gt; \mu_0\)</span></p>
@@ -1177,7 +1140,7 @@ p: 0.529
 </ul>
 </section>
 <section id="two-sample-t-test-comparing-pairs-of-populations">
-<h2>Two-sample t-test: comparing pairs of populations<a class="headerlink" href="#two-sample-t-test-comparing-pairs-of-populations" title="Permalink to this headline">#</a></h2>
+<h3>Two-sample t-test: comparing pairs of populations<a class="headerlink" href="#two-sample-t-test-comparing-pairs-of-populations" title="Permalink to this headline">#</a></h3>
 <p>A <strong>two-sample t-test</strong> is used to test whether the means of two groups of samples are different.</p>
 <p><span class="math notranslate nohighlight">\(H_o: \bar{x_1} = \bar{x_2}\)</span></p>
 <p><span class="math notranslate nohighlight">\(H_a: \bar{x_1} \neq \bar{x_2}\)</span></p>
@@ -1192,6 +1155,7 @@ p: 0.529
 <li><p>Whiskers bracket 10-90th percentile (80% of the data)</p></li>
 </ul>
 <p>The <span class="math notranslate nohighlight">\(*\)</span> above the second box indicates a significant difference as indicated by a t-test. There is overlap in the range of growth rates, but the null hypothesis that the means are equal is rejected at a 99% confidence level.</p>
+</section>
 <section id="student-s-two-sample-t-test-equal-variances">
 <h3>Student’s two- sample t-test (equal variances)<a class="headerlink" href="#student-s-two-sample-t-test-equal-variances" title="Permalink to this headline">#</a></h3>
 <p>A two-sample t-test is used to comparing <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span>, <em>assuming populations being sampled have the same true variance</em>, i.e.  <span class="math notranslate nohighlight">\(\sigma_x^2 = \sigma_y^2\)</span>. With <span class="math notranslate nohighlight">\(N_x\)</span> and <span class="math notranslate nohighlight">\(N_y\)</span> samples, the t statistic is given by:</p>
@@ -1225,9 +1189,8 @@ p: 0.529
 </section>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="power-analysis">
-<h1>Power analysis<a class="headerlink" href="#power-analysis" title="Permalink to this headline">#</a></h1>
+<section id="power-analysis">
+<h2>Power analysis<a class="headerlink" href="#power-analysis" title="Permalink to this headline">#</a></h2>
 <p>Statistical power describes the probability of correctly accepting the null hypothesis, if it is false. A conventional target power is <span class="math notranslate nohighlight">\((1 -  \beta) = 0.8\)</span>. This means that <strong>if</strong> the null hypothesis is false, there is a probability <span class="math notranslate nohighlight">\(\beta\)</span> = 0.2 (one out of five chance) that the null hypothesis will be accepted incorrectly (Type II error). This would mean incorrectly inferring that there is no difference between two sets of samples.</p>
 <p>Statistical power and confidence levels are not independent. The confidence level for accepting or rejecting a null hypothesis is one of the primary factors that determined statistical power.</p>
 <p>Power analysis can be useful for studies that inform management decisions, in which avoiding a Type II error might be a “conservative” action. For example, a Type II error in a study on the effect of pollution on abundance of an organism at two sites (pristine and disturbed) might mean “incorrectly” protecting habitat. The accepted level of risk of a Type II error in this case might vary between environmental and industry stakeholders.</p>
@@ -1251,7 +1214,7 @@ p: 0.529
 <li><p>d = difference of the mean / standard deviation</p></li>
 </ul>
 <section id="example-detecting-change-due-to-a-restoration-activity">
-<h2>Example: Detecting change due to a restoration activity<a class="headerlink" href="#example-detecting-change-due-to-a-restoration-activity" title="Permalink to this headline">#</a></h2>
+<h3>Example: Detecting change due to a restoration activity<a class="headerlink" href="#example-detecting-change-due-to-a-restoration-activity" title="Permalink to this headline">#</a></h3>
 <p>Goal 1 (ecologically significant effect): increase (indicates the need for a one-tailed z-test) the mean oxygen concentrations by 20 <span class="math notranslate nohighlight">\(\mu\)</span>M</p>
 <ul class="simple">
 <li><p>The natural variability is 50 <span class="math notranslate nohighlight">\(\mu\)</span>M (std. dev.)</p></li>
@@ -1266,7 +1229,7 @@ p: 0.529
 </ul>
 </section>
 <section id="one-tailed-z-test-like-a-t-test-valid-for-a-large-n">
-<h2>One-tailed z-test (like a t-test, valid for a large N)<a class="headerlink" href="#one-tailed-z-test-like-a-t-test-valid-for-a-large-n" title="Permalink to this headline">#</a></h2>
+<h3>One-tailed z-test (like a t-test, valid for a large N)<a class="headerlink" href="#one-tailed-z-test-like-a-t-test-valid-for-a-large-n" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(z = \frac{\bar{x} - \mu} {\frac {S} {\sqrt{N}}}\)</span></p></li>
 <li><p>compare to <span class="math notranslate nohighlight">\(z_{crit}\)</span>:
@@ -1274,7 +1237,7 @@ p: 0.529
 </ul>
 </section>
 <section id="resources-for-calculating-power">
-<h2>Resources for calculating power<a class="headerlink" href="#resources-for-calculating-power" title="Permalink to this headline">#</a></h2>
+<h3>Resources for calculating power<a class="headerlink" href="#resources-for-calculating-power" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://rpsychologist.com/d3/NHST/">Online visualization</a> (for one-sample z-test only)</p></li>
 <li><p><a class="reference external" href="http://webpower.psychstat.org/wiki/">Online power calculator</a> (for many different statistical tests)</p></li>
@@ -1284,7 +1247,7 @@ p: 0.529
 </ul>
 </section>
 <section id="example-detecting-small-differences-with-a-noisy-instrument">
-<h2>Example: detecting small differences with a noisy instrument<a class="headerlink" href="#example-detecting-small-differences-with-a-noisy-instrument" title="Permalink to this headline">#</a></h2>
+<h3>Example: detecting small differences with a noisy instrument<a class="headerlink" href="#example-detecting-small-differences-with-a-noisy-instrument" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Want to be able to measure a differences of 2 <span class="math notranslate nohighlight">\(\mu\)</span>M</p></li>
 <li><p>instrument noise = 5 <span class="math notranslate nohighlight">\(\mu\)</span>M</p></li>
@@ -1302,10 +1265,7 @@ p: 0.529
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N = 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51.009
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N =  51.009
 </pre></div>
 </div>
 </div>
@@ -1313,8 +1273,8 @@ p: 0.529
 <p>If the actual difference is 2 <span class="math notranslate nohighlight">\(\mu\)</span>M, then we will get a significant difference 80% of the time with <span class="math notranslate nohighlight">\(N\)</span> = 51. This example is for a one-sample t-test, but other functions in the <code class="docutils literal notranslate"><span class="pre">power</span></code> library can be used for other statistical tests. The <em>Pingouin</em> package (see below) also has functions for computing power.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="critiques-of-null-hypothesis-significance-testing">
-<h1>Critiques of null hypothesis significance testing<a class="headerlink" href="#critiques-of-null-hypothesis-significance-testing" title="Permalink to this headline">#</a></h1>
+<section id="critiques-of-null-hypothesis-significance-testing">
+<h2>Critiques of null hypothesis significance testing<a class="headerlink" href="#critiques-of-null-hypothesis-significance-testing" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>“The test of statistical significance in psychological research may be taken as an instance of a kind of essential mindlessness in the conduct of research” (Bakan, 1966)</p></li>
 <li><p>Hypothesis testing is “a wrongheaded view about what constitutes scientific progress” (Luce, 1988)</p></li>
@@ -1325,8 +1285,8 @@ p: 0.529
 <p>The p-value in particular has been the subject of intense backlash in recent years. The journal Psychology <a class="reference external" href="https://www.nature.com/news/psychology-journal-bans-p-values-1.17001">banned p-values</a>. A critical p-value of 0.05 is arbitrary and encourages “p-hacking,” where marginal results may be tweaked to clear the bar. Statistically significant differences may be associated with small and unimportant effects, especially for large sample sizes (increasingly common). Furthermore, like many concepts in frequentist statistics, the meaning of the p-value is commonly misinterpreted. This is because the concept of the p-value is based on hypothetical data that have not actually been collected.</p>
 <p>The p-value is commonly interpreted as <span class="math notranslate nohighlight">\(P(H|D)\)</span>, but in actuality it represents <span class="math notranslate nohighlight">\(P(D|H)\)</span>. These are not the same thing.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="bayes-factors">
-<h1>Bayes factors<a class="headerlink" href="#bayes-factors" title="Permalink to this headline">#</a></h1>
+<section id="bayes-factors">
+<h2>Bayes factors<a class="headerlink" href="#bayes-factors" title="Permalink to this headline">#</a></h2>
 <p>The Bayes factor is an alternative metric which quantifies evidence in favor of an alternative hypothesis, over the null hypothesis (or vice-versa). Recall Bayes’ theorem, in which the probability of a hypothesis (<span class="math notranslate nohighlight">\(H\)</span>) is updated given new data (<span class="math notranslate nohighlight">\(D\)</span>)</p>
 <div class="math notranslate nohighlight">
 \[P(H|D) = \frac{P(D|H)P(H)}{P(D)}\]</div>
@@ -1402,7 +1362,7 @@ p: 0.529
 </div>
 <p>This Bayes factor (BF10) indicates that there is “positive” evidence in favor of an alternative hypothesis, but not “strong”.</p>
 <section id="details-of-the-bayes-factor-calculation-advanced">
-<h2>Details of the Bayes factor calculation (advanced)<a class="headerlink" href="#details-of-the-bayes-factor-calculation-advanced" title="Permalink to this headline">#</a></h2>
+<h3>Details of the Bayes factor calculation (advanced)<a class="headerlink" href="#details-of-the-bayes-factor-calculation-advanced" title="Permalink to this headline">#</a></h3>
 <p>In common statistical tests, we are interested in the the value of a parameter <span class="math notranslate nohighlight">\(\theta\)</span>. In a t-test, this parameter is the true mean <span class="math notranslate nohighlight">\(\mu\)</span>.  In a one-sample t-test, the null hypothesis is that the mean parameter <span class="math notranslate nohighlight">\(\theta\)</span> has a specific value <span class="math notranslate nohighlight">\(\theta_0\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\theta = \theta_0\)</span></p>
 <p><span class="math notranslate nohighlight">\(H_1\)</span>: <span class="math notranslate nohighlight">\(\theta \neq \theta_0\)</span></p>
@@ -1413,6 +1373,7 @@ p: 0.529
 <p>Again, the <span class="math notranslate nohighlight">\(P(D|\theta)\)</span> term in the integral can be calculated from the <span class="math notranslate nohighlight">\(t\)</span>-distribution. However, this calculation also involves specifying a probability distribution for the prior <span class="math notranslate nohighlight">\(P(\theta)\)</span> for all possible values of <span class="math notranslate nohighlight">\(\theta\)</span>. There are many ways to choose a prior distribution, and the subjective choices in this process are one critique of Baysian statistics. One strategy is to be as objective as possible, using “non-informative” prior distributions. This is sometimes a “flat” prior that weights all probabilities equally.</p>
 <p>The calculation used by Pingouin follows the method in Rouder et al. (2009). The prior distribution used in this methods weights small differences from the mean more than very extreme differences. The method also accounts for the fact that there are two parameters involved in the <span class="math notranslate nohighlight">\(t\)</span>-statistic, the mean (<span class="math notranslate nohighlight">\(\mu\)</span>) and the variance (<span class="math notranslate nohighlight">\(\sigma^2\)</span>).</p>
 <p>Rouder, J.N., Speckman, P.L., Sun, D., Morey, R.D., Iverson, G., 2009. Bayesian t tests for accepting and rejecting the null hypothesis. Psychon. Bull. Rev. 16, 225–237. <a class="reference external" href="https://doi.org/10.3758/PBR.16.2.225">https://doi.org/10.3758/PBR.16.2.225</a></p>
+</section>
 </section>
 </section>
 
