@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Correlation and linear regression &#8212; Data Analysis Techniques in Marine Science</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Implementing linear regression in Python" href="week05b-wcoa-cruise-regression.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Data Analysis Techniques in Marine Science
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data Analysis Techniques in Marine Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Git reference
  </span>
@@ -422,107 +439,209 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week05a-corr-regress-least-squares.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek05a-corr-regress-least-squares.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week05a-corr-regress-least-squares.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week05a-corr-regress-least-squares.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlmldata2022/course-notes"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek05a-corr-regress-least-squares.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/week05a-corr-regress-least-squares.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#correlation">
    Correlation
@@ -606,12 +725,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Correlation and linear regression</h1>
@@ -711,13 +829,14 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="correlation-and-linear-regression">
-<h1>Correlation and linear regression<a class="headerlink" href="#correlation-and-linear-regression" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="correlation">
-<h2>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="correlation-and-linear-regression">
+<h1>Correlation and linear regression<a class="headerlink" href="#correlation-and-linear-regression" title="Permalink to this headline">#</a></h1>
+<section id="correlation">
+<h2>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">#</a></h2>
 <p>Correlation <span class="math notranslate nohighlight">\(\neq\)</span> Causation</p>
 <ul class="simple">
 <li><p>If two variables are correlated, variability in one variable <em>might</em> cause variability in the other. Or there may be another underlying variable that causes variations in both.</p></li>
@@ -734,8 +853,8 @@
 <p>The <em>Pearson correlation coefficient</em> is the normalized covariance between two variables.</p>
 <div class="math notranslate nohighlight">
 \[ r_{xy} = \frac{s_{xy}^2}{s_x s_y}\]</div>
-<div class="section" id="varying-degrees-of-correlation">
-<h3>Varying degrees of correlation<a class="headerlink" href="#varying-degrees-of-correlation" title="Permalink to this headline">¶</a></h3>
+<section id="varying-degrees-of-correlation">
+<h3>Varying degrees of correlation<a class="headerlink" href="#varying-degrees-of-correlation" title="Permalink to this headline">#</a></h3>
 <p>There may be a pattern in the data, but a linear model may not be appropriate.</p>
 <p><img alt="images/Correlation_examples.png" src="_images/Correlation_examples.png" /></p>
 <p><a class="reference external" href="http://wikipedia.org/wiki/Correlation_and_dependence">source</a></p>
@@ -786,19 +905,19 @@
 <img alt="_images/week05a-corr-regress-least-squares_7_1.png" src="_images/week05a-corr-regress-least-squares_7_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="testing-significance-of-linear-correlation">
-<h3>Testing significance of linear correlation<a class="headerlink" href="#testing-significance-of-linear-correlation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="testing-significance-of-linear-correlation">
+<h3>Testing significance of linear correlation<a class="headerlink" href="#testing-significance-of-linear-correlation" title="Permalink to this headline">#</a></h3>
 <p>The following test statistic, will follow a t distribution for randomly generated sets of data.</p>
 <div class="math notranslate nohighlight">
 \[ t = |r|\frac{\sqrt{N-2}}{\sqrt{1-r^2}}\]</div>
 <p>To test for significant at confidence level <span class="math notranslate nohighlight">\(1-\alpha\)</span>, calculate a t statistic and compare with a critical t value <span class="math notranslate nohighlight">\(t_{\nu,1-\alpha/2}\)</span>, where <span class="math notranslate nohighlight">\(\nu = N-2\)</span> is the degrees of freedom. The degrees of freedom is <span class="math notranslate nohighlight">\(N-2\)</span> because you can always draw a line through two data points. Three data points are needed to obatin one independent piece of information.</p>
-</div>
-</div>
-<div class="section" id="linear-regression-type-i">
-<h2>Linear regression (Type I)<a class="headerlink" href="#linear-regression-type-i" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="least-squares-regression">
-<h3>Least-Squares Regression<a class="headerlink" href="#least-squares-regression" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="linear-regression-type-i">
+<h2>Linear regression (Type I)<a class="headerlink" href="#linear-regression-type-i" title="Permalink to this headline">#</a></h2>
+<section id="least-squares-regression">
+<h3>Least-Squares Regression<a class="headerlink" href="#least-squares-regression" title="Permalink to this headline">#</a></h3>
 <p><strong>Type I regression minimizes the variance along one axis</strong></p>
 <ul class="simple">
 <li><p>x is the independent variable</p></li>
@@ -844,9 +963,9 @@
 <p>Be careful when choosing a subset!</p>
 <p><img alt="images/temperature_trends_short_vs_long.png" src="_images/temperature_trends_short_vs_long.png" /></p>
 <p><em>source</em>: Walsh, J., et al. (11 January 2013), “Figure 6: Short-term Variations Versus Long-term Trend, in: D. Is the global temperature still increasing? Isn’t there recent evidence that it is actually 1 cooling?, in: Appendix I: NCA Climate Science - Addressing Commonly Asked Questions from A to Z”, in Federal Advisory Committee Draft Climate Assessment. A report by the National Climate Assessment Development Advisory Committee (NCADAC)[1], Washington, DC, USA: U.S. Global Change Research Program, p.1065.</p>
-</div>
-<div class="section" id="linear-regression-assumptions">
-<h3>Linear Regression Assumptions<a class="headerlink" href="#linear-regression-assumptions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="linear-regression-assumptions">
+<h3>Linear Regression Assumptions<a class="headerlink" href="#linear-regression-assumptions" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Validity of linear model</p></li>
 <li><p>Constant variance: same variance regardless of x value (homoscdastic)</p></li>
@@ -904,9 +1023,9 @@
 <img alt="_images/week05a-corr-regress-least-squares_13_1.png" src="_images/week05a-corr-regress-least-squares_13_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="minimizing-the-sum-of-squared-errors-sse">
-<h3>Minimizing the sum of squared errors, SSE<a class="headerlink" href="#minimizing-the-sum-of-squared-errors-sse" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="minimizing-the-sum-of-squared-errors-sse">
+<h3>Minimizing the sum of squared errors, SSE<a class="headerlink" href="#minimizing-the-sum-of-squared-errors-sse" title="Permalink to this headline">#</a></h3>
 <p>The goal of any “least squares” regression is to minimize the sum of squared errors.</p>
 <div class="math notranslate nohighlight">
 \[SSE  = \sum_{i=1} ^N (y_i - \hat{y_i})^2\]</div>
@@ -917,9 +1036,9 @@
 <li><p><span class="math notranslate nohighlight">\((y_i - \hat{y_i})^2\)</span> is the squared error</p></li>
 </ul>
 <p>On an <span class="math notranslate nohighlight">\(x\)</span>-<span class="math notranslate nohighlight">\(y\)</span> plot, the SSE can be thought of the sum of the vertical distances between the data values <span class="math notranslate nohighlight">\(y_i\)</span> and the corresponding model values <span class="math notranslate nohighlight">\(\hat{y}_i\)</span>.</p>
-</div>
-<div class="section" id="regression-slope">
-<h3>Regression slope<a class="headerlink" href="#regression-slope" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="regression-slope">
+<h3>Regression slope<a class="headerlink" href="#regression-slope" title="Permalink to this headline">#</a></h3>
 <p>The regression slope depends on the covariance <span class="math notranslate nohighlight">\(s_{xy}^2\)</span> and the variance <span class="math notranslate nohighlight">\(s_x^2\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[ \hat{a}_2 = \frac{s_{xy}^2}{s_x^2} = \frac{ \sum_{i=1} ^N (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1} ^N (x_i - \bar{x})^2}\]</div>
@@ -927,36 +1046,36 @@
 <div class="math notranslate nohighlight">
 \[ \hat{a}_2 = \frac{s_{xy}^2}{s_x^2} = r_{xy}\frac{s_y}{s_x}\]</div>
 <p>Either way, the slope depends on both the spread of the data and the degree to which <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> covary. If the correlation between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is zero, the least squares regression line is flat. The regression line can have a steep slope if there is a strong correlation between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, and the standard deviation of <span class="math notranslate nohighlight">\(y\)</span> is large relative to the standard deviation of <span class="math notranslate nohighlight">\(x\)</span>.</p>
-</div>
-<div class="section" id="regression-intercept">
-<h3>Regression Intercept<a class="headerlink" href="#regression-intercept" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="regression-intercept">
+<h3>Regression Intercept<a class="headerlink" href="#regression-intercept" title="Permalink to this headline">#</a></h3>
 <p>The least squares regression line is guaranteed to go through the mean values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. This property can be used to find the intercept of the regression line.</p>
 <div class="math notranslate nohighlight">
 \[ \hat{a}_1 = \bar{y} - \hat{a}_2\bar{x} \]</div>
-</div>
-<div class="section" id="standard-error-of-the-estimate">
-<h3>Standard error of the estimate<a class="headerlink" href="#standard-error-of-the-estimate" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="standard-error-of-the-estimate">
+<h3>Standard error of the estimate<a class="headerlink" href="#standard-error-of-the-estimate" title="Permalink to this headline">#</a></h3>
 <p>The standard error of the estimate is a measure of the goodness of fit of the model. It depends on the sum of squared errors, which is minimized in least squares regression, as well as the degrees of freedom <span class="math notranslate nohighlight">\(\nu = N - 2\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[s_e = \left( \frac{SSE}{N-2} \right)^{1/2}\]</div>
 <p>Note that this is different from the standard error of the data, <span class="math notranslate nohighlight">\(SE_x = s_x/\sqrt{N}\)</span>, which was used earlier to describe how well the mean of a variable <span class="math notranslate nohighlight">\(x\)</span> is known.</p>
-</div>
-<div class="section" id="standard-error-of-the-regression-slope">
-<h3>Standard error of the regression slope<a class="headerlink" href="#standard-error-of-the-regression-slope" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="standard-error-of-the-regression-slope">
+<h3>Standard error of the regression slope<a class="headerlink" href="#standard-error-of-the-regression-slope" title="Permalink to this headline">#</a></h3>
 <p>The standard error of the regression slope (sometimes called the standard error of the gradient) describes how well <span class="math notranslate nohighlight">\(a_2\)</span> is known. It depends on the standard error of the estimate, and the variance in <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[s_{a_2} = \sqrt{\frac{s_e^2}{\sum_{i=1}^N (x-\bar{x})^2}}\]</div>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">stderr</span></code> result given by the <code class="docutils literal notranslate"><span class="pre">stats.linregress</span></code> function is Python refers to the standard error of the slope, <span class="math notranslate nohighlight">\(s_{a_2}\)</span>.</p>
-</div>
-<div class="section" id="confidence-intervals-for-the-regression-slope">
-<h3>Confidence intervals for the regression slope<a class="headerlink" href="#confidence-intervals-for-the-regression-slope" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="confidence-intervals-for-the-regression-slope">
+<h3>Confidence intervals for the regression slope<a class="headerlink" href="#confidence-intervals-for-the-regression-slope" title="Permalink to this headline">#</a></h3>
 <p>The standard error of the slope <span class="math notranslate nohighlight">\(s_{a_2}\)</span> can be used to calculate confidence intervals for the regression slope.</p>
 <div class="math notranslate nohighlight">
 \[\hat{a}_2 - t_{\nu,1 - \alpha /2} s_{a_2} &lt; a_2 &lt; \hat{a}_2 + t_{\nu,1- \alpha /2} s_{a_2}\]</div>
 <p>Based on the data, these intervals describe a range in which the true slope <span class="math notranslate nohighlight">\(a_2\)</span> is thought to lie. This depends on the estimated slope <span class="math notranslate nohighlight">\(\hat{a}_2\)</span>, as well as the degrees of freedom <span class="math notranslate nohighlight">\(\nu\)</span> and significance level <span class="math notranslate nohighlight">\(\alpha\)</span>. This is similar to how confidence intervals are calculated for an estimate of the mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span>.</p>
-</div>
-<div class="section" id="review-relationship-between-correlation-and-regression">
-<h3>Review: relationship between correlation and regression<a class="headerlink" href="#review-relationship-between-correlation-and-regression" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="review-relationship-between-correlation-and-regression">
+<h3>Review: relationship between correlation and regression<a class="headerlink" href="#review-relationship-between-correlation-and-regression" title="Permalink to this headline">#</a></h3>
 <p>The concepts of correlation and regression are closely related. The correlation coefficient <span class="math notranslate nohighlight">\(r\)</span> is given by the relationship</p>
 <div class="math notranslate nohighlight">
 \[ r = \frac{s_{xy}}{s_x s_y}\]</div>
@@ -976,9 +1095,9 @@
 <li><p>If <span class="math notranslate nohighlight">\(r = 0\)</span>, then  <span class="math notranslate nohighlight">\(\hat{a}_2 = 0\)</span> and <span class="math notranslate nohighlight">\(s_{xy} = 0\)</span></p></li>
 </ul>
 <p>There is also a close relationship between testing the null hypothesis of zero correlation and the confidence intervals on the regression slope. If the null hypothesis can be rejected at a given confidence level, then the confidence intervals of the slope will not include zero.</p>
-</div>
-<div class="section" id="linear-regression-type-ii">
-<h3>Linear regression (Type II)<a class="headerlink" href="#linear-regression-type-ii" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="linear-regression-type-ii">
+<h3>Linear regression (Type II)<a class="headerlink" href="#linear-regression-type-ii" title="Permalink to this headline">#</a></h3>
 <p>Type 2 regression is the case where there are potentially errors or uncertainty in both the x and y variables. In a Type 1 regression, one variable needs to be selected as the independent variable (<span class="math notranslate nohighlight">\(x\)</span>) and another needs to be the dependent variable (<span class="math notranslate nohighlight">\(y\)</span>). The least-squares method in the Type I approach minimizes the sum of squared errors <span class="math notranslate nohighlight">\(\sum(\hat{y}-y)^2\)</span>. Errors in the <span class="math notranslate nohighlight">\(x\)</span> variable are not considered in the Type 1 approach.</p>
 <p><img alt="images/type_2_reg.png" src="_images/type_2_reg.png" /></p>
 <p>Image: Emery and Thomson</p>
@@ -991,8 +1110,8 @@ Can. J. Zool., 1984, 62, 1897-1905</p>
 <li><p><span class="math notranslate nohighlight">\(\hat{a}_{2xy}\)</span> : slope of regression of y on x</p></li>
 <li><p>Geometric mean: <span class="math notranslate nohighlight">\(\hat{a}_{2GM} = \sqrt{\frac{\hat{a}_{2yx}} {\hat{a}_{2xy}}}\)</span></p></li>
 </ul>
-<div class="section" id="simplest-type-2-regression-the-geometric-mean">
-<h4>Simplest Type 2 regression - the geometric mean<a class="headerlink" href="#simplest-type-2-regression-the-geometric-mean" title="Permalink to this headline">¶</a></h4>
+<section id="simplest-type-2-regression-the-geometric-mean">
+<h4>Simplest Type 2 regression - the geometric mean<a class="headerlink" href="#simplest-type-2-regression-the-geometric-mean" title="Permalink to this headline">#</a></h4>
 <p>The difference between the two Type 1 regression lines above can be used to illustrate one potential solution, the geometric mean regression. This is the line that bisects the two Type 1 regression lines. This can be thought of as a “compromise” between the two lines. An important assumption in this approach is that the uncertainty in each variable is assumed to be proportional to the sample standard deviation. If the uncertainty is dominated by natural variability, this might be a reasonable assumption. In cases, where the uncertainty is dominated by measurement error, there might be better ways of quantifying the uncertainty based on the analytical techniques. In this case, more sophisticated iterative approaches can be taken to determine the appropriate Type 2 regression model.</p>
 <p>Detailed discussion can be found in Ricker, W. E. (1984) Computation and uses of central trend lines, <em>Can. J. Zool.</em>, 62, 1897-1905.</p>
 <p>Glover, Jenkins and Doney provide an algorithm for determining the geometric mean regression slope:</p>
@@ -1002,10 +1121,10 @@ Can. J. Zool., 1984, 62, 1897-1905</p>
 <li><p>Calculate the geometric mean regression slope, <span class="math notranslate nohighlight">\(slope_{GMR} = \sqrt{\frac{slope_{yx}}{slope_{xy}}}\)</span></p></li>
 <li><p>Determine the intercept by noting that the regression line goes through the mean of <span class="math notranslate nohighlight">\(x\)</span> and the mean of <span class="math notranslate nohighlight">\(y\)</span></p></li>
 </ul>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1029,9 +1148,11 @@ Can. J. Zool., 1984, 62, 1897-1905</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="week04d-exercises.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1047,24 +1168,28 @@ Can. J. Zool., 1984, 62, 1897-1905</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom Connolly<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Tom Connolly<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

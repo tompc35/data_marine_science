@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Modeling, sampling, confidence intervals &#8212; Data Analysis Techniques in Marine Science</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Boolean logic in Python" href="week03b-boolean.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Data Analysis Techniques in Marine Science
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data Analysis Techniques in Marine Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Git reference
  </span>
@@ -422,107 +439,209 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week03a-modeling-sampling.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek03a-modeling-sampling.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week03a-modeling-sampling.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week03a-modeling-sampling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlmldata2022/course-notes"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek03a-modeling-sampling.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/week03a-modeling-sampling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recommended-reading">
    Recommended reading
@@ -740,12 +859,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Modeling, sampling, confidence intervals</h1>
@@ -979,24 +1097,25 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="modeling-sampling-confidence-intervals">
-<h1>Modeling, sampling, confidence intervals<a class="headerlink" href="#modeling-sampling-confidence-intervals" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="recommended-reading">
-<h2>Recommended reading<a class="headerlink" href="#recommended-reading" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="modeling-sampling-confidence-intervals">
+<h1>Modeling, sampling, confidence intervals<a class="headerlink" href="#modeling-sampling-confidence-intervals" title="Permalink to this headline">#</a></h1>
+<section id="recommended-reading">
+<h2>Recommended reading<a class="headerlink" href="#recommended-reading" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="http://statsthinking21.org/index.html">http://statsthinking21.org/index.html</a>
 Chapters 7,8</p></li>
 <li><p>Glover, Jenkins and Doney: Section 2.7 - The central limit theorem</p></li>
 <li><p>Emery and Thomson: Confidence intervals, 3.8.1, 3.8.2 – Confidence interval for mean</p></li>
 </ul>
-</div>
-<div class="section" id="probability-density-function-pdf-review-with-example-data-set">
-<h2>Probability Density Function (PDF) review with example data set<a class="headerlink" href="#probability-density-function-pdf-review-with-example-data-set" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="probability-density-function">
-<h3>Probability density function<a class="headerlink" href="#probability-density-function" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="probability-density-function-pdf-review-with-example-data-set">
+<h2>Probability Density Function (PDF) review with example data set<a class="headerlink" href="#probability-density-function-pdf-review-with-example-data-set" title="Permalink to this headline">#</a></h2>
+<section id="probability-density-function">
+<h3>Probability density function<a class="headerlink" href="#probability-density-function" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(N\)</span> = 10623 anchovy weight samples</p>
 <p><span class="math notranslate nohighlight">\(\Delta x\)</span> = 5 g</p>
 <p><strong>Review</strong>: How to calculate PDF from counts, N and <span class="math notranslate nohighlight">\(\Delta x\)</span> ?</p>
@@ -1005,24 +1124,24 @@ Chapters 7,8</p></li>
 </ul>
 <p>PDF = fraction/<span class="math notranslate nohighlight">\(\Delta x\)</span>  = counts/(<span class="math notranslate nohighlight">\(N \Delta x\)</span>)</p>
 <p><img alt="Trawl_Life_Hist_Samp_Data" src="_images/Trawl_Life_Hist_Samp_Data.png" /></p>
-</div>
-<div class="section" id="noaa-swfsc-trawl-life-history-specimen-data">
-<h3>NOAA SWFSC - Trawl Life History Specimen Data<a class="headerlink" href="#noaa-swfsc-trawl-life-history-specimen-data" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="noaa-swfsc-trawl-life-history-specimen-data">
+<h3>NOAA SWFSC - Trawl Life History Specimen Data<a class="headerlink" href="#noaa-swfsc-trawl-life-history-specimen-data" title="Permalink to this headline">#</a></h3>
 <p>fishery independent trawl surveys of coastal pelagic species</p>
 <p>Surveys: 2003-2019</p>
-</div>
-<div class="section" id="subsampled-data-set">
-<h3>Subsampled data set<a class="headerlink" href="#subsampled-data-set" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="subsampled-data-set">
+<h3>Subsampled data set<a class="headerlink" href="#subsampled-data-set" title="Permalink to this headline">#</a></h3>
 <p><img alt="subsamp_engraulis_mordax" src="_images/subsamp_engraulis_mordax.png" /></p>
 <p>N = 100 anchovy weight samples</p>
-<div class="section" id="what-are-the-key-differences-similarities-of-distribution-compared-with-all-10623-samples">
-<h4>What are the key differences, similarities of distribution, compared with all 10623 samples?<a class="headerlink" href="#what-are-the-key-differences-similarities-of-distribution-compared-with-all-10623-samples" title="Permalink to this headline">¶</a></h4>
+<section id="what-are-the-key-differences-similarities-of-distribution-compared-with-all-10623-samples">
+<h4>What are the key differences, similarities of distribution, compared with all 10623 samples?<a class="headerlink" href="#what-are-the-key-differences-similarities-of-distribution-compared-with-all-10623-samples" title="Permalink to this headline">#</a></h4>
 <p><strong>differences</strong>: a pdf of smaller sample sizes are noiser, less smooth.  May see more variability from one bin to the next.</p>
 <p><strong>similarities</strong>: theoretical distribution resembles poisson distribution (skewed data set with a longer tail), scale of y-axis (normalized by the bin width so magnitudes of different data sets are comparable)</p>
-</div>
-</div>
-<div class="section" id="statistical-modeling">
-<h3>Statistical modeling<a class="headerlink" href="#statistical-modeling" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="statistical-modeling">
+<h3>Statistical modeling<a class="headerlink" href="#statistical-modeling" title="Permalink to this headline">#</a></h3>
 <p><strong>What is a model?</strong> -
 physical models (of a building, of monterey bay, of a cell or a molecule).  The general characteristics of a physical model is able to represent something on a different scale to make it easier to understand, to convey the essence of what you are model without having to worry about all the details. a statistical model is same basic idea as a physical model, we want to convey the essence of the dataset without having to use an entire dataset</p>
 <p><strong>basic structure of a statistic model</strong> -
@@ -1031,12 +1150,12 @@ statistical model is based off data</p>
 <ul class="simple">
 <li><p>one of the key goals is to quantify that error</p></li>
 </ul>
-</div>
-<div class="section" id="example-data-set-simplest-model">
-<h3>Example data set: simplest model<a class="headerlink" href="#example-data-set-simplest-model" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-data-set-simplest-model">
+<h3>Example data set: simplest model<a class="headerlink" href="#example-data-set-simplest-model" title="Permalink to this headline">#</a></h3>
 <p><img alt="Trawl_Life_Hist_Samp_Data" src="_images/Trawl_Life_Hist_Samp_Data.png" /></p>
-<div class="section" id="the-simplest-possible-model-is-a-single-value">
-<h4>The simplest possible model is a single value<a class="headerlink" href="#the-simplest-possible-model-is-a-single-value" title="Permalink to this headline">¶</a></h4>
+<section id="the-simplest-possible-model-is-a-single-value">
+<h4>The simplest possible model is a single value<a class="headerlink" href="#the-simplest-possible-model-is-a-single-value" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Mode = 5 g</p></li>
 <li><p>Mean = 15.326 g</p></li>
@@ -1052,59 +1171,59 @@ statistical model is based off data</p>
 <p>Each observation has a model value and an error associated with it.</p>
 <p><span class="math notranslate nohighlight">\(weight_i\)</span> is an observation, or data point</p>
 <p>In the example, if we have 10K data points, then we have 10k errors.</p>
-</div>
-</div>
-<div class="section" id="example-data-set-mode-as-a-model">
-<h3>Example data set: mode as a model<a class="headerlink" href="#example-data-set-mode-as-a-model" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="example-data-set-mode-as-a-model">
+<h3>Example data set: mode as a model<a class="headerlink" href="#example-data-set-mode-as-a-model" title="Permalink to this headline">#</a></h3>
 <p><img alt="subsamp_engraulis_mordax_mode" src="_images/subsamp_engraulis_mordax_mode.png" /></p>
 <p>Average error when using mode as model:
 10.326 g</p>
 <p>If we use the mean as a model, will the average error increase or decrease?</p>
-</div>
-<div class="section" id="example-data-set-mean-as-a-model">
-<h3>Example data set: mean as a model<a class="headerlink" href="#example-data-set-mean-as-a-model" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-data-set-mean-as-a-model">
+<h3>Example data set: mean as a model<a class="headerlink" href="#example-data-set-mean-as-a-model" title="Permalink to this headline">#</a></h3>
 <p><img alt="subsamp_engraulis_mordax_mean" src="_images/subsamp_engraulis_mordax_mean.png" /></p>
 <p>If we use the mean as a model, <span class="math notranslate nohighlight">\(\hat{x_i} = \bar{x_i}\)</span></p>
 <p><em>The average error when using mean as a model is 0.0g.  In this case, the negative errors cancel out the positive errors, and in this case, using the mean as a model does not best describe the data.</em></p>
-<div class="section" id="what-other-metrics-can-we-use-to-quantify-model-error">
-<h4>What other metrics can we use to quantify model error?<a class="headerlink" href="#what-other-metrics-can-we-use-to-quantify-model-error" title="Permalink to this headline">¶</a></h4>
+<section id="what-other-metrics-can-we-use-to-quantify-model-error">
+<h4>What other metrics can we use to quantify model error?<a class="headerlink" href="#what-other-metrics-can-we-use-to-quantify-model-error" title="Permalink to this headline">#</a></h4>
 <p>Some ways of quantifying the error:</p>
 <p>We can describe the mean error (average error) as:</p>
 <p><span class="math notranslate nohighlight">\(ME = \frac{1}{N} \sum_{i=1}^N (x_i - \hat{x_i})\)</span></p>
 <p>If our model (<span class="math notranslate nohighlight">\(\hat{x_i}\)</span>) is the mean of the dataset (<span class="math notranslate nohighlight">\(\bar{x_i}\)</span>), then the ME = 0 and is unbiased.</p>
-</div>
-<div class="section" id="sum-of-squared-errors">
-<h4>Sum of Squared Errors<a class="headerlink" href="#sum-of-squared-errors" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="sum-of-squared-errors">
+<h4>Sum of Squared Errors<a class="headerlink" href="#sum-of-squared-errors" title="Permalink to this headline">#</a></h4>
 <p><span class="math notranslate nohighlight">\(SSE = \sum_{i=1}^N (x_i - \hat{x_i})^2\)</span></p>
 <p>(This treats the positive and negative values equally)</p>
-</div>
-<div class="section" id="mean-squared-error">
-<h4>Mean Squared Error<a class="headerlink" href="#mean-squared-error" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="mean-squared-error">
+<h4>Mean Squared Error<a class="headerlink" href="#mean-squared-error" title="Permalink to this headline">#</a></h4>
 <p><span class="math notranslate nohighlight">\(MSE = \frac{1}{N} SSE\)</span></p>
-</div>
-<div class="section" id="root-mean-square-error">
-<h4>Root Mean Square Error<a class="headerlink" href="#root-mean-square-error" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="root-mean-square-error">
+<h4>Root Mean Square Error<a class="headerlink" href="#root-mean-square-error" title="Permalink to this headline">#</a></h4>
 <p><span class="math notranslate nohighlight">\(RMSE = \sqrt{MSE}\)</span></p>
 <p>The units for RMSE will make it easier to understand the error mismatch. This is a summary of all the errors in the dataset by penalizing all errors in the dataset equally.</p>
 <ul class="simple">
 <li><p>RMSE(mean) = 9.71 grams (describing the spread or standard deviation of the error)</p></li>
 <li><p>RMSE(mode) = 14.18 grams (this is biased)</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="the-mean-is-the-single-value-that-minimizes-rmse">
-<h3>The mean is the single value that minimizes RMSE<a class="headerlink" href="#the-mean-is-the-single-value-that-minimizes-rmse" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="the-mean-is-the-single-value-that-minimizes-rmse">
+<h3>The mean is the single value that minimizes RMSE<a class="headerlink" href="#the-mean-is-the-single-value-that-minimizes-rmse" title="Permalink to this headline">#</a></h3>
 <p><img alt="RMSE_min" src="_images/RMSE_min.png" /></p>
 <ul class="simple">
 <li><p>This plot is showing the rmse as a function of the model value. Different models will minimize different types of errors (mean, median, mode).</p></li>
 <li><p>This plot is called a ‘cost function’ we have a model parameter (x-axis), we have a cost (y-value).  The goal of modeling is to minimize the cost function</p></li>
 </ul>
-</div>
-<div class="section" id="example-data-set-linear-model">
-<h3>Example data set: linear model<a class="headerlink" href="#example-data-set-linear-model" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-data-set-linear-model">
+<h3>Example data set: linear model<a class="headerlink" href="#example-data-set-linear-model" title="Permalink to this headline">#</a></h3>
 <p><img alt="lin_mod_example" src="_images/lin_mod_example.png" /></p>
-<div class="section" id="rmse-3-57-g">
-<h4>RMSE = 3.57 g<a class="headerlink" href="#rmse-3-57-g" title="Permalink to this headline">¶</a></h4>
+<section id="rmse-3-57-g">
+<h4>RMSE = 3.57 g<a class="headerlink" href="#rmse-3-57-g" title="Permalink to this headline">#</a></h4>
 <p>Looking at the data, it looks like a linear model only works for part of the data.  If we were going to use this linear model, our equation would be:</p>
 <p><span class="math notranslate nohighlight">\(\hat{weight_i} =  constant + a * length_i\)</span></p>
 <p><span class="math notranslate nohighlight">\(\hat{}\)</span> indicates <span class="math notranslate nohighlight">\({weight_i}\)</span> is a model</p>
@@ -1113,56 +1232,56 @@ statistical model is based off data</p>
 <ul class="simple">
 <li><p>The intercept and slope are the model parameters. You can think of the error as being the vertical distance between the data point and the model.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="example-data-set-quadratic-model">
-<h3>Example data set: quadratic model<a class="headerlink" href="#example-data-set-quadratic-model" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="rmse-2-11-g">
-<h4>RMSE = 2.11 g<a class="headerlink" href="#rmse-2-11-g" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="example-data-set-quadratic-model">
+<h3>Example data set: quadratic model<a class="headerlink" href="#example-data-set-quadratic-model" title="Permalink to this headline">#</a></h3>
+<section id="rmse-2-11-g">
+<h4>RMSE = 2.11 g<a class="headerlink" href="#rmse-2-11-g" title="Permalink to this headline">#</a></h4>
 <p><img alt="quad_mod_example" src="_images/quad_mod_example.png" /></p>
 <p><span class="math notranslate nohighlight">\(\hat{weight_i} =  constant + a * length_i + b * length_i^2\)</span></p>
 <p>The constant, a, and b are model parameters that describe the structure or the shape of the model. We can find the model that minimizes the RMSE.  This looks like it is doing better than a linear model, but the model indicates that their weight decreases as they get bigger for smaller fish.  It still has some systematic errors where there is some bias.</p>
-</div>
-</div>
-<div class="section" id="example-data-set-data-transformation">
-<h3>Example data set: data transformation<a class="headerlink" href="#example-data-set-data-transformation" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="example-data-set-data-transformation">
+<h3>Example data set: data transformation<a class="headerlink" href="#example-data-set-data-transformation" title="Permalink to this headline">#</a></h3>
 <p><img alt="data_trans_example" src="_images/data_trans_example.png" /></p>
 <p>This is the same data transformed to a logarithmic scale, and now it appears that a linear model may be appropriate.  Now, we are not minimizing the RMSE, you are minimizing the logarthmic RMSE.</p>
-<div class="section" id="what-makes-a-model-good">
-<h4>What makes a model good?<a class="headerlink" href="#what-makes-a-model-good" title="Permalink to this headline">¶</a></h4>
+<section id="what-makes-a-model-good">
+<h4>What makes a model good?<a class="headerlink" href="#what-makes-a-model-good" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>good fit</p></li>
 <li><p>minimizes error</p></li>
 <li><p>represents actual scenario of the data (think ahead of error sources)</p></li>
 <li><p>is not overcomplicated</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="modeling-another-species-overfitting">
-<h3>Modeling another species - Overfitting<a class="headerlink" href="#modeling-another-species-overfitting" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="modeling-another-species-overfitting">
+<h3>Modeling another species - Overfitting<a class="headerlink" href="#modeling-another-species-overfitting" title="Permalink to this headline">#</a></h3>
 <p><img alt="overfit_example" src="_images/overfit_example.png" /></p>
-<div class="section" id="seventh-degree-polynomial-fit-to-nine-data-points">
-<h4>Seventh degree polynomial fit to nine data points.<a class="headerlink" href="#seventh-degree-polynomial-fit-to-nine-data-points" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-<div class="section" id="overfitting">
-<h3>Overfitting<a class="headerlink" href="#overfitting" title="Permalink to this headline">¶</a></h3>
+<section id="seventh-degree-polynomial-fit-to-nine-data-points">
+<h4>Seventh degree polynomial fit to nine data points.<a class="headerlink" href="#seventh-degree-polynomial-fit-to-nine-data-points" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="overfitting">
+<h3>Overfitting<a class="headerlink" href="#overfitting" title="Permalink to this headline">#</a></h3>
 <p><img alt="overfit_example_more_data" src="_images/overfit_example_more_data.png" /></p>
 <ul class="simple">
 <li><p>Model is overcomplicated and not representative of the actual scenario.  If another datapoint is added not on the model, the RMSE will be huge.  More data points will quickly deteriorate the model.</p></li>
 </ul>
-</div>
-<div class="section" id="sampling">
-<h3>Sampling<a class="headerlink" href="#sampling" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="sampling">
+<h3>Sampling<a class="headerlink" href="#sampling" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>Statistical inference</em>: One of the foundational ideas in statistics is that we can make inferences about an entire population based on a relatively small sample of individuals from that population.</p></li>
 <li><p><em>Goal of sampling</em>: determine the value of a statistic for an entire population of interest, using just a small subset of the population.</p></li>
 </ul>
 <p>The way in which we select the sample is critical to ensuring that the sample is representative of the entire population.</p>
 <p>Adapted from: <a class="reference external" href="http://statsthinking21.org/sampling.html">http://statsthinking21.org/sampling.html</a></p>
-</div>
-<div class="section" id="back-to-the-anchovy-data-example-distribution-of-means">
-<h3>Back to the anchovy data example: distribution of means<a class="headerlink" href="#back-to-the-anchovy-data-example-distribution-of-means" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="back-to-the-anchovy-data-example-distribution-of-means">
+<h3>Back to the anchovy data example: distribution of means<a class="headerlink" href="#back-to-the-anchovy-data-example-distribution-of-means" title="Permalink to this headline">#</a></h3>
 <p><img alt="trawl_pdf_mean_dist" src="_images/trawl_pdf_mean_dist.png" /></p>
 <p><strong>Blue bars</strong>: distribution of 1000 different sample means (<span class="math notranslate nohighlight">\(\bar{x}\)</span>), with N = 100 samples each</p>
 <p>Mean of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 15.346 g
@@ -1170,25 +1289,25 @@ Std. dev. of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 0.9
 <p><strong>Orange curve</strong>: normal distribution</p>
 <p><span class="math notranslate nohighlight">\(\mu\)</span> = 15.327 g (mean of full data set)</p>
 <p><span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{N}}\)</span> = 0.971 g (std. dev. of full data set / √100)</p>
-</div>
-<div class="section" id="anchovy-data-distribution-of-means-zoomed-in">
-<h3>Anchovy data: distribution of means (zoomed in)<a class="headerlink" href="#anchovy-data-distribution-of-means-zoomed-in" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="anchovy-data-distribution-of-means-zoomed-in">
+<h3>Anchovy data: distribution of means (zoomed in)<a class="headerlink" href="#anchovy-data-distribution-of-means-zoomed-in" title="Permalink to this headline">#</a></h3>
 <p><img alt="images/trawl_pdf_mean_dist_zoomed.png" src="_images/trawl_pdf_mean_dist_zoomed.png" /></p>
-<div class="section" id="blue-bars-distribution-of-106-different-sample-means-bar-x-with-n-100-samples-each">
-<h4>Blue bars: distribution of 106 different sample means (<span class="math notranslate nohighlight">\(\bar{x}\)</span>), with N = 100 samples each<a class="headerlink" href="#blue-bars-distribution-of-106-different-sample-means-bar-x-with-n-100-samples-each" title="Permalink to this headline">¶</a></h4>
+<section id="blue-bars-distribution-of-106-different-sample-means-bar-x-with-n-100-samples-each">
+<h4>Blue bars: distribution of 106 different sample means (<span class="math notranslate nohighlight">\(\bar{x}\)</span>), with N = 100 samples each<a class="headerlink" href="#blue-bars-distribution-of-106-different-sample-means-bar-x-with-n-100-samples-each" title="Permalink to this headline">#</a></h4>
 <p>Mean of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 15.358 g
 Std. dev. of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 0.822 g</p>
-</div>
-<div class="section" id="orange-curve-normal-distribution">
-<h4>Orange curve: normal distribution<a class="headerlink" href="#orange-curve-normal-distribution" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="orange-curve-normal-distribution">
+<h4>Orange curve: normal distribution<a class="headerlink" href="#orange-curve-normal-distribution" title="Permalink to this headline">#</a></h4>
 <p><span class="math notranslate nohighlight">\(\mu{}\)</span> = 15.327 g (mean of full data set)</p>
 <p><span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{N}}\)</span> = 0.971 g (std. dev. of full data set / √100)</p>
 <p>This is a consequence of the central limit theorem.</p>
-</div>
-</div>
-</div>
-<div class="section" id="the-central-limit-theorem">
-<h2>The Central Limit Theorem<a class="headerlink" href="#the-central-limit-theorem" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="the-central-limit-theorem">
+<h2>The Central Limit Theorem<a class="headerlink" href="#the-central-limit-theorem" title="Permalink to this headline">#</a></h2>
 <p>The <strong>central limit theorem</strong> states that no matter what the probability distribution of parent population is, the <em>mean of the means</em> drawn from the same population is normally distributed for large sample sizes. As <span class="math notranslate nohighlight">\(N\)</span> approaches infinity,</p>
 <p>mean<span class="math notranslate nohighlight">\((\bar{x}) \rightarrow \mu\)</span> (the mean of the sample means approaches the true mean)</p>
 <p>std<span class="math notranslate nohighlight">\((\bar{x}) \rightarrow \frac{\sigma}{\sqrt{N}}\)</span> (the standard deviation of the sample means approaches the true standard error)</p>
@@ -1201,29 +1320,29 @@ Std. dev. of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 0.8
 </ul>
 <p>When sampling a noisy environment and ensemble averaging, oceanographers must be careful to choose an ensemble that is long enough to collect enough samples, but not so long that the statistics are changing significantly over longer time scales. If statistics are robust regardless, of the sampling duration, the process is said to be <strong>stationary</strong>.</p>
 <p>*Adapted from: <a class="reference external" href="http://statsthinking21.org/sampling.html">http://statsthinking21.org/sampling.html</a></p>
-<div class="section" id="central-limit-theorem-in-other-words">
-<h3>Central limit theorem (in other words)<a class="headerlink" href="#central-limit-theorem-in-other-words" title="Permalink to this headline">¶</a></h3>
+<section id="central-limit-theorem-in-other-words">
+<h3>Central limit theorem (in other words)<a class="headerlink" href="#central-limit-theorem-in-other-words" title="Permalink to this headline">#</a></h3>
 <p>The distribution of an average tends to be Normal, even when the distribution from which the average is computed is decidedly non-Normal.</p>
 <p><a class="reference external" href="http://www.statisticalengineering.com/central_limit_theorem.htm">http://www.statisticalengineering.com/central_limit_theorem.htm</a></p>
 <p>The amazing and counter-intuitive thing about the central limit theorem is that no matter what the shape of the original distribution, the sampling distribution of the mean approaches a normal distribution. Furthermore, for most distributions, a normal distribution is approached very quickly as N increases.</p>
 <p><a class="reference external" href="http://davidmlane.com/hyperstat/A14043.html">http://davidmlane.com/hyperstat/A14043.html</a></p>
-</div>
-<div class="section" id="central-limit-theorem-applications">
-<h3>Central limit theorem - applications<a class="headerlink" href="#central-limit-theorem-applications" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="central-limit-theorem-applications">
+<h3>Central limit theorem - applications<a class="headerlink" href="#central-limit-theorem-applications" title="Permalink to this headline">#</a></h3>
 <p><img alt="images/clt_application.png" src="_images/clt_application.png" /></p>
 <p>This distribution is skewed, but there are hundreds of samples</p>
 <p>The 95% confidence interval for the mean can still be estimated as</p>
 <p><span class="math notranslate nohighlight">\(\bar{x}\)</span> ±1.96 <span class="math notranslate nohighlight">\(\frac{s}{\sqrt{N}}\)</span></p>
 <p>With very few samples, the mean would not only be uncertain, but also biased</p>
 <p>*<a class="reference external" href="https://onlinecourses.science.psu.edu/stat414/node/261">https://onlinecourses.science.psu.edu/stat414/node/261</a></p>
-</div>
-<div class="section" id="central-limit-theorem-dice-example">
-<h3>Central limit theorem – dice example<a class="headerlink" href="#central-limit-theorem-dice-example" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="central-limit-theorem-dice-example">
+<h3>Central limit theorem – dice example<a class="headerlink" href="#central-limit-theorem-dice-example" title="Permalink to this headline">#</a></h3>
 <p>If we start to get more samples, we start to get more of a peak in the distribution</p>
 <p><img alt="images/clt_dice_ex.png" src="_images/clt_dice_ex.png" /></p>
-</div>
-<div class="section" id="the-z-distribution">
-<h3>The <em>z</em> Distribution<a class="headerlink" href="#the-z-distribution" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-z-distribution">
+<h3>The <em>z</em> Distribution<a class="headerlink" href="#the-z-distribution" title="Permalink to this headline">#</a></h3>
 <p><img alt="images/zdist_example.png" src="_images/zdist_example.png" /></p>
 <ul>
 <li><p>According to the central limit theorem, sample means (<span class="math notranslate nohighlight">\(\bar{x}\)</span>) are normally distributed for large N.</p></li>
@@ -1235,15 +1354,15 @@ Std. dev. of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 0.8
 <li><p>This is the basis for forming 95% confidence intervals</p></li>
 </ul>
 <p><img alt="images/trawl_pdf_mean_dist_zoomed.png" src="_images/trawl_pdf_mean_dist_zoomed.png" /></p>
-</div>
-<div class="section" id="confidence-intervals-for-the-mean">
-<h3>Confidence intervals for the mean<a class="headerlink" href="#confidence-intervals-for-the-mean" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="confidence-intervals-for-the-mean">
+<h3>Confidence intervals for the mean<a class="headerlink" href="#confidence-intervals-for-the-mean" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(CI_{95\%} = \bar{x} \pm 1.96 \times SE\)</span>, where SE is the standard error <span class="math notranslate nohighlight">\(\frac{S}{\sqrt{N}}\)</span></p>
 <ul class="simple">
 <li><p>With large enough sampling size N, the 95% confidence interval will contain the true population mean 95% of the time.*</p></li>
 </ul>
-<div class="section" id="common-misinterpretation-of-confidence-intervals">
-<h4>Common misinterpretation of confidence intervals*:<a class="headerlink" href="#common-misinterpretation-of-confidence-intervals" title="Permalink to this headline">¶</a></h4>
+<section id="common-misinterpretation-of-confidence-intervals">
+<h4>Common misinterpretation of confidence intervals*:<a class="headerlink" href="#common-misinterpretation-of-confidence-intervals" title="Permalink to this headline">#</a></h4>
 <p>“There is a 95% chance that the population mean falls within the interval.”</p>
 <p>What is wrong with this statement, and how does it differ from the correct interpretation?</p>
 <ul class="simple">
@@ -1251,10 +1370,10 @@ Std. dev. of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 0.8
 <li><p>It is the <em>sample mean</em> that has a probability of falling within the confidence intervals, not the <em>true mean</em></p></li>
 </ul>
 <p>*Adapted from: <a class="reference external" href="http://statsthinking21.org/sampling.html">http://statsthinking21.org/sampling.html</a></p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1278,9 +1397,11 @@ Std. dev. of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 0.8
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="week02c-exercises-python-intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1296,24 +1417,28 @@ Std. dev. of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 0.8
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom Connolly<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Tom Connolly<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -1,0 +1,64 @@
+Traceback (most recent call last):
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+lancz_weights = signal.firwin(120,1/40,fs=1,window='hanning')
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m~/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/scipy/signal/windows/_windows.py:2214[0m, in [0;36mget_window[0;34m(window, Nx, fftbins)[0m
+[1;32m   2213[0m [38;5;28;01mtry[39;00m:
+[0;32m-> 2214[0m     beta [38;5;241m=[39m [38;5;28;43mfloat[39;49m[43m([49m[43mwindow[49m[43m)[49m
+[1;32m   2215[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mTypeError[39;00m, [38;5;167;01mValueError[39;00m) [38;5;28;01mas[39;00m e:
+
+[0;31mValueError[0m: could not convert string to float: 'hanning'
+
+During handling of the above exception, another exception occurred:
+
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+File [0;32m~/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/scipy/signal/windows/_windows.py:2232[0m, in [0;36mget_window[0;34m(window, Nx, fftbins)[0m
+[1;32m   2231[0m [38;5;28;01mtry[39;00m:
+[0;32m-> 2232[0m     winfunc [38;5;241m=[39m [43m_win_equiv[49m[43m[[49m[43mwinstr[49m[43m][49m
+[1;32m   2233[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m e:
+
+[0;31mKeyError[0m: 'hanning'
+
+The above exception was the direct cause of the following exception:
+
+[0;31mValueError[0m                                Traceback (most recent call last)
+Input [0;32mIn [13][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0m lancz_weights [38;5;241m=[39m [43msignal[49m[38;5;241;43m.[39;49m[43mfirwin[49m[43m([49m[38;5;241;43m120[39;49m[43m,[49m[38;5;241;43m1[39;49m[38;5;241;43m/[39;49m[38;5;241;43m40[39;49m[43m,[49m[43mfs[49m[38;5;241;43m=[39;49m[38;5;241;43m1[39;49m[43m,[49m[43mwindow[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mhanning[39;49m[38;5;124;43m'[39;49m[43m)[49m
+
+File [0;32m~/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/scipy/signal/_fir_filter_design.py:463[0m, in [0;36mfirwin[0;34m(numtaps, cutoff, width, window, pass_zero, scale, nyq, fs)[0m
+[1;32m    461[0m [38;5;66;03m# Get and apply the window function.[39;00m
+[1;32m    462[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mwindows[39;00m [38;5;28;01mimport[39;00m get_window
+[0;32m--> 463[0m win [38;5;241m=[39m [43mget_window[49m[43m([49m[43mwindow[49m[43m,[49m[43m [49m[43mnumtaps[49m[43m,[49m[43m [49m[43mfftbins[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+[1;32m    464[0m h [38;5;241m*[39m[38;5;241m=[39m win
+[1;32m    466[0m [38;5;66;03m# Now handle scaling if desired.[39;00m
+
+File [0;32m~/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/scipy/signal/windows/_windows.py:2234[0m, in [0;36mget_window[0;34m(window, Nx, fftbins)[0m
+[1;32m   2232[0m     winfunc [38;5;241m=[39m _win_equiv[winstr]
+[1;32m   2233[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m e:
+[0;32m-> 2234[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mUnknown window type.[39m[38;5;124m"[39m) [38;5;28;01mfrom[39;00m [38;5;21;01me[39;00m
+[1;32m   2236[0m [38;5;28;01mif[39;00m winfunc [38;5;129;01mis[39;00m dpss:
+[1;32m   2237[0m     params [38;5;241m=[39m (Nx,) [38;5;241m+[39m args [38;5;241m+[39m ([38;5;28;01mNone[39;00m,)
+
+[0;31mValueError[0m: Unknown window type.
+ValueError: Unknown window type.
+

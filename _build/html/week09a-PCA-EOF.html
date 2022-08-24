@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs) &#8212; Data Analysis Techniques in Marine Science</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Multidimensional Scaling Analysis" href="week09b-MDS.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Data Analysis Techniques in Marine Science
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data Analysis Techniques in Marine Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Git reference
  </span>
@@ -422,107 +439,209 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week09a-PCA-EOF.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek09a-PCA-EOF.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week09a-PCA-EOF.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week09a-PCA-EOF.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlmldata2022/course-notes"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek09a-PCA-EOF.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/week09a-PCA-EOF.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#visualizing-in-two-dimensions-two-variables">
    Visualizing in two dimensions (two variables)
@@ -638,12 +757,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)</h1>
@@ -775,31 +893,32 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="principal-component-analysis-pca-and-empirical-orthogonal-functions-eofs">
-<h1>Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)<a class="headerlink" href="#principal-component-analysis-pca-and-empirical-orthogonal-functions-eofs" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="principal-component-analysis-pca-and-empirical-orthogonal-functions-eofs">
+<h1>Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)<a class="headerlink" href="#principal-component-analysis-pca-and-empirical-orthogonal-functions-eofs" title="Permalink to this headline">#</a></h1>
 <p>The goal of <em>principal component analysis (PCA)</em> is to efficiently represent variability that is common among multiple variables. One application is to create an “index” that describes how different variables co-vary, or how a single variable co-varies in different places. <em>Empirical orthogonal functions (EOFs)</em> are a very similar type of analysis that involves the same basic steps (often seen in Physical Oceanography or Meteorology literature).</p>
-<div class="section" id="visualizing-in-two-dimensions-two-variables">
-<h2>Visualizing in two dimensions (two variables)<a class="headerlink" href="#visualizing-in-two-dimensions-two-variables" title="Permalink to this headline">¶</a></h2>
+<section id="visualizing-in-two-dimensions-two-variables">
+<h2>Visualizing in two dimensions (two variables)<a class="headerlink" href="#visualizing-in-two-dimensions-two-variables" title="Permalink to this headline">#</a></h2>
 <p>PCA is easiest to visualize when there are only two variables. The same data can be visualized on different axes if you simply rotate the data into a new coordinate system with new axes.</p>
 <p><img alt="images/PCA_1.png" src="_images/PCA_1.png" /></p>
 <p><em>Image source</em>: Joliffe (1990) Weather</p>
 <p>In the figure above, the data are rotated into a new coordinate system that maximizes the variance, or spread, in the data along the x-axis (the major axis) and minimizes the variance in the y-axis (the minor axis). This particular type of PCA in two dimensions is often referred to as <strong>principal axis</strong> analysis. This analysis, which is described in detail below, creates a new coordinate frame that maximizes variability along an axis (PC1) and corresponding orthogonal axis (PC2) where PC1 PC2 are uncorrelated.</p>
 <p>A common application of this type of analysis is to rotate data from a East/North coordinate system to <em>natural coordinates</em> primary oriented with the coastline or topography.</p>
-<div class="section" id="example-wind-vectors">
-<h3>Example - Wind vectors<a class="headerlink" href="#example-wind-vectors" title="Permalink to this headline">¶</a></h3>
+<section id="example-wind-vectors">
+<h3>Example - Wind vectors<a class="headerlink" href="#example-wind-vectors" title="Permalink to this headline">#</a></h3>
 <p><img alt="images/PCA_2.png" src="_images/PCA_2.png" /></p>
 <p>Source: Patrick Daniel, MS 263, Spring 2016</p>
-</div>
-<div class="section" id="example-from-emery-and-thompson-current-meter-data">
-<h3>Example from Emery and Thompson - Current meter data<a class="headerlink" href="#example-from-emery-and-thompson-current-meter-data" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-from-emery-and-thompson-current-meter-data">
+<h3>Example from Emery and Thompson - Current meter data<a class="headerlink" href="#example-from-emery-and-thompson-current-meter-data" title="Permalink to this headline">#</a></h3>
 <p><img alt="images/PCA_3.png" src="_images/PCA_3.png" /></p>
-</div>
-</div>
-<div class="section" id="principal-component-analysis-steps">
-<h2>Principal component analysis: steps<a class="headerlink" href="#principal-component-analysis-steps" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="principal-component-analysis-steps">
+<h2>Principal component analysis: steps<a class="headerlink" href="#principal-component-analysis-steps" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Create data matrix (size: N x M, N rows and M columns)</p>
 <ul class="simple">
@@ -811,8 +930,8 @@
 <li><p>The eigenvectors are the principal components, the eigenvalues are their magnitudes</p></li>
 </ol>
 <p>Here these steps are decribed for a two dimensional example, focusing on the current meter example above.</p>
-<div class="section" id="data-matrix-x">
-<h3>1. Data matrix, <strong>X</strong><a class="headerlink" href="#data-matrix-x" title="Permalink to this headline">¶</a></h3>
+<section id="data-matrix-x">
+<h3>1. Data matrix, <strong>X</strong><a class="headerlink" href="#data-matrix-x" title="Permalink to this headline">#</a></h3>
 <p>Creating a data matrix, <span class="math notranslate nohighlight">\(X\)</span></p>
 <p>N rows, M columns</p>
 <div class="math notranslate nohighlight">
@@ -824,9 +943,9 @@
 <p>N - number of concurrent samples</p>
 <p>M - number of variables</p>
 <p>For the current meter example, <span class="math notranslate nohighlight">\(u\)</span> is eastward velocity and <span class="math notranslate nohighlight">\(v\)</span> is northward velocity.</p>
-</div>
-<div class="section" id="covariance-matrix-c-or-correlation-matrix-r">
-<h3>2. Covariance matrix, C  (or correlation matrix, R)<a class="headerlink" href="#covariance-matrix-c-or-correlation-matrix-r" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="covariance-matrix-c-or-correlation-matrix-r">
+<h3>2. Covariance matrix, C  (or correlation matrix, R)<a class="headerlink" href="#covariance-matrix-c-or-correlation-matrix-r" title="Permalink to this headline">#</a></h3>
 <p>The covariance matrix <strong>C</strong> has  M rows and M columns (M x M). It contains the covariance between all possible combinations of the M different variables that are stored in the different columns of <strong>X</strong>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
@@ -847,8 +966,8 @@ r_{M1} &amp; r_{M2} &amp; r_{M3} &amp;        &amp; 1     \\
 \end{bmatrix}\end{split}\]</div>
 <p>The diagonal elements of the correlation matrix are all equal to 1.</p>
 <p>The covariance matrix is generally used when all variables have the same units. Variables or locations with greater variance are weighted higher. The correlation matrix is used when the variables have different units, or if the overall magnitudes do not matter. Use of the correlation matrix standardizes the data so that they are all weighted equally. It is equivalent to transforming the data into z-scores first, and then computing the covariance matrix.</p>
-<div class="section" id="current-meter-example-covariance-matrix">
-<h4>Current meter example: covariance matrix<a class="headerlink" href="#current-meter-example-covariance-matrix" title="Permalink to this headline">¶</a></h4>
+<section id="current-meter-example-covariance-matrix">
+<h4>Current meter example: covariance matrix<a class="headerlink" href="#current-meter-example-covariance-matrix" title="Permalink to this headline">#</a></h4>
 <p>For the case of finding the principal component of wind or current meter data, the variables are the eastward component (<span class="math notranslate nohighlight">\(u\)</span>) and the northward component (<span class="math notranslate nohighlight">\(v\)</span>). The covariance matrix has two rows and two columns.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
@@ -866,10 +985,10 @@ c_{vu} &amp; c_{vv}\\
 \end{bmatrix}\end{split}\]</div>
 <p>where units are in <span class="math notranslate nohighlight">\(\frac{cm^2}{s^2}\)</span></p>
 <p>Calculating the covariance matrix can also be done in Python with the numpy.cov() function.</p>
-</div>
-</div>
-<div class="section" id="extracting-the-eigenvalues-and-eigenvectors-from-the-covariance-matrix">
-<h3>3. Extracting the eigenvalues and eigenvectors from the covariance matrix<a class="headerlink" href="#extracting-the-eigenvalues-and-eigenvectors-from-the-covariance-matrix" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="extracting-the-eigenvalues-and-eigenvectors-from-the-covariance-matrix">
+<h3>3. Extracting the eigenvalues and eigenvectors from the covariance matrix<a class="headerlink" href="#extracting-the-eigenvalues-and-eigenvectors-from-the-covariance-matrix" title="Permalink to this headline">#</a></h3>
 <p>The eigenvectors (contained in the matrix <span class="math notranslate nohighlight">\(V\)</span>) and eigenvalues (contained in the matrix <span class="math notranslate nohighlight">\(\Lambda\)</span>) of the <span class="math notranslate nohighlight">\(C\)</span> matrix are defined by the relationship:</p>
 <div class="math notranslate nohighlight">
 \[CV =  V \Lambda\]</div>
@@ -891,14 +1010,14 @@ v_{31} &amp; v_{32} &amp; v_{33} &amp; \cdots\\
 \vdots &amp; \vdots &amp; \vdots &amp; \ddots
 \end{bmatrix}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\lambda _1\)</span> - eigenvalue # 1, <span class="math notranslate nohighlight">\(\lambda _2\)</span> - eigenvalue # 2, etc.</p>
-</div>
-<div class="section" id="physical-meaning-of-the-eigenvalues-and-eigenvectors">
-<h3>4. Physical meaning of the eigenvalues and eigenvectors<a class="headerlink" href="#physical-meaning-of-the-eigenvalues-and-eigenvectors" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="physical-meaning-of-the-eigenvalues-and-eigenvectors">
+<h3>4. Physical meaning of the eigenvalues and eigenvectors<a class="headerlink" href="#physical-meaning-of-the-eigenvalues-and-eigenvectors" title="Permalink to this headline">#</a></h3>
 <p>The <em>eigenvectors</em> describe directions in M-dimensional space. These are called the principal components, which define the orientation of new axes for the data. All eigenvectors are orthogonal (or perpendicular, for the 2D case). The vectors that define the axes can be scaled any magnitude, but usually they are scaled to have a value of one (unit vectors).</p>
 <p>The <em>eigenvalues</em> describe how each eigenvector is scaled. They describe the variance in the data along each axis defined by the orientations of the eigenvectors.</p>
-</div>
-<div class="section" id="back-to-the-current-meter-example">
-<h3>Back to the current meter example<a class="headerlink" href="#back-to-the-current-meter-example" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="back-to-the-current-meter-example">
+<h3>Back to the current meter example<a class="headerlink" href="#back-to-the-current-meter-example" title="Permalink to this headline">#</a></h3>
 <p>To compute the eigenvectors and eigenvalues of a matrix in Python, use:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
 <span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
@@ -928,18 +1047,18 @@ v_{31} &amp; v_{32} &amp; v_{33} &amp; \cdots\\
 <p>Factor loading is another common terminology encountered in EOFs, and refers to the larger spread of data in the first eigenvector (original example v’) than in the second (u’)and thereby quantifying their relative importance and are defined by:</p>
 <p><span class="math notranslate nohighlight">\(A =  V \sqrt{\Lambda}\)</span></p>
 <p>Factor loading can be visualized as the length of a PC vectors, whereby PC1 would have a longer vector compared to PC2 (see Emery and Thompson PCA figure above).</p>
-</div>
-</div>
-<div class="section" id="d-visualization-of-principal-components">
-<h2>3-D visualization of principal components<a class="headerlink" href="#d-visualization-of-principal-components" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="d-visualization-of-principal-components">
+<h2>3-D visualization of principal components<a class="headerlink" href="#d-visualization-of-principal-components" title="Permalink to this headline">#</a></h2>
 <p>For three variables, defined by three axes, three principal components are obtained. The first two define a plane in three-dimensional space. These are the two axes that define a a plane where the data would be most spread out if you looked at the data from a perspective perpendicular to the plane.</p>
 <img src="images/PCA_4.png" width="700">
 [source](http://ordination.okstate.edu/PCA.htm)
 <p>For an interactive visualization of PCA in three dimensions, see this link:</p>
 <p><a class="reference external" href="http://setosa.io/ev/principal-component-analysis/">http://setosa.io/ev/principal-component-analysis/</a></p>
-</div>
-<div class="section" id="example-the-pacific-decadal-oscillation">
-<h2>Example: the Pacific Decadal Oscillation<a class="headerlink" href="#example-the-pacific-decadal-oscillation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-the-pacific-decadal-oscillation">
+<h2>Example: the Pacific Decadal Oscillation<a class="headerlink" href="#example-the-pacific-decadal-oscillation" title="Permalink to this headline">#</a></h2>
 <p><img alt="images/PCA_PDO.png" src="_images/PCA_PDO.png" /></p>
 <p><a class="reference external" href="http://research.jisao.washington.edu/pdo/">source</a></p>
 <p>The Pacific Decadal Oscillation (PDO) is defined as the first principal component of SST in the North Pacific. The origin of this index comes from Davis (1976).</p>
@@ -949,43 +1068,43 @@ v_{31} &amp; v_{32} &amp; v_{33} &amp; \cdots\\
 <p><img alt="images/PCA_PDO_STD.png" src="_images/PCA_PDO_STD.png" /></p>
 <p>Standard deviation of temperature anomaly [deg C]</p>
 <p>Temperature anomaly = temperature – seasonal monthly mean temperature</p>
-<div class="section" id="data-matrix">
-<h3>Data matrix:<a class="headerlink" href="#data-matrix" title="Permalink to this headline">¶</a></h3>
+<section id="data-matrix">
+<h3>Data matrix:<a class="headerlink" href="#data-matrix" title="Permalink to this headline">#</a></h3>
 <p>(336 X 82) -&gt; 28 years * 12 month</p>
-</div>
-<div class="section" id="create-a-covariance-matrix-what-size">
-<h3>Create a covariance matrix (what size?)<a class="headerlink" href="#create-a-covariance-matrix-what-size" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="create-a-covariance-matrix-what-size">
+<h3>Create a covariance matrix (what size?)<a class="headerlink" href="#create-a-covariance-matrix-what-size" title="Permalink to this headline">#</a></h3>
 <p>(82 x 82)</p>
-</div>
-<div class="section" id="first-principal-component-empirical-orthogonal-function-of-north-pacific-sst">
-<h3>First principal component/empirical orthogonal function of North Pacific SST<a class="headerlink" href="#first-principal-component-empirical-orthogonal-function-of-north-pacific-sst" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="first-principal-component-empirical-orthogonal-function-of-north-pacific-sst">
+<h3>First principal component/empirical orthogonal function of North Pacific SST<a class="headerlink" href="#first-principal-component-empirical-orthogonal-function-of-north-pacific-sst" title="Permalink to this headline">#</a></h3>
 <p><img alt="images/PCA_PDO_First.png" src="_images/PCA_PDO_First.png" /></p>
 <p>This is the dominant “mode” of temperature variability in the North Pacific, based on how temperature at different locations co-vary together (i.e. the covariance matrix).</p>
 <p>This PC is a vector defined by 82 different numbers. It is the first column of an (82 x 82) eigenvector matrix (V). It can be visualized by mapping each value back to its corresponding spatial location.</p>
-</div>
-<div class="section" id="other-principal-components-of-north-pacific-sst">
-<h3>Other principal components of North Pacific SST<a class="headerlink" href="#other-principal-components-of-north-pacific-sst" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="other-principal-components-of-north-pacific-sst">
+<h3>Other principal components of North Pacific SST<a class="headerlink" href="#other-principal-components-of-north-pacific-sst" title="Permalink to this headline">#</a></h3>
 <p><img alt="images/PCA_PDO_All.png" src="_images/PCA_PDO_All.png" /></p>
-</div>
-<div class="section" id="fraction-of-variance-that-is-accounted-for-by-the-fist-m-empirical-orthogonal-functions">
-<h3>Fraction of Variance that is accounted for by the fist M empirical orthogonal functions<a class="headerlink" href="#fraction-of-variance-that-is-accounted-for-by-the-fist-m-empirical-orthogonal-functions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="fraction-of-variance-that-is-accounted-for-by-the-fist-m-empirical-orthogonal-functions">
+<h3>Fraction of Variance that is accounted for by the fist M empirical orthogonal functions<a class="headerlink" href="#fraction-of-variance-that-is-accounted-for-by-the-fist-m-empirical-orthogonal-functions" title="Permalink to this headline">#</a></h3>
 <p><img alt="images/PCA_PDO_Var.png" src="_images/PCA_PDO_Var.png" /></p>
-</div>
-<div class="section" id="principal-component-scores">
-<h3>Principal component scores<a class="headerlink" href="#principal-component-scores" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="principal-component-scores">
+<h3>Principal component scores<a class="headerlink" href="#principal-component-scores" title="Permalink to this headline">#</a></h3>
 <p>The first PC can be used to create an index describing the time variability of the dominant mode. This is the PDO index, which decribes a mode of temperature variability that can be compared with ecosystem parameters (e.g. zooplankton abundance).</p>
 <p><img alt="images/PCA_PDO_Index.png" src="_images/PCA_PDO_Index.png" /></p>
-<div class="section" id="pca-assumptions">
-<h4>PCA assumptions<a class="headerlink" href="#pca-assumptions" title="Permalink to this headline">¶</a></h4>
+<section id="pca-assumptions">
+<h4>PCA assumptions<a class="headerlink" href="#pca-assumptions" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Relationships between variables are linear</p></li>
 <li><p>Mean and variance are sufficient statistics (variables have Gaussian/normal distribution)</p></li>
 <li><p>Large variances have import dynamics (high signal to noise ration)</p></li>
 <li><p>The principal components are orthogonal</p></li>
 </ul>
-</div>
-<div class="section" id="pca-issues">
-<h4>PCA Issues<a class="headerlink" href="#pca-issues" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="pca-issues">
+<h4>PCA Issues<a class="headerlink" href="#pca-issues" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Does not take into account phase lags between correlated variables, can detect “standing” features but not propagating waves. The PDO oscillates back and forth between cool and warm phases like a see-saw, it does not propagate across the Pacific like a wave. If there are wave-like features in the data, PCA will split up the variance between multiple modes, confusing interpration.</p></li>
 <li><p>Domain dependence: can get a different answer by changing the spatial extent of the data</p></li>
@@ -994,10 +1113,10 @@ v_{31} &amp; v_{32} &amp; v_{33} &amp; \cdots\\
 <p>Example:
 <img alt="images/PCA_Issue.png" src="_images/PCA_Issue.png" /></p>
 <p>If no dominant pattern exists, PCA will pick out a pattern that may not be robust.</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1021,9 +1140,11 @@ v_{31} &amp; v_{32} &amp; v_{33} &amp; \cdots\\
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="week08d-us-population-example.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1039,24 +1160,28 @@ v_{31} &amp; v_{32} &amp; v_{33} &amp; \cdots\\
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom Connolly<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Tom Connolly<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

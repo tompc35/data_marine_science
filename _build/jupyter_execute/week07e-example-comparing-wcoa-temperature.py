@@ -19,7 +19,7 @@ import PyCO2SYS as pyco2
 
 # Load the data. Note: you may need to change the path to the data already downloaded last week.
 
-# In[2]:
+# In[6]:
 
 
 filename07 = 'data/wcoa_cruise_2007/32WC20070511.exc.csv'
@@ -30,7 +30,7 @@ df07 = pd.read_csv(filename07,header=29,na_values=-999,parse_dates=[[6,7]])
 # 
 # https://pyco2sys.readthedocs.io/en/latest/
 
-# In[3]:
+# In[7]:
 
 
 c07 = pyco2.sys(df07['ALKALI'], df07['TCARBN'], 1, 2,
@@ -42,7 +42,7 @@ df07['OmegaA'] = c07['saturation_aragonite']
 
 # Create a subset of good data in the upper 10m (near surface).
 
-# In[4]:
+# In[9]:
 
 
 iisurf07 = ((df07['CTDPRS'] <= 10) &
@@ -61,7 +61,7 @@ df07surf = df07[iisurf07]
 # 
 # We will divide the data into three categories: north if the Columbia River, between the Columbia River and Golden Gate, and south of the Golden Gate.
 
-# In[5]:
+# In[10]:
 
 
 # create a new variable called "region" with no values
@@ -69,7 +69,7 @@ df07surf = df07surf.assign(region = [None]*len(df07surf))
 df07surf['region']
 
 
-# In[6]:
+# In[11]:
 
 
 # assign string values to region based on latitude
@@ -85,7 +85,7 @@ df07surf['region']
 
 # ##### Box plot
 
-# In[7]:
+# In[12]:
 
 
 plt.figure()

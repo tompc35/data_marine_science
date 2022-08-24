@@ -314,7 +314,7 @@ nitrate_avg =np.convolve(nitrate,weights_norm,'same')
 nitrate_filt =np.convolve(nitrate,lancz_weights,'same')
 
 
-# In[17]:
+# In[19]:
 
 
 plt.figure(figsize = (10,5))
