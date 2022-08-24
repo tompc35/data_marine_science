@@ -1,6 +1,6 @@
-name: ms263-env
+name: data-book-env
 dependencies:
-  - python=3.8
+  - python=3.10
   - numpy
   - matplotlib
   - scipy
@@ -10,6 +10,11 @@ dependencies:
   - cartopy
   - cmocean
   - scikit-image
+  - scikit-learn
   - statsmodels
   - gsw
   - uncertainties
+  - pingouin=0.5.2
+  - pip
+  - pip:
+    - PyCO2SYS
