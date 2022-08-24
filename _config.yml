@@ -36,3 +36,4 @@ html:
 
 launch_buttons:
   binderhub_url: "https://mybinder.org"
+  colab_url: "https://colab.research.google.com"
