@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Hypothesis testing and Power &#8212; Data Analysis Techniques in Marine Science</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Loops" href="week04b-loops.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Data Analysis Techniques in Marine Science
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data Analysis Techniques in Marine Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Git reference
  </span>
@@ -422,107 +439,209 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week04a-hypothesis-power.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek04a-hypothesis-power.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week04a-hypothesis-power.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/week04a-hypothesis-power.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tompc35/data_marine_science"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tompc35/data_marine_science/issues/new?title=Issue%20on%20page%20%2Fweek04a-hypothesis-power.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/week04a-hypothesis-power.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Hypothesis testing and Power
@@ -655,12 +774,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Hypothesis testing and Power</h1>
@@ -809,13 +927,14 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="hypothesis-testing-and-power">
-<h1>Hypothesis testing and Power<a class="headerlink" href="#hypothesis-testing-and-power" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="hypothesis-testing">
-<h2>Hypothesis testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="hypothesis-testing-and-power">
+<h1>Hypothesis testing and Power<a class="headerlink" href="#hypothesis-testing-and-power" title="Permalink to this headline">#</a></h1>
+<section id="hypothesis-testing">
+<h2>Hypothesis testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">#</a></h2>
 <p>What is a hypothesis?</p>
 <ul class="simple">
 <li><p>A starting point for investigation</p></li>
@@ -829,8 +948,8 @@
 <li><p>Test statistic</p></li>
 <li><p>Region of rejection for the null hypothesis</p></li>
 </ol>
-<div class="section" id="null-hypothesis-h-o">
-<h3>1. Null Hypothesis <span class="math notranslate nohighlight">\(H_o\)</span><a class="headerlink" href="#null-hypothesis-h-o" title="Permalink to this headline">¶</a></h3>
+<section id="null-hypothesis-h-o">
+<h3>1. Null Hypothesis <span class="math notranslate nohighlight">\(H_o\)</span><a class="headerlink" href="#null-hypothesis-h-o" title="Permalink to this headline">#</a></h3>
 <p><em>Example:</em></p>
 <p>In a calibration bath measuring temperature,</p>
 <ul class="simple">
@@ -841,23 +960,23 @@
 <p>For this example, the null hypothesis is</p>
 <p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\mu = \mu_0\)</span>.</p>
 <p>(the sensor is unbiased)</p>
-</div>
-<div class="section" id="alternate-hypothesis-h-a">
-<h3>2. Alternate hypothesis <span class="math notranslate nohighlight">\(H_a\)</span><a class="headerlink" href="#alternate-hypothesis-h-a" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="alternate-hypothesis-h-a">
+<h3>2. Alternate hypothesis <span class="math notranslate nohighlight">\(H_a\)</span><a class="headerlink" href="#alternate-hypothesis-h-a" title="Permalink to this headline">#</a></h3>
 <p>The alternate hypothesis must cover all possibilities not covered by the null hypothesis. The probability of either the null hypothesis of alternate hypothesis must sum to 1, and they must be mutually exclusive.</p>
 <p>For the calibration bath example described above,</p>
 <p><span class="math notranslate nohighlight">\(H_a\)</span>: <span class="math notranslate nohighlight">\(\mu \neq \mu_0\)</span>.</p>
-</div>
-<div class="section" id="test-statistic">
-<h3>3. Test statistic<a class="headerlink" href="#test-statistic" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="test-statistic">
+<h3>3. Test statistic<a class="headerlink" href="#test-statistic" title="Permalink to this headline">#</a></h3>
 <p>The test statistic can either be <strong>parametric</strong> or <strong>non-parametric</strong>. Parametric tests are based on theoretical probability distributions, such as the normal distribution. Non-parametric tests do not assume a particular distribution, but are often less efficient or sacrifice statistical power (see below).</p>
 <p>For the calibration bath example, the appropriate statistical test is the one sample t-test. This is because we are comparing one group of samples (sensor measurements) to a known value (calibration bath temperature). We also expect the sensor measurements to be normally distributed.</p>
 <p>For a normally distributed parent population the <em>t-statistic</em>,</p>
 <p><span class="math notranslate nohighlight">\(t = \frac{ \bar{x} - \mu } {s\sqrt{\frac{1}{N}}}\)</span>,</p>
 <p>has a known distribution. If <span class="math notranslate nohighlight">\(N\)</span> samples are taken from the population many many times, the resulting t-statistics will follow a probability distribution called the t-distribution (see <span class="xref myst">Probability and distributions</span>).</p>
-</div>
-<div class="section" id="region-of-rejection-of-the-null-hypothesis">
-<h3>4.  Region of rejection of the null hypothesis<a class="headerlink" href="#region-of-rejection-of-the-null-hypothesis" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="region-of-rejection-of-the-null-hypothesis">
+<h3>4.  Region of rejection of the null hypothesis<a class="headerlink" href="#region-of-rejection-of-the-null-hypothesis" title="Permalink to this headline">#</a></h3>
 <p>In order decide whether to accept or reject the null hypothesis, we must define what constitutes an “extreme” value of the test statistic.</p>
 <p>For a group of <span class="math notranslate nohighlight">\(N\)</span> = 4 samples (3 degrees of freedom) taken randomly from a normal distribution, there is 5% chance that the t-statistic will be either greater than 3.18 or less than -3.18. This defines the rejection region for a 95% confidence level. In this case, <span class="math notranslate nohighlight">\(\alpha =\)</span> 0.05 is the probability that the null hypothesis will be wrongly rejected based on <span class="math notranslate nohighlight">\(N\)</span> samples, <em>if the null hypothesis is true</em>. Conversely, there is a 95% probability that the null hypothesis will be correctly accepted, <em>if  the null hypothesis is true</em>, which in general is not known.</p>
 <p>Example (two-tailed test):</p>
@@ -910,7 +1029,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>upper critical t value = 3.182446305284263
-lower critical t value = -3.1824463052842638
+lower critical t value = -3.182446305284264
 </pre></div>
 </div>
 </div>
@@ -935,14 +1054,14 @@ lower critical t value = -3.1824463052842638
 <p>Let’s say you are comparing a set of observations to a theory, or a set of sensor values with a known standard. In truth, there is almost certainly a difference between the sample mean and the true mean, say to 20+ significant digits. But, if the data are noisy it would still be difficult to <em>prove</em> that this small difference did not just occur by random chance. Failing to reject the null hypothesis at a 95% confidence level does not mean that you are 95% certain that it is true. It just means that your data are less extreme than 95% of random groups of samples drawn from the hypothesized distribution.</p>
 <p>Scientists tend to focus on confidence intervals rather than statistical power because this approach is conservative from a scientific point of view. By avoiding Type I errors, scientists reduce the likelihood of promoting an idea that is not actually true. This may come at the price of not detecting actual differences. However, as explained, power analysis can be an extremely valuable tool for planning experiments and determining how many samples you need.</p>
 <p>Power analysis is described later in these notes, after covering the basic statistical procedure of t-tests.</p>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="application-of-hypothesis-testing-t-tests">
-<h1>Application of hypothesis testing: t-tests<a class="headerlink" href="#application-of-hypothesis-testing-t-tests" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="application-of-hypothesis-testing-t-tests">
+<h1>Application of hypothesis testing: t-tests<a class="headerlink" href="#application-of-hypothesis-testing-t-tests" title="Permalink to this headline">#</a></h1>
 <p>The <span class="math notranslate nohighlight">\(t\)</span>-statistic is used to test whether sample means are different. It was was used by a statistician named William Sealy Gosset, who worked for the Guiness Brewery in Dublin in the early 20th century. He was interested in comparing the properties of ingredients of the beloved Irish stout with a small number of samples. To keep his corporate boss happy, Gosset published his statistical work under the pseudonym “Student”.</p>
-<div class="section" id="one-sample-t-test">
-<h2>One-sample t-test<a class="headerlink" href="#one-sample-t-test" title="Permalink to this headline">¶</a></h2>
+<section id="one-sample-t-test">
+<h2>One-sample t-test<a class="headerlink" href="#one-sample-t-test" title="Permalink to this headline">#</a></h2>
 <p>The example described above, in which a sample mean is compared with a single value (possibly a known value or a theoretical result), is called a <strong>one-sample t-test</strong>. All t-tests assumes that the samples are drawn from a <strong>normally-distributed</strong> population.</p>
 <p>In Python, a one sample <span class="math notranslate nohighlight">\(t\)</span>-test can be conducted with the function <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp()</span></code>. Given a set of values <code class="docutils literal notranslate"><span class="pre">x</span></code> and a population mean, <span class="math notranslate nohighlight">\(\mu\)</span> or <code class="docutils literal notranslate"><span class="pre">popmean</span></code>, this function returns the <span class="math notranslate nohighlight">\(t\)</span>-statistic and a <span class="math notranslate nohighlight">\(p\)</span>-value. The <span class="math notranslate nohighlight">\(p\)</span>-value is the probability of obtaining a <span class="math notranslate nohighlight">\(t\)</span>-statistic of that magnitude, or more extreme, in the hypothetical case the null hypothesis is true. If the <span class="math notranslate nohighlight">\(p\)</span>-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span> then the null hypothesis is rejected.</p>
 <p>Looking at an example where we have three samples, and we are comparing with a known value <span class="math notranslate nohighlight">\(\mu_0\)</span> = 10.0</p>
@@ -1006,9 +1125,9 @@ p: 0.529
 </div>
 </div>
 <p>There is a probability of 0.264 of randomly obtaining <span class="math notranslate nohighlight">\(t\)</span> value of -0.756 or less if the null hypothesis is true. However, there is twice as much probability (p = 0.529) of obtaining a more extreme value (<span class="math notranslate nohighlight">\(t \leq\)</span> -0.756 or <span class="math notranslate nohighlight">\(t \geq\)</span> -0.756).</p>
-</div>
-<div class="section" id="one-tailed-vs-two-tailed-tests">
-<h2>One-tailed vs. two-tailed tests<a class="headerlink" href="#one-tailed-vs-two-tailed-tests" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="one-tailed-vs-two-tailed-tests">
+<h2>One-tailed vs. two-tailed tests<a class="headerlink" href="#one-tailed-vs-two-tailed-tests" title="Permalink to this headline">#</a></h2>
 <p>The two previous examples are both <strong>two-tailed</strong> tests. The rejection region occupies both tails of the t-distribution. In a one tailed test, we only care about differences in a certain direction, for example:</p>
 <p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\mu \leq \mu_0\)</span></p>
 <p><span class="math notranslate nohighlight">\(H_a\)</span>: <span class="math notranslate nohighlight">\(\mu &gt; \mu_0\)</span></p>
@@ -1038,9 +1157,9 @@ p: 0.529
 <li><p>Reject <span class="math notranslate nohighlight">\(H_o\)</span> only if the value of t has the correct sign</p></li>
 <li><p>If t does have the correct sign, reject <span class="math notranslate nohighlight">\(H_o\)</span> if 1/2 the p-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
 </ul>
-</div>
-<div class="section" id="two-sample-t-test-comparing-pairs-of-populations">
-<h2>Two-sample t-test: comparing pairs of populations<a class="headerlink" href="#two-sample-t-test-comparing-pairs-of-populations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="two-sample-t-test-comparing-pairs-of-populations">
+<h2>Two-sample t-test: comparing pairs of populations<a class="headerlink" href="#two-sample-t-test-comparing-pairs-of-populations" title="Permalink to this headline">#</a></h2>
 <p>A <strong>two-sample t-test</strong> is used to test whether the means of two groups of samples are different.</p>
 <p><span class="math notranslate nohighlight">\(H_o: \bar{x_1} = \bar{x_2}\)</span></p>
 <p><span class="math notranslate nohighlight">\(H_a: \bar{x_1} \neq \bar{x_2}\)</span></p>
@@ -1055,8 +1174,8 @@ p: 0.529
 <li><p>Whiskers bracket 10-90th percentile (80% of the data)</p></li>
 </ul>
 <p>The <span class="math notranslate nohighlight">\(*\)</span> above the second box indicates a significant difference as indicated by a t-test. There is overlap in the range of growth rates, but the null hypothesis that the means are equal is rejected at a 99% confidence level.</p>
-<div class="section" id="student-s-two-sample-t-test-equal-variances">
-<h3>Student’s two- sample t-test (equal variances)<a class="headerlink" href="#student-s-two-sample-t-test-equal-variances" title="Permalink to this headline">¶</a></h3>
+<section id="student-s-two-sample-t-test-equal-variances">
+<h3>Student’s two- sample t-test (equal variances)<a class="headerlink" href="#student-s-two-sample-t-test-equal-variances" title="Permalink to this headline">#</a></h3>
 <p>A two-sample t-test is used to comparing <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span>, <em>assuming populations being sampled have the same true variance</em>, i.e.  <span class="math notranslate nohighlight">\(\sigma_x^2 = \sigma_y^2\)</span>. With <span class="math notranslate nohighlight">\(N_x\)</span> and <span class="math notranslate nohighlight">\(N_y\)</span> samples, the t statistic is given by:</p>
 <p><span class="math notranslate nohighlight">\(t = \frac{\bar{x} - \bar{y}} {s_{xy} \sqrt{\frac{1}{N_x} + \frac{1}{N_y}}}\)</span>,</p>
 <p>where <span class="math notranslate nohighlight">\(s_{xy}\)</span> is the pooled sample variance,</p>
@@ -1064,33 +1183,33 @@ p: 0.529
 <p>and the degrees of freedom is given by</p>
 <p><span class="math notranslate nohighlight">\(\nu = N_x + N_y -2\)</span>.</p>
 <p><strong>Note:</strong> For paired samples that are not independent, you would not use this test. Instead, you would take the differences and use a one-sample t-test as described above. This would have <span class="math notranslate nohighlight">\(N-1\)</span> degrees of freedom for <span class="math notranslate nohighlight">\(N\)</span> pairs.</p>
-</div>
-<div class="section" id="welch-s-two-sample-t-test-unequal-variances">
-<h3>Welch’s two sample t-test (unequal variances)<a class="headerlink" href="#welch-s-two-sample-t-test-unequal-variances" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="welch-s-two-sample-t-test-unequal-variances">
+<h3>Welch’s two sample t-test (unequal variances)<a class="headerlink" href="#welch-s-two-sample-t-test-unequal-variances" title="Permalink to this headline">#</a></h3>
 <p>Welch’s t-test is more robust and does not assume equal variances of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. The t statistic is given by</p>
 <p><span class="math notranslate nohighlight">\(t = \frac{\bar{x} - \bar{y}} {\sqrt{\frac{s_x^2}{N_x} + \frac{s_y^2}{N_y}}}\)</span>.</p>
 <p>The degrees of freedom in this case is a more complicated expression given by the Welch-Satterthwaite equation:</p>
 <p><span class="math notranslate nohighlight">\(\nu = \frac{\left(\frac{s_x^2}{N_x} + \frac{s_y^2}{N_y}\right)^2}{\frac{1}{(N_x-1)}\left(\frac{s_x^2}{N_x}\right)^2 + \frac{1}{(N_y-1)}\left(\frac{s_y^2}{N_y}\right)^2}\)</span></p>
-<div class="section" id="python-implementation">
-<h4>Python implementation<a class="headerlink" href="#python-implementation" title="Permalink to this headline">¶</a></h4>
+<section id="python-implementation">
+<h4>Python implementation<a class="headerlink" href="#python-implementation" title="Permalink to this headline">#</a></h4>
 <p>For arrays of independent values <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, the <strong>Student’s t-test</strong> can be performed using this function:</p>
 <p><code class="docutils literal notranslate"><span class="pre">t,p</span> <span class="pre">=</span> <span class="pre">stats.ttest_ind(x,y)</span></code></p>
 <p>For <strong>Welch’s t-test</strong>, use the same function but set the <code class="docutils literal notranslate"><span class="pre">equal_var</span></code> option to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">t,p</span> <span class="pre">=</span> <span class="pre">stats.ttest_ind(x,y,equal_var=False)</span></code></p>
 <p>It is recommended to use Welch’s t-test unless you have a good reason to assume that the population variances are equal. This reduces the chance of a Type I error.</p>
-</div>
-<div class="section" id="exercise-comparing-means-of-current-meter-data">
-<h4>Exercise: comparing means of current meter data<a class="headerlink" href="#exercise-comparing-means-of-current-meter-data" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="exercise-comparing-means-of-current-meter-data">
+<h4>Exercise: comparing means of current meter data<a class="headerlink" href="#exercise-comparing-means-of-current-meter-data" title="Permalink to this headline">#</a></h4>
 <p>In Section 3.14 of Emery and Thomson, an example is given where the January means of alongshore velocity (<span class="math notranslate nohighlight">\(V\)</span>) from current meter data are compared for two different years. The means and standard deviations from daily averages in January are given by</p>
 <p>Year 1: <span class="math notranslate nohighlight">\(\bar{V_1} = 23 \pm 3 \text{ cm/s}\)</span></p>
 <p>Year 2: <span class="math notranslate nohighlight">\(\bar{V_2} = 20 \pm 2 \text{ cm/s}\)</span></p>
 <p>Perform a Student’s t-test to test the null hypothesis that the means are the same between these two years, for 95% confidence. You may assume that each daily average is an independent sample.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="power-analysis">
-<h1>Power analysis<a class="headerlink" href="#power-analysis" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="power-analysis">
+<h1>Power analysis<a class="headerlink" href="#power-analysis" title="Permalink to this headline">#</a></h1>
 <p>Statistical power describes the probability of correctly accepting the null hypothesis, if it is false. A conventional target power is <span class="math notranslate nohighlight">\((1 -  \beta) = 0.8\)</span>. This means that <strong>if</strong> the null hypothesis is false, there is a probability <span class="math notranslate nohighlight">\(\beta\)</span> = 0.2 (one out of five chance) that the null hypothesis will be accepted incorrectly (Type II error). This would mean incorrectly inferring that there is no difference between two sets of samples.</p>
 <p>Statistical power and confidence levels are not independent. The confidence level for accepting or rejecting a null hypothesis is one of the primary factors that determined statistical power.</p>
 <p>Power analysis can be useful for studies that inform management decisions, in which avoiding a Type II error might be a “conservative” action. For example, a Type II error in a study on the effect of pollution on abundance of an organism at two sites (pristine and disturbed) might mean “incorrectly” protecting habitat. The accepted level of risk of a Type II error in this case might vary between environmental and industry stakeholders.</p>
@@ -1113,8 +1232,8 @@ p: 0.529
 <li><p>often called “Cohen’s d”</p></li>
 <li><p>d = difference of the mean / standard deviation</p></li>
 </ul>
-<div class="section" id="example-detecting-change-due-to-a-restoration-activity">
-<h2>Example: Detecting change due to a restoration activity<a class="headerlink" href="#example-detecting-change-due-to-a-restoration-activity" title="Permalink to this headline">¶</a></h2>
+<section id="example-detecting-change-due-to-a-restoration-activity">
+<h2>Example: Detecting change due to a restoration activity<a class="headerlink" href="#example-detecting-change-due-to-a-restoration-activity" title="Permalink to this headline">#</a></h2>
 <p>Goal 1 (ecologically significant effect): increase (indicates the need for a one-tailed z-test) the mean oxygen concentrations by 20 <span class="math notranslate nohighlight">\(\mu\)</span>M</p>
 <ul class="simple">
 <li><p>The natural variability is 50 <span class="math notranslate nohighlight">\(\mu\)</span>M (std. dev.)</p></li>
@@ -1127,17 +1246,17 @@ p: 0.529
 <ul class="simple">
 <li><p>In this case, <span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\bar{x} \le \mu\)</span>  and <span class="math notranslate nohighlight">\(H_a\)</span> : <span class="math notranslate nohighlight">\(\bar{x} &gt; \mu\)</span></p></li>
 </ul>
-</div>
-<div class="section" id="one-tailed-z-test-like-a-t-test-valid-for-a-large-n">
-<h2>One-tailed z-test (like a t-test, valid for a large N)<a class="headerlink" href="#one-tailed-z-test-like-a-t-test-valid-for-a-large-n" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="one-tailed-z-test-like-a-t-test-valid-for-a-large-n">
+<h2>One-tailed z-test (like a t-test, valid for a large N)<a class="headerlink" href="#one-tailed-z-test-like-a-t-test-valid-for-a-large-n" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(z = \frac{\bar{x} - \mu} {\frac {S} {\sqrt{N}}}\)</span></p></li>
 <li><p>compare to <span class="math notranslate nohighlight">\(z_{crit}\)</span>:
 <span class="math notranslate nohighlight">\(z_{1-\alpha}\)</span></p></li>
 </ul>
-</div>
-<div class="section" id="resources-for-calculating-power">
-<h2>Resources for calculating power<a class="headerlink" href="#resources-for-calculating-power" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="resources-for-calculating-power">
+<h2>Resources for calculating power<a class="headerlink" href="#resources-for-calculating-power" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="http://rpsychologist.com/d3/NHST/">Online visualization</a> (for one-sample z-test only)</p></li>
 <li><p><a class="reference external" href="http://webpower.psychstat.org/wiki/">Online power calculator</a> (for many different statistical tests)</p></li>
@@ -1145,9 +1264,9 @@ p: 0.529
 <li><p><a class="reference external" href="http://jpktd.blogspot.com/2013/03/statistical-power-in-statsmodels.html">Python  - statsmodels</a></p></li>
 <li><p><a class="reference external" href="https://pingouin-stats.org/api.html#power-analysis">Python - pingouin</a></p></li>
 </ul>
-</div>
-<div class="section" id="example-detecting-small-differences-with-a-noisy-instrument">
-<h2>Example: detecting small differences with a noisy instrument<a class="headerlink" href="#example-detecting-small-differences-with-a-noisy-instrument" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-detecting-small-differences-with-a-noisy-instrument">
+<h2>Example: detecting small differences with a noisy instrument<a class="headerlink" href="#example-detecting-small-differences-with-a-noisy-instrument" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Want to be able to measure a differences of 2 <span class="math notranslate nohighlight">\(\mu\)</span>M</p></li>
 <li><p>instrument noise = 5 <span class="math notranslate nohighlight">\(\mu\)</span>M</p></li>
@@ -1165,16 +1284,19 @@ p: 0.529
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N =  51.009
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51.009
 </pre></div>
 </div>
 </div>
 </div>
 <p>If the actual difference is 2 <span class="math notranslate nohighlight">\(\mu\)</span>M, then we will get a significant difference 80% of the time with <span class="math notranslate nohighlight">\(N\)</span> = 51. This example is for a one-sample t-test, but other functions in the <code class="docutils literal notranslate"><span class="pre">power</span></code> library can be used for other statistical tests. The <em>Pingouin</em> package (see below) also has functions for computing power.</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="critiques-of-null-hypothesis-significance-testing">
-<h1>Critiques of null hypothesis significance testing<a class="headerlink" href="#critiques-of-null-hypothesis-significance-testing" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="critiques-of-null-hypothesis-significance-testing">
+<h1>Critiques of null hypothesis significance testing<a class="headerlink" href="#critiques-of-null-hypothesis-significance-testing" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>“The test of statistical significance in psychological research may be taken as an instance of a kind of essential mindlessness in the conduct of research” (Bakan, 1966)</p></li>
 <li><p>Hypothesis testing is “a wrongheaded view about what constitutes scientific progress” (Luce, 1988)</p></li>
@@ -1184,9 +1306,9 @@ p: 0.529
 <p>The modern process of null hypothesis significance testing (NHST) is a hybrid of approaches developed by Fischer, who developed p-values to qunatify the strength against the null hypothesis, and Neyman and Pearson, who developed decision-making criteria for accepting the null hypothesis as opposed to a specific alternative hypothesis (a process which included power analysis). It is likely that none of these early pioneers would approve of the modern form of null hypothesis significance testing, which arose out of a desire for standard procedures (like cookbook recipes) to teach to non-experts.</p>
 <p>The p-value in particular has been the subject of intense backlash in recent years. The journal Psychology <a class="reference external" href="https://www.nature.com/news/psychology-journal-bans-p-values-1.17001">banned p-values</a>. A critical p-value of 0.05 is arbitrary and encourages “p-hacking,” where marginal results may be tweaked to clear the bar. Statistically significant differences may be associated with small and unimportant effects, especially for large sample sizes (increasingly common). Furthermore, like many concepts in frequentist statistics, the meaning of the p-value is commonly misinterpreted. This is because the concept of the p-value is based on hypothetical data that have not actually been collected.</p>
 <p>The p-value is commonly interpreted as <span class="math notranslate nohighlight">\(P(H|D)\)</span>, but in actuality it represents <span class="math notranslate nohighlight">\(P(D|H)\)</span>. These are not the same thing.</p>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="bayes-factors">
-<h1>Bayes factors<a class="headerlink" href="#bayes-factors" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bayes-factors">
+<h1>Bayes factors<a class="headerlink" href="#bayes-factors" title="Permalink to this headline">#</a></h1>
 <p>The Bayes factor is an alternative metric which quantifies evidence in favor of an alternative hypothesis, over the null hypothesis (or vice-versa). Recall Bayes’ theorem, in which the probability of a hypothesis (<span class="math notranslate nohighlight">\(H\)</span>) is updated given new data (<span class="math notranslate nohighlight">\(D\)</span>)</p>
 <div class="math notranslate nohighlight">
 \[P(H|D) = \frac{P(D|H)P(H)}{P(D)}\]</div>
@@ -1261,8 +1383,8 @@ p: 0.529
 </div></div></div>
 </div>
 <p>This Bayes factor (BF10) indicates that there is “positive” evidence in favor of an alternative hypothesis, but not “strong”.</p>
-<div class="section" id="details-of-the-bayes-factor-calculation-advanced">
-<h2>Details of the Bayes factor calculation (advanced)<a class="headerlink" href="#details-of-the-bayes-factor-calculation-advanced" title="Permalink to this headline">¶</a></h2>
+<section id="details-of-the-bayes-factor-calculation-advanced">
+<h2>Details of the Bayes factor calculation (advanced)<a class="headerlink" href="#details-of-the-bayes-factor-calculation-advanced" title="Permalink to this headline">#</a></h2>
 <p>In common statistical tests, we are interested in the the value of a parameter <span class="math notranslate nohighlight">\(\theta\)</span>. In a t-test, this parameter is the true mean <span class="math notranslate nohighlight">\(\mu\)</span>.  In a one-sample t-test, the null hypothesis is that the mean parameter <span class="math notranslate nohighlight">\(\theta\)</span> has a specific value <span class="math notranslate nohighlight">\(\theta_0\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\theta = \theta_0\)</span></p>
 <p><span class="math notranslate nohighlight">\(H_1\)</span>: <span class="math notranslate nohighlight">\(\theta \neq \theta_0\)</span></p>
@@ -1273,8 +1395,8 @@ p: 0.529
 <p>Again, the <span class="math notranslate nohighlight">\(P(D|\theta)\)</span> term in the integral can be calculated from the <span class="math notranslate nohighlight">\(t\)</span>-distribution. However, this calculation also involves specifying a probability distribution for the prior <span class="math notranslate nohighlight">\(P(\theta)\)</span> for all possible values of <span class="math notranslate nohighlight">\(\theta\)</span>. There are many ways to choose a prior distribution, and the subjective choices in this process are one critique of Baysian statistics. One strategy is to be as objective as possible, using “non-informative” prior distributions. This is sometimes a “flat” prior that weights all probabilities equally.</p>
 <p>The calculation used by Pingouin follows the method in Rouder et al. (2009). The prior distribution used in this methods weights small differences from the mean more than very extreme differences. The method also accounts for the fact that there are two parameters involved in the <span class="math notranslate nohighlight">\(t\)</span>-statistic, the mean (<span class="math notranslate nohighlight">\(\mu\)</span>) and the variance (<span class="math notranslate nohighlight">\(\sigma^2\)</span>).</p>
 <p>Rouder, J.N., Speckman, P.L., Sun, D., Morey, R.D., Iverson, G., 2009. Bayesian t tests for accepting and rejecting the null hypothesis. Psychon. Bull. Rev. 16, 225–237. <a class="reference external" href="https://doi.org/10.3758/PBR.16.2.225">https://doi.org/10.3758/PBR.16.2.225</a></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1285,22 +1407,24 @@ p: 0.529
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "data-book"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "data-book",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'data-book'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="week03d-exercises.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1316,24 +1440,28 @@ p: 0.529
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom Connolly<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Tom Connolly<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

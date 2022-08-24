@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Interpretation of confidence intervals &#8212; Data Analysis Techniques in Marine Science</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Correlation and linear regression" href="week05a-corr-regress-least-squares.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Data Analysis Techniques in Marine Science
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data Analysis Techniques in Marine Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Git reference
  </span>
@@ -422,107 +439,209 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week04d-exercises.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek04d-exercises.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week04d-exercises.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/week04d-exercises.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tompc35/data_marine_science"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tompc35/data_marine_science/issues/new?title=Issue%20on%20page%20%2Fweek04d-exercises.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/week04d-exercises.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Interpretation of confidence intervals
@@ -570,12 +689,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Interpretation of confidence intervals</h1>
@@ -639,32 +757,33 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="interpretation-of-confidence-intervals">
-<h1>Interpretation of confidence intervals<a class="headerlink" href="#interpretation-of-confidence-intervals" title="Permalink to this headline">¶</a></h1>
+  <section id="interpretation-of-confidence-intervals">
+<h1>Interpretation of confidence intervals<a class="headerlink" href="#interpretation-of-confidence-intervals" title="Permalink to this headline">#</a></h1>
 <p>List your answers to the following true/false questions.</p>
 <p><img alt="Conf-Int-Q.png" src="_images/Conf-Int-Q.png" />
 <img alt="Conf-Int-TF.png" src="_images/Conf-Int-TF.png" /></p>
-</div>
-<div class="section" id="confidence-interval-calculation">
-<h1>Confidence interval calculation<a class="headerlink" href="#confidence-interval-calculation" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="confidence-interval-calculation">
+<h1>Confidence interval calculation<a class="headerlink" href="#confidence-interval-calculation" title="Permalink to this headline">#</a></h1>
 <p>For this problem, avoid using <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> or any statistical functions. Feel free to use Python as a calculator.</p>
 <p>A set of 100 anchovy weight samples has a mean value of 13.95 g and a standard deviation of 9.52 g.</p>
 <p>a. Calculate the standard error.</p>
 <p>b. Calculate 95% confidence intervals for the mean.</p>
-</div>
-<div class="section" id="comparing-respiration-rates">
-<h1>Comparing respiration rates<a class="headerlink" href="#comparing-respiration-rates" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="comparing-respiration-rates">
+<h1>Comparing respiration rates<a class="headerlink" href="#comparing-respiration-rates" title="Permalink to this headline">#</a></h1>
 <p>For the problem below, use any function in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/stats.html"><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code></a> or other libraries such as <a class="reference external" href="https://pingouin-stats.org/">Pinguoin</a>.</p>
 <p>Water column respiration rates are measured in dark bottle incubations at two different stations on an oceanographic cruise. Three replicates are taken at each station. The values (in units of mL/L d<span class="math notranslate nohighlight">\(^{-1}\)</span>) are given below:</p>
 <p>Station A: <code class="docutils literal notranslate"><span class="pre">[0.45,</span> <span class="pre">0.77,</span> <span class="pre">0.71]</span></code></p>
 <p>Station B: <code class="docutils literal notranslate"><span class="pre">[0.54,</span> <span class="pre">0.43,</span> <span class="pre">0.36]</span></code></p>
 <p>Use an appropriate statistical test to determine whether there is a significant difference in the mean respiration rate between the two stations.</p>
-</div>
-<div class="section" id="power-analysis-and-experimental-design-if-time">
-<h1>Power analysis and experimental design (if time)<a class="headerlink" href="#power-analysis-and-experimental-design-if-time" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="power-analysis-and-experimental-design-if-time">
+<h1>Power analysis and experimental design (if time)<a class="headerlink" href="#power-analysis-and-experimental-design-if-time" title="Permalink to this headline">#</a></h1>
 <p>You are studying the effects of a marine reserve on juvenile rockfish. Previous literature indicates that the juveniles of the species you are studying have a standard length of 70 +/- 30 mm (mean +/- standard deviation). The marine reserve will allow you to catch and release 20 fish for scientific purposes, and you plan on measuring the same number of fish outside the reserve for comparison.</p>
 <p>If your target power is 80% and your confidence level is 95%, what is the minimum difference in mean length you can expect to observe in the marine reserve? You can assume that the fish lengths are normally distributed.</p>
 <p>What is the probability of not observing a significant effect of this magnitude <em>if</em> there actually is one?</p>
@@ -673,9 +792,9 @@
 <span class="n">help</span><span class="p">(</span><span class="n">power</span><span class="o">.</span><span class="n">tt_solve_power</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="for-loop-cumulative-sum-1">
-<h1>For loop - cumulative sum 1<a class="headerlink" href="#for-loop-cumulative-sum-1" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="for-loop-cumulative-sum-1">
+<h1>For loop - cumulative sum 1<a class="headerlink" href="#for-loop-cumulative-sum-1" title="Permalink to this headline">#</a></h1>
 <p>Write a for loop that prints out the cumulative sum of an array. For example, the cumulative sum of the array</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 </pre></div>
@@ -693,9 +812,9 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">cumsum</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="for-loop-cumulative-sum-2">
-<h1>For loop - cumulative sum 2<a class="headerlink" href="#for-loop-cumulative-sum-2" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="for-loop-cumulative-sum-2">
+<h1>For loop - cumulative sum 2<a class="headerlink" href="#for-loop-cumulative-sum-2" title="Permalink to this headline">#</a></h1>
 <p>Write a for loop that stores the cumulative sum of an array in another array. Use the <code class="docutils literal notranslate"><span class="pre">np.append()</span></code> function - see <code class="docutils literal notranslate"><span class="pre">help(np.append)</span></code> - and make sure that you have run <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>  at the top of your program in order to use this function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 
@@ -708,9 +827,9 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">cumsum_array</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="fibonacci-sequence-if-time">
-<h1>Fibonacci sequence (if time)<a class="headerlink" href="#fibonacci-sequence-if-time" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="fibonacci-sequence-if-time">
+<h1>Fibonacci sequence (if time)<a class="headerlink" href="#fibonacci-sequence-if-time" title="Permalink to this headline">#</a></h1>
 <p>Write a for loop that prints the first n numbers of the Fibonacci sequence:
 1,1,2,3,5,8,13…
 Write out your algorithm first, and start with the following minimal code.</p>
@@ -719,17 +838,17 @@ Write out your algorithm first, and start with the following minimal code.</p>
 <span class="c1"># insert code here</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="python-function-temperature-conversion">
-<h1>Python function - temperature conversion<a class="headerlink" href="#python-function-temperature-conversion" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="python-function-temperature-conversion">
+<h1>Python function - temperature conversion<a class="headerlink" href="#python-function-temperature-conversion" title="Permalink to this headline">#</a></h1>
 <p>Create a function that converts temperature from degrees Celsius to degrees Fahrenheit.</p>
 <p>Use the function created above to convert the following array of temperature values from degrees F to degrees C. Avoid using a for loop.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temps_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">50.5</span><span class="p">,</span> <span class="mf">58.4</span><span class="p">,</span> <span class="mf">62.3</span><span class="p">,</span> <span class="mf">49.2</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="stokes-law-function">
-<h1>Stokes law function<a class="headerlink" href="#stokes-law-function" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="stokes-law-function">
+<h1>Stokes law function<a class="headerlink" href="#stokes-law-function" title="Permalink to this headline">#</a></h1>
 <p>Stokes’ law predicts the settling velocity (or “terminal velocity”) of a sinking sphere, <span class="math notranslate nohighlight">\(v\)</span> (units: m/s). The theoretical velocity is based on the radius of the particle, <span class="math notranslate nohighlight">\(r\)</span> (units: m), the density of the particle  <span class="math notranslate nohighlight">\(\rho_p\)</span> (units: kg/m<span class="math notranslate nohighlight">\(^3\)</span>), the density of the ambient fluid <span class="math notranslate nohighlight">\(\rho_f\)</span>, the dynamic viscosity of the ambient fluid <span class="math notranslate nohighlight">\(\mu\)</span> (units: kg/(m*s)), and the acceleration due to gravity <span class="math notranslate nohighlight">\(g\)</span> (units: m/s<span class="math notranslate nohighlight">\(^2\)</span>):</p>
 <div class="math notranslate nohighlight">
 \[v = \frac{2}{9}\frac{(\rho_p-\rho_f)}{\mu}g r^2\]</div>
@@ -744,7 +863,7 @@ Write out your algorithm first, and start with the following minimal code.</p>
 <ol class="simple">
 <li><p>Edit your function to use typical seawater values as defaults for  <code class="docutils literal notranslate"><span class="pre">rho_f</span></code> and <code class="docutils literal notranslate"><span class="pre">mu</span></code>.</p></li>
 </ol>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -755,22 +874,24 @@ Write out your algorithm first, and start with the following minimal code.</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "ms263-21"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "ms263-21",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'ms263-21'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="week04c-python-functions.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -786,24 +907,28 @@ Write out your algorithm first, and start with the following minimal code.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom Connolly<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Tom Connolly<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

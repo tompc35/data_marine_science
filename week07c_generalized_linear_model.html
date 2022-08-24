@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>The generalized linear model &#8212; Data Analysis Techniques in Marine Science</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Statistics example problems" href="week07d-stats-examples.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Data Analysis Techniques in Marine Science
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data Analysis Techniques in Marine Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Git reference
  </span>
@@ -422,107 +439,209 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week07c_generalized_linear_model.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/mlmldata2022/course-notes"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/mlmldata2022/course-notes/issues/new?title=Issue%20on%20page%20%2Fweek07c_generalized_linear_model.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mlmldata2022/course-notes/master?urlpath=tree/week07c_generalized_linear_model.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/week07c_generalized_linear_model.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tompc35/data_marine_science"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tompc35/data_marine_science/issues/new?title=Issue%20on%20page%20%2Fweek07c_generalized_linear_model.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/week07c_generalized_linear_model.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reference">
    Reference:
@@ -620,12 +739,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>The generalized linear model</h1>
@@ -739,24 +857,25 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-generalized-linear-model">
-<h1>The generalized linear model<a class="headerlink" href="#the-generalized-linear-model" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="reference">
-<h2>Reference:<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-generalized-linear-model">
+<h1>The generalized linear model<a class="headerlink" href="#the-generalized-linear-model" title="Permalink to this headline">#</a></h1>
+<section id="reference">
+<h2>Reference:<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="http://statsthinking21.org">http://statsthinking21.org</a></p>
 <ul class="simple">
 <li><p>The general linear model</p></li>
 <li><p>Comparing means</p></li>
 </ul>
-</div>
-<div class="section" id="common-statistical-tests-as-linear-models">
-<h2>Common statistical tests as linear models<a class="headerlink" href="#common-statistical-tests-as-linear-models" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="common-statistical-tests-as-linear-models">
+<h2>Common statistical tests as linear models<a class="headerlink" href="#common-statistical-tests-as-linear-models" title="Permalink to this headline">#</a></h2>
 <p>Many statistical tests can be though of as implementations of the generalized linear model. Thinking of tests as part of a class of linear models can be more intuitive than thinking about how each test works individually.</p>
-<div class="section" id="resources">
-<h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h3>
+<section id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h3>
 <p>This approach is taken in Chapter 28 of <em>Statistical Thinking for the 21st Century</em> on comparing means:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://statsthinking21.org/comparing-means.html">http://statsthinking21.org/comparing-means.html</a></p></li>
@@ -766,12 +885,12 @@
 <li><p>Original post (using R): <a class="reference external" href="https://lindeloev.github.io/tests-as-linear/">https://lindeloev.github.io/tests-as-linear/</a></p></li>
 <li><p>Python port: <a class="reference external" href="https://eigenfoo.xyz/tests-as-linear/">https://eigenfoo.xyz/tests-as-linear/</a></p></li>
 </ul>
-</div>
-<div class="section" id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h3>
 <p>The following examples show different ways of comparing means, using data from the 2007 West Coast Ocean Acidification cruise. The examples use quality controlled data from 0-10 dbar (upper 10m of the water column).</p>
-<div class="section" id="comparing-two-sample-means-another-example">
-<h4>Comparing two sample means (another example)<a class="headerlink" href="#comparing-two-sample-means-another-example" title="Permalink to this headline">¶</a></h4>
+<section id="comparing-two-sample-means-another-example">
+<h4>Comparing two sample means (another example)<a class="headerlink" href="#comparing-two-sample-means-another-example" title="Permalink to this headline">#</a></h4>
 <p>The following shows the same calculations for temperature. In this case, the null hypothesis can be rejected at the 95% confidence level, and the 95% confidence intervals for the model slope do <em>not</em> overlap with zero.</p>
 <p>Load 2007 data</p>
 <div class="cell docutils container">
@@ -789,9 +908,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/outdated/utils.py:14: OutdatedPackageWarning: The package pingouin is out of date. Your version is 0.5.0, the latest is 0.5.1.
-Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
-  return warn(
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">pingouin</span> <span class="k">as</span> <span class="nn">pg</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">PyCO2SYS</span> <span class="k">as</span> <span class="nn">pyco2</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;PyCO2SYS&#39;
 </pre></div>
 </div>
 </div>
@@ -817,43 +941,43 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/autograd/tracer.py:48: RuntimeWarning: invalid value encountered in sqrt
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/autograd/tracer.py:48: RuntimeWarning: invalid value encountered in sqrt
   return f_raw(*args, **kwargs)
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:99: RuntimeWarning: invalid value encountered in sqrt
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:99: RuntimeWarning: invalid value encountered in sqrt
   lnKF = 1590.2 / TempK - 12.641 + 1.525 * IonS ** 0.5
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:577: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:577: RuntimeWarning: overflow encountered in power
   K1 = 10.0 ** -(pK1)
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:583: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:583: RuntimeWarning: overflow encountered in power
   K2 = 10.0 ** -(pK2)
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:603: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:603: RuntimeWarning: overflow encountered in power
   K1 = 10.0 ** -pK1
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:611: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:611: RuntimeWarning: overflow encountered in power
   K2 = 10.0 ** -pK2
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:636: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:636: RuntimeWarning: overflow encountered in power
   K1 = 10.0 ** -pK1
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:641: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:641: RuntimeWarning: overflow encountered in power
   K2 = 10.0 ** -pK2
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:653: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:653: RuntimeWarning: overflow encountered in power
   K1 = 10.0 ** -pK1
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:658: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:658: RuntimeWarning: overflow encountered in power
   K2 = 10.0 ** -pK2
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:715: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/equilibria/p1atm.py:715: RuntimeWarning: overflow encountered in power
   K2 = 10.0 ** -pK2
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/solubility.py:41: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/solubility.py:41: RuntimeWarning: overflow encountered in power
   KAr = 10.0 ** logKAr  # this is in (mol/kg-SW)^2
-/Users/tomconnolly/programs/miniconda3/envs/data-book/lib/python3.8/site-packages/PyCO2SYS/solubility.py:25: RuntimeWarning: overflow encountered in power
+/Users/tomconnolly/programs/miniconda3/envs/ms263-22/lib/python3.8/site-packages/PyCO2SYS/solubility.py:25: RuntimeWarning: overflow encountered in power
   KCa = 10.0 ** logKCa  # this is in (mol/kg-SW)^2 at zero pressure
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id1">
-<h4>Comparing two sample means (another example)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id1">
+<h4>Comparing two sample means (another example)<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
 <p>The following shows the same calculations for temperature. In this case, the null hypothesis can be rejected at the 95% confidence level, and the 95% confidence intervals for the model slope do <em>not</em> overlap with zero.</p>
-</div>
-<div class="section" id="comparing-one-sample-mean-to-a-single-value">
-<h4>Comparing one sample mean to a single value<a class="headerlink" href="#comparing-one-sample-mean-to-a-single-value" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="comparing-one-sample-mean-to-a-single-value">
+<h4>Comparing one sample mean to a single value<a class="headerlink" href="#comparing-one-sample-mean-to-a-single-value" title="Permalink to this headline">#</a></h4>
 <p>In this example the goal is to test whether the mean aragonite saturation state is different from a value of 1, a critical threshold for the ability of organisms to form calcium carbonate shells.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\bar{\Omega}_A =\)</span> 1</p></li>
@@ -896,8 +1020,8 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
 <img alt="_images/week07c_generalized_linear_model_12_1.png" src="_images/week07c_generalized_linear_model_12_1.png" />
 </div>
 </div>
-<div class="section" id="method-1-one-sample-t-test">
-<h5>Method 1: one sample t-test<a class="headerlink" href="#method-1-one-sample-t-test" title="Permalink to this headline">¶</a></h5>
+<section id="method-1-one-sample-t-test">
+<h5>Method 1: one sample t-test<a class="headerlink" href="#method-1-one-sample-t-test" title="Permalink to this headline">#</a></h5>
 <p>A one-sample t-test can be used to test whether the null hypothesis can be rejected at the 95% confidence level (<span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -911,9 +1035,9 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="method-2-generalized-linear-model">
-<h5>Method 2: generalized linear model<a class="headerlink" href="#method-2-generalized-linear-model" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="method-2-generalized-linear-model">
+<h5>Method 2: generalized linear model<a class="headerlink" href="#method-2-generalized-linear-model" title="Permalink to this headline">#</a></h5>
 <p>Alternatively, this test can be framed in terms of a general linear model</p>
 <div class="math notranslate nohighlight">
 \[ \hat{y} = \hat{a}_1 + \hat{a}_2 x ,\]</div>
@@ -952,10 +1076,10 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>     nan</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Tue, 03 May 2022</td> <th>  Prob (F-statistic):</th>  <td>   nan</td> 
+  <th>Date:</th>             <td>Tue, 08 Mar 2022</td> <th>  Prob (F-statistic):</th>  <td>   nan</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:03:38</td>     <th>  Log-Likelihood:    </th> <td> -102.08</td>
+  <th>Time:</th>                 <td>14:09:53</td>     <th>  Log-Likelihood:    </th> <td> -102.08</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   138</td>      <th>  AIC:               </th> <td>   206.2</td>
@@ -993,10 +1117,10 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
 </tr>
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
-</div>
-</div>
-<div class="section" id="comparing-two-sample-means">
-<h4>Comparing two sample means<a class="headerlink" href="#comparing-two-sample-means" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="comparing-two-sample-means">
+<h4>Comparing two sample means<a class="headerlink" href="#comparing-two-sample-means" title="Permalink to this headline">#</a></h4>
 <p>We can also apply the generalized linear model approach when comparing two means. In this case, we will examine whether there is a statistically significant difference between the mean of <span class="math notranslate nohighlight">\(\Omega_A\)</span> to the north and south of Cape Mendocino. At a latitude of 40.4<span class="math notranslate nohighlight">\(^o\)</span>N, Cape Mendocino represents a sharp transition point in many oceanographic processes and water masses.</p>
 <p>The first steps are to make two subsets based on latitude, and then visualize the results in a box plot.</p>
 <div class="cell docutils container">
@@ -1027,8 +1151,8 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
 <img alt="_images/week07c_generalized_linear_model_23_1.png" src="_images/week07c_generalized_linear_model_23_1.png" />
 </div>
 </div>
-<div class="section" id="method-1-t-test">
-<h5>Method 1: t-test<a class="headerlink" href="#method-1-t-test" title="Permalink to this headline">¶</a></h5>
+<section id="method-1-t-test">
+<h5>Method 1: t-test<a class="headerlink" href="#method-1-t-test" title="Permalink to this headline">#</a></h5>
 <p>There is a difference of 0.104 in the mean of <span class="math notranslate nohighlight">\(\Omega_A\)</span> between the two regions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1068,9 +1192,9 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id2">
-<h5>Method 2: generalized linear model<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="id2">
+<h5>Method 2: generalized linear model<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h5>
 <p>This test can also be framed in terms of a general linear model</p>
 <div class="math notranslate nohighlight">
 \[ \hat{y} = \hat{a}_1 + \hat{a}_2 x .\]</div>
@@ -1107,10 +1231,10 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>  0.1047</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Tue, 03 May 2022</td> <th>  Prob (F-statistic):</th>  <td> 0.747</td> 
+  <th>Date:</th>             <td>Tue, 08 Mar 2022</td> <th>  Prob (F-statistic):</th>  <td> 0.747</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:03:38</td>     <th>  Log-Likelihood:    </th> <td> -102.03</td>
+  <th>Time:</th>                 <td>14:09:53</td>     <th>  Log-Likelihood:    </th> <td> -102.03</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   138</td>      <th>  AIC:               </th> <td>   208.1</td>
@@ -1151,10 +1275,10 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
 </tr>
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
-</div>
-</div>
-<div class="section" id="id3">
-<h4>Comparing two sample means (another example)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="id3">
+<h4>Comparing two sample means (another example)<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
 <p>The following shows the same calculations for temperature. In this case, the null hypothesis can be rejected at the 95% confidence level, and the 95% confidence intervals for the model slope do <em>not</em> overlap with zero.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1216,10 +1340,10 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   54.40</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Tue, 03 May 2022</td> <th>  Prob (F-statistic):</th> <td>1.45e-11</td>
+  <th>Date:</th>             <td>Tue, 08 Mar 2022</td> <th>  Prob (F-statistic):</th> <td>1.45e-11</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:03:39</td>     <th>  Log-Likelihood:    </th> <td> -310.63</td>
+  <th>Time:</th>                 <td>14:09:53</td>     <th>  Log-Likelihood:    </th> <td> -310.63</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   138</td>      <th>  AIC:               </th> <td>   625.3</td>
@@ -1260,12 +1384,12 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
 </tr>
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
-</div>
-<div class="section" id="comparing-three-sample-means-another-example">
-<h4>Comparing three sample means (another example)<a class="headerlink" href="#comparing-three-sample-means-another-example" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="comparing-three-sample-means-another-example">
+<h4>Comparing three sample means (another example)<a class="headerlink" href="#comparing-three-sample-means-another-example" title="Permalink to this headline">#</a></h4>
 <p>We can also compare more than two means. This would be an ANOVA analysis, which can also be expessed as a linear model.</p>
-<div class="section" id="create-a-categorical-variable-for-the-region">
-<h5>Create a categorical variable for the region<a class="headerlink" href="#create-a-categorical-variable-for-the-region" title="Permalink to this headline">¶</a></h5>
+<section id="create-a-categorical-variable-for-the-region">
+<h5>Create a categorical variable for the region<a class="headerlink" href="#create-a-categorical-variable-for-the-region" title="Permalink to this headline">#</a></h5>
 <p>We will divide the data into three categories: north if the Columbia River, between the Columbia River and Golden Gate, and south of the Golden Gate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1323,9 +1447,9 @@ Name: region, Length: 138, dtype: object
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="box-plot">
-<h5>Box plot<a class="headerlink" href="#box-plot" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="box-plot">
+<h5>Box plot<a class="headerlink" href="#box-plot" title="Permalink to this headline">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1346,9 +1470,9 @@ Name: region, Length: 138, dtype: object
 <img alt="_images/week07c_generalized_linear_model_44_1.png" src="_images/week07c_generalized_linear_model_44_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="analysis">
-<h5>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="analysis">
+<h5>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">#</a></h5>
 <p>Since we have three groups, we can perform a classic Fisher ANOVA on this data set, to test the null hypothesis of no difference.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1389,9 +1513,9 @@ Name: region, Length: 138, dtype: object
       <td>region</td>
       <td>2</td>
       <td>135</td>
-      <td>86.688737</td>
+      <td>86.689</td>
       <td>6.087664e-25</td>
-      <td>0.562225</td>
+      <td>0.562</td>
     </tr>
   </tbody>
 </table>
@@ -1428,7 +1552,6 @@ Name: region, Length: 138, dtype: object
       <th>ddof2</th>
       <th>F</th>
       <th>p-unc</th>
-      <th>np2</th>
     </tr>
   </thead>
   <tbody>
@@ -1436,10 +1559,9 @@ Name: region, Length: 138, dtype: object
       <th>0</th>
       <td>region</td>
       <td>2</td>
-      <td>79.857577</td>
-      <td>117.8407</td>
+      <td>79.858</td>
+      <td>117.841</td>
       <td>1.489427e-24</td>
-      <td>0.562225</td>
     </tr>
   </tbody>
 </table>
@@ -1477,6 +1599,7 @@ Name: region, Length: 138, dtype: object
       <th>mean(B)</th>
       <th>diff</th>
       <th>se</th>
+      <th>tail</th>
       <th>T</th>
       <th>df</th>
       <th>pval</th>
@@ -1488,40 +1611,43 @@ Name: region, Length: 138, dtype: object
       <th>0</th>
       <td>central</td>
       <td>north</td>
-      <td>10.791951</td>
-      <td>10.124478</td>
-      <td>0.667473</td>
-      <td>0.320915</td>
-      <td>2.079905</td>
-      <td>60.998772</td>
-      <td>0.102548</td>
-      <td>0.535267</td>
+      <td>10.792</td>
+      <td>10.124</td>
+      <td>0.667</td>
+      <td>0.227</td>
+      <td>two-sided</td>
+      <td>2.080</td>
+      <td>60.999</td>
+      <td>0.095682</td>
+      <td>0.535</td>
     </tr>
     <tr>
       <th>1</th>
       <td>central</td>
       <td>south</td>
-      <td>10.791951</td>
-      <td>14.616919</td>
-      <td>-3.824968</td>
-      <td>0.361271</td>
-      <td>-10.587518</td>
-      <td>95.679603</td>
+      <td>10.792</td>
+      <td>14.617</td>
+      <td>-3.825</td>
+      <td>0.255</td>
+      <td>two-sided</td>
+      <td>-10.588</td>
+      <td>95.680</td>
       <td>0.001000</td>
-      <td>-2.047561</td>
+      <td>-2.048</td>
     </tr>
     <tr>
       <th>2</th>
       <td>north</td>
       <td>south</td>
-      <td>10.124478</td>
-      <td>14.616919</td>
-      <td>-4.492441</td>
-      <td>0.296634</td>
-      <td>-15.144727</td>
-      <td>88.746057</td>
+      <td>10.124</td>
+      <td>14.617</td>
+      <td>-4.492</td>
+      <td>0.210</td>
+      <td>two-sided</td>
+      <td>-15.145</td>
+      <td>88.746</td>
       <td>0.001000</td>
-      <td>-3.586874</td>
+      <td>-3.587</td>
     </tr>
   </tbody>
 </table>
@@ -1561,7 +1687,7 @@ Name: region, Length: 138, dtype: object
       <th>Parametric</th>
       <th>T</th>
       <th>dof</th>
-      <th>alternative</th>
+      <th>Tail</th>
       <th>p-unc</th>
       <th>BF10</th>
       <th>hedges</th>
@@ -1571,44 +1697,44 @@ Name: region, Length: 138, dtype: object
     <tr>
       <th>0</th>
       <td>region</td>
-      <td>central</td>
       <td>north</td>
+      <td>central</td>
       <td>False</td>
       <td>True</td>
-      <td>2.079905</td>
-      <td>60.998772</td>
+      <td>-2.080</td>
+      <td>61.00</td>
       <td>two-sided</td>
       <td>4.174356e-02</td>
       <td>1.575</td>
-      <td>0.447480</td>
+      <td>-0.447</td>
     </tr>
     <tr>
       <th>1</th>
       <td>region</td>
-      <td>central</td>
-      <td>south</td>
-      <td>False</td>
-      <td>True</td>
-      <td>-10.587518</td>
-      <td>95.679603</td>
-      <td>two-sided</td>
-      <td>8.500978e-18</td>
-      <td>2.726e+15</td>
-      <td>-1.944715</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>region</td>
       <td>north</td>
       <td>south</td>
       <td>False</td>
       <td>True</td>
-      <td>-15.144727</td>
-      <td>88.746057</td>
+      <td>-15.145</td>
+      <td>88.75</td>
       <td>two-sided</td>
       <td>2.478834e-26</td>
       <td>4.026e+23</td>
-      <td>-2.401071</td>
+      <td>-2.401</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>region</td>
+      <td>central</td>
+      <td>south</td>
+      <td>False</td>
+      <td>True</td>
+      <td>-10.588</td>
+      <td>95.68</td>
+      <td>two-sided</td>
+      <td>8.500978e-18</td>
+      <td>2.726e+15</td>
+      <td>-1.945</td>
     </tr>
   </tbody>
 </table>
@@ -1649,7 +1775,7 @@ Name: region, Length: 138, dtype: object
   <tbody>
     <tr>
       <th>levene</th>
-      <td>9.765584</td>
+      <td>9.766</td>
       <td>0.000109</td>
       <td>False</td>
     </tr>
@@ -1677,10 +1803,10 @@ Name: region, Length: 138, dtype: object
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   86.69</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Tue, 03 May 2022</td> <th>  Prob (F-statistic):</th> <td>6.09e-25</td>
+  <th>Date:</th>             <td>Tue, 08 Mar 2022</td> <th>  Prob (F-statistic):</th> <td>6.09e-25</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:03:39</td>     <th>  Log-Likelihood:    </th> <td> -276.85</td>
+  <th>Time:</th>                 <td>14:09:54</td>     <th>  Log-Likelihood:    </th> <td> -276.85</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   138</td>      <th>  AIC:               </th> <td>   559.7</td>
@@ -1724,11 +1850,11 @@ Name: region, Length: 138, dtype: object
 </tr>
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1752,9 +1878,11 @@ Name: region, Length: 138, dtype: object
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="week07b-nonparam.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1770,24 +1898,28 @@ Name: region, Length: 138, dtype: object
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom Connolly<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Tom Connolly<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

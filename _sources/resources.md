@@ -1,22 +1,20 @@
-### Books on electronic reserve (required)
+### Data Analysis in Marine Science Books 
 
-https://reserves.calstate.edu/mosslanding/course/611792370002913
+* Emery, W. J. and R. E. Thomson, Data Analysis Methods in Physical Oceanography, 2nd ed., 2013, Elsevier, Amsterdam, ISBN:  978-0-444-50756-3, [Online version](http://www.sciencedirect.com/science/book/9780444507563)
 
-* Emery, W. J. and R. E. Thomson, Data Analysis Methods in Physical Oceanography, 2nd ed., 2013, Elsevier, Amsterdam, ISBN:  978-0-444-50756-3, http://www.sciencedirect.com/science/book/9780444507563 (available for free download through MLML library)
+* Glover, D. M., W. J. Jenkins, and S. C. Doney, Modeling Methods for Marine Science, 2011, Cambridge University Press, Cambridge, UK. ISBN: 9780521867832 [Online version](https://www.cambridge.org/core/books/modeling-methods-for-marine-science/1CA8D3CB705B23A32D97547D4327EC57)
 
-* Glover, D. M., W. J. Jenkins, and S. C. Doney, Modeling Methods for Marine Science, 2011, Cambridge University Press, Cambridge, UK. ISBN: 9780521867832 https://mlml-primo.hosted.exlibrisgroup.com/permalink/f/ejj43j/01CALS_ALMA71579419580002901 (available for free download through MLML library)
-
-### Statistics Books - online (required)
+### Statistics Books
 
 * Poldrack, R. A. Statistical Thinking for the 21st Century http://statsthinking21.org/
 
-### Python Books - online (supplemental)
+### Python Books
 
 * Severance, C., Python For Everybody, 2016 https://www.py4e.com/book.php
 
 * Green Tea Press - Free books by Allen B. Downey (Includes *Think Python*,  which formed the basis for *Python for Everybody* listed above) https://greenteapress.com/wp/
 
-### Websites (supplemental)
+### Websites 
 
 ##### Learning to code
 
