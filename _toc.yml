@@ -73,6 +73,6 @@ parts:
    chapters:
    - file: week13b-image-analysis
    
-- caption: Git reference
+ - caption: Git reference
    chapters:
    - file: git-reference/README
