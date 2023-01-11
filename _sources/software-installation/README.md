@@ -110,7 +110,7 @@ First, add the [conda-forge](https://conda-forge.org/) channel as a source for o
 conda config --add channels conda-forge
 ```
 
-Now, install the additional programs and Python packages. This will take a while. Copy and paste the following onto the command line and press Enter (**note:** this command is very long and probably extends beyond the width of your browser; the easiest way to copy it is to click the box on the right side of the box):
+Now, install the additional programs and Python packages. This will take a while. Copy and paste the following onto the command line and press Enter (**note:** this command is very long and probably extends beyond the width of your browser; the easiest way to copy it is to click the "copy" button that appears when you hover the cursor over the right side of the text box):
 
 ```
 conda install jupyter jupyterlab matplotlib pandas xarray netCDF4 cartopy cmocean gsw scikit-image scikit-learn statsmodels uncertainties pingouin nb_conda_kernels
@@ -201,7 +201,7 @@ notepad
 
 If you are using Windows, it is highly recommended that you install the free [Notepad++](https://notepad-plus-plus.org/) editor instead of using the default Notepad.
 
-## Setup for the Unix shell tutorial
+## Setup for Unix shell tutorial
 
 On the first day of our data analysis course, we go through parts of the Software Carpentry <a href="http://swcarpentry.github.io/shell-novice/">Unix shell tutorial</a>. Software Carpentry is an organization that develops lessons and workshops to teach skills in research computing.
 
