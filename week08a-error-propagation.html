@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Error propagation &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>11. Error propagation &#8212; Data Analysis Techniques in Marine Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Hypothesis testing and Power" href="week04a-hypothesis-power.html" />
-    <link rel="prev" title="Poisson regression example" href="week08b-poisson-regression-tropical-storms.html" />
+    <link rel="prev" title="10. Poisson regression example" href="week08b-poisson-regression-tropical-storms.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,54 +123,37 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="software-installation/README.html">
-   Setup and software installation
+   1. Setup and software installation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week02b-python-intro.html">
-   Introduction to Python
+  <a class="reference internal" href="1-02-python-intro.html">
+   2. Introduction to Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week02c-exercises-python-intro.html">
-   Exercises - Introduction to Python
+  <a class="reference internal" href="1-03-cruise-data-analysis.html">
+   3. Cruise data analysis in Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week03b-boolean.html">
-   Boolean logic in Python
+  <a class="reference internal" href="1-04-boolean.html">
+   4. Boolean logic in Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week04b-loops.html">
-   Loops
+  <a class="reference internal" href="1-05-loops.html">
+   5. Loops
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week04c-python-functions.html">
-   Functions
+  <a class="reference internal" href="1-08-python-modules.html">
+   6. Creating your own Python module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week05c-conditional-execution.html">
-   Conditional execution
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Python Modules and Packages
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="week06b-python-modules.html">
-   Creating your own Python module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week14-python-packages.html">
-   Python packages
+  <a class="reference internal" href="1-09-python-packages.html">
+   7. Python packages
   </a>
  </li>
 </ul>
@@ -182,57 +165,52 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week01-introduction.html">
-   Sampling and statistics: Introduction
+   1. Sampling and statistics: Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week02-probability-and-distributions.html">
-   Probability and distributions
+   3. Probability and distributions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week03a-modeling-sampling.html">
-   Modeling, sampling, confidence intervals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week03c-cruise-data-analysis.html">
-   Cruise data analysis in Python
+   4. Modeling, sampling, confidence intervals
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week03d-exercises.html">
-   Exercises
+   5. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05a-corr-regress-least-squares.html">
-   Correlation and linear regression
+   6. Correlation and linear regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05b-wcoa-cruise-regression.html">
-   Implementing linear regression in Python
+   7. Implementing linear regression in Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05d-exercises.html">
-   Exercises
+   8. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week06a-multivariate-regression.html">
-   Multivariate regression
+   9. Multivariate regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week08b-poisson-regression-tropical-storms.html">
-   Poisson regression example
+   10. Poisson regression example
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Error propagation
+   11. Error propagation
   </a>
  </li>
 </ul>
@@ -488,51 +466,6 @@ title="Fullscreen mode"
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/tompc35/data_marine_science"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/tompc35/data_marine_science/issues/new?title=Issue%20on%20page%20%2Fweek08a-error-propagation.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
       aria-label="Download this page">
@@ -602,63 +535,63 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-error-propagates-through-calculations-and-anlysis">
-   How error propagates through calculations and anlysis
+   11.1. How error propagates through calculations and anlysis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#special-cases-br">
-   Special cases
+   11.2. Special cases
    <br/>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#addition-subtractions">
-     Addition, subtractions
+     11.2.1. Addition, subtractions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multiplication-division">
-     Multiplication, division
+     11.2.2. Multiplication, division
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multiplying-by-an-exact-number">
-     Multiplying by an exact number
+     11.2.3. Multiplying by an exact number
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#power">
-     Power
+     11.2.4. Power
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#natural-log">
-     Natural log
+     11.2.5. Natural log
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#log-base-10">
-     Log, base 10
+     11.2.6. Log, base 10
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exponential">
-     Exponential
+     11.2.7. Exponential
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exponential-base-10">
-     Exponential, base 10
+     11.2.8. Exponential, base 10
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#python-uncertainties-package">
-     Python uncertainties package
+     11.2.9. Python uncertainties package
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example">
-     Example
+     11.2.10. Example
     </a>
    </li>
   </ul>
@@ -684,63 +617,63 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-error-propagates-through-calculations-and-anlysis">
-   How error propagates through calculations and anlysis
+   11.1. How error propagates through calculations and anlysis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#special-cases-br">
-   Special cases
+   11.2. Special cases
    <br/>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#addition-subtractions">
-     Addition, subtractions
+     11.2.1. Addition, subtractions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multiplication-division">
-     Multiplication, division
+     11.2.2. Multiplication, division
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multiplying-by-an-exact-number">
-     Multiplying by an exact number
+     11.2.3. Multiplying by an exact number
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#power">
-     Power
+     11.2.4. Power
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#natural-log">
-     Natural log
+     11.2.5. Natural log
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#log-base-10">
-     Log, base 10
+     11.2.6. Log, base 10
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exponential">
-     Exponential
+     11.2.7. Exponential
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exponential-base-10">
-     Exponential, base 10
+     11.2.8. Exponential, base 10
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#python-uncertainties-package">
-     Python uncertainties package
+     11.2.9. Python uncertainties package
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example">
-     Example
+     11.2.10. Example
     </a>
    </li>
   </ul>
@@ -756,9 +689,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="error-propagation">
-<h1>Error propagation<a class="headerlink" href="#error-propagation" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">11. </span>Error propagation<a class="headerlink" href="#error-propagation" title="Permalink to this headline">#</a></h1>
 <section id="how-error-propagates-through-calculations-and-anlysis">
-<h2>How error propagates through calculations and anlysis<a class="headerlink" href="#how-error-propagates-through-calculations-and-anlysis" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.1. </span>How error propagates through calculations and anlysis<a class="headerlink" href="#how-error-propagates-through-calculations-and-anlysis" title="Permalink to this headline">#</a></h2>
 <p>Imagine you have three variables: <br>
 <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> <br>
 Each of those variables has a measure of uncertainty: <br>
@@ -774,24 +707,24 @@ Each of those variables has a measure of uncertainty: <br>
 </ul>
 </section>
 <section id="special-cases-br">
-<h2>Special cases<br><a class="headerlink" href="#special-cases-br" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.2. </span>Special cases<br><a class="headerlink" href="#special-cases-br" title="Permalink to this headline">#</a></h2>
 <p>Rules for error propagation in common operations can be derived from the equation above. If there all measurement variables are independent, then the terms involving covariance become zero. The examples listed below assume no correlation between measurement variables.</p>
 <p>A more complete table, including covariance terms, can be found on Wikipedia:
 <a class="reference external" href="https://en.wikipedia.org/wiki/Propagation_of_uncertainty#Example_formulas">https://en.wikipedia.org/wiki/Propagation_of_uncertainty#Example_formulas</a></p>
 <section id="addition-subtractions">
-<h3>Addition, subtractions<a class="headerlink" href="#addition-subtractions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.1. </span>Addition, subtractions<a class="headerlink" href="#addition-subtractions" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(y = a + b - c\)</span></p>
 <p><em>error:</em></p>
 <p><span class="math notranslate nohighlight">\(\sigma_y ^2  = \sigma_a ^2 + \sigma_b ^2 + \sigma_c ^2\)</span></p>
 </section>
 <section id="multiplication-division">
-<h3>Multiplication, division<a class="headerlink" href="#multiplication-division" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.2. </span>Multiplication, division<a class="headerlink" href="#multiplication-division" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(y = \frac{ab}{c}\)</span></p>
 <p><em>relative error:</em></p>
 <p><span class="math notranslate nohighlight">\((\frac{\sigma_y }{y})^2 =(\frac{\sigma_a }{a})^2 + (\frac{\sigma_b }{b})^2 + (\frac{\sigma_c }{c})^2\)</span></p>
 </section>
 <section id="multiplying-by-an-exact-number">
-<h3>Multiplying by an exact number<a class="headerlink" href="#multiplying-by-an-exact-number" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.3. </span>Multiplying by an exact number<a class="headerlink" href="#multiplying-by-an-exact-number" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(y=ma\)</span></p>
 <p><em>error:</em></p>
 <p><span class="math notranslate nohighlight">\((\sigma_y) = m(\sigma_a)\)</span></p>
@@ -799,36 +732,36 @@ Each of those variables has a measure of uncertainty: <br>
 <p><span class="math notranslate nohighlight">\((\frac{\sigma_y}{y})^2 = (\frac{\sigma_a}{a})^2\)</span></p>
 </section>
 <section id="power">
-<h3>Power<a class="headerlink" href="#power" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.4. </span>Power<a class="headerlink" href="#power" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(y = a^m\)</span></p>
 <p><span class="math notranslate nohighlight">\((\frac{\sigma_y}{y})^2 = (m \frac{\sigma_a}{a})^2\)</span></p>
 </section>
 <section id="natural-log">
-<h3>Natural log<a class="headerlink" href="#natural-log" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.5. </span>Natural log<a class="headerlink" href="#natural-log" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(y= \ln{a}\)</span></p>
 <p><span class="math notranslate nohighlight">\(\sigma_y = |\frac{\sigma_a}{a}|\)</span></p>
 </section>
 <section id="log-base-10">
-<h3>Log, base 10<a class="headerlink" href="#log-base-10" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.6. </span>Log, base 10<a class="headerlink" href="#log-base-10" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(y = \log_{10}{a}\)</span></p>
 <p><span class="math notranslate nohighlight">\(\sigma_y = |0.434 \frac{\sigma_a}{a}|\)</span></p>
 </section>
 <section id="exponential">
-<h3>Exponential<a class="headerlink" href="#exponential" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.7. </span>Exponential<a class="headerlink" href="#exponential" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(y = e^a\)</span></p>
 <p><span class="math notranslate nohighlight">\(\sigma_y = |y \sigma_a|\)</span></p>
 </section>
 <section id="exponential-base-10">
-<h3>Exponential, base 10<a class="headerlink" href="#exponential-base-10" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.8. </span>Exponential, base 10<a class="headerlink" href="#exponential-base-10" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(y = 10^a\)</span></p>
 <p><span class="math notranslate nohighlight">\(\sigma_y = |2.303 y \sigma_a|\)</span></p>
 </section>
 <section id="python-uncertainties-package">
-<h3>Python uncertainties package<a class="headerlink" href="#python-uncertainties-package" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.9. </span>Python uncertainties package<a class="headerlink" href="#python-uncertainties-package" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference external" href="https://pythonhosted.org/uncertainties/">uncertainties</a> package in Python makes it easy to keep track of uncertainties in complicated equations and account for correlations, which are ignored in the special cases above.</p>
 </section>
 <section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.10. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
 <p><strong>Example</strong>: Measure diameter of a sphere:</p>
 <p>relative error = 10%</p>
 <p>Error in calculating volume?</p>
@@ -931,7 +864,7 @@ Analytical error in DIC = umol kg-1</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Poisson regression example</p>
+            <p class="prev-next-title"><span class="section-number">10. </span>Poisson regression example</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="week04a-hypothesis-power.html" title="next page">

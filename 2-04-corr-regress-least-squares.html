@@ -1,0 +1,1071 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Correlation and linear regression &#8212; Data Analysis Techniques in Marine Science</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Implementing linear regression in Python" href="2-05-wcoa-cruise-regression.html" />
+    <link rel="prev" title="3. Modeling, sampling, confidence intervals" href="2-03-modeling-sampling.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/course-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data Analysis Techniques in Marine Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software-installation/README.html">
+   1. Setup and software installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-02-python-intro.html">
+   2. Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-03-cruise-data-analysis.html">
+   3. Cruise data analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-04-boolean.html">
+   4. Boolean logic in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-05-loops.html">
+   5. Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-06-conditional-execution.html">
+   6. Conditional execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-07-python-functions.html">
+   7. Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-08-python-modules.html">
+   8. Creating your own Python module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-09-python-packages.html">
+   9. Python packages
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Probability distributions and linear modeling
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-01-introduction.html">
+   1. Sampling and statistics: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-02-probability-and-distributions.html">
+   2. Probability and distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-03-modeling-sampling.html">
+   3. Modeling, sampling, confidence intervals
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Correlation and linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-05-wcoa-cruise-regression.html">
+   5. Implementing linear regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-06-multivariate-regression.html">
+   6. Multivariate regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">
+   7. Poisson regression example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-08-error-propagation.html">
+   8. Error propagation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Hypothesis testing and power analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-01-hypothesis-power.html">
+   1. Hypothesis testing and Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-02-anova.html">
+   2. Analysis of variance (ANOVA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-03-nonparam.html">
+   3. Non-parametric statistical tests
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-04-generalized-linear-model.html">
+   4. The generalized linear model
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Nonlinear modeling and optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="4-01-optimization.html">
+   1. Optimization and nonlinear modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4-02-us-population-example.html">
+   2. Example: Modeling exponential growth
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Principal component analysis and related techniques
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-01-PCA-EOF.html">
+   1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-02-MDS.html">
+   2. Multidimensional Scaling Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-03-ndbc-wind.html">
+   3. NDBC data - analysis of wind vector time series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-04-monterey_bay_kelp.html">
+   4. Monterey Bay Kelp PCA
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Spectral analysis of time series
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-01-spectral-analysis.html">
+   1. Spectral Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-02-lobo-spectral.html">
+   2. Spectral analysis example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-03-lobo-spectral-part2.html">
+   3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-04-filtering.html">
+   5. Filtering and Convolution
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Spatial analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-01-spatial-analysis.html">
+   1. Spatial Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-02-interpolation.html">
+   2. Interpolation techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-03-mapping-intro.html">
+   3. Map tutorial
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Image analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="8-01-image-analysis.html">
+   1. Image Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Git reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="git-reference/README.html">
+   Git Reference
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/2-04-corr-regress-least-squares.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/2-04-corr-regress-least-squares.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correlation">
+   4.1. Correlation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#varying-degrees-of-correlation">
+     Varying degrees of correlation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-significance-of-linear-correlation">
+     Testing significance of linear correlation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression-type-i">
+   4.2. Linear regression (Type I)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#least-squares-regression">
+     Least-Squares Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-regression-assumptions">
+     Linear Regression Assumptions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minimizing-the-sum-of-squared-errors-sse">
+     Minimizing the sum of squared errors, SSE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-slope">
+     Regression slope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-intercept">
+     Regression Intercept
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard-error-of-the-estimate">
+     Standard error of the estimate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard-error-of-the-regression-slope">
+     Standard error of the regression slope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confidence-intervals-for-the-regression-slope">
+     Confidence intervals for the regression slope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-relationship-between-correlation-and-regression">
+     Review: relationship between correlation and regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-regression-type-ii">
+     Linear regression (Type II)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simplest-type-2-regression-the-geometric-mean">
+       Simplest Type 2 regression - the geometric mean
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Correlation and linear regression</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correlation">
+   4.1. Correlation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#varying-degrees-of-correlation">
+     Varying degrees of correlation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-significance-of-linear-correlation">
+     Testing significance of linear correlation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression-type-i">
+   4.2. Linear regression (Type I)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#least-squares-regression">
+     Least-Squares Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-regression-assumptions">
+     Linear Regression Assumptions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minimizing-the-sum-of-squared-errors-sse">
+     Minimizing the sum of squared errors, SSE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-slope">
+     Regression slope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-intercept">
+     Regression Intercept
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard-error-of-the-estimate">
+     Standard error of the estimate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard-error-of-the-regression-slope">
+     Standard error of the regression slope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confidence-intervals-for-the-regression-slope">
+     Confidence intervals for the regression slope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-relationship-between-correlation-and-regression">
+     Review: relationship between correlation and regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-regression-type-ii">
+     Linear regression (Type II)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simplest-type-2-regression-the-geometric-mean">
+       Simplest Type 2 regression - the geometric mean
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="correlation-and-linear-regression">
+<h1><span class="section-number">4. </span>Correlation and linear regression<a class="headerlink" href="#correlation-and-linear-regression" title="Permalink to this headline">#</a></h1>
+<section id="correlation">
+<h2><span class="section-number">4.1. </span>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">#</a></h2>
+<p>Correlation <span class="math notranslate nohighlight">\(\neq\)</span> Causation</p>
+<ul class="simple">
+<li><p>If two variables are correlated, variability in one variable <em>might</em> cause variability in the other. Or there may be another underlying variable that causes variations in both.</p></li>
+<li><p>Statistically significant correlations may be <em>spurious</em> - see examples at <a class="reference external" href="https://tylervigen.com/spurious-correlations">https://tylervigen.com/spurious-correlations</a></p></li>
+</ul>
+<p><img alt="images/correlation-causation-cage.png" src="_images/correlation-causation-cage.png" /></p>
+<p>The caclulation of correlation is based on covariance.</p>
+<p>The <strong>variance</strong> <span class="math notranslate nohighlight">\(s_x^2\)</span> has to be positive.</p>
+<div class="math notranslate nohighlight">
+\[ s_x^2 = \frac{1}{N-1}\sum_{i=1}^N (x_i - \bar{x})(x_i - \bar{x})\]</div>
+<p>The <strong>covariance</strong> <span class="math notranslate nohighlight">\(s_{xy}^2\)</span> can be positive or negative.  If <span class="math notranslate nohighlight">\(x_i\)</span> tends to be above the mean <span class="math notranslate nohighlight">\(\bar{x}\)</span> when <span class="math notranslate nohighlight">\(y_i\)</span> tends to be above the mean, then the covariance is positive</p>
+<div class="math notranslate nohighlight">
+\[ s_{xy}^2 = \frac{1}{N-1}\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})\]</div>
+<p>The <em>Pearson correlation coefficient</em> is the normalized covariance between two variables.</p>
+<div class="math notranslate nohighlight">
+\[ r_{xy} = \frac{s_{xy}^2}{s_x s_y}\]</div>
+<section id="varying-degrees-of-correlation">
+<h3>Varying degrees of correlation<a class="headerlink" href="#varying-degrees-of-correlation" title="Permalink to this headline">#</a></h3>
+<p>There may be a pattern in the data, but a linear model may not be appropriate.</p>
+<p><img alt="images/Correlation_examples.png" src="_images/Correlation_examples.png" /></p>
+<p><a class="reference external" href="http://wikipedia.org/wiki/Correlation_and_dependence">source</a></p>
+<p>Parametric statistic (like Pearson’s correlation are sensitive to outliers. For example, two radnomly generated sets of numbers might have a very low correlation coefficent, as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">437</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;r = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;r = 0.035&#39;)
+</pre></div>
+</div>
+<img alt="_images/2-04-corr-regress-least-squares_5_1.png" src="_images/2-04-corr-regress-least-squares_5_1.png" />
+</div>
+</div>
+<p>However, adding an outlier to this data set greatly inflates the correlation coefficient (to nearly 1).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">yo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
+
+<span class="n">ro</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">xo</span><span class="p">,</span><span class="n">yo</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xo</span><span class="p">,</span><span class="n">yo</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;r = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">ro</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;r = 0.96&#39;)
+</pre></div>
+</div>
+<img alt="_images/2-04-corr-regress-least-squares_7_1.png" src="_images/2-04-corr-regress-least-squares_7_1.png" />
+</div>
+</div>
+</section>
+<section id="testing-significance-of-linear-correlation">
+<h3>Testing significance of linear correlation<a class="headerlink" href="#testing-significance-of-linear-correlation" title="Permalink to this headline">#</a></h3>
+<p>The following test statistic, will follow a t distribution for randomly generated sets of data.</p>
+<div class="math notranslate nohighlight">
+\[ t = |r|\frac{\sqrt{N-2}}{\sqrt{1-r^2}}\]</div>
+<p>To test for significant at confidence level <span class="math notranslate nohighlight">\(1-\alpha\)</span>, calculate a t statistic and compare with a critical t value <span class="math notranslate nohighlight">\(t_{\nu,1-\alpha/2}\)</span>, where <span class="math notranslate nohighlight">\(\nu = N-2\)</span> is the degrees of freedom. The degrees of freedom is <span class="math notranslate nohighlight">\(N-2\)</span> because you can always draw a line through two data points. Three data points are needed to obatin one independent piece of information.</p>
+</section>
+</section>
+<section id="linear-regression-type-i">
+<h2><span class="section-number">4.2. </span>Linear regression (Type I)<a class="headerlink" href="#linear-regression-type-i" title="Permalink to this headline">#</a></h2>
+<section id="least-squares-regression">
+<h3>Least-Squares Regression<a class="headerlink" href="#least-squares-regression" title="Permalink to this headline">#</a></h3>
+<p><strong>Type I regression minimizes the variance along one axis</strong></p>
+<ul class="simple">
+<li><p>x is the independent variable</p></li>
+<li><p>y is the dependent variable</p></li>
+<li><p>Goal: minimize sum of squared errors, SSE</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+
+<span class="n">slope</span><span class="p">,</span><span class="n">intercept</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">se</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;bo&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">]),</span><span class="n">slope</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span><span class="o">+</span><span class="n">intercept</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">xp</span><span class="p">,</span><span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span><span class="n">xp</span><span class="p">],[</span><span class="n">yp</span><span class="p">,</span><span class="n">slope</span><span class="o">*</span><span class="n">xp</span><span class="o">+</span><span class="n">intercept</span><span class="p">],</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 7.0)
+</pre></div>
+</div>
+<img alt="_images/2-04-corr-regress-least-squares_11_1.png" src="_images/2-04-corr-regress-least-squares_11_1.png" />
+</div>
+</div>
+<p>Type I regression assumes that the x variable is exactly known (error free)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="n">help</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Examples of (nearly) error free measurements:</p>
+<ul class="simple">
+<li><p>Time</p></li>
+<li><p>Chemical standard (when compared to an error-prone sensor)</p></li>
+<li><p>Distance</p></li>
+</ul>
+<p>Type 1 regression minimizes the sum of square error.</p>
+<p>Be careful when choosing a subset!</p>
+<p><img alt="images/temperature_trends_short_vs_long.png" src="_images/temperature_trends_short_vs_long.png" /></p>
+<p><em>source</em>: Walsh, J., et al. (11 January 2013), “Figure 6: Short-term Variations Versus Long-term Trend, in: D. Is the global temperature still increasing? Isn’t there recent evidence that it is actually 1 cooling?, in: Appendix I: NCA Climate Science - Addressing Commonly Asked Questions from A to Z”, in Federal Advisory Committee Draft Climate Assessment. A report by the National Climate Assessment Development Advisory Committee (NCADAC)[1], Washington, DC, USA: U.S. Global Change Research Program, p.1065.</p>
+</section>
+<section id="linear-regression-assumptions">
+<h3>Linear Regression Assumptions<a class="headerlink" href="#linear-regression-assumptions" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Validity of linear model</p></li>
+<li><p>Constant variance: same variance regardless of x value (homoscdastic)</p></li>
+<li><p>Independence of errors (errors are uncorrelated)</p></li>
+</ul>
+<p>Anscombe’s quartet shows data sets with the same mean and standard deviation in both variables, as well as the same regression line.</p>
+<p>The code for this example comes from:
+<a class="reference external" href="http://matplotlib.org/examples/pylab_examples/anscombe.html">http://matplotlib.org/examples/pylab_examples/anscombe.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">8.04</span><span class="p">,</span> <span class="mf">6.95</span><span class="p">,</span> <span class="mf">7.58</span><span class="p">,</span> <span class="mf">8.81</span><span class="p">,</span> <span class="mf">8.33</span><span class="p">,</span> <span class="mf">9.96</span><span class="p">,</span> <span class="mf">7.24</span><span class="p">,</span> <span class="mf">4.26</span><span class="p">,</span> <span class="mf">10.84</span><span class="p">,</span> <span class="mf">4.82</span><span class="p">,</span> <span class="mf">5.68</span><span class="p">])</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.14</span><span class="p">,</span> <span class="mf">8.14</span><span class="p">,</span> <span class="mf">8.74</span><span class="p">,</span> <span class="mf">8.77</span><span class="p">,</span> <span class="mf">9.26</span><span class="p">,</span> <span class="mf">8.10</span><span class="p">,</span> <span class="mf">6.13</span><span class="p">,</span> <span class="mf">3.10</span><span class="p">,</span> <span class="mf">9.13</span><span class="p">,</span> <span class="mf">7.26</span><span class="p">,</span> <span class="mf">4.74</span><span class="p">])</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.46</span><span class="p">,</span> <span class="mf">6.77</span><span class="p">,</span> <span class="mf">12.74</span><span class="p">,</span> <span class="mf">7.11</span><span class="p">,</span> <span class="mf">7.81</span><span class="p">,</span> <span class="mf">8.84</span><span class="p">,</span> <span class="mf">6.08</span><span class="p">,</span> <span class="mf">5.39</span><span class="p">,</span> <span class="mf">8.15</span><span class="p">,</span> <span class="mf">6.42</span><span class="p">,</span> <span class="mf">5.73</span><span class="p">])</span>
+<span class="n">x4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="n">y4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">6.58</span><span class="p">,</span> <span class="mf">5.76</span><span class="p">,</span> <span class="mf">7.71</span><span class="p">,</span> <span class="mf">8.84</span><span class="p">,</span> <span class="mf">8.47</span><span class="p">,</span> <span class="mf">7.04</span><span class="p">,</span> <span class="mf">5.25</span><span class="p">,</span> <span class="mf">12.50</span><span class="p">,</span> <span class="mf">5.56</span><span class="p">,</span> <span class="mf">7.91</span><span class="p">,</span> <span class="mf">6.89</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">x</span>
+
+<span class="n">xfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s1">&#39;ks&#39;</span><span class="p">,</span> <span class="n">xfit</span><span class="p">,</span> <span class="n">fit</span><span class="p">(</span><span class="n">xfit</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">xticks</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s1">&#39;ks&#39;</span><span class="p">,</span> <span class="n">xfit</span><span class="p">,</span> <span class="n">fit</span><span class="p">(</span><span class="n">xfit</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[],</span> <span class="n">xticks</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;II&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="s1">&#39;ks&#39;</span><span class="p">,</span> <span class="n">xfit</span><span class="p">,</span> <span class="n">fit</span><span class="p">(</span><span class="n">xfit</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;III&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">yticks</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">xticks</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+<span class="n">xfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">x4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">x4</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x4</span><span class="p">,</span> <span class="n">y4</span><span class="p">,</span> <span class="s1">&#39;ks&#39;</span><span class="p">,</span> <span class="n">xfit</span><span class="p">,</span> <span class="n">fit</span><span class="p">(</span><span class="n">xfit</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">xticks</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;IV&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(3, 12, &#39;IV&#39;)
+</pre></div>
+</div>
+<img alt="_images/2-04-corr-regress-least-squares_13_1.png" src="_images/2-04-corr-regress-least-squares_13_1.png" />
+</div>
+</div>
+</section>
+<section id="minimizing-the-sum-of-squared-errors-sse">
+<h3>Minimizing the sum of squared errors, SSE<a class="headerlink" href="#minimizing-the-sum-of-squared-errors-sse" title="Permalink to this headline">#</a></h3>
+<p>The goal of any “least squares” regression is to minimize the sum of squared errors.</p>
+<div class="math notranslate nohighlight">
+\[SSE  = \sum_{i=1} ^N (y_i - \hat{y_i})^2\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> is the y value of the data point</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y_i}\)</span> is  the y value predicted by the linear model (i.e. the y position of the line at the same x position as the data)</p></li>
+<li><p><span class="math notranslate nohighlight">\((y_i - \hat{y_i})^2\)</span> is the squared error</p></li>
+</ul>
+<p>On an <span class="math notranslate nohighlight">\(x\)</span>-<span class="math notranslate nohighlight">\(y\)</span> plot, the SSE can be thought of the sum of the vertical distances between the data values <span class="math notranslate nohighlight">\(y_i\)</span> and the corresponding model values <span class="math notranslate nohighlight">\(\hat{y}_i\)</span>.</p>
+</section>
+<section id="regression-slope">
+<h3>Regression slope<a class="headerlink" href="#regression-slope" title="Permalink to this headline">#</a></h3>
+<p>The regression slope depends on the covariance <span class="math notranslate nohighlight">\(s_{xy}^2\)</span> and the variance <span class="math notranslate nohighlight">\(s_x^2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ \hat{a}_2 = \frac{s_{xy}^2}{s_x^2} = \frac{ \sum_{i=1} ^N (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1} ^N (x_i - \bar{x})^2}\]</div>
+<p>The regression slope can also be throught of as scaling the correlation coefficient by the standard deviations <span class="math notranslate nohighlight">\(s_y\)</span> and <span class="math notranslate nohighlight">\(s_x\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ \hat{a}_2 = \frac{s_{xy}^2}{s_x^2} = r_{xy}\frac{s_y}{s_x}\]</div>
+<p>Either way, the slope depends on both the spread of the data and the degree to which <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> covary. If the correlation between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is zero, the least squares regression line is flat. The regression line can have a steep slope if there is a strong correlation between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, and the standard deviation of <span class="math notranslate nohighlight">\(y\)</span> is large relative to the standard deviation of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</section>
+<section id="regression-intercept">
+<h3>Regression Intercept<a class="headerlink" href="#regression-intercept" title="Permalink to this headline">#</a></h3>
+<p>The least squares regression line is guaranteed to go through the mean values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. This property can be used to find the intercept of the regression line.</p>
+<div class="math notranslate nohighlight">
+\[ \hat{a}_1 = \bar{y} - \hat{a}_2\bar{x} \]</div>
+</section>
+<section id="standard-error-of-the-estimate">
+<h3>Standard error of the estimate<a class="headerlink" href="#standard-error-of-the-estimate" title="Permalink to this headline">#</a></h3>
+<p>The standard error of the estimate is a measure of the goodness of fit of the model. It depends on the sum of squared errors, which is minimized in least squares regression, as well as the degrees of freedom <span class="math notranslate nohighlight">\(\nu = N - 2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[s_e = \left( \frac{SSE}{N-2} \right)^{1/2}\]</div>
+<p>Note that this is different from the standard error of the data, <span class="math notranslate nohighlight">\(SE_x = s_x/\sqrt{N}\)</span>, which was used earlier to describe how well the mean of a variable <span class="math notranslate nohighlight">\(x\)</span> is known.</p>
+</section>
+<section id="standard-error-of-the-regression-slope">
+<h3>Standard error of the regression slope<a class="headerlink" href="#standard-error-of-the-regression-slope" title="Permalink to this headline">#</a></h3>
+<p>The standard error of the regression slope (sometimes called the standard error of the gradient) describes how well <span class="math notranslate nohighlight">\(a_2\)</span> is known. It depends on the standard error of the estimate, and the variance in <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[s_{a_2} = \sqrt{\frac{s_e^2}{\sum_{i=1}^N (x-\bar{x})^2}}\]</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">stderr</span></code> result given by the <code class="docutils literal notranslate"><span class="pre">stats.linregress</span></code> function is Python refers to the standard error of the slope, <span class="math notranslate nohighlight">\(s_{a_2}\)</span>.</p>
+</section>
+<section id="confidence-intervals-for-the-regression-slope">
+<h3>Confidence intervals for the regression slope<a class="headerlink" href="#confidence-intervals-for-the-regression-slope" title="Permalink to this headline">#</a></h3>
+<p>The standard error of the slope <span class="math notranslate nohighlight">\(s_{a_2}\)</span> can be used to calculate confidence intervals for the regression slope.</p>
+<div class="math notranslate nohighlight">
+\[\hat{a}_2 - t_{\nu,1 - \alpha /2} s_{a_2} &lt; a_2 &lt; \hat{a}_2 + t_{\nu,1- \alpha /2} s_{a_2}\]</div>
+<p>Based on the data, these intervals describe a range in which the true slope <span class="math notranslate nohighlight">\(a_2\)</span> is thought to lie. This depends on the estimated slope <span class="math notranslate nohighlight">\(\hat{a}_2\)</span>, as well as the degrees of freedom <span class="math notranslate nohighlight">\(\nu\)</span> and significance level <span class="math notranslate nohighlight">\(\alpha\)</span>. This is similar to how confidence intervals are calculated for an estimate of the mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span>.</p>
+</section>
+<section id="review-relationship-between-correlation-and-regression">
+<h3>Review: relationship between correlation and regression<a class="headerlink" href="#review-relationship-between-correlation-and-regression" title="Permalink to this headline">#</a></h3>
+<p>The concepts of correlation and regression are closely related. The correlation coefficient <span class="math notranslate nohighlight">\(r\)</span> is given by the relationship</p>
+<div class="math notranslate nohighlight">
+\[ r = \frac{s_{xy}}{s_x s_y}\]</div>
+<p>where <span class="math notranslate nohighlight">\(s_{xy}\)</span> is the covariance between the <span class="math notranslate nohighlight">\(x\)</span> variable and the <span class="math notranslate nohighlight">\(y\)</span> variable, <span class="math notranslate nohighlight">\(s_x\)</span> is the standard deviation of the <span class="math notranslate nohighlight">\(x\)</span> variable and <span class="math notranslate nohighlight">\(s_y\)</span> is the standard deviation of the <span class="math notranslate nohighlight">\(y\)</span> variable.</p>
+<p>In the linear model</p>
+<div class="math notranslate nohighlight">
+\[ \hat{y} = \hat{a}_1 + \hat{a}_2 x,\]</div>
+<p>the ordinary least squares regression slope <span class="math notranslate nohighlight">\(\hat{a}_2\)</span> is given by the relationship</p>
+<div class="math notranslate nohighlight">
+\[ \hat{a}_2 = \frac{s_{xy}}{s_x s_x}\]</div>
+<p>This means that the relationship betweeen the correlation coefficient <span class="math notranslate nohighlight">\(r\)</span> and the least squares regression slope <span class="math notranslate nohighlight">\(\hat{a}_2\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ r = \hat{a}_2 \frac{s_y}{s_x}.\]</div>
+<p>This has several important implications:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span> always have the same sign (<span class="math notranslate nohighlight">\(r\)</span> is negative when the regression line has negative slope)</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(r = 0\)</span>, then  <span class="math notranslate nohighlight">\(\hat{a}_2 = 0\)</span> and <span class="math notranslate nohighlight">\(s_{xy} = 0\)</span></p></li>
+</ul>
+<p>There is also a close relationship between testing the null hypothesis of zero correlation and the confidence intervals on the regression slope. If the null hypothesis can be rejected at a given confidence level, then the confidence intervals of the slope will not include zero.</p>
+</section>
+<section id="linear-regression-type-ii">
+<h3>Linear regression (Type II)<a class="headerlink" href="#linear-regression-type-ii" title="Permalink to this headline">#</a></h3>
+<p>Type 2 regression is the case where there are potentially errors or uncertainty in both the x and y variables. In a Type 1 regression, one variable needs to be selected as the independent variable (<span class="math notranslate nohighlight">\(x\)</span>) and another needs to be the dependent variable (<span class="math notranslate nohighlight">\(y\)</span>). The least-squares method in the Type I approach minimizes the sum of squared errors <span class="math notranslate nohighlight">\(\sum(\hat{y}-y)^2\)</span>. Errors in the <span class="math notranslate nohighlight">\(x\)</span> variable are not considered in the Type 1 approach.</p>
+<p><img alt="images/type_2_reg.png" src="_images/type_2_reg.png" /></p>
+<p>Image: Emery and Thomson</p>
+<p>Reference for Geometric Mean Function Regression (GMFR, a.k.a. neutral regression):</p>
+<p>Ricker, W. E. Computation and uses of central trend lines
+Can. J. Zool., 1984, 62, 1897-1905</p>
+<p><strong>Calculating Geometric Mean Function Regression</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{a}_{2yx}\)</span> : slope of regression of y on x</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{a}_{2xy}\)</span> : slope of regression of y on x</p></li>
+<li><p>Geometric mean: <span class="math notranslate nohighlight">\(\hat{a}_{2GM} = \sqrt{\frac{\hat{a}_{2yx}} {\hat{a}_{2xy}}}\)</span></p></li>
+</ul>
+<section id="simplest-type-2-regression-the-geometric-mean">
+<h4>Simplest Type 2 regression - the geometric mean<a class="headerlink" href="#simplest-type-2-regression-the-geometric-mean" title="Permalink to this headline">#</a></h4>
+<p>The difference between the two Type 1 regression lines above can be used to illustrate one potential solution, the geometric mean regression. This is the line that bisects the two Type 1 regression lines. This can be thought of as a “compromise” between the two lines. An important assumption in this approach is that the uncertainty in each variable is assumed to be proportional to the sample standard deviation. If the uncertainty is dominated by natural variability, this might be a reasonable assumption. In cases, where the uncertainty is dominated by measurement error, there might be better ways of quantifying the uncertainty based on the analytical techniques. In this case, more sophisticated iterative approaches can be taken to determine the appropriate Type 2 regression model.</p>
+<p>Detailed discussion can be found in Ricker, W. E. (1984) Computation and uses of central trend lines, <em>Can. J. Zool.</em>, 62, 1897-1905.</p>
+<p>Glover, Jenkins and Doney provide an algorithm for determining the geometric mean regression slope:</p>
+<ul class="simple">
+<li><p>Determine the slope of the regression of <span class="math notranslate nohighlight">\(y\)</span> on <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(slope_{yx}\)</span></p></li>
+<li><p>Determine the slope of the regression of <span class="math notranslate nohighlight">\(x\)</span> on <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(slope_{xy}\)</span></p></li>
+<li><p>Calculate the geometric mean regression slope, <span class="math notranslate nohighlight">\(slope_{GMR} = \sqrt{\frac{slope_{yx}}{slope_{xy}}}\)</span></p></li>
+<li><p>Determine the intercept by noting that the regression line goes through the mean of <span class="math notranslate nohighlight">\(x\)</span> and the mean of <span class="math notranslate nohighlight">\(y\)</span></p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2-03-modeling-sampling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Modeling, sampling, confidence intervals</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2-05-wcoa-cruise-regression.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Implementing linear regression in Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom Connolly<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

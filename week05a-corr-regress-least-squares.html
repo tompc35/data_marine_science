@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Correlation and linear regression &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>6. Correlation and linear regression &#8212; Data Analysis Techniques in Marine Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Implementing linear regression in Python" href="week05b-wcoa-cruise-regression.html" />
-    <link rel="prev" title="Exercises" href="week03d-exercises.html" />
+    <link rel="next" title="7. Implementing linear regression in Python" href="week05b-wcoa-cruise-regression.html" />
+    <link rel="prev" title="5. Exercises" href="week03d-exercises.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,54 +123,37 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="software-installation/README.html">
-   Setup and software installation
+   1. Setup and software installation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week02b-python-intro.html">
-   Introduction to Python
+  <a class="reference internal" href="1-02-python-intro.html">
+   2. Introduction to Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week02c-exercises-python-intro.html">
-   Exercises - Introduction to Python
+  <a class="reference internal" href="1-03-cruise-data-analysis.html">
+   3. Cruise data analysis in Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week03b-boolean.html">
-   Boolean logic in Python
+  <a class="reference internal" href="1-04-boolean.html">
+   4. Boolean logic in Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week04b-loops.html">
-   Loops
+  <a class="reference internal" href="1-05-loops.html">
+   5. Loops
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week04c-python-functions.html">
-   Functions
+  <a class="reference internal" href="1-08-python-modules.html">
+   6. Creating your own Python module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week05c-conditional-execution.html">
-   Conditional execution
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Python Modules and Packages
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="week06b-python-modules.html">
-   Creating your own Python module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week14-python-packages.html">
-   Python packages
+  <a class="reference internal" href="1-09-python-packages.html">
+   7. Python packages
   </a>
  </li>
 </ul>
@@ -182,57 +165,52 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week01-introduction.html">
-   Sampling and statistics: Introduction
+   1. Sampling and statistics: Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week02-probability-and-distributions.html">
-   Probability and distributions
+   3. Probability and distributions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week03a-modeling-sampling.html">
-   Modeling, sampling, confidence intervals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week03c-cruise-data-analysis.html">
-   Cruise data analysis in Python
+   4. Modeling, sampling, confidence intervals
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week03d-exercises.html">
-   Exercises
+   5. Exercises
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Correlation and linear regression
+   6. Correlation and linear regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05b-wcoa-cruise-regression.html">
-   Implementing linear regression in Python
+   7. Implementing linear regression in Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05d-exercises.html">
-   Exercises
+   8. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week06a-multivariate-regression.html">
-   Multivariate regression
+   9. Multivariate regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week08b-poisson-regression-tropical-storms.html">
-   Poisson regression example
+   10. Poisson regression example
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week08a-error-propagation.html">
-   Error propagation
+   11. Error propagation
   </a>
  </li>
 </ul>
@@ -488,51 +466,6 @@ title="Fullscreen mode"
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/tompc35/data_marine_science"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/tompc35/data_marine_science/issues/new?title=Issue%20on%20page%20%2Fweek05a-corr-regress-least-squares.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
       aria-label="Download this page">
@@ -602,79 +535,79 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#correlation">
-   Correlation
+   6.1. Correlation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#varying-degrees-of-correlation">
-     Varying degrees of correlation
+     6.1.1. Varying degrees of correlation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#testing-significance-of-linear-correlation">
-     Testing significance of linear correlation
+     6.1.2. Testing significance of linear correlation
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-regression-type-i">
-   Linear regression (Type I)
+   6.2. Linear regression (Type I)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#least-squares-regression">
-     Least-Squares Regression
+     6.2.1. Least-Squares Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-regression-assumptions">
-     Linear Regression Assumptions
+     6.2.2. Linear Regression Assumptions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#minimizing-the-sum-of-squared-errors-sse">
-     Minimizing the sum of squared errors, SSE
+     6.2.3. Minimizing the sum of squared errors, SSE
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-slope">
-     Regression slope
+     6.2.4. Regression slope
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-intercept">
-     Regression Intercept
+     6.2.5. Regression Intercept
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#standard-error-of-the-estimate">
-     Standard error of the estimate
+     6.2.6. Standard error of the estimate
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#standard-error-of-the-regression-slope">
-     Standard error of the regression slope
+     6.2.7. Standard error of the regression slope
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#confidence-intervals-for-the-regression-slope">
-     Confidence intervals for the regression slope
+     6.2.8. Confidence intervals for the regression slope
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#review-relationship-between-correlation-and-regression">
-     Review: relationship between correlation and regression
+     6.2.9. Review: relationship between correlation and regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-regression-type-ii">
-     Linear regression (Type II)
+     6.2.10. Linear regression (Type II)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#simplest-type-2-regression-the-geometric-mean">
-       Simplest Type 2 regression - the geometric mean
+       6.2.10.1. Simplest Type 2 regression - the geometric mean
       </a>
      </li>
     </ul>
@@ -702,79 +635,79 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#correlation">
-   Correlation
+   6.1. Correlation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#varying-degrees-of-correlation">
-     Varying degrees of correlation
+     6.1.1. Varying degrees of correlation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#testing-significance-of-linear-correlation">
-     Testing significance of linear correlation
+     6.1.2. Testing significance of linear correlation
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-regression-type-i">
-   Linear regression (Type I)
+   6.2. Linear regression (Type I)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#least-squares-regression">
-     Least-Squares Regression
+     6.2.1. Least-Squares Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-regression-assumptions">
-     Linear Regression Assumptions
+     6.2.2. Linear Regression Assumptions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#minimizing-the-sum-of-squared-errors-sse">
-     Minimizing the sum of squared errors, SSE
+     6.2.3. Minimizing the sum of squared errors, SSE
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-slope">
-     Regression slope
+     6.2.4. Regression slope
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-intercept">
-     Regression Intercept
+     6.2.5. Regression Intercept
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#standard-error-of-the-estimate">
-     Standard error of the estimate
+     6.2.6. Standard error of the estimate
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#standard-error-of-the-regression-slope">
-     Standard error of the regression slope
+     6.2.7. Standard error of the regression slope
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#confidence-intervals-for-the-regression-slope">
-     Confidence intervals for the regression slope
+     6.2.8. Confidence intervals for the regression slope
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#review-relationship-between-correlation-and-regression">
-     Review: relationship between correlation and regression
+     6.2.9. Review: relationship between correlation and regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-regression-type-ii">
-     Linear regression (Type II)
+     6.2.10. Linear regression (Type II)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#simplest-type-2-regression-the-geometric-mean">
-       Simplest Type 2 regression - the geometric mean
+       6.2.10.1. Simplest Type 2 regression - the geometric mean
       </a>
      </li>
     </ul>
@@ -792,9 +725,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="correlation-and-linear-regression">
-<h1>Correlation and linear regression<a class="headerlink" href="#correlation-and-linear-regression" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6. </span>Correlation and linear regression<a class="headerlink" href="#correlation-and-linear-regression" title="Permalink to this headline">#</a></h1>
 <section id="correlation">
-<h2>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1. </span>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">#</a></h2>
 <p>Correlation <span class="math notranslate nohighlight">\(\neq\)</span> Causation</p>
 <ul class="simple">
 <li><p>If two variables are correlated, variability in one variable <em>might</em> cause variability in the other. Or there may be another underlying variable that causes variations in both.</p></li>
@@ -812,7 +745,7 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[ r_{xy} = \frac{s_{xy}^2}{s_x s_y}\]</div>
 <section id="varying-degrees-of-correlation">
-<h3>Varying degrees of correlation<a class="headerlink" href="#varying-degrees-of-correlation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.1. </span>Varying degrees of correlation<a class="headerlink" href="#varying-degrees-of-correlation" title="Permalink to this headline">#</a></h3>
 <p>There may be a pattern in the data, but a linear model may not be appropriate.</p>
 <p><img alt="images/Correlation_examples.png" src="_images/Correlation_examples.png" /></p>
 <p><a class="reference external" href="http://wikipedia.org/wiki/Correlation_and_dependence">source</a></p>
@@ -865,7 +798,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="testing-significance-of-linear-correlation">
-<h3>Testing significance of linear correlation<a class="headerlink" href="#testing-significance-of-linear-correlation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.2. </span>Testing significance of linear correlation<a class="headerlink" href="#testing-significance-of-linear-correlation" title="Permalink to this headline">#</a></h3>
 <p>The following test statistic, will follow a t distribution for randomly generated sets of data.</p>
 <div class="math notranslate nohighlight">
 \[ t = |r|\frac{\sqrt{N-2}}{\sqrt{1-r^2}}\]</div>
@@ -873,9 +806,9 @@ title="Print to PDF"
 </section>
 </section>
 <section id="linear-regression-type-i">
-<h2>Linear regression (Type I)<a class="headerlink" href="#linear-regression-type-i" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2. </span>Linear regression (Type I)<a class="headerlink" href="#linear-regression-type-i" title="Permalink to this headline">#</a></h2>
 <section id="least-squares-regression">
-<h3>Least-Squares Regression<a class="headerlink" href="#least-squares-regression" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.1. </span>Least-Squares Regression<a class="headerlink" href="#least-squares-regression" title="Permalink to this headline">#</a></h3>
 <p><strong>Type I regression minimizes the variance along one axis</strong></p>
 <ul class="simple">
 <li><p>x is the independent variable</p></li>
@@ -923,7 +856,7 @@ title="Print to PDF"
 <p><em>source</em>: Walsh, J., et al. (11 January 2013), “Figure 6: Short-term Variations Versus Long-term Trend, in: D. Is the global temperature still increasing? Isn’t there recent evidence that it is actually 1 cooling?, in: Appendix I: NCA Climate Science - Addressing Commonly Asked Questions from A to Z”, in Federal Advisory Committee Draft Climate Assessment. A report by the National Climate Assessment Development Advisory Committee (NCADAC)[1], Washington, DC, USA: U.S. Global Change Research Program, p.1065.</p>
 </section>
 <section id="linear-regression-assumptions">
-<h3>Linear Regression Assumptions<a class="headerlink" href="#linear-regression-assumptions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.2. </span>Linear Regression Assumptions<a class="headerlink" href="#linear-regression-assumptions" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Validity of linear model</p></li>
 <li><p>Constant variance: same variance regardless of x value (homoscdastic)</p></li>
@@ -983,7 +916,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="minimizing-the-sum-of-squared-errors-sse">
-<h3>Minimizing the sum of squared errors, SSE<a class="headerlink" href="#minimizing-the-sum-of-squared-errors-sse" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.3. </span>Minimizing the sum of squared errors, SSE<a class="headerlink" href="#minimizing-the-sum-of-squared-errors-sse" title="Permalink to this headline">#</a></h3>
 <p>The goal of any “least squares” regression is to minimize the sum of squared errors.</p>
 <div class="math notranslate nohighlight">
 \[SSE  = \sum_{i=1} ^N (y_i - \hat{y_i})^2\]</div>
@@ -996,7 +929,7 @@ title="Print to PDF"
 <p>On an <span class="math notranslate nohighlight">\(x\)</span>-<span class="math notranslate nohighlight">\(y\)</span> plot, the SSE can be thought of the sum of the vertical distances between the data values <span class="math notranslate nohighlight">\(y_i\)</span> and the corresponding model values <span class="math notranslate nohighlight">\(\hat{y}_i\)</span>.</p>
 </section>
 <section id="regression-slope">
-<h3>Regression slope<a class="headerlink" href="#regression-slope" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.4. </span>Regression slope<a class="headerlink" href="#regression-slope" title="Permalink to this headline">#</a></h3>
 <p>The regression slope depends on the covariance <span class="math notranslate nohighlight">\(s_{xy}^2\)</span> and the variance <span class="math notranslate nohighlight">\(s_x^2\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[ \hat{a}_2 = \frac{s_{xy}^2}{s_x^2} = \frac{ \sum_{i=1} ^N (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1} ^N (x_i - \bar{x})^2}\]</div>
@@ -1006,34 +939,34 @@ title="Print to PDF"
 <p>Either way, the slope depends on both the spread of the data and the degree to which <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> covary. If the correlation between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is zero, the least squares regression line is flat. The regression line can have a steep slope if there is a strong correlation between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, and the standard deviation of <span class="math notranslate nohighlight">\(y\)</span> is large relative to the standard deviation of <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </section>
 <section id="regression-intercept">
-<h3>Regression Intercept<a class="headerlink" href="#regression-intercept" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.5. </span>Regression Intercept<a class="headerlink" href="#regression-intercept" title="Permalink to this headline">#</a></h3>
 <p>The least squares regression line is guaranteed to go through the mean values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. This property can be used to find the intercept of the regression line.</p>
 <div class="math notranslate nohighlight">
 \[ \hat{a}_1 = \bar{y} - \hat{a}_2\bar{x} \]</div>
 </section>
 <section id="standard-error-of-the-estimate">
-<h3>Standard error of the estimate<a class="headerlink" href="#standard-error-of-the-estimate" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.6. </span>Standard error of the estimate<a class="headerlink" href="#standard-error-of-the-estimate" title="Permalink to this headline">#</a></h3>
 <p>The standard error of the estimate is a measure of the goodness of fit of the model. It depends on the sum of squared errors, which is minimized in least squares regression, as well as the degrees of freedom <span class="math notranslate nohighlight">\(\nu = N - 2\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[s_e = \left( \frac{SSE}{N-2} \right)^{1/2}\]</div>
 <p>Note that this is different from the standard error of the data, <span class="math notranslate nohighlight">\(SE_x = s_x/\sqrt{N}\)</span>, which was used earlier to describe how well the mean of a variable <span class="math notranslate nohighlight">\(x\)</span> is known.</p>
 </section>
 <section id="standard-error-of-the-regression-slope">
-<h3>Standard error of the regression slope<a class="headerlink" href="#standard-error-of-the-regression-slope" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.7. </span>Standard error of the regression slope<a class="headerlink" href="#standard-error-of-the-regression-slope" title="Permalink to this headline">#</a></h3>
 <p>The standard error of the regression slope (sometimes called the standard error of the gradient) describes how well <span class="math notranslate nohighlight">\(a_2\)</span> is known. It depends on the standard error of the estimate, and the variance in <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[s_{a_2} = \sqrt{\frac{s_e^2}{\sum_{i=1}^N (x-\bar{x})^2}}\]</div>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">stderr</span></code> result given by the <code class="docutils literal notranslate"><span class="pre">stats.linregress</span></code> function is Python refers to the standard error of the slope, <span class="math notranslate nohighlight">\(s_{a_2}\)</span>.</p>
 </section>
 <section id="confidence-intervals-for-the-regression-slope">
-<h3>Confidence intervals for the regression slope<a class="headerlink" href="#confidence-intervals-for-the-regression-slope" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.8. </span>Confidence intervals for the regression slope<a class="headerlink" href="#confidence-intervals-for-the-regression-slope" title="Permalink to this headline">#</a></h3>
 <p>The standard error of the slope <span class="math notranslate nohighlight">\(s_{a_2}\)</span> can be used to calculate confidence intervals for the regression slope.</p>
 <div class="math notranslate nohighlight">
 \[\hat{a}_2 - t_{\nu,1 - \alpha /2} s_{a_2} &lt; a_2 &lt; \hat{a}_2 + t_{\nu,1- \alpha /2} s_{a_2}\]</div>
 <p>Based on the data, these intervals describe a range in which the true slope <span class="math notranslate nohighlight">\(a_2\)</span> is thought to lie. This depends on the estimated slope <span class="math notranslate nohighlight">\(\hat{a}_2\)</span>, as well as the degrees of freedom <span class="math notranslate nohighlight">\(\nu\)</span> and significance level <span class="math notranslate nohighlight">\(\alpha\)</span>. This is similar to how confidence intervals are calculated for an estimate of the mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span>.</p>
 </section>
 <section id="review-relationship-between-correlation-and-regression">
-<h3>Review: relationship between correlation and regression<a class="headerlink" href="#review-relationship-between-correlation-and-regression" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.9. </span>Review: relationship between correlation and regression<a class="headerlink" href="#review-relationship-between-correlation-and-regression" title="Permalink to this headline">#</a></h3>
 <p>The concepts of correlation and regression are closely related. The correlation coefficient <span class="math notranslate nohighlight">\(r\)</span> is given by the relationship</p>
 <div class="math notranslate nohighlight">
 \[ r = \frac{s_{xy}}{s_x s_y}\]</div>
@@ -1055,7 +988,7 @@ title="Print to PDF"
 <p>There is also a close relationship between testing the null hypothesis of zero correlation and the confidence intervals on the regression slope. If the null hypothesis can be rejected at a given confidence level, then the confidence intervals of the slope will not include zero.</p>
 </section>
 <section id="linear-regression-type-ii">
-<h3>Linear regression (Type II)<a class="headerlink" href="#linear-regression-type-ii" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.10. </span>Linear regression (Type II)<a class="headerlink" href="#linear-regression-type-ii" title="Permalink to this headline">#</a></h3>
 <p>Type 2 regression is the case where there are potentially errors or uncertainty in both the x and y variables. In a Type 1 regression, one variable needs to be selected as the independent variable (<span class="math notranslate nohighlight">\(x\)</span>) and another needs to be the dependent variable (<span class="math notranslate nohighlight">\(y\)</span>). The least-squares method in the Type I approach minimizes the sum of squared errors <span class="math notranslate nohighlight">\(\sum(\hat{y}-y)^2\)</span>. Errors in the <span class="math notranslate nohighlight">\(x\)</span> variable are not considered in the Type 1 approach.</p>
 <p><img alt="images/type_2_reg.png" src="_images/type_2_reg.png" /></p>
 <p>Image: Emery and Thomson</p>
@@ -1069,7 +1002,7 @@ Can. J. Zool., 1984, 62, 1897-1905</p>
 <li><p>Geometric mean: <span class="math notranslate nohighlight">\(\hat{a}_{2GM} = \sqrt{\frac{\hat{a}_{2yx}} {\hat{a}_{2xy}}}\)</span></p></li>
 </ul>
 <section id="simplest-type-2-regression-the-geometric-mean">
-<h4>Simplest Type 2 regression - the geometric mean<a class="headerlink" href="#simplest-type-2-regression-the-geometric-mean" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">6.2.10.1. </span>Simplest Type 2 regression - the geometric mean<a class="headerlink" href="#simplest-type-2-regression-the-geometric-mean" title="Permalink to this headline">#</a></h4>
 <p>The difference between the two Type 1 regression lines above can be used to illustrate one potential solution, the geometric mean regression. This is the line that bisects the two Type 1 regression lines. This can be thought of as a “compromise” between the two lines. An important assumption in this approach is that the uncertainty in each variable is assumed to be proportional to the sample standard deviation. If the uncertainty is dominated by natural variability, this might be a reasonable assumption. In cases, where the uncertainty is dominated by measurement error, there might be better ways of quantifying the uncertainty based on the analytical techniques. In this case, more sophisticated iterative approaches can be taken to determine the appropriate Type 2 regression model.</p>
 <p>Detailed discussion can be found in Ricker, W. E. (1984) Computation and uses of central trend lines, <em>Can. J. Zool.</em>, 62, 1897-1905.</p>
 <p>Glover, Jenkins and Doney provide an algorithm for determining the geometric mean regression slope:</p>
@@ -1115,13 +1048,13 @@ Can. J. Zool., 1984, 62, 1897-1905</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Exercises</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Exercises</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="week05b-wcoa-cruise-regression.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Implementing linear regression in Python</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Implementing linear regression in Python</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
