@@ -3,75 +3,75 @@
 
 format: jb-book
 root: README
+
 parts:
 
  - caption: Introduction to Python
+   numbered: 2
    chapters:
    - file: software-installation/README
-   - file: week02b-python-intro
-   - file: week02c-exercises-python-intro
-   - file: week03b-boolean
-   - file: week04b-loops
-   - file: week04c-python-functions
-   - file: week05c-conditional-execution
-
- - caption: Python Modules and Packages
-   chapters:
-   - file: week06b-python-modules
-   - file: week14-python-packages
+   - file: 1-02-python-intro
+   - file: 1-03-cruise-data-analysis
+   - file: 1-04-boolean
+   - file: 1-05-loops
+   - file: 1-06-conditional-execution
+   - file: 1-07-python-functions
+   - file: 1-08-python-modules
+   - file: 1-09-python-packages
    
  - caption: Probability distributions and linear modeling
+   numbered: 2
    chapters:
-   - file: week01-introduction
-   - file: week02-probability-and-distributions   
-   - file: week03a-modeling-sampling
-   - file: week03c-cruise-data-analysis
-   - file: week03d-exercises
-   - file: week05a-corr-regress-least-squares
-   - file: week05b-wcoa-cruise-regression
-   - file: week05d-exercises
-   - file: week06a-multivariate-regression
-   - file: week08b-poisson-regression-tropical-storms
-   - file: week08a-error-propagation
+   - file: 2-01-introduction
+   - file: 2-02-probability-and-distributions   
+   - file: 2-03-modeling-sampling
+   - file: 2-04-corr-regress-least-squares
+   - file: 2-05-wcoa-cruise-regression
+   - file: 2-06-multivariate-regression
+   - file: 2-07-poisson-regression-tropical-storms
+   - file: 2-08-error-propagation
 
  - caption: Hypothesis testing and power analysis
+   numbered: 2
    chapters:
-   - file: week04a-hypothesis-power
-   - file: week04d-exercises  # split this up
-   - file: week07a-anova
-   - file: week07b-nonparam
-   - file: week07c_generalized_linear_model
-   - file: week07d-stats-examples
-   - file: week07e-example-comparing-wcoa-temperature
+   - file: 3-01-hypothesis-power
+   - file: 3-02-anova
+   - file: 3-03-nonparam
+   - file: 3-04-generalized-linear-model
    
  - caption: Nonlinear modeling and optimization
+   numbered: 2
    chapters:
-   - file: week08c-optimization
-   - file: week08d-us-population-example
+   - file: 4-01-optimization
+   - file: 4-02-us-population-example
    
  - caption: Principal component analysis and related techniques
+   numbered: 2
    chapters:
-   - file: week09a-PCA-EOF
-   - file: week09b-MDS
-   - file: week09c-ndbc-wind
-   - file: week09d-monterey_bay_kelp
+   - file: 5-01-PCA-EOF
+   - file: 5-02-MDS
+   - file: 5-03-ndbc-wind
+   - file: 5-04-monterey_bay_kelp
    
  - caption: Spectral analysis of time series
+   numbered: 2
    chapters:
-   - file: week10a-spectral-analysis
-   - file: week10b-lobo-spectral
-   - file: week11a-lobo-spectral-part2
-   - file: week13a-filtering
+   - file: 6-01-spectral-analysis
+   - file: 6-02-lobo-spectral
+   - file: 6-03-lobo-spectral-part2
+   - file: 6-04-filtering
 
  - caption: Spatial analysis
+   numbered: 2
    chapters:
-   - file: week12a-spatial-analysis
-   - file: week12b-interpolation
-   - file: week12c-mapping-intro
+   - file: 7-01-spatial-analysis
+   - file: 7-02-interpolation
+   - file: 7-03-mapping-intro
 
  - caption: Image analysis
+   numbered: 2
    chapters:
-   - file: week13b-image-analysis
+   - file: 8-01-image-analysis
    
  - caption: Git reference
    chapters:

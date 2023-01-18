@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Creating your own Python module &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>8. Creating your own Python module &#8212; Data Analysis Techniques in Marine Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Python packages" href="week14-python-packages.html" />
-    <link rel="prev" title="Conditional execution" href="week05c-conditional-execution.html" />
+    <link rel="next" title="9. Python packages" href="week14-python-packages.html" />
+    <link rel="prev" title="7. Conditional execution" href="week05c-conditional-execution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,57 +118,50 @@ const thebe_selector_output = ".output, .cell_output"
   Introduction to Python
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="software-installation/README.html">
-   Setup and software installation
+   1. Setup and software installation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week02b-python-intro.html">
-   Introduction to Python
+  <a class="reference internal" href="1-01-python-intro.html">
+   2. Introduction to Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week02c-exercises-python-intro.html">
-   Exercises - Introduction to Python
+   3. Exercises - Introduction to Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week03b-boolean.html">
-   Boolean logic in Python
+   4. Boolean logic in Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week04b-loops.html">
-   Loops
+   5. Loops
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week04c-python-functions.html">
-   Functions
+   6. Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05c-conditional-execution.html">
-   Conditional execution
+   7. Conditional execution
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Python Modules and Packages
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Creating your own Python module
+   8. Creating your own Python module
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week14-python-packages.html">
-   Python packages
+   9. Python packages
   </a>
  </li>
 </ul>
@@ -600,41 +593,41 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#running-a-file-as-a-script-from-the-shell-command-line">
-   Running a file as a script from the shell command line
+   8.1. Running a file as a script from the shell command line
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#breaking-down-parts-of-the-file">
-     Breaking down parts of the file
+     8.1.1. Breaking down parts of the file
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#running-the-file">
-     Running the file
+     8.1.2. Running the file
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#importing-as-a-module">
-   Importing as a module
+   8.2. Importing as a module
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-import-statement">
-     The import statement
+     8.2.1. The import statement
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     Running the file
+     8.2.2. Running the file
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   Exercises
+   8.3. Exercises
   </a>
  </li>
 </ul>
@@ -658,41 +651,41 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#running-a-file-as-a-script-from-the-shell-command-line">
-   Running a file as a script from the shell command line
+   8.1. Running a file as a script from the shell command line
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#breaking-down-parts-of-the-file">
-     Breaking down parts of the file
+     8.1.1. Breaking down parts of the file
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#running-the-file">
-     Running the file
+     8.1.2. Running the file
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#importing-as-a-module">
-   Importing as a module
+   8.2. Importing as a module
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-import-statement">
-     The import statement
+     8.2.1. The import statement
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     Running the file
+     8.2.2. Running the file
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   Exercises
+   8.3. Exercises
   </a>
  </li>
 </ul>
@@ -706,10 +699,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="creating-your-own-python-module">
-<h1>Creating your own Python module<a class="headerlink" href="#creating-your-own-python-module" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8. </span>Creating your own Python module<a class="headerlink" href="#creating-your-own-python-module" title="Permalink to this headline">#</a></h1>
 <p>Up to this point, we have created functions and used them within the same Python script. However, what if we want to use those functions in another file, or another project entirely? To do this you can create your own module that can be imported in another Python scripts.</p>
 <section id="running-a-file-as-a-script-from-the-shell-command-line">
-<h2>Running a file as a script from the shell command line<a class="headerlink" href="#running-a-file-as-a-script-from-the-shell-command-line" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1. </span>Running a file as a script from the shell command line<a class="headerlink" href="#running-a-file-as-a-script-from-the-shell-command-line" title="Permalink to this headline">#</a></h2>
 <p>To show how modules work in Python, we start with a simple unit conversion module contained in the file <span class="xref myst">convert.py</span>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
@@ -738,7 +731,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <section id="breaking-down-parts-of-the-file">
-<h3>Breaking down parts of the file<a class="headerlink" href="#breaking-down-parts-of-the-file" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.1.1. </span>Breaking down parts of the file<a class="headerlink" href="#breaking-down-parts-of-the-file" title="Permalink to this headline">#</a></h3>
 <p>This Python file has several parts. The first two lines are comment lines, and are therefore not run as Python code. However, they contain important information about the file and they are include automatically when you create a new file in Spyder. The first line,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 </pre></div>
@@ -759,7 +752,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="running-the-file">
-<h3>Running the file<a class="headerlink" href="#running-the-file" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.1.2. </span>Running the file<a class="headerlink" href="#running-the-file" title="Permalink to this headline">#</a></h3>
 <p>The part of the file above is only run as a script (not when it is imported as a module in another Python file, which is what will be demonstrated in the next section). In Spyder, this can be done with the “Run” button. Python scripts can also be run from the shell (e.g. Mac Terminal, or Git Bash shell). The <a class="reference external" href="http://convert.py">convert.py</a> file can be run by navigating to its directory in the shell and typing</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">convert</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
@@ -773,7 +766,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="importing-as-a-module">
-<h2>Importing as a module<a class="headerlink" href="#importing-as-a-module" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2. </span>Importing as a module<a class="headerlink" href="#importing-as-a-module" title="Permalink to this headline">#</a></h2>
 <p>To show how to import the <a class="reference external" href="http://convert.py">convert.py</a> as a module, and use the functions in another file, we create a simple script called <span class="xref myst">myscript.py</span>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
@@ -786,7 +779,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <section id="the-import-statement">
-<h3>The import statement<a class="headerlink" href="#the-import-statement" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.1. </span>The import statement<a class="headerlink" href="#the-import-statement" title="Permalink to this headline">#</a></h3>
 <p>In the file above, the conversion module is imported with the statement:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">convert</span>
 </pre></div>
@@ -797,7 +790,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id1">
-<h3>Running the file<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.2. </span>Running the file<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>This file can be run from the shell, with the command,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">myscript</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
@@ -810,7 +803,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Write two more unit conversion functions (converting one way and back).</p></li>
 <li><p>Use one in the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code> section of <a class="reference external" href="http://convert.py">convert.py</a></p></li>
@@ -851,13 +844,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Conditional execution</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Conditional execution</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="week14-python-packages.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Python packages</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Python packages</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

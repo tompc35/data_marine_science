@@ -12,7 +12,7 @@ execute:
 
 only_build_toc_files: false
 
-exclude_patterns: [old_notes/*]
+exclude_patterns: [old_notes/*, exercises-*.ipynb, example-*.ipynb]
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -36,3 +36,6 @@ html:
 
 launch_buttons:
   binderhub_url: "https://mybinder.org"
+
+html:
+  use_multitoc_numbering: false

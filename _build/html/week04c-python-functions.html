@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Functions &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>6. Functions &#8212; Data Analysis Techniques in Marine Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Conditional execution" href="week05c-conditional-execution.html" />
-    <link rel="prev" title="Loops" href="week04b-loops.html" />
+    <link rel="next" title="7. Conditional execution" href="week05c-conditional-execution.html" />
+    <link rel="prev" title="5. Loops" href="week04b-loops.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -121,54 +121,47 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="software-installation/README.html">
-   Setup and software installation
+   1. Setup and software installation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week02b-python-intro.html">
-   Introduction to Python
+  <a class="reference internal" href="1-01-python-intro.html">
+   2. Introduction to Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week02c-exercises-python-intro.html">
-   Exercises - Introduction to Python
+   3. Exercises - Introduction to Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week03b-boolean.html">
-   Boolean logic in Python
+   4. Boolean logic in Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week04b-loops.html">
-   Loops
+   5. Loops
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Functions
+   6. Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05c-conditional-execution.html">
-   Conditional execution
+   7. Conditional execution
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Python Modules and Packages
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week06b-python-modules.html">
-   Creating your own Python module
+   8. Creating your own Python module
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week14-python-packages.html">
-   Python packages
+   9. Python packages
   </a>
  </li>
 </ul>
@@ -600,12 +593,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multiple-outputs">
-   Multiple outputs
+   6.1. Multiple outputs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#specifying-default-values-for-inputs">
-   Specifying default values for inputs
+   6.2. Specifying default values for inputs
   </a>
  </li>
 </ul>
@@ -629,12 +622,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multiple-outputs">
-   Multiple outputs
+   6.1. Multiple outputs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#specifying-default-values-for-inputs">
-   Specifying default values for inputs
+   6.2. Specifying default values for inputs
   </a>
  </li>
 </ul>
@@ -648,7 +641,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="functions">
-<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
 <p>Functions can be used to package a set of instructions. These instructions can then be reused for different inputs. Using functions can save you a lot of copying and pasting. Also, if you find a bug in your set of instructions, you only have to fix it once if you use a function instead of copying and pasting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -706,7 +699,7 @@ fahr_to_celsius(temp_fahr)
 </div>
 </div>
 <section id="multiple-outputs">
-<h2>Multiple outputs<a class="headerlink" href="#multiple-outputs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1. </span>Multiple outputs<a class="headerlink" href="#multiple-outputs" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fahr_to_celsius_kelvin</span><span class="p">(</span><span class="n">temp_fahr</span><span class="p">):</span>
@@ -732,7 +725,7 @@ fahr_to_celsius(temp_fahr)
 </div>
 </section>
 <section id="specifying-default-values-for-inputs">
-<h2>Specifying default values for inputs<a class="headerlink" href="#specifying-default-values-for-inputs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2. </span>Specifying default values for inputs<a class="headerlink" href="#specifying-default-values-for-inputs" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fahr_to_celsius_kelvin</span><span class="p">(</span><span class="n">temp_fahr</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
@@ -795,13 +788,13 @@ fahr_to_celsius(temp_fahr)
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Loops</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Loops</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="week05c-conditional-execution.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Conditional execution</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Conditional execution</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

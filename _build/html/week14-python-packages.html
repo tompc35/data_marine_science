@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Python packages &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>9. Python packages &#8212; Data Analysis Techniques in Marine Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sampling and statistics: Introduction" href="week01-introduction.html" />
-    <link rel="prev" title="Creating your own Python module" href="week06b-python-modules.html" />
+    <link rel="prev" title="8. Creating your own Python module" href="week06b-python-modules.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,57 +118,50 @@ const thebe_selector_output = ".output, .cell_output"
   Introduction to Python
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="software-installation/README.html">
-   Setup and software installation
+   1. Setup and software installation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week02b-python-intro.html">
-   Introduction to Python
+  <a class="reference internal" href="1-01-python-intro.html">
+   2. Introduction to Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week02c-exercises-python-intro.html">
-   Exercises - Introduction to Python
+   3. Exercises - Introduction to Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week03b-boolean.html">
-   Boolean logic in Python
+   4. Boolean logic in Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week04b-loops.html">
-   Loops
+   5. Loops
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week04c-python-functions.html">
-   Functions
+   6. Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05c-conditional-execution.html">
-   Conditional execution
+   7. Conditional execution
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Python Modules and Packages
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="week06b-python-modules.html">
-   Creating your own Python module
+   8. Creating your own Python module
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Python packages
+   9. Python packages
   </a>
  </li>
 </ul>
@@ -600,17 +593,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#importing-a-module-located-in-a-another-directory-two-options">
-   Importing a module located in a another directory - two options
+   9.1. Importing a module located in a another directory - two options
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#option-1-setting-your-path">
-     Option 1: Setting your PATH
+     9.1.1. Option 1: Setting your PATH
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#option-2-better-creating-a-package">
-     Option #2 (better): Creating a package
+     9.1.2. Option #2 (better): Creating a package
     </a>
    </li>
   </ul>
@@ -636,17 +629,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#importing-a-module-located-in-a-another-directory-two-options">
-   Importing a module located in a another directory - two options
+   9.1. Importing a module located in a another directory - two options
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#option-1-setting-your-path">
-     Option 1: Setting your PATH
+     9.1.1. Option 1: Setting your PATH
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#option-2-better-creating-a-package">
-     Option #2 (better): Creating a package
+     9.1.2. Option #2 (better): Creating a package
     </a>
    </li>
   </ul>
@@ -662,12 +655,12 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="python-packages">
-<h1>Python packages<a class="headerlink" href="#python-packages" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">9. </span>Python packages<a class="headerlink" href="#python-packages" title="Permalink to this headline">#</a></h1>
 <section id="importing-a-module-located-in-a-another-directory-two-options">
-<h2>Importing a module located in a another directory - two options<a class="headerlink" href="#importing-a-module-located-in-a-another-directory-two-options" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.1. </span>Importing a module located in a another directory - two options<a class="headerlink" href="#importing-a-module-located-in-a-another-directory-two-options" title="Permalink to this headline">#</a></h2>
 <p>Often, the module that you want to import is not in the current directory you are working in. For example, you may want to have a set of useful functions stored in a <code class="docutils literal notranslate"><span class="pre">MyTools</span></code> directory somewhere on your computer, and be able to access those functions from multiple different project directories.</p>
 <section id="option-1-setting-your-path">
-<h3>Option 1: Setting your PATH<a class="headerlink" href="#option-1-setting-your-path" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.1.1. </span>Option 1: Setting your PATH<a class="headerlink" href="#option-1-setting-your-path" title="Permalink to this headline">#</a></h3>
 <p>In order to import a module, Python has to know where to look for it. It knows to look in the current diectory (say, the directory from which you are running a script), but it does not search your entire computer.</p>
 <p>You can specify  directories where Python should look for modules.</p>
 <ul class="simple">
@@ -680,7 +673,7 @@ title="Print to PDF"
 <p>A good way to keep track of things is to keep all of your useful modules in one directory on your computer, then add that single directory to your PATH. If you ever want to share your code with somebody else, it will help to not have files scattered all over your computer. See <a class="reference external" href="http://www.bdnyc.org/2012/09/editing-pythonpath-to-import-modules/">this blog post by Brown Dwarf Research</a>, where the above example came from, for more really useful information.</p>
 </section>
 <section id="option-2-better-creating-a-package">
-<h3>Option #2 (better): Creating a package<a class="headerlink" href="#option-2-better-creating-a-package" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.1.2. </span>Option #2 (better): Creating a package<a class="headerlink" href="#option-2-better-creating-a-package" title="Permalink to this headline">#</a></h3>
 <p>In the example above, if you edit your path using <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>, the changes are not permanent. There are several ways of adding modules to you path permanently. The best option, which works on any operating system, is to create and install your own package. To create a package called <code class="docutils literal notranslate"><span class="pre">mytools</span></code>, the basic directory stucture should look like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MyTools</span><span class="o">/</span>
     <span class="n">setup</span><span class="o">.</span><span class="n">py</span>
@@ -760,7 +753,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Creating your own Python module</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>Creating your own Python module</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="week01-introduction.html" title="next page">

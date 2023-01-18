@@ -1,0 +1,1373 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1. Hypothesis testing and Power &#8212; Data Analysis Techniques in Marine Science</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Analysis of variance (ANOVA)" href="3-02-anova.html" />
+    <link rel="prev" title="9. Error propagation" href="2-08-error-propagation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/course-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data Analysis Techniques in Marine Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software-installation/README.html">
+   1. Setup and software installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-02-python-intro.html">
+   2. Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-03-cruise-data-analysis.html">
+   3. Cruise data analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-04-boolean.html">
+   4. Boolean logic in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-05-loops.html">
+   5. Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-06-conditional-execution.html">
+   6. Conditional execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-07-python-functions.html">
+   7. Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-08-python-modules.html">
+   8. Creating your own Python module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-09-python-packages.html">
+   9. Python packages
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Probability distributions and linear modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-01-introduction.html">
+   1. Sampling and statistics: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-02-probability-and-distributions.html">
+   3. Probability and distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-03-modeling-sampling.html">
+   4. Modeling, sampling, confidence intervals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-04-corr-regress-least-squares.html">
+   5. Correlation and linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-05-wcoa-cruise-regression.html">
+   6. Implementing linear regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-06-multivariate-regression.html">
+   7. Multivariate regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">
+   8. Poisson regression example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-08-error-propagation.html">
+   9. Error propagation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Hypothesis testing and power analysis
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. Hypothesis testing and Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-02-anova.html">
+   2. Analysis of variance (ANOVA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-03-nonparam.html">
+   3. Non-parametric statistical tests
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-04-generalized-linear-model.html">
+   4. The generalized linear model
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Nonlinear modeling and optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="4-01-optimization.html">
+   1. Optimization and nonlinear modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4-02-us-population-example.html">
+   2. Example: Modeling exponential growth
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Principal component analysis and related techniques
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-01-PCA-EOF.html">
+   1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-02-MDS.html">
+   2. Multidimensional Scaling Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-03-ndbc-wind.html">
+   3. NDBC data - analysis of wind vector time series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-04-monterey_bay_kelp.html">
+   4. Monterey Bay Kelp PCA
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Spectral analysis of time series
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-01-spectral-analysis.html">
+   1. Spectral Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-02-lobo-spectral.html">
+   2. Spectral analysis example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-03-lobo-spectral-part2.html">
+   3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-04-filtering.html">
+   5. Filtering and Convolution
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Spatial analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-01-spatial-analysis.html">
+   1. Spatial Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-02-interpolation.html">
+   2. Interpolation techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-03-mapping-intro.html">
+   3. Map tutorial
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Image analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="8-01-image-analysis.html">
+   1. Image Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Git reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="git-reference/README.html">
+   Git Reference
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/3-01-hypothesis-power.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/3-01-hypothesis-power.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hypothesis-testing">
+   1.1. Hypothesis testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#null-hypothesis-h-o">
+     1. Null Hypothesis
+     <span class="math notranslate nohighlight">
+      \(H_o\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternate-hypothesis-h-a">
+     2. Alternate hypothesis
+     <span class="math notranslate nohighlight">
+      \(H_a\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-statistic">
+     3. Test statistic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#region-of-rejection-of-the-null-hypothesis">
+     4.  Region of rejection of the null hypothesis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-of-hypothesis-testing-t-tests">
+   1.2. Application of hypothesis testing: t-tests
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-sample-t-test">
+     One-sample t-test
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-tailed-vs-two-tailed-tests">
+     One-tailed vs. two-tailed tests
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-sample-t-test-comparing-pairs-of-populations">
+     Two-sample t-test: comparing pairs of populations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#student-s-two-sample-t-test-equal-variances">
+     Student’s two- sample t-test (equal variances)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#welch-s-two-sample-t-test-unequal-variances">
+     Welch’s two sample t-test (unequal variances)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#python-implementation">
+       Python implementation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-comparing-means-of-current-meter-data">
+       Exercise: comparing means of current meter data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-comparing-respiration-rates">
+       Exercise: Comparing respiration rates
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power-analysis">
+   1.3. Power analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-detecting-change-due-to-a-restoration-activity">
+     Example: Detecting change due to a restoration activity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-tailed-z-test-like-a-t-test-valid-for-a-large-n">
+     One-tailed z-test (like a t-test, valid for a large N)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resources-for-calculating-power">
+     Resources for calculating power
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-detecting-small-differences-with-a-noisy-instrument">
+     Example: detecting small differences with a noisy instrument
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#critiques-of-null-hypothesis-significance-testing">
+   1.4. Critiques of null hypothesis significance testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-power-analysis-and-experimental-design">
+     Exercise: Power analysis and experimental design
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayes-factors">
+   1.5. Bayes factors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#details-of-the-bayes-factor-calculation-advanced">
+     Details of the Bayes factor calculation (advanced)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Hypothesis testing and Power</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hypothesis-testing">
+   1.1. Hypothesis testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#null-hypothesis-h-o">
+     1. Null Hypothesis
+     <span class="math notranslate nohighlight">
+      \(H_o\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternate-hypothesis-h-a">
+     2. Alternate hypothesis
+     <span class="math notranslate nohighlight">
+      \(H_a\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-statistic">
+     3. Test statistic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#region-of-rejection-of-the-null-hypothesis">
+     4.  Region of rejection of the null hypothesis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-of-hypothesis-testing-t-tests">
+   1.2. Application of hypothesis testing: t-tests
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-sample-t-test">
+     One-sample t-test
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-tailed-vs-two-tailed-tests">
+     One-tailed vs. two-tailed tests
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-sample-t-test-comparing-pairs-of-populations">
+     Two-sample t-test: comparing pairs of populations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#student-s-two-sample-t-test-equal-variances">
+     Student’s two- sample t-test (equal variances)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#welch-s-two-sample-t-test-unequal-variances">
+     Welch’s two sample t-test (unequal variances)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#python-implementation">
+       Python implementation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-comparing-means-of-current-meter-data">
+       Exercise: comparing means of current meter data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-comparing-respiration-rates">
+       Exercise: Comparing respiration rates
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power-analysis">
+   1.3. Power analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-detecting-change-due-to-a-restoration-activity">
+     Example: Detecting change due to a restoration activity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-tailed-z-test-like-a-t-test-valid-for-a-large-n">
+     One-tailed z-test (like a t-test, valid for a large N)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resources-for-calculating-power">
+     Resources for calculating power
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-detecting-small-differences-with-a-noisy-instrument">
+     Example: detecting small differences with a noisy instrument
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#critiques-of-null-hypothesis-significance-testing">
+   1.4. Critiques of null hypothesis significance testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-power-analysis-and-experimental-design">
+     Exercise: Power analysis and experimental design
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayes-factors">
+   1.5. Bayes factors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#details-of-the-bayes-factor-calculation-advanced">
+     Details of the Bayes factor calculation (advanced)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="hypothesis-testing-and-power">
+<h1><span class="section-number">1. </span>Hypothesis testing and Power<a class="headerlink" href="#hypothesis-testing-and-power" title="Permalink to this headline">#</a></h1>
+<section id="hypothesis-testing">
+<h2><span class="section-number">1.1. </span>Hypothesis testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">#</a></h2>
+<p>What is a hypothesis?</p>
+<ul class="simple">
+<li><p>A starting point for investigation</p></li>
+<li><p>A statement that can be disproven with data</p></li>
+<li><p>A proposition made as a basis for reasoning, without any assumption of its truth</p></li>
+</ul>
+<p>Four basic elements of a statistical test:</p>
+<ol class="simple">
+<li><p>Null Hypothesis <span class="math notranslate nohighlight">\(H_0\)</span></p></li>
+<li><p>Alternate hypothesis <span class="math notranslate nohighlight">\(H_a\)</span></p></li>
+<li><p>Test statistic</p></li>
+<li><p>Region of rejection for the null hypothesis</p></li>
+</ol>
+<section id="null-hypothesis-h-o">
+<h3>1. Null Hypothesis <span class="math notranslate nohighlight">\(H_o\)</span><a class="headerlink" href="#null-hypothesis-h-o" title="Permalink to this headline">#</a></h3>
+<p><em>Example:</em></p>
+<p>In a calibration bath measuring temperature,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> - A set of sensor measurements, error prone (noise and bias)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_0\)</span> - Calibration bath temperature, known to many more significant digits than the sensitivity of the sensor being calibrated (for temperature calibration, the well-defined triple point of gallium is used as a reference point)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu\)</span> - The average temperature of the measurement-prone sensor in the calibration bath. This is unknown, it is what we are trying to estimate with the sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span>.</p></li>
+</ul>
+<p>For this example, the null hypothesis is</p>
+<p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\mu = \mu_0\)</span>.</p>
+<p>(the sensor is unbiased)</p>
+</section>
+<section id="alternate-hypothesis-h-a">
+<h3>2. Alternate hypothesis <span class="math notranslate nohighlight">\(H_a\)</span><a class="headerlink" href="#alternate-hypothesis-h-a" title="Permalink to this headline">#</a></h3>
+<p>The alternate hypothesis must cover all possibilities not covered by the null hypothesis. The probability of either the null hypothesis of alternate hypothesis must sum to 1, and they must be mutually exclusive.</p>
+<p>For the calibration bath example described above,</p>
+<p><span class="math notranslate nohighlight">\(H_a\)</span>: <span class="math notranslate nohighlight">\(\mu \neq \mu_0\)</span>.</p>
+</section>
+<section id="test-statistic">
+<h3>3. Test statistic<a class="headerlink" href="#test-statistic" title="Permalink to this headline">#</a></h3>
+<p>The test statistic can either be <strong>parametric</strong> or <strong>non-parametric</strong>. Parametric tests are based on theoretical probability distributions, such as the normal distribution. Non-parametric tests do not assume a particular distribution, but are often less efficient or sacrifice statistical power (see below).</p>
+<p>For the calibration bath example, the appropriate statistical test is the one sample t-test. This is because we are comparing one group of samples (sensor measurements) to a known value (calibration bath temperature). We also expect the sensor measurements to be normally distributed.</p>
+<p>For a normally distributed parent population the <em>t-statistic</em>,</p>
+<p><span class="math notranslate nohighlight">\(t = \frac{ \bar{x} - \mu } {s\sqrt{\frac{1}{N}}}\)</span>,</p>
+<p>has a known distribution. If <span class="math notranslate nohighlight">\(N\)</span> samples are taken from the population many many times, the resulting t-statistics will follow a probability distribution called the t-distribution (see <span class="xref myst">Probability and distributions</span>).</p>
+</section>
+<section id="region-of-rejection-of-the-null-hypothesis">
+<h3>4.  Region of rejection of the null hypothesis<a class="headerlink" href="#region-of-rejection-of-the-null-hypothesis" title="Permalink to this headline">#</a></h3>
+<p>In order decide whether to accept or reject the null hypothesis, we must define what constitutes an “extreme” value of the test statistic.</p>
+<p>For a group of <span class="math notranslate nohighlight">\(N\)</span> = 4 samples (3 degrees of freedom) taken randomly from a normal distribution, there is 5% chance that the t-statistic will be either greater than 3.18 or less than -3.18. This defines the rejection region for a 95% confidence level. In this case, <span class="math notranslate nohighlight">\(\alpha =\)</span> 0.05 is the probability that the null hypothesis will be wrongly rejected based on <span class="math notranslate nohighlight">\(N\)</span> samples, <em>if the null hypothesis is true</em>. Conversely, there is a 95% probability that the null hypothesis will be correctly accepted, <em>if  the null hypothesis is true</em>, which in general is not known.</p>
+<p>Example (two-tailed test):</p>
+<p>reject null-hypothesis if: <span class="math notranslate nohighlight">\(|t|\)</span> &gt; <span class="math notranslate nohighlight">\(t_{1-\frac{\alpha}{2},N-1}\)</span></p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1"># number of samples</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="c1"># plot t-distribution</span>
+<span class="n">tvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">tpdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">tvalues</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvalues</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;probability density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$t$-distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># plot rejection regions</span>
+<span class="n">tcrit</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">upperi</span><span class="p">,</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tvalues</span><span class="o">&gt;</span><span class="n">tcrit</span><span class="p">)</span>
+<span class="n">loweri</span><span class="p">,</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tvalues</span><span class="o">&lt;-</span><span class="n">tcrit</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">tvalues</span><span class="p">[</span><span class="n">upperi</span><span class="p">],</span><span class="n">tpdf</span><span class="p">[</span><span class="n">upperi</span><span class="p">],</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">tvalues</span><span class="p">[</span><span class="n">loweri</span><span class="p">],</span><span class="n">tpdf</span><span class="p">[</span><span class="n">loweri</span><span class="p">],</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3-01-hypothesis-power_2_0.png" src="_images/3-01-hypothesis-power_2_0.png" />
+</div>
+</div>
+<p>In Python, the upper and lower critical values of a test statistic can be found by selecting a distribution from the <code class="docutils literal notranslate"><span class="pre">stats</span></code> library (<code class="docutils literal notranslate"><span class="pre">stats.t</span></code> in this case) and using the <code class="docutils literal notranslate"><span class="pre">ppf</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">tupper</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tlower</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;upper critical t value = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">tupper</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;lower critical t value = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">tlower</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>upper critical t value = 3.182446305284263
+lower critical t value = -3.182446305284264
+</pre></div>
+</div>
+</div>
+</div>
+<p>The probability of obtaining a certain <span class="math notranslate nohighlight">\(t\)</span> value or less can be found from the cumulative distribution function, <code class="docutils literal notranslate"><span class="pre">cdf</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">tupper</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9750000000000106
+</pre></div>
+</div>
+</div>
+</div>
+<p>In testing a null hypothesis, there are four possible situations, depending on the actual truth of the null hypothesis, and the conclusion that is drawn from a test statistic calculated from a finite number of samples.</p>
+<p><img alt="images/hypothesis-table.png" src="_images/hypothesis-table.png" /></p>
+<p>Here, <span class="math notranslate nohighlight">\((1-\alpha)\)</span> is called the “confidence level” and <span class="math notranslate nohighlight">\((1-\beta)\)</span> is called the “statistical power”. <span class="math notranslate nohighlight">\(\alpha\)</span> is the probability of making a <strong>Type I error</strong> and <span class="math notranslate nohighlight">\(\beta\)</span> is the probability of making a <strong>Type II error</strong>.</p>
+<p>Some version of this table is presented in nearly every textbook on statistics. However, it still leads to a lot of confusion.</p>
+<p>Let’s say you are comparing a set of observations to a theory, or a set of sensor values with a known standard. In truth, there is almost certainly a difference between the sample mean and the true mean, say to 20+ significant digits. But, if the data are noisy it would still be difficult to <em>prove</em> that this small difference did not just occur by random chance. Failing to reject the null hypothesis at a 95% confidence level does not mean that you are 95% certain that it is true. It just means that your data are less extreme than 95% of random groups of samples drawn from the hypothesized distribution.</p>
+<p>Scientists tend to focus on confidence intervals rather than statistical power because this approach is conservative from a scientific point of view. By avoiding Type I errors, scientists reduce the likelihood of promoting an idea that is not actually true. This may come at the price of not detecting actual differences. However, as explained, power analysis can be an extremely valuable tool for planning experiments and determining how many samples you need.</p>
+<p>Power analysis is described later in these notes, after covering the basic statistical procedure of t-tests.</p>
+</section>
+</section>
+<section id="application-of-hypothesis-testing-t-tests">
+<h2><span class="section-number">1.2. </span>Application of hypothesis testing: t-tests<a class="headerlink" href="#application-of-hypothesis-testing-t-tests" title="Permalink to this headline">#</a></h2>
+<p>The <span class="math notranslate nohighlight">\(t\)</span>-statistic is used to test whether sample means are different. It was was used by a statistician named William Sealy Gosset, who worked for the Guiness Brewery in Dublin in the early 20th century. He was interested in comparing the properties of ingredients of the beloved Irish stout with a small number of samples. To keep his corporate boss happy, Gosset published his statistical work under the pseudonym “Student”.</p>
+<section id="one-sample-t-test">
+<h3>One-sample t-test<a class="headerlink" href="#one-sample-t-test" title="Permalink to this headline">#</a></h3>
+<p>The example described above, in which a sample mean is compared with a single value (possibly a known value or a theoretical result), is called a <strong>one-sample t-test</strong>. All t-tests assumes that the samples are drawn from a <strong>normally-distributed</strong> population.</p>
+<p>In Python, a one sample <span class="math notranslate nohighlight">\(t\)</span>-test can be conducted with the function <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp()</span></code>. Given a set of values <code class="docutils literal notranslate"><span class="pre">x</span></code> and a population mean, <span class="math notranslate nohighlight">\(\mu\)</span> or <code class="docutils literal notranslate"><span class="pre">popmean</span></code>, this function returns the <span class="math notranslate nohighlight">\(t\)</span>-statistic and a <span class="math notranslate nohighlight">\(p\)</span>-value. The <span class="math notranslate nohighlight">\(p\)</span>-value is the probability of obtaining a <span class="math notranslate nohighlight">\(t\)</span>-statistic of that magnitude, or more extreme, in the hypothetical case the null hypothesis is true. If the <span class="math notranslate nohighlight">\(p\)</span>-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span> then the null hypothesis is rejected.</p>
+<p>Looking at an example where we have three samples, and we are comparing with a known value <span class="math notranslate nohighlight">\(\mu_0\)</span> = 10.0</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">4.</span><span class="p">]</span>  <span class="c1"># list of samples</span>
+<span class="n">mu0</span> <span class="o">=</span> <span class="mf">10.0</span>      <span class="c1"># known value</span>
+<span class="n">t</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu0</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x:&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mu0:&quot;</span><span class="p">,</span><span class="n">mu0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: [1.0, 2.0, 4.0]
+mu0: 10.0
+t: -8.693
+p: 0.013
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, the <span class="math notranslate nohighlight">\(p\)</span>-value is less than .05 but greater than 0.01, so can the null hypothesis can be rejected at the at 95% confidence level but not the 99% confidence level.</p>
+<p>Looking at another example where the known value is closer to the sample mean,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">mu0</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">t</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">mu0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x:&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mu0:&quot;</span><span class="p">,</span><span class="n">mu0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: [1.0, 2.0, 4.0]
+mu0: 3
+t: -0.756
+p: 0.529
+</pre></div>
+</div>
+</div>
+</div>
+<p>we see that the <span class="math notranslate nohighlight">\(t\)</span>-statistic is much closer to zero, and the <span class="math notranslate nohighlight">\(p\)</span>-value is is much higher. In this case, the null hypothesis cannot be rejected at the 95% confidence level (or even a far more lenient 60% confidence level).</p>
+<p>The p-value is related to the cumulative probability of the t-statistic. The p-value is the probability of obtaining a certain value of t, or more extreme, in the hypothetical case that the null hypothesis is true. The cumulative probability is the probability of obtaining a certain value of t or less when taking random samples from a normal distribution (again, in the hypothetical case that the null hypothesis is true).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tcdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mf">0.756</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cumulative probability:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">tcdf</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cumulative probability: 0.264
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a probability of 0.264 of randomly obtaining <span class="math notranslate nohighlight">\(t\)</span> value of -0.756 or less if the null hypothesis is true. However, there is twice as much probability (p = 0.529) of obtaining a more extreme value (<span class="math notranslate nohighlight">\(t \leq\)</span> -0.756 or <span class="math notranslate nohighlight">\(t \geq\)</span> -0.756).</p>
+</section>
+<section id="one-tailed-vs-two-tailed-tests">
+<h3>One-tailed vs. two-tailed tests<a class="headerlink" href="#one-tailed-vs-two-tailed-tests" title="Permalink to this headline">#</a></h3>
+<p>The two previous examples are both <strong>two-tailed</strong> tests. The rejection region occupies both tails of the t-distribution. In a one tailed test, we only care about differences in a certain direction, for example:</p>
+<p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\mu \leq \mu_0\)</span></p>
+<p><span class="math notranslate nohighlight">\(H_a\)</span>: <span class="math notranslate nohighlight">\(\mu &gt; \mu_0\)</span></p>
+<p>In this case, the null hypothesis is rejected only for extreme t values that are greater than zero. The rejection region for the 95% confidence level is shown below for <span class="math notranslate nohighlight">\(N\)</span> = 4 samples (3 degrees of freedom).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvalues</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;probability density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$t$-distribution and &#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># plot rejection regions</span>
+<span class="n">tcrit</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">upperi</span><span class="p">,</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tvalues</span><span class="o">&gt;</span><span class="n">tcrit</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">tvalues</span><span class="p">[</span><span class="n">upperi</span><span class="p">],</span><span class="n">tpdf</span><span class="p">[</span><span class="n">upperi</span><span class="p">],</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3-01-hypothesis-power_19_0.png" src="_images/3-01-hypothesis-power_19_0.png" />
+</div>
+</div>
+<p>When using a function such as <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp()</span></code> to do a one-tailed test, here is how to interpret the output:</p>
+<ul class="simple">
+<li><p>Reject <span class="math notranslate nohighlight">\(H_o\)</span> only if the value of t has the correct sign</p></li>
+<li><p>If t does have the correct sign, reject <span class="math notranslate nohighlight">\(H_o\)</span> if 1/2 the p-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+</ul>
+</section>
+<section id="two-sample-t-test-comparing-pairs-of-populations">
+<h3>Two-sample t-test: comparing pairs of populations<a class="headerlink" href="#two-sample-t-test-comparing-pairs-of-populations" title="Permalink to this headline">#</a></h3>
+<p>A <strong>two-sample t-test</strong> is used to test whether the means of two groups of samples are different.</p>
+<p><span class="math notranslate nohighlight">\(H_o: \bar{x_1} = \bar{x_2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(H_a: \bar{x_1} \neq \bar{x_2}\)</span></p>
+<p>The example below shows bacterial growth rates for two different sets of samples. The control is from a sample collected from an estuary and “GX” is from an experiment in which a polysaccharide compound (gum xantham) was added to invesitgate the effects of tranparent exopolymer particles (TEP).</p>
+<p><img alt="images/t_test_ex.png" src="_images/t_test_ex.png" /></p>
+<p><em>Source:</em> Bar-Zeev and Rahav (2015) Microbial metabolism of transparent exopolymer particles during the summer months along a eutrophic estuary, Front. Microbiol.
+<a class="reference external" href="http://journal.frontiersin.org/article/10.3389/fmicb.2015.00403/full">http://journal.frontiersin.org/article/10.3389/fmicb.2015.00403/full</a></p>
+<p>Box Plots:</p>
+<ul class="simple">
+<li><p>Central line represents median</p></li>
+<li><p>Box brackets 25-75th percentile (50% of the data)</p></li>
+<li><p>Whiskers bracket 10-90th percentile (80% of the data)</p></li>
+</ul>
+<p>The <span class="math notranslate nohighlight">\(*\)</span> above the second box indicates a significant difference as indicated by a t-test. There is overlap in the range of growth rates, but the null hypothesis that the means are equal is rejected at a 99% confidence level.</p>
+</section>
+<section id="student-s-two-sample-t-test-equal-variances">
+<h3>Student’s two- sample t-test (equal variances)<a class="headerlink" href="#student-s-two-sample-t-test-equal-variances" title="Permalink to this headline">#</a></h3>
+<p>A two-sample t-test is used to comparing <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span>, <em>assuming populations being sampled have the same true variance</em>, i.e.  <span class="math notranslate nohighlight">\(\sigma_x^2 = \sigma_y^2\)</span>. With <span class="math notranslate nohighlight">\(N_x\)</span> and <span class="math notranslate nohighlight">\(N_y\)</span> samples, the t statistic is given by:</p>
+<p><span class="math notranslate nohighlight">\(t = \frac{\bar{x} - \bar{y}} {s_{xy} \sqrt{\frac{1}{N_x} + \frac{1}{N_y}}}\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(s_{xy}\)</span> is the pooled sample variance,</p>
+<p><span class="math notranslate nohighlight">\(s_{xy} = \sqrt{\frac{(N_x - 1)s_x^2 + (N_y - 1)s_y^2} {N_x + N_y -2}}\)</span>,</p>
+<p>and the degrees of freedom is given by</p>
+<p><span class="math notranslate nohighlight">\(\nu = N_x + N_y -2\)</span>.</p>
+<p><strong>Note:</strong> For paired samples that are not independent, you would not use this test. Instead, you would take the differences and use a one-sample t-test as described above. This would have <span class="math notranslate nohighlight">\(N-1\)</span> degrees of freedom for <span class="math notranslate nohighlight">\(N\)</span> pairs.</p>
+</section>
+<section id="welch-s-two-sample-t-test-unequal-variances">
+<h3>Welch’s two sample t-test (unequal variances)<a class="headerlink" href="#welch-s-two-sample-t-test-unequal-variances" title="Permalink to this headline">#</a></h3>
+<p>Welch’s t-test is more robust and does not assume equal variances of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. The t statistic is given by</p>
+<p><span class="math notranslate nohighlight">\(t = \frac{\bar{x} - \bar{y}} {\sqrt{\frac{s_x^2}{N_x} + \frac{s_y^2}{N_y}}}\)</span>.</p>
+<p>The degrees of freedom in this case is a more complicated expression given by the Welch-Satterthwaite equation:</p>
+<p><span class="math notranslate nohighlight">\(\nu = \frac{\left(\frac{s_x^2}{N_x} + \frac{s_y^2}{N_y}\right)^2}{\frac{1}{(N_x-1)}\left(\frac{s_x^2}{N_x}\right)^2 + \frac{1}{(N_y-1)}\left(\frac{s_y^2}{N_y}\right)^2}\)</span></p>
+<section id="python-implementation">
+<h4>Python implementation<a class="headerlink" href="#python-implementation" title="Permalink to this headline">#</a></h4>
+<p>For arrays of independent values <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, the <strong>Student’s t-test</strong> can be performed using this function:</p>
+<p><code class="docutils literal notranslate"><span class="pre">t,p</span> <span class="pre">=</span> <span class="pre">stats.ttest_ind(x,y)</span></code></p>
+<p>For <strong>Welch’s t-test</strong>, use the same function but set the <code class="docutils literal notranslate"><span class="pre">equal_var</span></code> option to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">t,p</span> <span class="pre">=</span> <span class="pre">stats.ttest_ind(x,y,equal_var=False)</span></code></p>
+<p>It is recommended to use Welch’s t-test unless you have a good reason to assume that the population variances are equal. This reduces the chance of a Type I error.</p>
+</section>
+<section id="exercise-comparing-means-of-current-meter-data">
+<h4>Exercise: comparing means of current meter data<a class="headerlink" href="#exercise-comparing-means-of-current-meter-data" title="Permalink to this headline">#</a></h4>
+<p>In Section 3.14 of Emery and Thomson, an example is given where the January means of alongshore velocity (<span class="math notranslate nohighlight">\(V\)</span>) from current meter data are compared for two different years. The means and standard deviations from daily averages in January are given by</p>
+<p>Year 1: <span class="math notranslate nohighlight">\(\bar{V_1} = 23 \pm 3 \text{ cm/s}\)</span></p>
+<p>Year 2: <span class="math notranslate nohighlight">\(\bar{V_2} = 20 \pm 2 \text{ cm/s}\)</span></p>
+<p>Perform a Student’s t-test to test the null hypothesis that the means are the same between these two years, for 95% confidence. You may assume that each daily average is an independent sample.</p>
+</section>
+<section id="exercise-comparing-respiration-rates">
+<h4>Exercise: Comparing respiration rates<a class="headerlink" href="#exercise-comparing-respiration-rates" title="Permalink to this headline">#</a></h4>
+<p>For the problem below, use any function in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/stats.html"><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code></a> or other libraries such as <a class="reference external" href="https://pingouin-stats.org/">Pinguoin</a>.</p>
+<p>Water column respiration rates are measured in dark bottle incubations at two different stations on an oceanographic cruise. Three replicates are taken at each station. The values (in units of mL/L d<span class="math notranslate nohighlight">\(^{-1}\)</span>) are given below:</p>
+<p>Station A: <code class="docutils literal notranslate"><span class="pre">[0.45,</span> <span class="pre">0.77,</span> <span class="pre">0.71]</span></code></p>
+<p>Station B: <code class="docutils literal notranslate"><span class="pre">[0.54,</span> <span class="pre">0.43,</span> <span class="pre">0.36]</span></code></p>
+<p>Use an appropriate statistical test to determine whether there is a significant difference in the mean respiration rate between the two stations.</p>
+</section>
+</section>
+</section>
+<section id="power-analysis">
+<h2><span class="section-number">1.3. </span>Power analysis<a class="headerlink" href="#power-analysis" title="Permalink to this headline">#</a></h2>
+<p>Statistical power describes the probability of correctly accepting the null hypothesis, if it is false. A conventional target power is <span class="math notranslate nohighlight">\((1 -  \beta) = 0.8\)</span>. This means that <strong>if</strong> the null hypothesis is false, there is a probability <span class="math notranslate nohighlight">\(\beta\)</span> = 0.2 (one out of five chance) that the null hypothesis will be accepted incorrectly (Type II error). This would mean incorrectly inferring that there is no difference between two sets of samples.</p>
+<p>Statistical power and confidence levels are not independent. The confidence level for accepting or rejecting a null hypothesis is one of the primary factors that determined statistical power.</p>
+<p>Power analysis can be useful for studies that inform management decisions, in which avoiding a Type II error might be a “conservative” action. For example, a Type II error in a study on the effect of pollution on abundance of an organism at two sites (pristine and disturbed) might mean “incorrectly” protecting habitat. The accepted level of risk of a Type II error in this case might vary between environmental and industry stakeholders.</p>
+<p>Power analysis is also useful <em>before</em> conducting an experiment. It can help you determine how many samples you need to observe a certain effect with a statistical test. The effect that you want to observe might be determined by the resolution of your instrument, or what you think might be important in an ecological sense. Remember that determining a significant difference between two sets of samples does not mean that the difference is important.</p>
+<p>There are four ingredients in a power analysis. If three are known, than the fourth can be calculated.</p>
+<ol class="simple">
+<li><p>Effect Size:  <span class="math notranslate nohighlight">\(d = \frac{|\mu_1 - \mu_2|} {\sigma}\)</span></p>
+<ul class="simple">
+<li><p>d=0.2 “small”</p></li>
+<li><p>d=0.8 “large”</p></li>
+</ul>
+</li>
+<li><p>Sample size: <span class="math notranslate nohighlight">\(N\)</span></p></li>
+<li><p>Confidence Level: (1-<span class="math notranslate nohighlight">\(\alpha\)</span>), also refered to as the <span class="math notranslate nohighlight">\(\alpha\)</span> level or significance level, typical is 0.05.</p></li>
+<li><p>Target Power: (1-<span class="math notranslate nohighlight">\(\beta\)</span>)</p></li>
+</ol>
+<p>The effect size (<span class="math notranslate nohighlight">\(d\)</span>) is the minimum deviation from the null hypothesis that you expect to be able to detect. In tris case, it is the effect size for a difference between two means (t-test).</p>
+<ul class="simple">
+<li><p>d is non-dimensional</p></li>
+<li><p>often called “Cohen’s d”</p></li>
+<li><p>d = difference of the mean / standard deviation</p></li>
+</ul>
+<section id="example-detecting-change-due-to-a-restoration-activity">
+<h3>Example: Detecting change due to a restoration activity<a class="headerlink" href="#example-detecting-change-due-to-a-restoration-activity" title="Permalink to this headline">#</a></h3>
+<p>Goal 1 (ecologically significant effect): increase (indicates the need for a one-tailed z-test) the mean oxygen concentrations by 20 <span class="math notranslate nohighlight">\(\mu\)</span>M</p>
+<ul class="simple">
+<li><p>The natural variability is 50 <span class="math notranslate nohighlight">\(\mu\)</span>M (std. dev.)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu\)</span> is the mean oxygen concentration before restoration</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{x}\)</span> mean of the samples collected after restoration</p></li>
+<li><p><span class="math notranslate nohighlight">\(d = \frac{|\mu_1 - \mu_2|} {\sigma}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(d = \frac{20 \mu M} {50 \mu M}\)</span> = 0.4</p></li>
+</ul>
+<p>Goal 2: want to be able to show that a <em>statistically</em> significant difference is present, if the activity is a a success.  This is different than Goal 1.</p>
+<ul class="simple">
+<li><p>In this case, <span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\bar{x} \le \mu\)</span>  and <span class="math notranslate nohighlight">\(H_a\)</span> : <span class="math notranslate nohighlight">\(\bar{x} &gt; \mu\)</span></p></li>
+</ul>
+</section>
+<section id="one-tailed-z-test-like-a-t-test-valid-for-a-large-n">
+<h3>One-tailed z-test (like a t-test, valid for a large N)<a class="headerlink" href="#one-tailed-z-test-like-a-t-test-valid-for-a-large-n" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(z = \frac{\bar{x} - \mu} {\frac {S} {\sqrt{N}}}\)</span></p></li>
+<li><p>compare to <span class="math notranslate nohighlight">\(z_{crit}\)</span>:
+<span class="math notranslate nohighlight">\(z_{1-\alpha}\)</span></p></li>
+</ul>
+</section>
+<section id="resources-for-calculating-power">
+<h3>Resources for calculating power<a class="headerlink" href="#resources-for-calculating-power" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://rpsychologist.com/d3/NHST/">Online visualization</a> (for one-sample z-test only)</p></li>
+<li><p><a class="reference external" href="http://webpower.psychstat.org/wiki/">Online power calculator</a> (for many different statistical tests)</p></li>
+<li><p><a class="reference external" href="http://www.gpower.hhu.de/en.html">G* power</a></p></li>
+<li><p><a class="reference external" href="http://jpktd.blogspot.com/2013/03/statistical-power-in-statsmodels.html">Python  - statsmodels</a></p></li>
+<li><p><a class="reference external" href="https://pingouin-stats.org/api.html#power-analysis">Python - pingouin</a></p></li>
+</ul>
+</section>
+<section id="example-detecting-small-differences-with-a-noisy-instrument">
+<h3>Example: detecting small differences with a noisy instrument<a class="headerlink" href="#example-detecting-small-differences-with-a-noisy-instrument" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Want to be able to measure a differences of 2 <span class="math notranslate nohighlight">\(\mu\)</span>M</p></li>
+<li><p>instrument noise = 5 <span class="math notranslate nohighlight">\(\mu\)</span>M</p></li>
+<li><p>Significance level: <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05</p></li>
+<li><p>Power: 1- <span class="math notranslate nohighlight">\(\beta\)</span> = 0.8</p></li>
+</ul>
+<p><em>How many of samples do we need to detect this difference?</em></p>
+<p>In this case, the effect size can be thought of as the absolute difference of 2uM, relative to the standard deviation (noise level) of 5uM. The effect size <span class="math notranslate nohighlight">\(d = \)</span> 0.4.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.stats</span> <span class="kn">import</span> <span class="n">power</span>
+<span class="n">nobs</span> <span class="o">=</span> <span class="n">power</span><span class="o">.</span><span class="n">tt_solve_power</span><span class="p">(</span><span class="n">power</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">effect_size</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;N = &#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">nobs</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N =  51.009
+</pre></div>
+</div>
+</div>
+</div>
+<p>If the actual difference is 2 <span class="math notranslate nohighlight">\(\mu\)</span>M, then we will get a significant difference 80% of the time with <span class="math notranslate nohighlight">\(N\)</span> = 51. This example is for a one-sample t-test, but other functions in the <code class="docutils literal notranslate"><span class="pre">power</span></code> library can be used for other statistical tests. The <em>Pingouin</em> package (see below) also has functions for computing power.</p>
+</section>
+</section>
+<section id="critiques-of-null-hypothesis-significance-testing">
+<h2><span class="section-number">1.4. </span>Critiques of null hypothesis significance testing<a class="headerlink" href="#critiques-of-null-hypothesis-significance-testing" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>“The test of statistical significance in psychological research may be taken as an instance of a kind of essential mindlessness in the conduct of research” (Bakan, 1966)</p></li>
+<li><p>Hypothesis testing is “a wrongheaded view about what constitutes scientific progress” (Luce, 1988)</p></li>
+<li><p>“What’s wrong with [null hypothesis significance testing]? Well, among many other things, it does not tell us what we want to know, and we so much want to know what we want to know that, out of desperation, we nevertheless believe that it does!” (Cohen 1994)</p></li>
+</ul>
+<p>Quotes collected in: <a class="reference external" href="https://rpsychologist.com/d3/nhst/">https://rpsychologist.com/d3/nhst/</a></p>
+<p>The modern process of null hypothesis significance testing (NHST) is a hybrid of approaches developed by Fischer, who developed p-values to qunatify the strength against the null hypothesis, and Neyman and Pearson, who developed decision-making criteria for accepting the null hypothesis as opposed to a specific alternative hypothesis (a process which included power analysis). It is likely that none of these early pioneers would approve of the modern form of null hypothesis significance testing, which arose out of a desire for standard procedures (like cookbook recipes) to teach to non-experts.</p>
+<p>The p-value in particular has been the subject of intense backlash in recent years. The journal Psychology <a class="reference external" href="https://www.nature.com/news/psychology-journal-bans-p-values-1.17001">banned p-values</a>. A critical p-value of 0.05 is arbitrary and encourages “p-hacking,” where marginal results may be tweaked to clear the bar. Statistically significant differences may be associated with small and unimportant effects, especially for large sample sizes (increasingly common). Furthermore, like many concepts in frequentist statistics, the meaning of the p-value is commonly misinterpreted. This is because the concept of the p-value is based on hypothetical data that have not actually been collected.</p>
+<p>The p-value is commonly interpreted as <span class="math notranslate nohighlight">\(P(H|D)\)</span>, but in actuality it represents <span class="math notranslate nohighlight">\(P(D|H)\)</span>. These are not the same thing.</p>
+<section id="exercise-power-analysis-and-experimental-design">
+<h3>Exercise: Power analysis and experimental design<a class="headerlink" href="#exercise-power-analysis-and-experimental-design" title="Permalink to this headline">#</a></h3>
+<p>You are studying the effects of a marine reserve on juvenile rockfish. Previous literature indicates that the juveniles of the species you are studying have a standard length of 70 +/- 30 mm (mean +/- standard deviation). The marine reserve will allow you to catch and release 20 fish for scientific purposes, and you plan on measuring the same number of fish outside the reserve for comparison.</p>
+<p>If your target power is 80% and your confidence level is 95%, what is the minimum difference in mean length you can expect to observe in the marine reserve? You can assume that the fish lengths are normally distributed.</p>
+<p>What is the probability of not observing a significant effect of this magnitude <em>if</em> there actually is one?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.stats</span> <span class="kn">import</span> <span class="n">power</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">power</span><span class="o">.</span><span class="n">tt_solve_power</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="bayes-factors">
+<h2><span class="section-number">1.5. </span>Bayes factors<a class="headerlink" href="#bayes-factors" title="Permalink to this headline">#</a></h2>
+<p>The Bayes factor is an alternative metric which quantifies evidence in favor of an alternative hypothesis, over the null hypothesis (or vice-versa). Recall Bayes’ theorem, in which the probability of a hypothesis (<span class="math notranslate nohighlight">\(H\)</span>) is updated given new data (<span class="math notranslate nohighlight">\(D\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[P(H|D) = \frac{P(D|H)P(H)}{P(D)}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(H|D)\)</span> - probability of a hypothesis after seeing data (“posterior”)</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(D|H)\)</span> - probability of the data given the hypothesis (“likelihood”)</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(H)\)</span> - probability of a hypothesis before seeing data (“prior”)</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(D)\)</span> - probability of the data under any hypothesis (“normalizing constant”)</p></li>
+</ul>
+<p>The odds of an alternative hypothesis (<span class="math notranslate nohighlight">\(H_1\)</span>) over the null hypothesis (<span class="math notranslate nohighlight">\(H_0\)</span>), after seeing the data is given by</p>
+<div class="math notranslate nohighlight">
+\[\frac{P(H_1|D)}{P(H_0|D)} = \frac{P(D|H_1)}{P(D|H_0)}\frac{P(H_1)}{P(H_0)}\]</div>
+<p>The Bayes factor is the first term on the left hand side, <span class="math notranslate nohighlight">\(\frac{P(D|H_1)}{P(D|H_0)}\)</span>, also known as the likelihood ratio. This term quantfied the amount by which the data changes the posterior odds, <span class="math notranslate nohighlight">\(\frac{P(H_1|D)}{P(H_0|D)}\)</span>, compared with the prior odds, <span class="math notranslate nohighlight">\(\frac{P(H_1)}{P(H_0)}\)</span>. If the prior odds are 1 (same odds given to both hypotheses), then the Bayes factor is equal to the posterior odds.</p>
+<p>This Bayes factor is called <span class="math notranslate nohighlight">\(BF_{10}\)</span>. The Bayes factor can also be expressed as the reciprocal, the ratio of the null over the alternative <span class="math notranslate nohighlight">\(BF_{01}\)</span>.</p>
+<p>In interpreting the Bayes factor, a value of 1-3 is considered to be only weak evidence in favor of the alternative hypothesis <span class="math notranslate nohighlight">\(H_1\)</span>. A value of 20-150 is considered “strong” and higher values “very strong.”</p>
+<p>Bayes factors are useful because they provide evidence of the relative strength of hypotheses. Frequentist statistics provide only provide insight into <span class="math notranslate nohighlight">\(P(D|H_0)\)</span>, the probability of the data given the null hypothesis. In the frequentist framework, the null hypothesis can be rejected but not accepted. Bayes factors allow for the possibility that the evidence for the null hypothesis is stronger than the alternative. They also allow for the comparison with a specific alternative (for example, that a parameter has a specific value, not just “not null”).</p>
+<p>Note that the Bayes factor still relies on the underlying assumptions of the statistical test. For a <span class="math notranslate nohighlight">\(t\)</span>-test, there is still the assumption that the samples are drawn from a normally-distributed population.</p>
+<p>The relatively new <a class="reference external" href="https://pingouin-stats.org">Pingouin</a> package provides Bayes factors, along with effect sizes (Cohen’s <span class="math notranslate nohighlight">\(d\)</span>) and power analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pingouin</span> <span class="k">as</span> <span class="nn">pg</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">4.</span><span class="p">]</span>  <span class="c1"># list of samples</span>
+<span class="n">mu0</span> <span class="o">=</span> <span class="mf">10.0</span>      <span class="c1"># known value</span>
+<span class="n">pg</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu0</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/outdated/utils.py:14: OutdatedPackageWarning: The package outdated is out of date. Your version is 0.2.1, the latest is 0.2.2.
+Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
+  return warn(
+/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/outdated/utils.py:14: OutdatedPackageWarning: The package pingouin is out of date. Your version is 0.5.2, the latest is 0.5.3.
+Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
+  return warn(
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T</th>
+      <th>dof</th>
+      <th>alternative</th>
+      <th>p-val</th>
+      <th>CI95%</th>
+      <th>cohen-d</th>
+      <th>BF10</th>
+      <th>power</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>T-test</th>
+      <td>-8.693183</td>
+      <td>2</td>
+      <td>two-sided</td>
+      <td>0.012976</td>
+      <td>[-1.46, 6.13]</td>
+      <td>5.019011</td>
+      <td>5.531</td>
+      <td>0.976136</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This Bayes factor (BF10) indicates that there is “positive” evidence in favor of an alternative hypothesis, but not “strong”.</p>
+<section id="details-of-the-bayes-factor-calculation-advanced">
+<h3>Details of the Bayes factor calculation (advanced)<a class="headerlink" href="#details-of-the-bayes-factor-calculation-advanced" title="Permalink to this headline">#</a></h3>
+<p>In common statistical tests, we are interested in the the value of a parameter <span class="math notranslate nohighlight">\(\theta\)</span>. In a t-test, this parameter is the true mean <span class="math notranslate nohighlight">\(\mu\)</span>.  In a one-sample t-test, the null hypothesis is that the mean parameter <span class="math notranslate nohighlight">\(\theta\)</span> has a specific value <span class="math notranslate nohighlight">\(\theta_0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\theta = \theta_0\)</span></p>
+<p><span class="math notranslate nohighlight">\(H_1\)</span>: <span class="math notranslate nohighlight">\(\theta \neq \theta_0\)</span></p>
+<p>The likelihood of the null, <span class="math notranslate nohighlight">\(P(D|\theta = \theta_0)\)</span> can be calculated from the <span class="math notranslate nohighlight">\(t\)</span>-distribution. The likelihood of the alternative is more complicated because there is a distribution of alternative values, not just one. Calculating the likelihood involves integrating over all possible alternatives.</p>
+<div class="math notranslate nohighlight">
+\[P(D,\theta\neq \theta_0) = \int_{\theta \neq \theta_0} P(D|\theta)\, P(\theta)\, d\theta\]</div>
+<p>This integral is called the marginal likelihood function. The likelihood of each possible parameter value is weighted by its prior. All of the priors <span class="math notranslate nohighlight">\(P(\theta)\)</span> must integrate to 1.</p>
+<p>Again, the <span class="math notranslate nohighlight">\(P(D|\theta)\)</span> term in the integral can be calculated from the <span class="math notranslate nohighlight">\(t\)</span>-distribution. However, this calculation also involves specifying a probability distribution for the prior <span class="math notranslate nohighlight">\(P(\theta)\)</span> for all possible values of <span class="math notranslate nohighlight">\(\theta\)</span>. There are many ways to choose a prior distribution, and the subjective choices in this process are one critique of Baysian statistics. One strategy is to be as objective as possible, using “non-informative” prior distributions. This is sometimes a “flat” prior that weights all probabilities equally.</p>
+<p>The calculation used by Pingouin follows the method in Rouder et al. (2009). The prior distribution used in this methods weights small differences from the mean more than very extreme differences. The method also accounts for the fact that there are two parameters involved in the <span class="math notranslate nohighlight">\(t\)</span>-statistic, the mean (<span class="math notranslate nohighlight">\(\mu\)</span>) and the variance (<span class="math notranslate nohighlight">\(\sigma^2\)</span>).</p>
+<p>Rouder, J.N., Speckman, P.L., Sun, D., Morey, R.D., Iverson, G., 2009. Bayesian t tests for accepting and rejecting the null hypothesis. Psychon. Bull. Rev. 16, 225–237. <a class="reference external" href="https://doi.org/10.3758/PBR.16.2.225">https://doi.org/10.3758/PBR.16.2.225</a></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2-08-error-propagation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">9. </span>Error propagation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3-02-anova.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Analysis of variance (ANOVA)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom Connolly<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

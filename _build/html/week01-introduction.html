@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Sampling and statistics: Introduction &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>1. Sampling and statistics: Introduction &#8212; Data Analysis Techniques in Marine Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Probability and distributions" href="week02-probability-and-distributions.html" />
-    <link rel="prev" title="Python packages" href="week14-python-packages.html" />
+    <link rel="next" title="3. Probability and distributions" href="week02-probability-and-distributions.html" />
+    <link rel="prev" title="7. Python packages" href="1-09-python-packages.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,54 +123,37 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="software-installation/README.html">
-   Setup and software installation
+   1. Setup and software installation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week02b-python-intro.html">
-   Introduction to Python
+  <a class="reference internal" href="1-02-python-intro.html">
+   2. Introduction to Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week02c-exercises-python-intro.html">
-   Exercises - Introduction to Python
+  <a class="reference internal" href="1-03-cruise-data-analysis.html">
+   3. Cruise data analysis in Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week03b-boolean.html">
-   Boolean logic in Python
+  <a class="reference internal" href="1-04-boolean.html">
+   4. Boolean logic in Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week04b-loops.html">
-   Loops
+  <a class="reference internal" href="1-05-loops.html">
+   5. Loops
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week04c-python-functions.html">
-   Functions
+  <a class="reference internal" href="1-08-python-modules.html">
+   6. Creating your own Python module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="week05c-conditional-execution.html">
-   Conditional execution
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Python Modules and Packages
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="week06b-python-modules.html">
-   Creating your own Python module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week14-python-packages.html">
-   Python packages
+  <a class="reference internal" href="1-09-python-packages.html">
+   7. Python packages
   </a>
  </li>
 </ul>
@@ -182,57 +165,52 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Sampling and statistics: Introduction
+   1. Sampling and statistics: Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week02-probability-and-distributions.html">
-   Probability and distributions
+   3. Probability and distributions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week03a-modeling-sampling.html">
-   Modeling, sampling, confidence intervals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="week03c-cruise-data-analysis.html">
-   Cruise data analysis in Python
+   4. Modeling, sampling, confidence intervals
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week03d-exercises.html">
-   Exercises
+   5. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05a-corr-regress-least-squares.html">
-   Correlation and linear regression
+   6. Correlation and linear regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05b-wcoa-cruise-regression.html">
-   Implementing linear regression in Python
+   7. Implementing linear regression in Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week05d-exercises.html">
-   Exercises
+   8. Exercises
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week06a-multivariate-regression.html">
-   Multivariate regression
+   9. Multivariate regression
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week08b-poisson-regression-tropical-storms.html">
-   Poisson regression example
+   10. Poisson regression example
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="week08a-error-propagation.html">
-   Error propagation
+   11. Error propagation
   </a>
  </li>
 </ul>
@@ -488,51 +466,6 @@ title="Fullscreen mode"
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/tompc35/data_marine_science"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/tompc35/data_marine_science/issues/new?title=Issue%20on%20page%20%2Fweek01-introduction.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
       aria-label="Download this page">
@@ -602,74 +535,74 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Sampling and statistics: Introduction
+   1. Sampling and statistics: Introduction
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#key-concepts">
-     Key concepts
+     1.1. Key concepts
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reading">
-     Reading
+     1.2. Reading
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#focus-questions">
-     Focus questions
+     1.3. Focus questions
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#types-of-data">
-     Types of Data
+     1.4. Types of Data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#types-of-measurements">
-     Types of Measurements
+     1.5. Types of Measurements
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#types-of-error">
-     Types of Error
+     1.6. Types of Error
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#sample-distributions-probability-density">
-       Sample distributions, probability density
+       1.6.1. Sample distributions, probability density
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#cumulative-distribution">
-       Cumulative distribution
+       1.6.2. Cumulative distribution
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#descriptive-statistics">
-     Descriptive statistics
+     1.7. Descriptive statistics
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#mean">
-       Mean
+       1.7.1. Mean
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#variance">
-       Variance
+       1.7.2. Variance
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#standard-error">
-       Standard Error
+       1.7.3. Standard Error
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h4 nav-item toc-entry">
         <a class="reference internal nav-link" href="#example-revisited-repreated-trials">
-         Example revisited: repreated trials
+         1.7.3.1. Example revisited: repreated trials
         </a>
        </li>
       </ul>
@@ -680,7 +613,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#programming-tutorial-unix-shell">
-   Programming tutorial: Unix shell
+   2. Programming tutorial: Unix shell
   </a>
  </li>
 </ul>
@@ -704,74 +637,74 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Sampling and statistics: Introduction
+   1. Sampling and statistics: Introduction
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#key-concepts">
-     Key concepts
+     1.1. Key concepts
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reading">
-     Reading
+     1.2. Reading
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#focus-questions">
-     Focus questions
+     1.3. Focus questions
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#types-of-data">
-     Types of Data
+     1.4. Types of Data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#types-of-measurements">
-     Types of Measurements
+     1.5. Types of Measurements
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#types-of-error">
-     Types of Error
+     1.6. Types of Error
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#sample-distributions-probability-density">
-       Sample distributions, probability density
+       1.6.1. Sample distributions, probability density
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#cumulative-distribution">
-       Cumulative distribution
+       1.6.2. Cumulative distribution
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#descriptive-statistics">
-     Descriptive statistics
+     1.7. Descriptive statistics
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#mean">
-       Mean
+       1.7.1. Mean
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#variance">
-       Variance
+       1.7.2. Variance
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#standard-error">
-       Standard Error
+       1.7.3. Standard Error
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h4 nav-item toc-entry">
         <a class="reference internal nav-link" href="#example-revisited-repreated-trials">
-         Example revisited: repreated trials
+         1.7.3.1. Example revisited: repreated trials
         </a>
        </li>
       </ul>
@@ -782,7 +715,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#programming-tutorial-unix-shell">
-   Programming tutorial: Unix shell
+   2. Programming tutorial: Unix shell
   </a>
  </li>
 </ul>
@@ -796,9 +729,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="sampling-and-statistics-introduction">
-<h1>Sampling and statistics: Introduction<a class="headerlink" href="#sampling-and-statistics-introduction" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1. </span>Sampling and statistics: Introduction<a class="headerlink" href="#sampling-and-statistics-introduction" title="Permalink to this headline">#</a></h1>
 <section id="key-concepts">
-<h2>Key concepts<a class="headerlink" href="#key-concepts" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1. </span>Key concepts<a class="headerlink" href="#key-concepts" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>types of data</p></li>
 <li><p>types of error</p></li>
@@ -811,7 +744,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="reading">
-<h2>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2. </span>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">#</a></h2>
 <p>Glover, Jenkins and Doney – Modeling Methods (GJD)</p>
 <ul class="simple">
 <li><p>Sections 2.1-2 - Measurement Theory</p></li>
@@ -824,7 +757,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="focus-questions">
-<h2>Focus questions<a class="headerlink" href="#focus-questions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.3. </span>Focus questions<a class="headerlink" href="#focus-questions" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>What is the difference between accuracy and precision?</p></li>
 <li><p>What are sources of error in the data you work with?</p></li>
@@ -832,7 +765,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="types-of-data">
-<h2>Types of Data<a class="headerlink" href="#types-of-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.4. </span>Types of Data<a class="headerlink" href="#types-of-data" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><strong>Discrete</strong> - represented by an integer (whole number)- counts, presence/absence <br></p></li>
 <li><p><strong>Continuous</strong> - represented by real<sup>1</sup> numbers (e.g. temperature, wave speed, length of an organism, concentration)  <br></p></li>
@@ -842,7 +775,7 @@ title="Print to PDF"
 <p><sup>1</sup> <em>Actually, vectors can be represented as complex numbers with an imaginary part</em></p>
 </section>
 <section id="types-of-measurements">
-<h2>Types of Measurements<a class="headerlink" href="#types-of-measurements" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.5. </span>Types of Measurements<a class="headerlink" href="#types-of-measurements" title="Permalink to this headline">#</a></h2>
 <p><strong>Nominal</strong> - categories of equal rank<br></p>
 <ul class="simple">
 <li><p>Species Description (phytoplankton types: diatoms, coccolithophores, etc.)</p></li>
@@ -860,7 +793,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="types-of-error">
-<h2>Types of Error<a class="headerlink" href="#types-of-error" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.6. </span>Types of Error<a class="headerlink" href="#types-of-error" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><strong>Systematic error</strong>  - systematically repeatable biased, i.e. some pattern in how they vary <br></p></li>
 <li><p><strong>Random error</strong> - Impercise, but unbiased. Noise.</p></li>
@@ -877,7 +810,7 @@ ISUS Nitrate Sensor (High resolution, systematic error (underreported values com
 <p>Smoothing reduces noise, but there is a trade-off: lowers resolution<br>
 In this example, the bias is reduced by correcting for the temperature dependence of the sensor.</p>
 <section id="sample-distributions-probability-density">
-<h3>Sample distributions, probability density<a class="headerlink" href="#sample-distributions-probability-density" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.6.1. </span>Sample distributions, probability density<a class="headerlink" href="#sample-distributions-probability-density" title="Permalink to this headline">#</a></h3>
 <p><img alt="wave_height_density_normal" src="_images/waveheight_04_density_normal.png" /></p>
 <p>Bars: Example distribution of wave heights during an extreme wave event (N = 200). Synthetic (computer-generated) data based on a similar data set in Emery and Thomson, Section 3.8.4. The sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span> is 5.08 m and the sample standard deviation <span class="math notranslate nohighlight">\(s\)</span> is 1.18 m.</p>
 <p>Wave height categories are divided in to bins of with <span class="math notranslate nohighlight">\(\Delta x\)</span></p>
@@ -886,21 +819,21 @@ In this example, the bias is reduced by correcting for the temperature dependenc
 <p>Integral of area under the curve = 1 (all probability falls under the curve) for both the sample distribution and the theoretical normal distribution.</p>
 </section>
 <section id="cumulative-distribution">
-<h3>Cumulative distribution<a class="headerlink" href="#cumulative-distribution" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.6.2. </span>Cumulative distribution<a class="headerlink" href="#cumulative-distribution" title="Permalink to this headline">#</a></h3>
 <p><img alt="wave_height_cumulative_normal" src="_images/waveheight_06_cumulative_normal.png" /></p>
 <p>Same samples and theoretical probability, expressed as cumulative probability. This is the probability that the data fall with a given interval or less.</p>
 </section>
 </section>
 <section id="descriptive-statistics">
-<h2>Descriptive statistics<a class="headerlink" href="#descriptive-statistics" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.7. </span>Descriptive statistics<a class="headerlink" href="#descriptive-statistics" title="Permalink to this headline">#</a></h2>
 <section id="mean">
-<h3>Mean<a class="headerlink" href="#mean" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.7.1. </span>Mean<a class="headerlink" href="#mean" title="Permalink to this headline">#</a></h3>
 <p>With a finite number of <span class="math notranslate nohighlight">\(N\)</span> samples, the <strong>true mean</strong> of a population, <span class="math notranslate nohighlight">\(\mu\)</span> (“mu”), can be <em>estimated</em> by the sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[ \bar{x} = \frac{1}{N}\sum_{i=1}^{N}{x_i} = \frac{1}{N}(x_1+x_2+x_3+....+x_N) \]</div>
 </section>
 <section id="variance">
-<h3>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.7.2. </span>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">#</a></h3>
 <p><strong>Variance</strong> describes the spread of the data. The sample variance is equal to the sample <strong>standard deviation</strong> squared (<span class="math notranslate nohighlight">\(s^2\)</span>). The sample variance is an estimate of the true variance (<span class="math notranslate nohighlight">\(\sigma^2\)</span>)</p>
 <div class="math notranslate nohighlight">
 \[s^2 = \frac{1}{N-1}\sum_{i=1}^N(x_i-\bar{x})^2,\]</div>
@@ -908,13 +841,13 @@ In this example, the bias is reduced by correcting for the temperature dependenc
 <p>The variance is <strong>positive definite</strong> because it is the sum of squared values and therefore cannot be negative.</p>
 </section>
 <section id="standard-error">
-<h3>Standard Error<a class="headerlink" href="#standard-error" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.7.3. </span>Standard Error<a class="headerlink" href="#standard-error" title="Permalink to this headline">#</a></h3>
 <p>The <strong>standard error</strong> describes how well the sample mean describes the true mean</p>
 <div class="math notranslate nohighlight">
 \[ SE = \frac{s}{\sqrt{N}}. \]</div>
 <p>The standard error does not describe the spread of the data, it describes the how well the sample mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span>, represents the true mean, <span class="math notranslate nohighlight">\(\mu\)</span>. The standard error can thought of as an estimate of the standard deviation of <span class="math notranslate nohighlight">\((\bar{x} - \mu)\)</span>, after many repeated experiments with <span class="math notranslate nohighlight">\(N\)</span> samples.</p>
 <section id="example-revisited-repreated-trials">
-<h4>Example revisited: repreated trials<a class="headerlink" href="#example-revisited-repreated-trials" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.7.3.1. </span>Example revisited: repreated trials<a class="headerlink" href="#example-revisited-repreated-trials" title="Permalink to this headline">#</a></h4>
 <p><img alt="wave_height_trial_dist_normal" src="_images/waveheight_08_trial_dist_normal.png" /></p>
 <p>Results from 100 repeated trials during same storm (N = 200 each trial). The <span class="math notranslate nohighlight">\(x\)</span>-axis is the same as that shown for the sample distribution above, to emphasize how the distribution of means clusters more tightly together. We can think of these repeated trials as different instruments measuring different waves in the same storm. Note that this is easy to do with a computer-generated example dataset, but not so easy to do in practices.</p>
 <p>Blue bars:
@@ -929,7 +862,7 @@ Standard deviation = Standard error of trial 1, SE = <span class="math notransla
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="programming-tutorial-unix-shell">
-<h1>Programming tutorial: Unix shell<a class="headerlink" href="#programming-tutorial-unix-shell" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2. </span>Programming tutorial: Unix shell<a class="headerlink" href="#programming-tutorial-unix-shell" title="Permalink to this headline">#</a></h1>
 <p>See notes on the <a class="reference external" href="https://software-carpentry.org">Software Carpentry</a> website.</p>
 <p><a class="reference external" href="http://swcarpentry.github.io/shell-novice/">http://swcarpentry.github.io/shell-novice/</a></p>
 </section>
@@ -961,17 +894,17 @@ Standard deviation = Standard error of trial 1, SE = <span class="math notransla
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="week14-python-packages.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="1-09-python-packages.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Python packages</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Python packages</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="week02-probability-and-distributions.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Probability and distributions</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Probability and distributions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
