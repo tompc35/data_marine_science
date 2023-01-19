@@ -12,7 +12,7 @@ You will need at least 2 GB free on your computer's hard drive.
 
 VS Code is a text editor designed for programming. VS Code is available on all operating systems and has some cool custom plugins.
  
-Download an installer from the [Visual Studio Code website](https://code.visualstudio.com/) and run it.
+Download an installer from the [Visual Studio Code website](https://code.visualstudio.com/) and run it. The default options are fine.
 
 ## Install Miniconda
 
@@ -30,7 +30,7 @@ If you have Anaconda or Miniconda already installed on your computer, follow the
 
 First run Python and check which version you have. The version number is displayed when Python starts up.
 
-To maintain consistency, we will be using Python version 3.10 in this class. Previous versions of Python 3.x will work most of the time in classroom demonstrations and other course materials, but you may run into a few cases where certain commands are invalid or not available. Python 2.x is completely incompatible with the course material. If your version is already 3.10, proceed to [installing additional tools](#installing-additional-tools).
+To maintain consistency, we will be using Python version 3.10 in this class. Previous versions of Python 3.x will work most of the time in classroom demonstrations and other course materials, but you may run into a few cases where certain commands are invalid or not available. Python 2.x is completely incompatible with this course material. If your version is already 3.10, and you are fine with installing additional packages to your existing version, proceed to [installing additional tools](#installing-additional-tools).
 
 If you have a different version of Python, you have two options:
 
@@ -38,7 +38,7 @@ If you have a different version of Python, you have two options:
 
 2. *Advanced:* Create a new *environment* for this class.
 
-Option 2 will allow you to use the same Python version and packages as the rest of the class, without altering your existing setup. For more information on environments, see https://conda.io/docs/user-guide/tasks/manage-environments.html
+Option 2 will allow you to use the same Python version and packages used in the course material, without altering your existing setup. For more information on environments, see https://conda.io/docs/user-guide/tasks/manage-environments.html
 
 Open a terminal (Mac) or Anaconda prompt (Windows) and type:
 
@@ -52,7 +52,9 @@ You can replace `ms263-23` with any name you like for your environment. To enter
 conda activate ms263-23
 ```
 
-You will have to repeat this command whenever you start a new terminal or Anaconda prompt.
+```{note}
+To access the environment you just created at later time, you will have to repeat this command whenever you start a new terminal or Anaconda prompt.
+```
 
 Keep this window open and proceed to [Installing additional tools](#installing-additional-tools)
 
@@ -64,7 +66,7 @@ Keep this window open and proceed to [Installing additional tools](#installing-a
 
   * <b>Windows</b>: Select 32-bit or 64-bit. Chances are, with a newer computer, your operating system is 64-bit. If you do not know, try 64-bit and the installer will tell you if you made the wrong choice. Click on the installer file to download it.
 
-  * <b>Mac</b>: There are two different options for installers. Download the .pkg installer and click on it.
+  * <b>Mac</b>: There are different options for installers. Download the .pkg installer for the processor on your Mac (Intel for older Macs and Apple M1 for newer Macs) and click on it. If you don't know what type of processor you have, see this [guide](https://support.apple.com/en-us/HT211814).
 
 ### Open a terminal or command prompt
 
@@ -79,7 +81,7 @@ You might have to search for this in the start menu.<br>
 ```{image} images/comd_prompt_windows.png
 :alt: Windows command prompt
 :width: 300px
-:align: left
+:align: center
 ```
 
 Clicking *Anaconda Prompt* will bring up a screen where you can type commands. Keep this window open and follow the steps under [Installing additional tools](#installing-additional-tools)
@@ -95,7 +97,7 @@ Or you can search for "Terminal" in the spotlight (use press cmd-space).
 ```{image} images/comd_prompt_osx.png
 :alt: OSX command prompt
 :width: 450px
-:align: left
+:align: center
 ```
 
 This will bring up a screen where you can type commands. Continue to the next section on [Installing additional tools using conda](#installing-additional-tools-using-conda)
@@ -113,27 +115,10 @@ conda config --add channels conda-forge
 Now, install the additional programs and Python packages. This will take a while. Copy and paste the following onto the command line and press Enter (**note:** this command is very long and probably extends beyond the width of your browser; the easiest way to copy it is to click the "copy" button that appears when you hover the cursor over the right side of the text box):
 
 ```
-conda install jupyter jupyterlab matplotlib pandas xarray netCDF4 cartopy cmocean gsw scikit-image scikit-learn statsmodels uncertainties pingouin nb_conda_kernels
+conda install jupyter jupyterlab matplotlib pandas xarray netCDF4 cartopy cmocean gsw scikit-image scikit-learn statsmodels uncertainties pingouin nb_conda_kernels ipympl
 ```
 
 Here, `conda` is the name of the package management program and `install` is a command given to this program, followed by the names of programs to install. A description of the packages that you have just installed can be found [here](package-list.md).
-
-## Update pingouin
-
-Make sure you have the latest version of the pingouin statistical package. Enter this command to update:
-
-```
-conda update pingouin
-```
-
-## Install ipyml
-
-This optional tool enhances plots by making them interactive. Enter these commands to install:
-
-```
-conda update jupyterlab
-conda install ipympl
-```
 
 ## Install PyCO2SYS
 
@@ -153,15 +138,53 @@ conda install git
 
 Choose the default options if prompted to make selections. If for some reason that method of installing Git does not work, you can download and install Git for your operating system by following the instructions at https://git-scm.com
 
-### Windows only: open the Git Bash command line
+### Windows only: Git Bash command line
 
-If you have windows, check to make sure that you can open the Git Bash command prompt. You should be able to find Git Bash in the list of programs when you open the Windows Start menu.
+Check to make sure that you can open the Git Bash command prompt. You should be able to find Git Bash in the list of programs when you open the Windows Start menu. It may be listed under the heading *Anaconda3*.
 
-Git Bash provides another interface for entering text commands. Using Git Bash will allow you to enter the same commands as a Mac or any other Unix-based system (like Linux). This will allow for consistency across the entire class and expose you to the commands commonly used on Unix-based servers.
+## Configure VS Code
+
+We'll adjust a couple of settings in Visual Studio Code to make sure that everyone's setup is consistent as possible accross operating systems. The steps here will depend on your operating system.
+
+### Windows only:
+
+Launch Visual Studio Code from the Start Menu.
+
+1. Click the Extensions tab on the left side of the window.
+
+2. Type "git bash" in the box .
+
+3. Click to install the *Start git-bash* extension.
+
+```{image} images/start-git-bash-ext.png
+:alt: Start git-bash
+:width: 400px
+:align: center
+```
+
+### Mac only: 
+
+Launch Visual Studio Code from your Applications folder.
+
+Type *Command+Shift+P* to open the Command Palette (a box will appear at the top of the window). Type "shell command" in the Command Palette box to find the *Shell Command: Install 'code' command in PATH* command. Click this command.
+
+```{image} images/shell-path.png
+:alt: Install code command in path
+:width: 300px
+:align: center
+```
+
+Quit the Terminal application for the change to take affect.
+
+```{image} images/quit-terminal.png
+:alt: Quit Terminal
+:width: 300px
+:align: center
+```
 
 ## Open a text editor from the command line
 
-Make sure that you can open a text editor from the command line.
+Make sure that you can open a text editor from the command line. Open the Terminal application (Mac) or Git Bash (Windows).
 
 ### VS Code
 
@@ -171,11 +194,11 @@ First, try the VS Code text editor. On the command line, enter:
 code
 ```
 
-This should open a window in the VS Code text editor. If that worked, then you are all set.
+This should open a window in the VS Code text editor. If that worked, then proceed to [Setup for Unix shell tutorial](#setup-for-unix-shell-tutorial)
 
 ### Nano
 
-If for some reason you cannot open Atom from the command line, try the Nano text editor:
+If for some reason you cannot open Visual Studio Code from the command line, try the Nano text editor:
 
 ```
 nano
@@ -185,7 +208,7 @@ This brings up a text editor in the terminal window. Enter Control-X to exit Nan
 
 ### System default text editor
 
-You can also try the default text editor for your operating system. These do not have as many features as Atom but will get the job done.
+You can also try the default text editor for your operating system. These do not have as many features as Visual Studio Code but will get the job done.
 
 #### TextEdit (Mac)
 
