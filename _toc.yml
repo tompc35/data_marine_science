@@ -6,7 +6,7 @@ root: README
 
 parts:
 
- - caption: Introduction to Python
+ - caption: Part 1. Introduction to Python
    numbered: 2
    chapters:
    - file: software-installation/README
@@ -19,7 +19,7 @@ parts:
    - file: 1-08-python-modules
    - file: 1-09-python-packages
    
- - caption: Probability distributions and linear modeling
+ - caption: Part 2. Probability distributions and linear modeling
    numbered: 2
    chapters:
    - file: 2-01-introduction
@@ -31,7 +31,7 @@ parts:
    - file: 2-07-poisson-regression-tropical-storms
    - file: 2-08-error-propagation
 
- - caption: Hypothesis testing and power analysis
+ - caption: Part 3. Hypothesis testing and power analysis
    numbered: 2
    chapters:
    - file: 3-01-hypothesis-power
@@ -39,13 +39,13 @@ parts:
    - file: 3-03-nonparam
    - file: 3-04-generalized-linear-model
    
- - caption: Nonlinear modeling and optimization
+ - caption: Part 4. Nonlinear modeling and optimization
    numbered: 2
    chapters:
    - file: 4-01-optimization
    - file: 4-02-us-population-example
    
- - caption: Principal component analysis and related techniques
+ - caption: Part 5. Principal component analysis and related techniques
    numbered: 2
    chapters:
    - file: 5-01-PCA-EOF
@@ -53,7 +53,7 @@ parts:
    - file: 5-03-ndbc-wind
    - file: 5-04-monterey_bay_kelp
    
- - caption: Spectral analysis of time series
+ - caption: Part 6. Spectral analysis of time series
    numbered: 2
    chapters:
    - file: 6-01-spectral-analysis
@@ -61,18 +61,18 @@ parts:
    - file: 6-03-lobo-spectral-part2
    - file: 6-04-filtering
 
- - caption: Spatial analysis
+ - caption: Part 7. Spatial analysis
    numbered: 2
    chapters:
    - file: 7-01-spatial-analysis
    - file: 7-02-interpolation
    - file: 7-03-mapping-intro
 
- - caption: Image analysis
+ - caption: Part 8. Image analysis
    numbered: 2
    chapters:
    - file: 8-01-image-analysis
    
- - caption: Git reference
+ - caption: Appendix A. Git reference
    chapters:
    - file: git-reference/README
