@@ -3,7 +3,7 @@
 
 # # Sampling and statistics: Introduction
 # 
-# ### Key concepts
+# ## Key concepts
 # * types of data
 # * types of error
 # * mean
@@ -13,7 +13,7 @@
 # * standard deviation
 # * standard error
 # 
-# ### Focus questions
+# ## Focus questions
 # 
 # * What is the difference between accuracy and precision? 
 # * What are sources of error in the data you work with?
@@ -32,7 +32,7 @@
 # * Species Description (phytoplankton types: diatoms, coccolithophores, etc.) 
 # 
 # 
-# __Ordinal__ - Categories have a logically defined rank. Steps arent equal in size or quantifiable<br>
+# __Ordinal__ - Categories have a logically defined rank. Steps arent equal in size or quantifiable
 # 
 # * How sediment grains are categorized: angularity and sphericity
 # * Hurricane scale: ranking is not equivalent to strength
@@ -40,7 +40,7 @@
 # 
 # __Scale__: __interval__ and __ratio__
 # 	
-# * __interval scale__: constant succesive intervals, but the reference point is arbitrary e.g. temperature scale <br>
+# * __interval scale__: constant succesive intervals, but the reference point is arbitrary e.g. temperature scale 
 # * __ratio scale__: natural zero point (ex: length, mass)
 # 
 # ## Types of Error
@@ -66,10 +66,29 @@
 # Smoothing reduces noise, but there is a trade-off: lowers resolution<br>
 # In this example, the bias is reduced by correcting for the temperature dependence of the sensor.
 # 
-# ### Sample distributions, probability density 
-# 
-# ![wave_height_density_normal](images/waveheight_04_density_normal.png)
-# 
+# ## Sample distributions, probability density 
+
+# In[1]:
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+np.random.seed(0)
+N=200
+data = np.random.normal(5,scale=1.15,size=N)
+
+x = np.linspace(min(data)-1, max(data)+1, 1000)
+
+plt.hist(data,bins=10,density=True)
+plt.plot(x, stats.norm.pdf(x, np.mean(data), np.std(data)))
+plt.title('wave heights during storm, N = 200')
+plt.xlabel('wave height [m]')
+plt.ylabel('probability density\nfraction/m')
+xl = plt.xlim()
+
+
 # Bars: Example distribution of wave heights during an extreme wave event (N = 200). Synthetic (computer-generated) data based on a similar data set in Emery and Thomson, Section 3.8.4. The sample mean $\bar{x}$ is 5.08 m and the sample standard deviation $s$ is 1.18 m.
 # 
 # Wave height categories are divided in to bins of with $\Delta x$
@@ -81,21 +100,29 @@
 # Integral of area under the curve = 1 (all probability falls under the curve) for both the sample distribution and the theoretical normal distribution.
 # 
 # ### Cumulative distribution
-# 
-# ![wave_height_cumulative_normal](images/waveheight_06_cumulative_normal.png)
-# 
+
+# In[2]:
+
+
+plt.hist(data,bins=10,density=True,cumulative=True)
+plt.plot(x, np.diff(x)[0]*np.cumsum(stats.norm.pdf(x, np.mean(data), np.std(data))))
+plt.title('wave heights during storm, N = 200')
+plt.xlabel('wave height [m]')
+plt.ylabel('cumulative probability');
+
+
 # Same samples and theoretical probability, expressed as cumulative probability. This is the probability that the data fall with a given interval or less.
 # 
 # ## Descriptive statistics
 # 
-# ### Mean ###
+# ### Mean 
 # 
 # With a finite number of $N$ samples, the __true mean__ of a population, $\mu$ ("mu"), can be _estimated_ by the sample mean $\bar{x}$,
 # 
 # $$ \bar{x} = \frac{1}{N}\sum_{i=1}^{N}{x_i} = \frac{1}{N}(x_1+x_2+x_3+....+x_N) $$
 # 
 # 
-# ### Variance ###
+# ### Variance
 # __Variance__ describes the spread of the data. The sample variance is equal to the sample __standard deviation__ squared ($s^2$). The sample variance is an estimate of the true variance ($\sigma^2$)
 # 
 # $$s^2 = \frac{1}{N-1}\sum_{i=1}^N(x_i-\bar{x})^2,$$
@@ -104,7 +131,7 @@
 # 
 # The variance is __positive definite__ because it is the sum of squared values and therefore cannot be negative.
 # 
-# ### Standard Error ###
+# ### Standard Error 
 # 
 # The __standard error__ describes how well the sample mean describes the true mean
 # 
@@ -113,9 +140,24 @@
 # The standard error does not describe the spread of the data, it describes the how well the sample mean, $\bar{x}$, represents the true mean, $\mu$. The standard error can thought of as an estimate of the standard deviation of $(\bar{x} - \mu)$, after many repeated experiments with $N$ samples. 
 # 
 # #### Example revisited: repreated trials
-# 
-# ![wave_height_trial_dist_normal](images/waveheight_08_trial_dist_normal.png)
-# 
+
+# In[3]:
+
+
+Nsub = 10
+xm = np.nan*np.ones(100)
+
+for i in range(100):
+    xm[i] = np.mean(np.random.normal(5,scale=1.15,size=N))
+
+plt.figure()
+plt.hist(xm,density=True)
+plt.plot(x, stats.norm.pdf(x, np.mean(data), np.std(data)/np.sqrt(N)))
+plt.xlim(xl)
+plt.xlabel('wave height [m]')
+plt.ylabel('probability density\nfraction/m');
+
+
 # Results from 100 repeated trials during same storm (N = 200 each trial). The $x$-axis is the same as that shown for the sample distribution above, to emphasize how the distribution of means clusters more tightly together. We can think of these repeated trials as different instruments measuring different waves in the same storm. Note that this is easy to do with a computer-generated example dataset, but not so easy to do in practices.
 # 
 # Blue bars:
