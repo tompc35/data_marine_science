@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6. Conditional execution &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>Exercises &#8212; Data Analysis Techniques in Marine Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Functions" href="1-07-python-functions.html" />
-    <link rel="prev" title="5. Loops" href="1-05-loops.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,7 +116,7 @@ const thebe_selector_output = ".output, .cell_output"
   Part 1. Introduction to Python
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="software-installation/README.html">
    1. Setup and software installation
@@ -144,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
    5. Loops
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-06-conditional-execution.html">
    6. Conditional execution
   </a>
  </li>
@@ -414,7 +412,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/1-06-conditional-execution.ipynb"
+        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/exercises-week03d.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -457,7 +455,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/1-06-conditional-execution.ipynb"
+        <a href="_sources/exercises-week03d.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -517,13 +515,48 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#if-else-statements">
-   6.1. If-else statements
+  <a class="reference internal nav-link" href="#probability">
+   Probability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exceptions">
-   6.2. Exceptions
+  <a class="reference internal nav-link" href="#boolean-logic">
+   Boolean logic
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-data-frames">
+   Pandas data frames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploratory-analysis">
+   Exploratory analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe-indexing">
+   Dataframe indexing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe-subsets-1">
+   Dataframe subsets 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe-subsets-2">
+   Dataframe subsets 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe-subsets-3">
+   Dataframe subsets 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear regression
   </a>
  </li>
 </ul>
@@ -535,7 +568,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Conditional execution</h1>
+                <h1>Exercises</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -546,13 +579,48 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#if-else-statements">
-   6.1. If-else statements
+  <a class="reference internal nav-link" href="#probability">
+   Probability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exceptions">
-   6.2. Exceptions
+  <a class="reference internal nav-link" href="#boolean-logic">
+   Boolean logic
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-data-frames">
+   Pandas data frames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploratory-analysis">
+   Exploratory analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe-indexing">
+   Dataframe indexing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe-subsets-1">
+   Dataframe subsets 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe-subsets-2">
+   Dataframe subsets 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe-subsets-3">
+   Dataframe subsets 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear regression
   </a>
  </li>
 </ul>
@@ -565,99 +633,83 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="conditional-execution">
-<h1><span class="section-number">6. </span>Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">#</a></h1>
-<section id="if-else-statements">
-<h2><span class="section-number">6.1. </span>If-else statements<a class="headerlink" href="#if-else-statements" title="Permalink to this headline">#</a></h2>
-<p><em>If</em> statements are used to execute a set of commands only under certain conditions. The syntax is shown below. Note that the commands to be run conditionally are indented with a tab.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is positive&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;another line&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is negative&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is positive
-another line
-done
-</pre></div>
-</div>
-</div>
-</div>
-<p>A chain of conditions can be created with <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> blocks.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is positive&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is negative&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is zero&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is positive
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise:</strong></p>
-<p>Using conditional execution, calculate the absolute value of a number (not using the built-in <code class="docutils literal notranslate"><span class="pre">abs</span></code> function).</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h1>
+<section id="probability">
+<h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">#</a></h2>
+<p>A newspaper article quotes a statistic about the relationship between the El Nino index and high precipitation in Southern California. A high precipitation winter is defined as being in the top 10% of all winters. According to the article, 75% of high precipitation winters in Southern California occur during El Nino years. El Nino events occur approximately every five years.</p>
+<p>Based on this information, what is the probability of high precipitation occuring during an El Nino year?</p>
 </section>
-<section id="exceptions">
-<h2><span class="section-number">6.2. </span>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">#</a></h2>
-<p>Conditional execution - same category as if statements. The code in the <code class="docutils literal notranslate"><span class="pre">try</span></code> statement is run first. If an error occurs while running that code, the code under the <code class="docutils literal notranslate"><span class="pre">except</span></code> statement is run instead.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;year&#39;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">2022</span>
+<section id="boolean-logic">
+<h2>Boolean logic<a class="headerlink" href="#boolean-logic" title="Permalink to this headline">#</a></h2>
+<p>Predict the output from each of the following three lines of code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p>This gives an error, because strings cannot be combined with numbers. Execution of the program is stopped.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kc">False</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="kc">True</span><span class="p">))</span> <span class="o">!=</span> <span class="kc">False</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-
-<span class="ne">TypeError</span>: can only concatenate str (not &quot;int&quot;) to str
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p>This tries the same code, and converts both variables to a string if an error occurs. Execution of the program continues.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">combined</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-    <span class="n">combined</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-   
-<span class="nb">print</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
+</section>
+<section id="pandas-data-frames">
+<h2>Pandas data frames<a class="headerlink" href="#pandas-data-frames" title="Permalink to this headline">#</a></h2>
+<p>Create a list of unique station ID’s (“STNNBR”) found in the survey data. Call it <code class="docutils literal notranslate"><span class="pre">stns</span></code>. How many unique stations are there in the data?</p>
+</section>
+<section id="exploratory-analysis">
+<h2>Exploratory analysis<a class="headerlink" href="#exploratory-analysis" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>What scientific questions can be addressed with this data set?</p></li>
+<li><p>What relationships might occur between different variables?</p></li>
+<li><p>What differences might occur within the same variables, but at different locations or times?</p></li>
+<li><p>Create exploratory plots (one PDF, one scatter plot)</p></li>
+</ul>
+</section>
+<section id="dataframe-indexing">
+<h2>Dataframe indexing<a class="headerlink" href="#dataframe-indexing" title="Permalink to this headline">#</a></h2>
+<p>What do you expect to happen when you execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>year2022
+<p>What do you expect to happen when you call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>How are the two commands different?</p>
+</section>
+<section id="dataframe-subsets-1">
+<h2>Dataframe subsets 1<a class="headerlink" href="#dataframe-subsets-1" title="Permalink to this headline">#</a></h2>
+<p>Select a subset of rows in the <code class="docutils literal notranslate"><span class="pre">df</span></code> DataFrame that contains data from a pressure range between 500 and 1000 dbar. How many rows did you end up with? What did your neighbor get?</p>
+</section>
+<section id="dataframe-subsets-2">
+<h2>Dataframe subsets 2<a class="headerlink" href="#dataframe-subsets-2" title="Permalink to this headline">#</a></h2>
+<p>You can use the isin command in Python to query a DataFrame based upon a list of values as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;STNNBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">listGoesHere</span><span class="p">])]</span>
+</pre></div>
 </div>
-</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">isin</span></code> function to find all samples from station numbers 11 and 12.</p>
+</section>
+<section id="dataframe-subsets-3">
+<h2>Dataframe subsets 3<a class="headerlink" href="#dataframe-subsets-3" title="Permalink to this headline">#</a></h2>
+<p>pH values are contained in the <code class="docutils literal notranslate"><span class="pre">df['PH_TOT']</span></code> DataArray of the WCOA data set.</p>
+<p>Quality control flags for pH are contained in the <code class="docutils literal notranslate"><span class="pre">df['PH_TOT_FLAG_W']</span></code> DataArray.</p>
+<p>World Ocean Circulation Experiment (WOCE) quality control flags are used:
+2 = good value,
+3 = questionable value,
+4 = bad value ,
+5 = value not reported,
+6 = mean of replicate measurements,
+9 = sample not drawn.</p>
+<p>a. Create a new DataFrame called <code class="docutils literal notranslate"><span class="pre">dfsub1</span></code> that excludes all bad, questionable and missing pH values. Plot the probability density function for pH.</p>
+<p>b. Create a new DataFrame called <code class="docutils literal notranslate"><span class="pre">dfsub2</span></code> that excludes all bad, questionable and missing pH and CTD oxygen values. Plot oxygen vs. pH.</p>
+</section>
+<section id="linear-regression">
+<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">#</a></h2>
+<p>Create a linear model of pH as a function of CTD oxygen. Plot the linear model with the data.</p>
 </section>
 </section>
 
@@ -688,20 +740,6 @@ done
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="1-05-loops.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5. </span>Loops</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="1-07-python-functions.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Functions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6. Conditional execution &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>Exercises &#8212; Data Analysis Techniques in Marine Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Functions" href="1-07-python-functions.html" />
-    <link rel="prev" title="5. Loops" href="1-05-loops.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,7 +116,7 @@ const thebe_selector_output = ".output, .cell_output"
   Part 1. Introduction to Python
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="software-installation/README.html">
    1. Setup and software installation
@@ -144,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
    5. Loops
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-06-conditional-execution.html">
    6. Conditional execution
   </a>
  </li>
@@ -414,7 +412,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/1-06-conditional-execution.ipynb"
+        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/exercises-week05d.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -457,7 +455,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/1-06-conditional-execution.ipynb"
+        <a href="_sources/exercises-week05d.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -517,14 +515,21 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#if-else-statements">
-   6.1. If-else statements
+  <a class="reference internal nav-link" href="#week-5">
+   Week 5
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exceptions">
-   6.2. Exceptions
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-execution">
+     Conditional execution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grain-size-classification-if-time">
+     Grain size classification (if time)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -535,7 +540,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Conditional execution</h1>
+                <h1>Exercises</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -546,14 +551,21 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#if-else-statements">
-   6.1. If-else statements
+  <a class="reference internal nav-link" href="#week-5">
+   Week 5
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exceptions">
-   6.2. Exceptions
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-execution">
+     Conditional execution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grain-size-classification-if-time">
+     Grain size classification (if time)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -565,99 +577,66 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="conditional-execution">
-<h1><span class="section-number">6. </span>Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">#</a></h1>
-<section id="if-else-statements">
-<h2><span class="section-number">6.1. </span>If-else statements<a class="headerlink" href="#if-else-statements" title="Permalink to this headline">#</a></h2>
-<p><em>If</em> statements are used to execute a set of commands only under certain conditions. The syntax is shown below. Note that the commands to be run conditionally are indented with a tab.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is positive&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;another line&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is negative&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is positive
-another line
-done
-</pre></div>
-</div>
-</div>
-</div>
-<p>A chain of conditions can be created with <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> blocks.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is positive&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is negative&#39;</span><span class="p">)</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h1>
+<section id="week-5">
+<h2>Week 5<a class="headerlink" href="#week-5" title="Permalink to this headline">#</a></h2>
+<section id="conditional-execution">
+<h3>Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">#</a></h3>
+<p>a. Calculate the absolute value of a number (not using the built-in abs function). Use the following code as a template (replace the dashes —– with code).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">------</span>
+<span class="k">if</span> <span class="o">-----</span><span class="p">:</span>
+    <span class="n">absx</span> <span class="o">=</span> <span class="o">-----</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is zero&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is positive
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise:</strong></p>
-<p>Using conditional execution, calculate the absolute value of a number (not using the built-in <code class="docutils literal notranslate"><span class="pre">abs</span></code> function).</p>
-</section>
-<section id="exceptions">
-<h2><span class="section-number">6.2. </span>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">#</a></h2>
-<p>Conditional execution - same category as if statements. The code in the <code class="docutils literal notranslate"><span class="pre">try</span></code> statement is run first. If an error occurs while running that code, the code under the <code class="docutils literal notranslate"><span class="pre">except</span></code> statement is run instead.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;year&#39;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">2022</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>This gives an error, because strings cannot be combined with numbers. Execution of the program is stopped.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="n">absx</span> <span class="o">=</span> <span class="o">-----</span>
 
-<span class="ne">TypeError</span>: can only concatenate str (not &quot;int&quot;) to str
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the absolute value of x is&#39;</span><span class="p">,</span><span class="n">absx</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p>This tries the same code, and converts both variables to a string if an error occurs. Execution of the program continues.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">combined</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-    <span class="n">combined</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-   
-<span class="nb">print</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
+<p>b. Using conditional execution, determine whether a user-provided integer x is even or odd and print the result (hint: the % operator calculates the remainder that occurs when dividing two numbers, e.g. the result of    7 % 3 is equal to 1).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>xin = input(&#39;Please enter a number:&#39;)
+x = int(xin)
+if ------:
+    --------
+else:
+    print(‘The number is odd’)
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>year2022
-</pre></div>
-</div>
-</div>
-</div>
+<p>c. Modify the code written in part b to use try and except statements to handle non-integer input gracefully. If the input is not an integer, the program should print a friendly message explaining what went wrong.</p>
+<p>d. (if time) Modify the code written in part b above to continue requesting input until an integer is provided.</p>
+</section>
+<section id="grain-size-classification-if-time">
+<h3>Grain size classification (if time)<a class="headerlink" href="#grain-size-classification-if-time" title="Permalink to this headline">#</a></h3>
+<p>Write a function that takes sediment grain size as an input, then returns the Wentworth grain size classification based on the table below.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Grain Size</p></th>
+<th class="head"><p>Classification</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&gt;= 256 mm</p></td>
+<td><p>Boulder</p></td>
+</tr>
+<tr class="row-odd"><td><p>64-256 mm</p></td>
+<td><p>Cobble</p></td>
+</tr>
+<tr class="row-even"><td><p>2-64 mm</p></td>
+<td><p>Gravel</p></td>
+</tr>
+<tr class="row-odd"><td><p>62.5 μm - 2 mm</p></td>
+<td><p>Sand</p></td>
+</tr>
+<tr class="row-even"><td><p>3.9-62.5 μm</p></td>
+<td><p>Silt</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.98-3.9 μm</p></td>
+<td><p>Clay</p></td>
+</tr>
+</tbody>
+</table>
+<p>Test the program repeatedly to make sure it works for different input values.</p>
+</section>
 </section>
 </section>
 
@@ -688,20 +667,6 @@ done
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="1-05-loops.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5. </span>Loops</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="1-07-python-functions.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Functions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
