@@ -1,0 +1,695 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Exercises &#8212; Data Analysis Techniques in Marine Science</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/course-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data Analysis Techniques in Marine Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1. Introduction to Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software-installation/README.html">
+   1. Setup and software installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-02-python-intro.html">
+   2. Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-03-cruise-data-analysis.html">
+   3. Cruise data analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-04-boolean.html">
+   4. Boolean logic in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-05-loops.html">
+   5. Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-06-conditional-execution.html">
+   6. Conditional execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-07-python-functions.html">
+   7. Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-08-python-modules.html">
+   8. Creating your own Python module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-09-python-packages.html">
+   9. Python packages
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2. Probability distributions and linear modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-01-introduction.html">
+   1. Sampling and statistics: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-02-probability-and-distributions.html">
+   2. Probability and distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-03-modeling-sampling.html">
+   3. Modeling, sampling, confidence intervals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-04-corr-regress-least-squares.html">
+   4. Correlation and linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-05-wcoa-cruise-regression.html">
+   5. Implementing linear regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-06-multivariate-regression.html">
+   6. Multivariate regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">
+   7. Poisson regression example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-08-error-propagation.html">
+   8. Error propagation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3. Hypothesis testing and power analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-01-hypothesis-power.html">
+   1. Hypothesis testing and Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-02-anova.html">
+   2. Analysis of variance (ANOVA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-03-nonparam.html">
+   3. Non-parametric statistical tests
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-04-generalized-linear-model.html">
+   4. The generalized linear model
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 4. Nonlinear modeling and optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="4-01-optimization.html">
+   1. Optimization and nonlinear modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4-02-us-population-example.html">
+   2. Example: Modeling exponential growth
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 5. Principal component analysis and related techniques
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-01-PCA-EOF.html">
+   1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-02-MDS.html">
+   2. Multidimensional Scaling Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-03-ndbc-wind.html">
+   3. NDBC data - analysis of wind vector time series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-04-monterey_bay_kelp.html">
+   4. Monterey Bay Kelp PCA
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 6. Spectral analysis of time series
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-01-spectral-analysis.html">
+   1. Spectral Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-02-lobo-spectral.html">
+   2. Spectral analysis example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-03-lobo-spectral-part2.html">
+   3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-04-filtering.html">
+   5. Filtering and Convolution
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 7. Spatial analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-01-spatial-analysis.html">
+   1. Spatial Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-02-interpolation.html">
+   2. Interpolation techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-03-mapping-intro.html">
+   3. Map tutorial
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 8. Image analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="8-01-image-analysis.html">
+   1. Image Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix A. Git reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="git-reference/README.html">
+   Git Reference
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/exercises-week05d.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/exercises-week05d.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-5">
+   Week 5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-execution">
+     Conditional execution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grain-size-classification-if-time">
+     Grain size classification (if time)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Exercises</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-5">
+   Week 5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-execution">
+     Conditional execution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grain-size-classification-if-time">
+     Grain size classification (if time)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h1>
+<section id="week-5">
+<h2>Week 5<a class="headerlink" href="#week-5" title="Permalink to this headline">#</a></h2>
+<section id="conditional-execution">
+<h3>Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">#</a></h3>
+<p>a. Calculate the absolute value of a number (not using the built-in abs function). Use the following code as a template (replace the dashes —– with code).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">------</span>
+<span class="k">if</span> <span class="o">-----</span><span class="p">:</span>
+    <span class="n">absx</span> <span class="o">=</span> <span class="o">-----</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">absx</span> <span class="o">=</span> <span class="o">-----</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the absolute value of x is&#39;</span><span class="p">,</span><span class="n">absx</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>b. Using conditional execution, determine whether a user-provided integer x is even or odd and print the result (hint: the % operator calculates the remainder that occurs when dividing two numbers, e.g. the result of    7 % 3 is equal to 1).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>xin = input(&#39;Please enter a number:&#39;)
+x = int(xin)
+if ------:
+    --------
+else:
+    print(‘The number is odd’)
+</pre></div>
+</div>
+<p>c. Modify the code written in part b to use try and except statements to handle non-integer input gracefully. If the input is not an integer, the program should print a friendly message explaining what went wrong.</p>
+<p>d. (if time) Modify the code written in part b above to continue requesting input until an integer is provided.</p>
+</section>
+<section id="grain-size-classification-if-time">
+<h3>Grain size classification (if time)<a class="headerlink" href="#grain-size-classification-if-time" title="Permalink to this headline">#</a></h3>
+<p>Write a function that takes sediment grain size as an input, then returns the Wentworth grain size classification based on the table below.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Grain Size</p></th>
+<th class="head"><p>Classification</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&gt;= 256 mm</p></td>
+<td><p>Boulder</p></td>
+</tr>
+<tr class="row-odd"><td><p>64-256 mm</p></td>
+<td><p>Cobble</p></td>
+</tr>
+<tr class="row-even"><td><p>2-64 mm</p></td>
+<td><p>Gravel</p></td>
+</tr>
+<tr class="row-odd"><td><p>62.5 μm - 2 mm</p></td>
+<td><p>Sand</p></td>
+</tr>
+<tr class="row-even"><td><p>3.9-62.5 μm</p></td>
+<td><p>Silt</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.98-3.9 μm</p></td>
+<td><p>Clay</p></td>
+</tr>
+</tbody>
+</table>
+<p>Test the program repeatedly to make sure it works for different input values.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom Connolly<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -34,14 +34,14 @@
 # 
 # __Ordinal__ - Categories have a logically defined rank. Steps arent equal in size or quantifiable
 # 
-# * How sediment grains are categorized: angularity and sphericity
+# * Visual classification of sediment grains: angularity and sphericity
 # * Hurricane scale: ranking is not equivalent to strength
-# * Beaufort Wind Scale: Mariner estimate of wind from wave climate, logically defined, but not quantifiable
+# * Beaufort Wind Scale: Mariner estimate of wind from wave climate. Categories are defined in a logical order, but a sea state of 10 is not necessarily indicate that the winds are twice as strong as a sea state of 5.
 # 
 # __Scale__: __interval__ and __ratio__
 # 	
-# * __interval scale__: constant succesive intervals, but the reference point is arbitrary e.g. temperature scale 
-# * __ratio scale__: natural zero point (ex: length, mass)
+# * __interval scale__: constant succesive intervals, but the reference point is arbitrary e.g. Fahrenheit temperature scale 
+# * __ratio scale__: natural zero point (ex: length, mass, Kelvin temperature scale)
 # 
 # ## Types of Error
 # * __Systematic error__  - systematically repeatable biased, i.e. some pattern in how they vary <br>
@@ -68,6 +68,8 @@
 # 
 # ## Sample distributions, probability density 
 
+# As an example, consider a distribution of 200 wave heights observed during an extreme wave event (N = 200 samples). This is actually a synthetic (computer-generated) data set, but it is based on a similar observed data set in Emery and Thomson, Section 3.8.4. The mean of the 200 samples $\bar{x}$ is 5.08 m and the standard deviation of the 200 samples $s$ is 1.18 m.
+
 # In[1]:
 
 
@@ -89,15 +91,15 @@ plt.ylabel('probability density\nfraction/m')
 xl = plt.xlim()
 
 
-# Bars: Example distribution of wave heights during an extreme wave event (N = 200). Synthetic (computer-generated) data based on a similar data set in Emery and Thomson, Section 3.8.4. The sample mean $\bar{x}$ is 5.08 m and the sample standard deviation $s$ is 1.18 m.
+# The bars show the sample distribution, or the probability distribution of the 200 samples. The wave heights are separated into categories and divided in to bins of width $\Delta x$. The height of each bar represents a *probability density*.
 # 
-# Wave height categories are divided in to bins of with $\Delta x$
+# *Probability density* = (fraction of samples in bin)/$\Delta x$
 # 
-# Probability density = fraction/$\Delta x$ <br>
+# The total area of the blue bars (the sample distribution) is equal to 1. In other words, the sum of all of the fractions has to equal 1.
 # 
-# Orange line: Normal distribution (hypothetical), allows the use of mathematical theories to use statistics. The shape of the normal distribution is defined by two parameters - the mean and standard deviation. This theoretical curve has the same mean and standard deviation as the sample distribution.  <br>
+# The orange line is a hypothetical *normal distribution*. The shape of this hypothetical distribution is defined by two parameters: the mean and standard deviation. This theoretical curve has the same mean and standard deviation as the sample distribution. Statistical techniques often rely on the assumption of theoretical probability distribution to simplify the mathematics involved.
 # 
-# Integral of area under the curve = 1 (all probability falls under the curve) for both the sample distribution and the theoretical normal distribution.
+# The integral of the area under the orange curve (the theoretical normal distribution) is equal to 1, just like the area of the sample distribution. This is the case for all probability density functions. The integral, or area under the curve, has to equal 1.
 # 
 # ### Cumulative distribution
 
@@ -111,7 +113,7 @@ plt.xlabel('wave height [m]')
 plt.ylabel('cumulative probability');
 
 
-# Same samples and theoretical probability, expressed as cumulative probability. This is the probability that the data fall with a given interval or less.
+# The figure above shows the same sample and theoretical distributions as before, this time expressed as cumulative probability. This is the probability that the data fall with a given interval *or less*.
 # 
 # ## Descriptive statistics
 # 
