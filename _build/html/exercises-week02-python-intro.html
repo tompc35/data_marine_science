@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -695,7 +697,8 @@ title="Print to PDF"
 <h2>Standard deviation calculation<a class="headerlink" href="#standard-deviation-calculation" title="Permalink to this headline">#</a></h2>
 <p>Write your own Python code to calculate the standard deviation of <code class="docutils literal notranslate"><span class="pre">my_array</span></code>. Make sure your code still works if the contents of <code class="docutils literal notranslate"><span class="pre">my_array</span></code> are changed to have different values, or a different number of values.</p>
 <p>Check the results of your code with the results of the built-in Numpy function, <code class="docutils literal notranslate"><span class="pre">np.std</span></code>:</p>
-<p><code class="docutils literal notranslate"><span class="pre">np.std(my_array)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">np.std(my_array,</span> <span class="pre">ddof=1)</span></code></p>
+<p>Here, the <code class="docutils literal notranslate"><span class="pre">ddof</span></code> option refers to <em>delta degrees of freedom</em>. Using <code class="docutils literal notranslate"><span class="pre">ddof</span> <span class="pre">=</span> <span class="pre">1</span></code> computes the unbiased standard deviation by using <span class="math notranslate nohighlight">\(N-1\)</span> as the degrees of freedom instead of the default <span class="math notranslate nohighlight">\(N\)</span>.</p>
 </section>
 </section>
 

@@ -156,10 +156,6 @@ print(string_variable)
 # Without running any code, predict the output of the following three-line program.
 # 
 # 
-# 
-# ```
-# 
-# 
 # ```python
 # a = 16 
 # a = a+2  
@@ -179,7 +175,8 @@ print(string_variable)
 # ### Variable types
 
 # #### Integer 
-# No decimal point. Exact.
+# 
+# Numbers with no no decimal points are treated as integers. 
 
 # In[6]:
 
@@ -188,6 +185,8 @@ i = 4
 print(i)
 print(type(i))
 
+
+# The `type` function shows us that Python is treating the variable `i` as a type `int`, which is short for integer. Integers are an example of a *primitive data type*, along with strings and floating point numbers (covered next). Primitive data types are the most basic fundamental data types that can be used to build more complicated, non-primitive, data types.
 
 # #### Floating point
 # 
@@ -202,6 +201,8 @@ print(type(f))
 
 
 # #### Complex numbers*
+
+# Complex numbers use the imaginary number $\sqrt{-1}$. They have a real part and an imaginary part. In mathematics, imaginary numbers are represented by $i$. In Python the value $i$ is represented as `1j`. 
 
 # In[8]:
 
@@ -230,6 +231,7 @@ print(type(s))
 
 s2 = '4'
 print(s2)
+print(type(s2))
 
 
 # #### Converting between variable types
@@ -319,7 +321,7 @@ print(2//3)   # floor division
 # In[16]:
 
 
-print( 3*(4+6) )
+print(3*(4 + 6))
 
 
 # #### An example of round-off error
@@ -343,7 +345,7 @@ print(3*0.1)
 
 a = 'Py'
 b = 'thon'
-print(a+b)
+print(a + b)
 
 
 # ##### Exercise
@@ -377,53 +379,89 @@ print(a+b)
 
 # ### Lists
 # 
-# * In many situations, we do want to store just one data value, we want to store a collection of data values. One way to do this is with a list. Square brackets denote this as a list.
+# In many situations, we do want to store just one data value, we want to store a collection of data values. One way to do this is with a list. Square brackets denote this as a list.
 
 # In[19]:
 
 
-t = [5,3.9,4.2]
+t = [5, 3.9, 4.2]
 print(type(t))
 
 
 # * Lists can inlude both numbers and strings. Each element of a list has an index. Indices start at 0.
 # * Indices can also be accessed from the back.  To call the last element, use [-1].  In this example, the last element can be accessed forwards with [2] or backwards [-1].
+# * Lists are our first example of a *non-primitive data type*, a data type that uses other data types.
+
+# Lists have a number of built-in operations called *methods*. One example is the `append` method. 
 
 # In[20]:
 
 
-t = [5,3.9,'a string']
+t.append(5) # append the value 5 to the end of the list t
+print(t)
+
+
+# Lists do not necessarily need to contain only numbers. You can put numbers and strings in the same list.
+
+# In[21]:
+
+
+t = [5, 3.9, 'a string']
 print(t)
 print(t[1])
 print(t[2])
 print(t[-1])
 
 
-# * Indexing can be used to assign new values within lists.
+# Indexing can be used to assign new values within lists.
 
-# In[21]:
+# In[22]:
 
 
 t[1] = 'new item'
 print(t)
 
 
-# * Lists can also be nested within lists.
+# Lists can also be nested within lists.
 
-# In[22]:
+# In[23]:
 
 
-t2 = [5,3.9,[1,2,3]]
+t2 = [5, 3.9, [1, 2, 3]]
 print(t2)
 print(t2[2])
 print(t2[2][1])
 
 
-# * Strings have indexing as well.  If you type s3[1:3] python will start at index 1, and include it and everything up to, but not including, index 3.
+# Slicing can be used to isolate multiple values from a list. For example, let's create a test list.
+
+# In[24]:
+
+
+test_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+
+
+# The following example takes values, starting with index 4, up to but *not including* index 7. In other words, indices 4-6.
+
+# In[25]:
+
+
+test_list[4:7]
+
+
+# This example takes values starting with index 4 all the way to the end.
+
+# In[26]:
+
+
+test_list[4:]
+
+
+# Strings have indexing as well.  If you type `s3[1:3]` python will start at index 1, and include it and everything up to, but not including, index 3.
 # 
 # 
 
-# In[23]:
+# In[27]:
 
 
 s3 = 'hello'
@@ -434,9 +472,9 @@ print(s3[1:3])
 print(s3[-3:-1])
 
 
-# * Some other basic built-in functions for lists. '__len__' is short for length, and a function that can be used for lots of different variable types.  It returns the number of items in the list.
+# Some other basic built-in functions can be used with lists. The function `len` is short for length, and a function that can be used for lots of different variable types.  It returns the number of items in the list.
 
-# In[24]:
+# In[28]:
 
 
 t = [0,2,3]
@@ -449,7 +487,7 @@ help(len)
 # 
 # Use slicing to access only the last four characters of a string or entries of a list. The following variables have been created in Python:
 
-# In[25]:
+# In[29]:
 
 
 string_for_slicing = "Observation date: 02-Feb-2013"
@@ -471,13 +509,13 @@ list_for_slicing = [["fluorine", "F"],
 # Adapted from:
 # http://swcarpentry.github.io/python-novice-inflammation/05-lists/index.html
 
-# In[26]:
+# In[30]:
 
 
 string_for_slicing[25:]
 
 
-# In[27]:
+# In[31]:
 
 
 list_for_slicing[1:5]
@@ -487,7 +525,7 @@ list_for_slicing[1:5]
 # 
 # Tuples are immutable
 
-# In[28]:
+# In[32]:
 
 
 my_tuple = (1,2,3)
@@ -506,25 +544,25 @@ type(my_tuple)
 # 
 # Dictionaries are like lists but use keys instead of numerical indexing.
 
-# In[29]:
+# In[33]:
 
 
-my_town = {'name':'Moss Landing','state':'California'}
+my_town = {'name':'Moss Landing', 'state':'California'}
 
 
-# In[30]:
+# In[34]:
 
 
 my_town['name']
 
 
-# In[31]:
+# In[35]:
 
 
 my_town['zip'] = 95039
 
 
-# In[32]:
+# In[36]:
 
 
 my_town
@@ -534,17 +572,17 @@ my_town
 # 
 # Modify the `my_town` dictionary to include a list of restaurants in Moss Landing.
 
-# In[33]:
+# In[37]:
 
 
-my_town['restaurants'] = ['Whole Enchilada','Haute Enchilada','Phil\'s']
+my_town['restaurants'] = ['Whole Enchilada', 'Haute Enchilada', 'Phil\'s']
 
 
 # ## Numpy
 # 
 # NumPy (Numerical Python) is a __package__ that extends Python's basic capabilities and allows for more complex mathematical operations involving groups of numbers. Importing the numpy __module__ gives access to its functions.
 
-# In[34]:
+# In[38]:
 
 
 import numpy as np
@@ -554,7 +592,7 @@ import numpy as np
 # 
 # The numpy library gives access to special mathematical functions, like square root.
 
-# In[35]:
+# In[39]:
 
 
 val = 2
@@ -568,10 +606,10 @@ print(val_sr)
 # 
 # A list of numbers can be converted to an array.
 
-# In[36]:
+# In[40]:
 
 
-num_list = [1,2,3]
+num_list = [1, 2, 3]
 num_arr = np.array(num_list)
 print(num_arr)
 print(type(num_arr))
@@ -579,13 +617,13 @@ print(type(num_arr))
 
 # Arrays behave differently from lists. Multiplication and addition operatations _replicate_ lists, but these operations act on each individual _elements_ in an array.
 
-# In[37]:
+# In[41]:
 
 
 print(num_list*2)
 
 
-# In[38]:
+# In[42]:
 
 
 print(num_arr*2)
