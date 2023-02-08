@@ -11,8 +11,8 @@ parts:
    chapters:
    - file: software-installation/README
    - file: 1-02-python-intro
-   - file: 1-03-cruise-data-analysis
-   - file: 1-04-boolean
+   - file: 1-03-boolean
+   - file: 1-04-cruise-data-analysis
    - file: 1-05-loops
    - file: 1-06-conditional-execution
    - file: 1-07-python-functions
