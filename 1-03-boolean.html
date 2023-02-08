@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>8. Creating your own Python module &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>3. Boolean logic in Python &#8212; Data Analysis Techniques in Marine Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9. Python packages" href="1-09-python-packages.html" />
-    <link rel="prev" title="7. Functions" href="1-07-python-functions.html" />
+    <link rel="next" title="4. Cruise data analysis in Python" href="1-04-cruise-data-analysis.html" />
+    <link rel="prev" title="2. Introduction to Python" href="1-02-python-intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -129,8 +129,8 @@ const thebe_selector_output = ".output, .cell_output"
    2. Introduction to Python
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-03-boolean.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    3. Boolean logic in Python
   </a>
  </li>
@@ -154,8 +154,8 @@ const thebe_selector_output = ".output, .cell_output"
    7. Functions
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-08-python-modules.html">
    8. Creating your own Python module
   </a>
  </li>
@@ -414,7 +414,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/1-08-python-modules.ipynb"
+        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/1-03-boolean.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -457,7 +457,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/1-08-python-modules.ipynb"
+        <a href="_sources/1-03-boolean.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -517,42 +517,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#running-a-file-as-a-script-from-the-shell-command-line">
-   8.1. Running a file as a script from the shell command line
+  <a class="reference internal nav-link" href="#exercise">
+   3.1. Exercise
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#breaking-down-parts-of-the-file">
-     Breaking down parts of the file
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-the-file">
-     Running the file
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-as-a-module">
-   8.2. Importing as a module
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-import-statement">
-     The import statement
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Running the file
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   8.3. Exercises
+  <a class="reference internal nav-link" href="#logic-gates">
+   3.2. Logic gates
   </a>
  </li>
 </ul>
@@ -564,7 +535,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Creating your own Python module</h1>
+                <h1>Boolean logic in Python</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -575,42 +546,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#running-a-file-as-a-script-from-the-shell-command-line">
-   8.1. Running a file as a script from the shell command line
+  <a class="reference internal nav-link" href="#exercise">
+   3.1. Exercise
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#breaking-down-parts-of-the-file">
-     Breaking down parts of the file
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-the-file">
-     Running the file
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-as-a-module">
-   8.2. Importing as a module
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-import-statement">
-     The import statement
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Running the file
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   8.3. Exercises
+  <a class="reference internal nav-link" href="#logic-gates">
+   3.2. Logic gates
   </a>
  </li>
 </ul>
@@ -623,118 +565,163 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="creating-your-own-python-module">
-<h1><span class="section-number">8. </span>Creating your own Python module<a class="headerlink" href="#creating-your-own-python-module" title="Permalink to this headline">#</a></h1>
-<p>Up to this point, we have created functions and used them within the same Python script. However, what if we want to use those functions in another file, or another project entirely? To do this you can create your own module that can be imported in another Python scripts.</p>
-<section id="running-a-file-as-a-script-from-the-shell-command-line">
-<h2><span class="section-number">8.1. </span>Running a file as a script from the shell command line<a class="headerlink" href="#running-a-file-as-a-script-from-the-shell-command-line" title="Permalink to this headline">#</a></h2>
-<p>To show how modules work in Python, we start with a simple unit conversion module contained in the file <span class="xref myst">convert.py</span>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-
-<span class="sd">&#39;&#39;&#39;A module for converting units.&#39;&#39;&#39;</span>
-
-<span class="k">def</span> <span class="nf">temp_f2c</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39; This function converts Fahrenheit to Celcius</span>
-<span class="sd">	Input: temperature in degrees F</span>
-<span class="sd">	Output: temperature in degrees C</span>
-<span class="sd">	&#39;&#39;&#39;</span>
-	<span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span> <span class="o">-</span> <span class="mf">32.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">5.0</span><span class="o">/</span><span class="mf">9.0</span><span class="p">)</span>
-	<span class="k">return</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-	
-<span class="k">def</span> <span class="nf">temp_c2f</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39; This function converts Celcius to Fahrenheit</span>
-<span class="sd">	Input: temperature in degrees C</span>
-<span class="sd">	Output: temperature in degrees F</span>
-<span class="sd">	&#39;&#39;&#39;</span>
-	<span class="n">f</span> <span class="o">=</span> <span class="n">c</span><span class="o">*</span><span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
-	<span class="k">return</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-	
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;do this stuff if run as script&#39;</span><span class="p">)</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;32 degrees F:&#39;</span><span class="p">,</span><span class="n">temp_f2c</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="boolean-logic-in-python">
+<h1><span class="section-number">3. </span>Boolean logic in Python<a class="headerlink" href="#boolean-logic-in-python" title="Permalink to this headline">#</a></h1>
+<p>In the 19th century, in a book called <em>The Laws of Thought</em>, an Irish mathematician named George Boole developed a formal system of logic that laid the foundation for conveying information electronically. Boolean variables are a special type of variable that has two possible values: <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. These binary values can also be represented as <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<section id="breaking-down-parts-of-the-file">
-<h3>Breaking down parts of the file<a class="headerlink" href="#breaking-down-parts-of-the-file" title="Permalink to this headline">#</a></h3>
-<p>This Python file has several parts. The first two lines are comment lines, and are therefore not run as Python code. However, they contain important information about the file and they are include automatically when you create a new file in Spyder. The first line,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bool
 </pre></div>
 </div>
-<p>is the “shebang” line, and this is specific to Unix-based operating systems (like Mac OSX and Linux). It tells the shell that this file can be run as a scipt. The second line,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+</div>
+</div>
+<p>In Python, a double equals sign (<code class="docutils literal notranslate"><span class="pre">==</span></code>) tests for equivalancy. This is much different from the single equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>), which is used for assignment (assigning a value to a variable).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>specifies how the text file that contains the source code is formatted. This line allows you to use Unicode characters. Both of these lines are optional. The next line,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;A module for converting units.&#39;&#39;&#39;</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
 </pre></div>
 </div>
-<p>is a docstring for the module, which helps a user figure out what is in the module and what its purpose is. Like the comment lines, this line is not run as code. After the doc-string, two function are defined, and then comes another part of the file.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;do this stuff if run as script&#39;</span><span class="p">)</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;32 degrees F:&#39;</span><span class="p">,</span><span class="n">temp_f2c</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1 and 0 can also represent True or False</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">==</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">==</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test for non-equivaalence</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercise">
+<h2><span class="section-number">3.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<p>Predict the output from each of the following three lines of code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kc">False</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="kc">True</span><span class="p">))</span> <span class="o">!=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </section>
-<section id="running-the-file">
-<h3>Running the file<a class="headerlink" href="#running-the-file" title="Permalink to this headline">#</a></h3>
-<p>The part of the file above is only run as a script (not when it is imported as a module in another Python file, which is what will be demonstrated in the next section). In Spyder, this can be done with the “Run” button. Python scripts can also be run from the shell (e.g. Mac Terminal, or Git Bash shell). The <a class="reference external" href="http://convert.py">convert.py</a> file can be run by navigating to its directory in the shell and typing</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">convert</span><span class="o">.</span><span class="n">py</span>
+<section id="logic-gates">
+<h2><span class="section-number">3.2. </span>Logic gates<a class="headerlink" href="#logic-gates" title="Permalink to this headline">#</a></h2>
+<p>In electronics, logic gates take multiple binary values (on/off) as input and produce a single binary value as output. These logic gates follow the laws of Boolean algebra. The same types of logic gates are used in computer programing. One type of logic gate is the <strong>AND</strong> gate. The AND gate produces a <code class="docutils literal notranslate"><span class="pre">True</span></code> value only if both inputs are <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>A logic gate performs a logical operation on multiple binary inputs, resulting in a single binary output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="ow">and</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="ow">and</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="ow">and</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="ow">and</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>which gives the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do</span> <span class="n">this</span> <span class="n">stuff</span> <span class="k">if</span> <span class="n">run</span> <span class="k">as</span> <span class="n">script</span>                                                                              
-<span class="mi">32</span> <span class="n">degrees</span> <span class="n">F</span><span class="p">:</span> <span class="mf">0.0</span> <span class="n">C</span>       
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+0
+0
+1
 </pre></div>
 </div>
-<p>Running a python file in this way executes all of the Python code in the file, including the contents of the section that starts with <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code></p>
-</section>
-</section>
-<section id="importing-as-a-module">
-<h2><span class="section-number">8.2. </span>Importing as a module<a class="headerlink" href="#importing-as-a-module" title="Permalink to this headline">#</a></h2>
-<p>To show how to import the <a class="reference external" href="http://convert.py">convert.py</a> as a module, and use the functions in another file, we create a simple script called <span class="xref myst">myscript.py</span>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-
-<span class="kn">import</span> <span class="nn">convert</span>
-
-<span class="n">ctemp</span> <span class="o">=</span> <span class="mi">40</span>
-<span class="n">ftemp</span> <span class="o">=</span> <span class="n">convert</span><span class="o">.</span><span class="n">temp_c2f</span><span class="p">(</span><span class="n">ctemp</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ctemp</span><span class="p">,</span><span class="s1">&#39;C is &#39;</span><span class="p">,</span><span class="n">ftemp</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+</div>
+</div>
+<p>The <strong>OR</strong> gate produces a <code class="docutils literal notranslate"><span class="pre">True</span></code> value if at least one input is `True’’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="ow">or</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="ow">or</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<section id="the-import-statement">
-<h3>The import statement<a class="headerlink" href="#the-import-statement" title="Permalink to this headline">#</a></h3>
-<p>In the file above, the conversion module is imported with the statement:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">convert</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+1
+1
 </pre></div>
 </div>
-<p>The functions in that module can then be used, like in the line:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ftemp</span> <span class="o">=</span> <span class="n">convert</span><span class="o">.</span><span class="n">temp_c2f</span><span class="p">(</span><span class="n">ftemp</span><span class="p">)</span>
-</pre></div>
 </div>
-</section>
-<section id="id1">
-<h3>Running the file<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
-<p>This file can be run from the shell, with the command,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">myscript</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
 </div>
-<p>which gives the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">40</span> <span class="n">C</span> <span class="ow">is</span>  <span class="mf">104.0</span> <span class="n">F</span>   
-</pre></div>
-</div>
-<p>It is also important to note what is code is <em>not</em> run, which is the contents of the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code> section of <a class="reference external" href="http://convert.py">convert.py</a>. When a Python file is imported as a module, this part of the code is not run. This is a good place to put demonstrations of functions in a module, or tests.</p>
-</section>
-</section>
-<section id="exercises">
-<h2><span class="section-number">8.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<p>Element-wise boolean logic with Numpy</p>
 <ul class="simple">
-<li><p>Write two more unit conversion functions (converting one way and back).</p></li>
-<li><p>Use one in the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code> section of <a class="reference external" href="http://convert.py">convert.py</a></p></li>
-<li><p>Use the other in <a class="reference external" href="http://myscript.py">myscript.py</a></p></li>
-<li><p>Run these files from the shell, and see what parts of the code are run</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> for <em>and</em></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">|</span></code> for <em>or</em></p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">])</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True, False,  True])
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -765,17 +752,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="1-07-python-functions.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="1-02-python-intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">7. </span>Functions</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Introduction to Python</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="1-09-python-packages.html" title="next page">
+    <a class='right-next' id="next-link" href="1-04-cruise-data-analysis.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Python packages</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Cruise data analysis in Python</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
