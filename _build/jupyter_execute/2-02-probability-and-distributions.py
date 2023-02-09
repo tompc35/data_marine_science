@@ -138,12 +138,6 @@ plt.ylabel('probability');
 # 
 # A classic application of Bayes theorem, showing how our intuition about probability can lead us astray.
 
-# ### Exercise: Probability
-# 
-# A newspaper article quotes a statistic about the relationship between the El Nino index and high precipitation in Southern California. A high precipitation winter is defined as being in the top 10% of all winters. According to the article, 75% of high precipitation winters in Southern California occur during El Nino years. El Nino events occur approximately every five years.
-# 
-# Based on this information, what is the probability of high precipitation occuring during an El Nino year?
-
 # ## Distributions
 # 
 # ### Normal Distribution
@@ -182,7 +176,11 @@ plt.ylabel('probability');
 # 
 # Count uncertainty  = $\sqrt{k}$ - More counts => less uncertainty
 # 
-# __Exercise__: if on average 10 flood occur per century. What is probability of counting 15 floods occuring in a century?
+# #### Exercises
+# 
+# - If on average 10 flood occur per century. What is probability of counting 15 floods occuring in a century?
+# 
+# - A newspaper article quotes a statistic about the relationship between the El Nino index and high precipitation in Southern California. A high precipitation winter is defined as being in the top 10% of all winters. According to the article, 75% of high precipitation winters in Southern California occur during El Nino years. El Nino events occur approximately every five years. Based on this information, what is the probability of high precipitation occuring during an El Nino year?
 
 # ### Weibull Distribution 
 # 

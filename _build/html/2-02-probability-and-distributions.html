@@ -132,13 +132,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="1-03-cruise-data-analysis.html">
-   3. Cruise data analysis in Python
+  <a class="reference internal" href="1-03-boolean.html">
+   3. Boolean logic in Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="1-04-boolean.html">
-   4. Boolean logic in Python
+  <a class="reference internal" href="1-04-cruise-data-analysis.html">
+   4. Cruise data analysis in Python
   </a>
  </li>
  <li class="toctree-l1">
@@ -548,11 +548,6 @@ title="Print to PDF"
      The Monty Hall problem
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-probability">
-     Exercise: Probability
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -574,6 +569,13 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#poisson-distribution">
      Poisson Distribution
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercises">
+       Exercises
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#weibull-distribution">
@@ -641,11 +643,6 @@ title="Print to PDF"
      The Monty Hall problem
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-probability">
-     Exercise: Probability
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -667,6 +664,13 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#poisson-distribution">
      Poisson Distribution
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercises">
+       Exercises
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#weibull-distribution">
@@ -823,11 +827,6 @@ title="Print to PDF"
 <h3>The Monty Hall problem<a class="headerlink" href="#the-monty-hall-problem" title="Permalink to this headline">#</a></h3>
 <p>A classic application of Bayes theorem, showing how our intuition about probability can lead us astray.</p>
 </section>
-<section id="exercise-probability">
-<h3>Exercise: Probability<a class="headerlink" href="#exercise-probability" title="Permalink to this headline">#</a></h3>
-<p>A newspaper article quotes a statistic about the relationship between the El Nino index and high precipitation in Southern California. A high precipitation winter is defined as being in the top 10% of all winters. According to the article, 75% of high precipitation winters in Southern California occur during El Nino years. El Nino events occur approximately every five years.</p>
-<p>Based on this information, what is the probability of high precipitation occuring during an El Nino year?</p>
-</section>
 </section>
 <section id="distributions">
 <h2><span class="section-number">2.4. </span>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">#</a></h2>
@@ -864,7 +863,13 @@ title="Print to PDF"
 <p><span class="math notranslate nohighlight">\(\lambda\)</span> = expected values, true mean</p>
 <p><span class="math notranslate nohighlight">\(P(k) = \frac{\lambda^k e^{-\lambda}}{k!}\)</span></p>
 <p>Count uncertainty  = <span class="math notranslate nohighlight">\(\sqrt{k}\)</span> - More counts =&gt; less uncertainty</p>
-<p><strong>Exercise</strong>: if on average 10 flood occur per century. What is probability of counting 15 floods occuring in a century?</p>
+<section id="exercises">
+<h4>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>If on average 10 flood occur per century. What is probability of counting 15 floods occuring in a century?</p></li>
+<li><p>A newspaper article quotes a statistic about the relationship between the El Nino index and high precipitation in Southern California. A high precipitation winter is defined as being in the top 10% of all winters. According to the article, 75% of high precipitation winters in Southern California occur during El Nino years. El Nino events occur approximately every five years. Based on this information, what is the probability of high precipitation occuring during an El Nino year?</p></li>
+</ul>
+</section>
 </section>
 <section id="weibull-distribution">
 <h3>Weibull Distribution<a class="headerlink" href="#weibull-distribution" title="Permalink to this headline">#</a></h3>

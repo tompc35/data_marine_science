@@ -3,12 +3,6 @@
 
 # # Exercises
 # 
-# ### Probability
-# 
-# A newspaper article quotes a statistic about the relationship between the El Nino index and high precipitation in Southern California. A high precipitation winter is defined as being in the top 10% of all winters. According to the article, 75% of high precipitation winters in Southern California occur during El Nino years. El Nino events occur approximately every five years.
-# 
-# Based on this information, what is the probability of high precipitation occuring during an El Nino year?
-# 
 # ### Boolean logic
 # 
 # Predict the output from each of the following three lines of code.
