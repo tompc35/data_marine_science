@@ -132,13 +132,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="1-03-cruise-data-analysis.html">
-   3. Cruise data analysis in Python
+  <a class="reference internal" href="1-03-boolean.html">
+   3. Boolean logic in Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="1-04-boolean.html">
-   4. Boolean logic in Python
+  <a class="reference internal" href="1-04-cruise-data-analysis.html">
+   4. Cruise data analysis in Python
   </a>
  </li>
  <li class="toctree-l1">
@@ -542,18 +542,23 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#subsampled-data-set">
      Subsampled data set
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-are-the-key-differences-similarities-of-distribution-compared-with-all-10623-samples">
-       What are the key differences, similarities of distribution, compared with all 10623 samples?
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#statistical-modeling">
      Statistical modeling
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-a-model">
+       What is a model?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#basic-structure-of-a-statistical-model">
+       Basic structure of a statistical model
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-data-set-simplest-model">
@@ -605,28 +610,14 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-data-set-linear-model">
-     Example data set: linear model
+    <a class="reference internal nav-link" href="#a-simple-model-with-two-parameters-linear-model">
+     A simple model with two parameters: linear model
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#rmse-3-57-g">
-       RMSE = 3.57 g
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-data-set-quadratic-model">
      Example data set: quadratic model
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#rmse-2-11-g">
-       RMSE = 2.11 g
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-data-set-data-transformation">
@@ -643,18 +634,6 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#modeling-another-species-overfitting">
      Modeling another species - Overfitting
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#seventh-degree-polynomial-fit-to-nine-data-points">
-       Seventh degree polynomial fit to nine data points.
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#overfitting">
-     Overfitting
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -706,11 +685,6 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#central-limit-theorem-dice-example">
-     Central limit theorem – dice example
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-z-distribution">
      The
      <em>
@@ -724,6 +698,11 @@ title="Print to PDF"
      Confidence intervals for the mean
     </a>
     <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-fish-weight-distribution">
+       Example: fish weight distribution
+      </a>
+     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#common-misinterpretation-of-confidence-intervals">
        Common misinterpretation of confidence intervals*:
@@ -776,18 +755,23 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#subsampled-data-set">
      Subsampled data set
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-are-the-key-differences-similarities-of-distribution-compared-with-all-10623-samples">
-       What are the key differences, similarities of distribution, compared with all 10623 samples?
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#statistical-modeling">
      Statistical modeling
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-a-model">
+       What is a model?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#basic-structure-of-a-statistical-model">
+       Basic structure of a statistical model
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-data-set-simplest-model">
@@ -839,28 +823,14 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-data-set-linear-model">
-     Example data set: linear model
+    <a class="reference internal nav-link" href="#a-simple-model-with-two-parameters-linear-model">
+     A simple model with two parameters: linear model
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#rmse-3-57-g">
-       RMSE = 3.57 g
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-data-set-quadratic-model">
      Example data set: quadratic model
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#rmse-2-11-g">
-       RMSE = 2.11 g
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-data-set-data-transformation">
@@ -877,18 +847,6 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#modeling-another-species-overfitting">
      Modeling another species - Overfitting
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#seventh-degree-polynomial-fit-to-nine-data-points">
-       Seventh degree polynomial fit to nine data points.
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#overfitting">
-     Overfitting
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -940,11 +898,6 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#central-limit-theorem-dice-example">
-     Central limit theorem – dice example
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-z-distribution">
      The
      <em>
@@ -958,6 +911,11 @@ title="Print to PDF"
      Confidence intervals for the mean
     </a>
     <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-fish-weight-distribution">
+       Example: fish weight distribution
+      </a>
+     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#common-misinterpretation-of-confidence-intervals">
        Common misinterpretation of confidence intervals*:
@@ -994,7 +952,7 @@ Chapters 7,8</p></li>
 <h3>Probability density function<a class="headerlink" href="#probability-density-function" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(N\)</span> = 10623 anchovy weight samples</p>
 <p><span class="math notranslate nohighlight">\(\Delta x\)</span> = 5 g</p>
-<p><strong>Review</strong>: How to calculate PDF from counts, N and <span class="math notranslate nohighlight">\(\Delta x\)</span> ?</p>
+<p><strong>Review</strong>: How to calculate PDF from counts, N and <span class="math notranslate nohighlight">\(\Delta x\)</span>?</p>
 <ul class="simple">
 <li><p>With the histogram we have the following information: counts, bin width ( <span class="math notranslate nohighlight">\(\Delta x\)</span> = 5g), <span class="math notranslate nohighlight">\(N\)</span> (samples).</p></li>
 </ul>
@@ -1005,31 +963,45 @@ Chapters 7,8</p></li>
 <h3>NOAA SWFSC - Trawl Life History Specimen Data<a class="headerlink" href="#noaa-swfsc-trawl-life-history-specimen-data" title="Permalink to this headline">#</a></h3>
 <p>fishery independent trawl surveys of coastal pelagic species</p>
 <p>Surveys: 2003-2019</p>
+<div class="cell tag_remove-input docutils container">
+</div>
 </section>
 <section id="subsampled-data-set">
 <h3>Subsampled data set<a class="headerlink" href="#subsampled-data-set" title="Permalink to this headline">#</a></h3>
-<p><img alt="subsamp_engraulis_mordax" src="_images/subsamp_engraulis_mordax.png" /></p>
-<p>N = 100 anchovy weight samples</p>
-<section id="what-are-the-key-differences-similarities-of-distribution-compared-with-all-10623-samples">
-<h4>What are the key differences, similarities of distribution, compared with all 10623 samples?<a class="headerlink" href="#what-are-the-key-differences-similarities-of-distribution-compared-with-all-10623-samples" title="Permalink to this headline">#</a></h4>
-<p><strong>differences</strong>: a pdf of smaller sample sizes are noiser, less smooth.  May see more variability from one bin to the next.</p>
-<p><strong>similarities</strong>: theoretical distribution resembles poisson distribution (skewed data set with a longer tail), scale of y-axis (normalized by the bin width so magnitudes of different data sets are comparable)</p>
-</section>
+<p>If we think of the above PDF as repesenting the total poulation of <em>Engraulis mordax</em> in the whole ocean, then you can think of the subsample as a result you might get if you just went out and trawled for one day.</p>
+<p>Click the button to generate a random set of <span class="math notranslate nohighlight">\(N\)</span> subsamples from the larger dataset.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "320b245b99e84a0c847031f33fcfb22f"}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_subsampled_weight_histogram(species_name, N=100)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(N\)</span> = 100 anchovy weight samples</p>
+<p>What are the key differences, similarities of this distribution, compared with all 10623 samples?</p>
+<ul class="simple">
+<li><p><em>differences</em>: a pdf of smaller sample sizes are noiser, less smooth.  May see more variability from one bin to the next.</p></li>
+<li><p><em>similarities</em>: theoretical distribution resembles poisson distribution (skewed data set with a longer tail), scale of y-axis (normalized by the bin width so magnitudes of different data sets are comparable)</p></li>
+</ul>
 </section>
 <section id="statistical-modeling">
 <h3>Statistical modeling<a class="headerlink" href="#statistical-modeling" title="Permalink to this headline">#</a></h3>
-<p><strong>What is a model?</strong> -
-physical models (of a building, of monterey bay, of a cell or a molecule).  The general characteristics of a physical model is able to represent something on a different scale to make it easier to understand, to convey the essence of what you are model without having to worry about all the details. a statistical model is same basic idea as a physical model, we want to convey the essence of the dataset without having to use an entire dataset</p>
-<p><strong>basic structure of a statistic model</strong> -
-statistical model is based off data</p>
+<section id="what-is-a-model">
+<h4>What is a model?<a class="headerlink" href="#what-is-a-model" title="Permalink to this headline">#</a></h4>
+<p>Physical models (e.g., of a building, of Monterey Bay, of a cell or a molecule) represent something on a different scale to make it easier to understand. They convey the essence of something without having to worry about all the details. A statistical model is same basic idea as a physical model, we want to convey the essence of the dataset without having to use an entire dataset</p>
+</section>
+<section id="basic-structure-of-a-statistical-model">
+<h4>Basic structure of a statistical model<a class="headerlink" href="#basic-structure-of-a-statistical-model" title="Permalink to this headline">#</a></h4>
+<p>A statistical model is based off data. Error is an inherent part of of any model prediction. One of the key goals in evaluating a model is to quantify that error.</p>
 <p>data = model + error</p>
-<ul class="simple">
-<li><p>one of the key goals is to quantify that error</p></li>
-</ul>
+<p><span class="math notranslate nohighlight">\(x_i = \hat{x}_i + \epsilon_i\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(x_i\)</span> is one data point, <span class="math notranslate nohighlight">\(\hat{x}_i\)</span> is the corresponding model predition, and <span class="math notranslate nohighlight">\(\epsilon_i\)</span> is the difference between them.</p>
+</section>
 </section>
 <section id="example-data-set-simplest-model">
 <h3>Example data set: simplest model<a class="headerlink" href="#example-data-set-simplest-model" title="Permalink to this headline">#</a></h3>
-<p><img alt="Trawl_Life_Hist_Samp_Data" src="_images/Trawl_Life_Hist_Samp_Data.png" /></p>
 <section id="the-simplest-possible-model-is-a-single-value">
 <h4>The simplest possible model is a single value<a class="headerlink" href="#the-simplest-possible-model-is-a-single-value" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
@@ -1040,33 +1012,51 @@ statistical model is based off data</p>
 <p>In this case the mean is much bigger than the mode is about 15 grams (data is skewed).  A median describes the central value, or 50th percentile in the data set.</p>
 <p>If we use the mode as the model, we can write it as:
 <span class="math notranslate nohighlight">\(\hat{weight_i}\)</span> = 5 g</p>
-<p><span class="math notranslate nohighlight">\(\hat{}\)</span> denotes a value predicted by the model</p>
-<p><span class="math notranslate nohighlight">\(_i\)</span> is a data point with the model value, a generic observation.  If it were a subset of 1, it could mean the first row in a spreadsheet, or 2 meaning the second row, etc.</p>
+<p>The <span class="math notranslate nohighlight">\(\hat{}\)</span> denotes a value predicted by the model</p>
+<p>The subscript <span class="math notranslate nohighlight">\(_i\)</span> denotes one data point with the model value, a generic observation.  For example, if we specify  <span class="math notranslate nohighlight">\(i=1\)</span>, it could mean the first row in a spreadsheet.</p>
 <p>We can describe the error based on the model structure:
 <span class="math notranslate nohighlight">\(error_i = weight_i - \hat{weight_i}\)</span></p>
-<p>Each observation has a model value and an error associated with it.</p>
-<p><span class="math notranslate nohighlight">\(weight_i\)</span> is an observation, or data point</p>
-<p>In the example, if we have 10K data points, then we have 10k errors.</p>
+<p>where <span class="math notranslate nohighlight">\(weight_i\)</span> is an observation, or data point, and <span class="math notranslate nohighlight">\(\hat{weight_i}\)</span> is the corresponding model prediction. Each observation has a model prediction and an error associated with it.</p>
+<p>In the example, if we have 10623 data points, then a model will have 10263 errors.</p>
 </section>
 </section>
 <section id="example-data-set-mode-as-a-model">
 <h3>Example data set: mode as a model<a class="headerlink" href="#example-data-set-mode-as-a-model" title="Permalink to this headline">#</a></h3>
-<p><img alt="subsamp_engraulis_mordax_mode" src="_images/subsamp_engraulis_mordax_mode.png" /></p>
-<p>Average error when using mode as model:
-10.326 g</p>
-<p>If we use the mean as a model, will the average error increase or decrease?</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/z7/lmyk7sz94177j166ck0x63h80000gr/T/ipykernel_69395/2487761942.py:7: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims` will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+  plt.plot([mode(weight)[0], mode(weight)[0]],[yl[0], yl[1]], &#39;r--&#39;, lw=2)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="_images/2-03-modeling-sampling_9_2.png" src="_images/2-03-modeling-sampling_9_2.png" />
+</div>
+</div>
+<p>With this model, each model prediction has a constant value of 5 g, that is,</p>
+<p><span class="math notranslate nohighlight">\(\hat{x}_i\)</span> = 5 g.</p>
+<p>The average error, <span class="math notranslate nohighlight">\(\bar{\epsilon_i} = \overline{(x_i - \hat{x}_i)}\)</span>, when using mode as model is 10.326 g. In other words the positive errors dominate the average error.</p>
+<p>If we use the mean as a model, would you expect the average error increase or decrease?</p>
 </section>
 <section id="example-data-set-mean-as-a-model">
 <h3>Example data set: mean as a model<a class="headerlink" href="#example-data-set-mean-as-a-model" title="Permalink to this headline">#</a></h3>
-<p><img alt="subsamp_engraulis_mordax_mean" src="_images/subsamp_engraulis_mordax_mean.png" /></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="_images/2-03-modeling-sampling_12_1.png" src="_images/2-03-modeling-sampling_12_1.png" />
+</div>
+</div>
 <p>If we use the mean as a model, <span class="math notranslate nohighlight">\(\hat{x_i} = \bar{x_i}\)</span></p>
-<p><em>The average error when using mean as a model is 0.0g.  In this case, the negative errors cancel out the positive errors, and in this case, using the mean as a model does not best describe the data.</em></p>
+<p>The average error when using mean as a model is 0.0g.  In this case, the negative errors cancel out the positive errors. In this case, the mean error does not do a good job of describing the distribution of errors. In fact, this metric is a measure of bias but does not say anything about the random errors (precision) of the model.</p>
 <section id="what-other-metrics-can-we-use-to-quantify-model-error">
 <h4>What other metrics can we use to quantify model error?<a class="headerlink" href="#what-other-metrics-can-we-use-to-quantify-model-error" title="Permalink to this headline">#</a></h4>
 <p>Some ways of quantifying the error:</p>
 <p>We can describe the mean error (average error) as:</p>
 <p><span class="math notranslate nohighlight">\(ME = \frac{1}{N} \sum_{i=1}^N (x_i - \hat{x_i})\)</span></p>
-<p>If our model (<span class="math notranslate nohighlight">\(\hat{x_i}\)</span>) is the mean of the dataset (<span class="math notranslate nohighlight">\(\bar{x_i}\)</span>), then the ME = 0 and is unbiased.</p>
+<p>If our model (<span class="math notranslate nohighlight">\(\hat{x_i}\)</span>) is the mean of the dataset (<span class="math notranslate nohighlight">\(\bar{x_i}\)</span>), then the ME = 0 and the model is <em>unbiased</em>.</p>
 </section>
 <section id="sum-of-squared-errors">
 <h4>Sum of Squared Errors<a class="headerlink" href="#sum-of-squared-errors" title="Permalink to this headline">#</a></h4>
@@ -1080,72 +1070,151 @@ statistical model is based off data</p>
 <section id="root-mean-square-error">
 <h4>Root Mean Square Error<a class="headerlink" href="#root-mean-square-error" title="Permalink to this headline">#</a></h4>
 <p><span class="math notranslate nohighlight">\(RMSE = \sqrt{MSE}\)</span></p>
-<p>The units for RMSE will make it easier to understand the error mismatch. This is a summary of all the errors in the dataset by penalizing all errors in the dataset equally.</p>
+<p>The units for RMSE will make it easier to understand the error mismatch. This is a summary of all the errors in the dataset by penalizing all errors in the dataset equally. For our two models examined so far, where the model is only a constant value, the RMSE can by summarized as:</p>
 <ul class="simple">
-<li><p>RMSE(mean) = 9.71 grams (describing the spread or standard deviation of the error)</p></li>
-<li><p>RMSE(mode) = 14.18 grams (this is biased)</p></li>
+<li><p>RMSE(mean) = 9.71 grams</p></li>
+<li><p>RMSE(mode) = 14.18 grams</p></li>
 </ul>
 </section>
 </section>
 <section id="the-mean-is-the-single-value-that-minimizes-rmse">
 <h3>The mean is the single value that minimizes RMSE<a class="headerlink" href="#the-mean-is-the-single-value-that-minimizes-rmse" title="Permalink to this headline">#</a></h3>
-<p><img alt="RMSE_min" src="_images/RMSE_min.png" /></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/2-03-modeling-sampling_15_0.png" src="_images/2-03-modeling-sampling_15_0.png" />
+</div>
+</div>
 <ul class="simple">
-<li><p>This plot is showing the rmse as a function of the model value. Different models will minimize different types of errors (mean, median, mode).</p></li>
-<li><p>This plot is called a ‘cost function’ we have a model parameter (x-axis), we have a cost (y-value).  The goal of modeling is to minimize the cost function</p></li>
+<li><p>This plot is showing the RMSE as a function of the model value.</p></li>
+<li><p>This plot is an example of what is called a <em>cost function</em>. We have a model parameter on the x-axis and an error, or “cost” on the y-axis.  In modeling we are often interested in the parameter that minimizes the cost function.</p></li>
+<li><p>The vertical dashed line shows the mean value. Out of all possible models defined by a single parameter, the mean is the one the minimizes the RMSE and would be considered most optimal.</p></li>
 </ul>
 </section>
-<section id="example-data-set-linear-model">
-<h3>Example data set: linear model<a class="headerlink" href="#example-data-set-linear-model" title="Permalink to this headline">#</a></h3>
-<p><img alt="lin_mod_example" src="_images/lin_mod_example.png" /></p>
-<section id="rmse-3-57-g">
-<h4>RMSE = 3.57 g<a class="headerlink" href="#rmse-3-57-g" title="Permalink to this headline">#</a></h4>
-<p>Looking at the data, it looks like a linear model only works for part of the data.  If we were going to use this linear model, our equation would be:</p>
+<section id="a-simple-model-with-two-parameters-linear-model">
+<h3>A simple model with two parameters: linear model<a class="headerlink" href="#a-simple-model-with-two-parameters-linear-model" title="Permalink to this headline">#</a></h3>
+<p>Let’s say that we want to model fish weight as a function of length for this species. This might be useful in a case where length estimates are common, but weight estimates are more labor-inetensive. Or maybe there is interest in comparine length-weight relationships for different species.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># load dataset and convert to Pandas dataframe</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;data/trawl_swfsc/FRDCPSTrawlLHSpecimen_8b4e_b841_9c81.nc&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">dfsub</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;scientific_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Engraulis mordax&#39;</span><span class="p">)</span> <span class="o">&amp;</span> 
+               <span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">&lt;</span> <span class="mf">1e8</span><span class="p">)]</span>
+
+<span class="c1"># linear fit with statsmodels package</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;weight ~ 1 + standard_length&#39;</span><span class="p">,</span> <span class="n">dfsub</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># RMSE</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">])</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">err</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># plot linear model</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">],</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">],</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">],</span>
+         <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">],</span>
+         <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;standard length [mm]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;weight [g]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Engraulis mordax, RMSE = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">rmse</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">+</span> <span class="s1">&#39; g&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2-03-modeling-sampling_18_0.png" src="_images/2-03-modeling-sampling_18_0.png" />
+</div>
+</div>
+<p>The linear model has RMSE = 3.57 g</p>
+<p>Looking at the data, it looks like a linear model only works for part of the data. It tends to be biased low at the smallest and largest length values.  If we were going to use this linear model, our equation would be:</p>
 <p><span class="math notranslate nohighlight">\(\hat{weight_i} =  constant + a * length_i\)</span></p>
-<p><span class="math notranslate nohighlight">\(\hat{}\)</span> indicates <span class="math notranslate nohighlight">\({weight_i}\)</span> is a model</p>
-<p>constant = the intercept</p>
-<p>a = the slope</p>
-<ul class="simple">
-<li><p>The intercept and slope are the model parameters. You can think of the error as being the vertical distance between the data point and the model.</p></li>
-</ul>
-</section>
+<p>The <span class="math notranslate nohighlight">\(\hat{}\)</span> symbol indicates <span class="math notranslate nohighlight">\(\hat{weight_i}\)</span> is a model</p>
+<p>Here the <span class="math notranslate nohighlight">\(constant\)</span> is the intercept and <span class="math notranslate nohighlight">\(a\)</span> is the slope.</p>
+<p>The intercept and slope are the model parameters. You can think of the error <span class="math notranslate nohighlight">\(\epsilon_i\)</span> for each data point as being the vertical distance between the data point and the model, <span class="math notranslate nohighlight">\(x_i - \hat{x}_i\)</span>.</p>
 </section>
 <section id="example-data-set-quadratic-model">
 <h3>Example data set: quadratic model<a class="headerlink" href="#example-data-set-quadratic-model" title="Permalink to this headline">#</a></h3>
-<section id="rmse-2-11-g">
-<h4>RMSE = 2.11 g<a class="headerlink" href="#rmse-2-11-g" title="Permalink to this headline">#</a></h4>
-<p><img alt="quad_mod_example" src="_images/quad_mod_example.png" /></p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultsq</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;weight ~ 1 + standard_length + I(standard_length**2)&#39;</span><span class="p">,</span> <span class="n">dfsub</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">errq</span> <span class="o">=</span> <span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">resultsq</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span>
+         <span class="n">resultsq</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">]</span><span class="o">+</span>
+         <span class="n">resultsq</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">rmseq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">errq</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">],</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">],</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">],</span>
+         <span class="n">resultsq</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span>
+         <span class="n">resultsq</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">]</span><span class="o">+</span>
+         <span class="n">resultsq</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+         <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;standard length [mm]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;weight [g]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Engraulis mordax, RMSE = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">rmseq</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">+</span> <span class="s1">&#39; g&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2-03-modeling-sampling_21_0.png" src="_images/2-03-modeling-sampling_21_0.png" />
+</div>
+</div>
+<p>The quadratic model has RMSE = 2.11 g.</p>
 <p><span class="math notranslate nohighlight">\(\hat{weight_i} =  constant + a * length_i + b * length_i^2\)</span></p>
 <p>The constant, a, and b are model parameters that describe the structure or the shape of the model. We can find the model that minimizes the RMSE.  This looks like it is doing better than a linear model, but the model indicates that their weight decreases as they get bigger for smaller fish.  It still has some systematic errors where there is some bias.</p>
 </section>
-</section>
 <section id="example-data-set-data-transformation">
 <h3>Example data set: data transformation<a class="headerlink" href="#example-data-set-data-transformation" title="Permalink to this headline">#</a></h3>
-<p><img alt="data_trans_example" src="_images/data_trans_example.png" /></p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">]),</span>
+         <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dfsub</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]),</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;ln(standard length [mm])&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ln(weight [g])&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Engraulis mordax&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2-03-modeling-sampling_24_0.png" src="_images/2-03-modeling-sampling_24_0.png" />
+</div>
+</div>
 <p>This is the same data transformed to a logarithmic scale, and now it appears that a linear model may be appropriate.  Now, we are not minimizing the RMSE, you are minimizing the logarthmic RMSE.</p>
 <section id="what-makes-a-model-good">
 <h4>What makes a model good?<a class="headerlink" href="#what-makes-a-model-good" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>good fit</p></li>
 <li><p>minimizes error</p></li>
-<li><p>represents actual scenario of the data (think ahead of error sources)</p></li>
+<li><p>represents actual scenario of the data</p></li>
 <li><p>is not overcomplicated</p></li>
 </ul>
 </section>
 </section>
 <section id="modeling-another-species-overfitting">
 <h3>Modeling another species - Overfitting<a class="headerlink" href="#modeling-another-species-overfitting" title="Permalink to this headline">#</a></h3>
-<p><img alt="overfit_example" src="_images/overfit_example.png" /></p>
-<section id="seventh-degree-polynomial-fit-to-nine-data-points">
-<h4>Seventh degree polynomial fit to nine data points.<a class="headerlink" href="#seventh-degree-polynomial-fit-to-nine-data-points" title="Permalink to this headline">#</a></h4>
-</section>
-</section>
-<section id="overfitting">
-<h3>Overfitting<a class="headerlink" href="#overfitting" title="Permalink to this headline">#</a></h3>
-<p><img alt="overfit_example_more_data" src="_images/overfit_example_more_data.png" /></p>
-<ul class="simple">
-<li><p>Model is overcomplicated and not representative of the actual scenario.  If another datapoint is added not on the model, the RMSE will be huge.  More data points will quickly deteriorate the model.</p></li>
-</ul>
+<p>Overfitting occurs when a model is overcomplicated and not representative of the actual scenario. If we add more parameters by adding more terms to the polynomial model equation, we may get an unrealistic model with a low RMSE. Symptoms of overfitting include large swings in model curves where no data points exist.</p>
+<p>If another datapoint is added without readjusting the model (for example, if a <em>Icichthys lockingtoni</em> specimen with 150 mm length were caught), the RMSE will likely be large.</p>
+<p>Datasets with large sample sizes are still prone to overfitting. Even with many data points, a model for <em>Engraulis mordax</em> with many coefficients is overly sensitive to the extreme data values.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interact</span><span class="p">(</span><span class="n">plot_length_vs_weight_data_with_fit</span><span class="p">,</span>
+        <span class="n">species_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Icichthys lockingtoni&#39;</span><span class="p">,</span> <span class="s1">&#39;Engraulis mordax&#39;</span><span class="p">],</span>
+         <span class="n">N</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">7</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "7cf4bf84abf24364a8b9ce97e56cf3a0"}
+</script></div>
+</div>
 </section>
 <section id="sampling">
 <h3>Sampling<a class="headerlink" href="#sampling" title="Permalink to this headline">#</a></h3>
@@ -1179,20 +1248,37 @@ Std. dev. of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 0.8
 <p><span class="math notranslate nohighlight">\(\mu{}\)</span> = 15.327 g (mean of full data set)</p>
 <p><span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{N}}\)</span> = 0.971 g (std. dev. of full data set / √100)</p>
 <p>This is a consequence of the central limit theorem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interact</span><span class="p">(</span><span class="n">plot_distribution_of_subsampled_weight_means</span><span class="p">,</span>
+        <span class="n">species_name</span> <span class="o">=</span> <span class="n">fixed</span><span class="p">(</span><span class="n">species_name</span><span class="p">),</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+        <span class="n">n_subsamples</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "9e5e1a7bafbc490e88c2244289f261c7"}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_distribution_of_subsampled_weight_means(species_name, N, n_subsamples)&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
 <section id="the-central-limit-theorem">
 <h2><span class="section-number">3.3. </span>The Central Limit Theorem<a class="headerlink" href="#the-central-limit-theorem" title="Permalink to this headline">#</a></h2>
 <p>The <strong>central limit theorem</strong> states that no matter what the probability distribution of parent population is, the <em>mean of the means</em> drawn from the same population is normally distributed for large sample sizes. As <span class="math notranslate nohighlight">\(N\)</span> approaches infinity,</p>
-<p>mean<span class="math notranslate nohighlight">\((\bar{x}) \rightarrow \mu\)</span> (the mean of the sample means approaches the true mean)</p>
-<p>std<span class="math notranslate nohighlight">\((\bar{x}) \rightarrow \frac{\sigma}{\sqrt{N}}\)</span> (the standard deviation of the sample means approaches the true standard error)</p>
+<p>mean <span class="math notranslate nohighlight">\((\bar{x}) \rightarrow \mu\)</span> (the mean of the sample means approaches the true mean)</p>
+<p>std <span class="math notranslate nohighlight">\((\bar{x}) \rightarrow \frac{\sigma}{\sqrt{N}}\)</span> (the standard deviation of the sample means approaches the true standard error)</p>
 <p>The important consequence of this theorem is that if you collect enough samples, the sample mean will always provide an unbiased estimate of the true mean and you can calculate confidence intervals with the formulas above.</p>
 <p>However, if you have too few samples, the sample mean will provide a <em>biased</em> estimate.</p>
 <p>Some examples of situation where the central limit theorem is applied:</p>
 <ul class="simple">
 <li><p>Radiochemists study discrete decay events, which follow a Poisson distribution. A few samples will give a biased estimate of the mean rate of radioactive decay. If enough samples are collected, the sample mean and 95% confidence intervals can be calculated using the formulas described above.</p></li>
-<li><p>Physical oceanographers routinely take advantage of the central limit theorem when using observations of pressure or velocity measurements to study processes with time scales much longer than individual waves. The probability distribution of a wavy sea surface is not normal at all, but by collecting many samples (a.k.a. and ensemble) over a period of ~10-20 minutes we can effectively “average out” the waves and be confident in the mean of that ensemble.</p></li>
+<li><p>Physical oceanographers routinely take advantage of the central limit theorem when using observations of pressure or velocity measurements to study processes with time scales much longer than individual waves. The probability distribution of a wavy sea surface is not normal at all, but by collecting many samples (a.k.a. an “ensemble”) over a period of ~10-20 minutes the waves are effectively “averaged out” and one can be reasonably confident in the mean of that ensemble.</p></li>
 </ul>
 <p>When sampling a noisy environment and ensemble averaging, oceanographers must be careful to choose an ensemble that is long enough to collect enough samples, but not so long that the statistics are changing significantly over longer time scales. If statistics are robust regardless, of the sampling duration, the process is said to be <strong>stationary</strong>.</p>
 <p>*Adapted from: <a class="reference external" href="http://statsthinking21.org/sampling.html">http://statsthinking21.org/sampling.html</a></p>
@@ -1205,21 +1291,18 @@ Std. dev. of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 0.8
 </section>
 <section id="central-limit-theorem-applications">
 <h3>Central limit theorem - applications<a class="headerlink" href="#central-limit-theorem-applications" title="Permalink to this headline">#</a></h3>
-<p><img alt="images/clt_application.png" src="_images/clt_application.png" /></p>
-<p>This distribution is skewed, but there are hundreds of samples</p>
-<p>The 95% confidence interval for the mean can still be estimated as</p>
+<p>The weight distribution of <em>Engraulis mordax</em> is skewed. However, if we have hundreds of samples, the 95% confidence interval for the mean can still be estimated as</p>
 <p><span class="math notranslate nohighlight">\(\bar{x}\)</span> ±1.96 <span class="math notranslate nohighlight">\(\frac{s}{\sqrt{N}}\)</span></p>
-<p>With very few samples, the mean would not only be uncertain, but also biased</p>
-<p>*<a class="reference external" href="https://onlinecourses.science.psu.edu/stat414/node/261">https://onlinecourses.science.psu.edu/stat414/node/261</a></p>
-</section>
-<section id="central-limit-theorem-dice-example">
-<h3>Central limit theorem – dice example<a class="headerlink" href="#central-limit-theorem-dice-example" title="Permalink to this headline">#</a></h3>
-<p>If we start to get more samples, we start to get more of a peak in the distribution</p>
-<p><img alt="images/clt_dice_ex.png" src="_images/clt_dice_ex.png" /></p>
+<p>With very few samples, the mean would not only be uncertain, but also biased.</p>
+<!---### Central limit theorem – dice example
+
+If we start to get more samples, we start to get more of a peak in the distribution
+
+![images/clt_dice_ex.png](images/clt_dice_ex.png)-->
 </section>
 <section id="the-z-distribution">
 <h3>The <em>z</em> Distribution<a class="headerlink" href="#the-z-distribution" title="Permalink to this headline">#</a></h3>
-<p><img alt="images/zdist_example.png" src="_images/zdist_example.png" /></p>
+<!--![images/zdist_example.png](images/zdist_example.png)-->
 <ul>
 <li><p>According to the central limit theorem, sample means (<span class="math notranslate nohighlight">\(\bar{x}\)</span>) are normally distributed for large N.</p></li>
 <li><p>This gives you data that is standardized in a way that if we take  z-scores of the sample means (<span class="math notranslate nohighlight">\(\bar{x}\)</span>),  95% of them should fall in the range:</p>
@@ -1234,16 +1317,84 @@ Std. dev. of <span class="math notranslate nohighlight">\(\bar{x}\)</span> = 0.8
 <section id="confidence-intervals-for-the-mean">
 <h3>Confidence intervals for the mean<a class="headerlink" href="#confidence-intervals-for-the-mean" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(CI_{95\%} = \bar{x} \pm 1.96 \times SE\)</span>, where SE is the standard error <span class="math notranslate nohighlight">\(\frac{S}{\sqrt{N}}\)</span></p>
-<ul class="simple">
-<li><p>With large enough sampling size N, the 95% confidence interval will contain the true population mean 95% of the time.*</p></li>
-</ul>
+<p>With large enough sampling size N, the 95% confidence interval will contain the true population mean 95% of the time. Here 1.96 is a critical z-score. In theory, if a population is normally distributed then 95% of the z-scores will be between -1.96 and 1.96.</p>
+<p>This equation is only valid for large samples sizes. For small sample sizes, we use a t-distribution instead of z-distribution (covered later).</p>
+<section id="example-fish-weight-distribution">
+<h4>Example: fish weight distribution<a class="headerlink" href="#example-fish-weight-distribution" title="Permalink to this headline">#</a></h4>
+<p>The plot below shows 95% confidence intervals for the mean for different subsets that are randomly selected from the main dataset. The default plot shows results from 100 trials (you can think of this as doing 100 trawls) where <span class="math notranslate nohighlight">\(N\)</span> = 10 samples are collected in each trial. The population mean (or true mean) estimated from the larger dataset is shown in blue. This is a fixed parameter and does not change.</p>
+<p>The confidence intervals generally encompass the population mean. However, there are some trials where the confidence intervals fail. Also, by making the sample size small (e.g. <span class="math notranslate nohighlight">\(N\)</span> = 3) you can see that the confidence intervals start to encompass negative values, which is not realistic for this data set.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntrial</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntrial</span><span class="p">)</span>
+<span class="n">xci_lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntrial</span><span class="p">)</span>
+<span class="n">xci_upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntrial</span><span class="p">)</span>
+
+<span class="n">ii</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;scientific_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Engraulis mordax&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;standard_length&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1e8</span><span class="p">)</span>
+
+
+<span class="n">xmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">][</span><span class="n">ii</span><span class="p">])</span>
+<span class="n">xstd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">][</span><span class="n">ii</span><span class="p">],</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">xSE</span> <span class="o">=</span> <span class="n">xstd</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_confidence_intervals</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ntrial</span><span class="p">):</span>
+    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ntrial</span><span class="p">):</span>
+        <span class="n">subi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">][</span><span class="n">ii</span><span class="p">]),</span> <span class="n">N</span><span class="p">)</span>
+        <span class="n">xm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">][</span><span class="n">ii</span><span class="p">][</span><span class="n">subi</span><span class="p">])</span>
+        <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">][</span><span class="n">ii</span><span class="p">][</span><span class="n">subi</span><span class="p">],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">lower</span><span class="p">,</span><span class="n">upper</span><span class="p">)</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">xm</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+        <span class="n">xci_lower</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lower</span>
+        <span class="n">xci_upper</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">upper</span>
+        <span class="c1">#xci_lower[i] = xm[i]-1.96*xs[i]/np.sqrt(N)</span>
+        <span class="c1">#xci_upper[i] = xm[i]+1.96*xs[i]/np.sqrt(N)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">xmean</span> <span class="o">&gt;=</span> <span class="n">xci_lower</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xmean</span> <span class="o">&lt;</span> <span class="n">xci_upper</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+            <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ntrial</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">xmean</span> <span class="o">&gt;=</span> <span class="n">xci_lower</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xmean</span> <span class="o">&lt;</span> <span class="n">xci_upper</span><span class="p">[</span><span class="n">j</span><span class="p">]):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xci_lower</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">xci_upper</span><span class="p">[</span><span class="n">j</span><span class="p">]],</span> <span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">],</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xci_lower</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">xci_upper</span><span class="p">[</span><span class="n">j</span><span class="p">]],</span> <span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">],</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+
+    <span class="n">yl</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xmean</span><span class="p">,</span><span class="n">xmean</span><span class="p">],</span> <span class="n">yl</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">yl</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;95</span><span class="si">% c</span><span class="s1">onfidence intervals</span><span class="se">\n</span><span class="s1">random subsets with N = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;weight [g]&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;trial #&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">]);</span>
+
+<span class="n">interact</span><span class="p">(</span><span class="n">plot_confidence_intervals</span><span class="p">,</span>
+         <span class="n">N</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+         <span class="n">ntrial</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">xm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntrial</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntrial</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">xci_lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntrial</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ntrial&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="common-misinterpretation-of-confidence-intervals">
 <h4>Common misinterpretation of confidence intervals*:<a class="headerlink" href="#common-misinterpretation-of-confidence-intervals" title="Permalink to this headline">#</a></h4>
 <p>“There is a 95% chance that the population mean falls within the interval.”</p>
 <p>What is wrong with this statement, and how does it differ from the correct interpretation?</p>
 <ul class="simple">
-<li><p>In the case of confidence intervals, we can’t interpret them in this wasy because the population parameter has a fixed value -  it is or it isn’t in the interval</p></li>
-<li><p>It is the <em>sample mean</em> that has a probability of falling within the confidence intervals, not the <em>true mean</em></p></li>
+<li><p>In the case of confidence intervals, we can’t interpret them in this way because the population parameter has a fixed value -  it is or it isn’t in the interval</p></li>
+<li><p>It is the <em>sample mean</em> that has a probability of falling within the confidence intervals, not the <em>true mean</em> or <em>population mean</em></p></li>
+<li><p>Confidence intervals treat the parameter as fixed (it has one <em>true</em> value) and the interval as variable (it will change based on the subset of data actually collected).</p></li>
 </ul>
 <p>*Adapted from: <a class="reference external" href="http://statsthinking21.org/sampling.html">http://statsthinking21.org/sampling.html</a></p>
 </section>

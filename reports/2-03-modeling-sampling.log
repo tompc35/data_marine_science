@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+xm = np.nan*np.zeros(ntrial)
+xs = np.nan*np.zeros(ntrial)
+xci_lower = np.nan*np.zeros(ntrial)
+xci_upper = np.nan*np.zeros(ntrial)
+
+ii = (ds['scientific_name'] == 'Engraulis mordax') & (ds['standard_length'] < 1e8)
+
+
+xmean = np.mean(ds['weight'][ii])
+xstd = np.std(ds['weight'][ii],ddof=1)
+xSE = xstd/np.sqrt(100)
+
+def plot_confidence_intervals(N, ntrial):
+    cnt = 0 
+    for i in np.arange(ntrial):
+        subi = np.random.randint(0, len(ds['weight'][ii]), N)
+        xm[i] = np.mean(ds['weight'][ii][subi])
+        xs[i] = np.std(ds['weight'][ii][subi], ddof=1)
+        (lower,upper) = stats.t.interval(0.95, N-1, loc=xm[i], scale=xs[i]/np.sqrt(N))
+        xci_lower[i] = lower
+        xci_upper[i] = upper
+        #xci_lower[i] = xm[i]-1.96*xs[i]/np.sqrt(N)
+        #xci_upper[i] = xm[i]+1.96*xs[i]/np.sqrt(N)
+        if (xmean >= xci_lower[i]) & (xmean < xci_upper[i]):
+            cnt = cnt + 1
+
+    plt.figure(figsize=(5,5))
+
+    for j in np.arange(0,ntrial):
+        if (xmean >= xci_lower[j]) & (xmean < xci_upper[j]):
+            plt.plot([xci_lower[j], xci_upper[j]], [j,j], 'k-')
+        else:
+            plt.plot([xci_lower[j], xci_upper[j]], [j,j], 'r-')
+
+    yl = plt.ylim()
+    plt.plot([xmean,xmean], yl, 'b--')
+    plt.ylim(yl)
+    plt.title('95% confidence intervals\nrandom subsets with N = ' + str(N))
+    plt.xlabel('weight [g]')
+    plt.ylabel('trial #')
+    plt.xlim([-10, 50]);
+
+interact(plot_confidence_intervals,
+         N=widgets.IntSlider(min=5, max=100, step=1, value=10),
+         ntrial=widgets.IntSlider(min=10, max=200, step=1, value=100));
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [11][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0m xm [38;5;241m=[39m np[38;5;241m.[39mnan[38;5;241m*[39mnp[38;5;241m.[39mzeros([43mntrial[49m)
+[1;32m      2[0m xs [38;5;241m=[39m np[38;5;241m.[39mnan[38;5;241m*[39mnp[38;5;241m.[39mzeros(ntrial)
+[1;32m      3[0m xci_lower [38;5;241m=[39m np[38;5;241m.[39mnan[38;5;241m*[39mnp[38;5;241m.[39mzeros(ntrial)
+
+[0;31mNameError[0m: name 'ntrial' is not defined
+NameError: name 'ntrial' is not defined
+
