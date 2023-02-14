@@ -76,7 +76,7 @@ ds = xr.open_dataset(ncfile)
 # 
 # Since this buoy is a single point, the latitude and longitude coordinates have only one value each.
 
-# In[5]:
+# In[4]:
 
 
 ds
@@ -84,7 +84,7 @@ ds
 
 # To make all of the variables functions of time only, rather than time and space, we can "squeeze" the dataset. This removes the latitude and longitude dimensions of the data set (although they are kept as coordinates).
 
-# In[6]:
+# In[5]:
 
 
 ds = ds.squeeze()
@@ -94,7 +94,7 @@ ds = ds.squeeze()
 # 
 # One powerful feature of xarray is the ability to store metadata with each array. This can help you keep track of units.
 
-# In[7]:
+# In[6]:
 
 
 ds['wind_spd']
@@ -104,7 +104,7 @@ ds['wind_spd']
 # 
 # What are the units of air pressure in this dataset?
 
-# In[8]:
+# In[7]:
 
 
 # insert code here
@@ -112,7 +112,7 @@ ds['wind_spd']
 
 # #### Time series plots
 
-# In[9]:
+# In[8]:
 
 
 plt.figure()
@@ -125,7 +125,7 @@ plt.ylabel('[m/s]')
 # 
 # Make a plot for wind *direction*, including title and axis label.
 
-# In[10]:
+# In[9]:
 
 
 # insert code here
@@ -145,7 +145,7 @@ plt.ylabel('[m/s]')
 # 
 # The function `wind_uv_from_spddir` converts wind vectors from speed and direction, as reported by NDBC, to eastward and northward components.
 
-# In[11]:
+# In[10]:
 
 
 def wind_uv_from_spddir(wspd,wdir):
@@ -172,13 +172,13 @@ def wind_uv_from_spddir(wspd,wdir):
     return u,v
 
 
-# In[12]:
+# In[11]:
 
 
 ds['wind_east'],ds['wind_north'] = wind_uv_from_spddir(ds['wind_spd'],ds['wind_dir'])
 
 
-# In[13]:
+# In[12]:
 
 
 ds['wind_east']
@@ -188,7 +188,7 @@ ds['wind_east']
 
 # Plot the time series of eastward velocity and northward velocity (time on the x-axis, both eastward and northward velocity on the y-axis).
 
-# In[14]:
+# In[13]:
 
 
 plt.figure(figsize=(10,4))
@@ -209,7 +209,7 @@ plt.legend(['eastward','northward'])
 
 # By plotting eastward wind vs. northward wind, we can see that the wind off Monterey Bay tends to blow towards the southeast (upwelling-favorable) or towards the northwest (downwelling-favorable). This is because the wind tends to be steered parallel to the local coastline by coastal mountain ranges along the west coast.
 
-# In[15]:
+# In[14]:
 
 
 plt.figure()
@@ -227,7 +227,7 @@ plt.axis('equal'); # make the scale equal on the x and y axes
 # 
 # To calculate the alongshore component of wind stress, the vectors are rotated from geographic coordinates (east and north) to "natural" coordinates (cross-shore and alongshore). The `rot` function rotates vectors to a new coordinate system defined by the user.
 
-# In[16]:
+# In[15]:
 
 
 def rot(u,v,theta):
@@ -254,14 +254,14 @@ rot(1,0,90) returns (0,1)
 
 # See what happens when the vectors are rotated 20 degrees clockwise.
 
-# In[17]:
+# In[16]:
 
 
 rotation_angle = -20
 ds['wind_x'],ds['wind_y'] = rot(ds['wind_east'],ds['wind_north'],rotation_angle)
 
 
-# In[18]:
+# In[17]:
 
 
 plt.figure(figsize=(8,4))
@@ -291,7 +291,7 @@ plt.tight_layout()
 # 
 # The `princax` function can be used to find the pricipal axis angle. The variance of the data is maximized along this axis.
 
-# In[19]:
+# In[18]:
 
 
 def princax(u,v=None):
@@ -341,7 +341,7 @@ Matlab function: http://woodshole.er.usgs.gov/operations/sea-mat/RPSstuff-html/p
 
 # Use this function on the wind stress data.
 
-# In[20]:
+# In[19]:
 
 
 theta,major,minor = princax(ds['wind_east'],ds['wind_north'])
@@ -349,13 +349,13 @@ theta,major,minor = princax(ds['wind_east'],ds['wind_north'])
 
 # Rotate the wind data based on the principal axis angle. Note that it is common among oceanographers on the west coast to align the alongshore coordinate with the $y$-axis, but this is up to you.
 
-# In[21]:
+# In[20]:
 
 
 ds['wind_x'],ds['wind_y'] = rot(ds['wind_east'],ds['wind_north'],-theta-90)
 
 
-# In[22]:
+# In[21]:
 
 
 plt.figure()
@@ -368,7 +368,7 @@ plt.title('rotated coordinates')
 
 # Plot the time series. The negative values of the alongshore wind stress ($\tau^{sy}$) indicate upwelling-favorable winds. The positive values indicate downwelling favorable winds.
 
-# In[23]:
+# In[22]:
 
 
 plt.figure(figsize=(10,4))
