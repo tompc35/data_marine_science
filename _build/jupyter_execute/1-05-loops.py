@@ -86,6 +86,8 @@ for i in np.arange(5):
 #     print(cumsum)
 # ```
 
+# This should produce the output:
+
 # In[7]:
 
 
@@ -95,19 +97,6 @@ for val in x:
     cumsum = cumsum + val
     print(cumsum)
 print('done')
-
-
-# In[8]:
-
-
-x_a = [1,3,6,4,7]
-cumsum_a = 0
-cumsum_array = []
-for val in x_a:
-    cumsum_a = cumsum_a + val
-    cumsum_array = np.append(cumsum_array,cumsum_a)
-    
-print(cumsum_array)
 
 
 # ### For loop - cumulative sum 2
@@ -125,7 +114,22 @@ print(cumsum_array)
 # 
 # print(cumsum_array)
 # ```
-# 
+
+# This should produce the output:
+
+# In[8]:
+
+
+x_a = [1,3,6,4,7]
+cumsum_a = 0
+cumsum_array = []
+for val in x_a:
+    cumsum_a = cumsum_a + val
+    cumsum_array = np.append(cumsum_array,cumsum_a)
+    
+print(cumsum_array)
+
+
 # ### Fibonacci sequence (if time)
 # 
 # Write a for loop that prints the first n numbers of the Fibonacci sequence:
@@ -137,5 +141,3 @@ print(cumsum_array)
 # 
 # # insert code here
 # ```
-
-# 
