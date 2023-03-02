@@ -533,24 +533,56 @@ title="Print to PDF"
      Load 2007 data
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression-five-methods-in-python">
+   5.3. Linear regression: five methods in Python
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-regression-four-methods-in-python">
-     Linear regression: four methods in Python
+    <a class="reference internal nav-link" href="#method-1-scipy">
+     Method 1: Scipy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-2-statsmodels">
+     Method 2: statsmodels
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-3-pingouin">
+     Method 3: pingouin
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-4-regression-coefficients-using-numpy-s-polyfit-function">
+     Method 4: Regression coefficients using numpy’s polyfit function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-5-matrix-form">
+     Method 5: Matrix form
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#method-1-scipy">
-       Method 1: Scipy
+      <a class="reference internal nav-link" href="#review-matrix-multiplication">
+       Review: Matrix Multiplication
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#method-2-statsmodels">
-       Method 2: statsmodels
+      <a class="reference internal nav-link" href="#review-matrix-transpose">
+       Review: Matrix Transpose
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#method-3-pingouin">
-       Method 3: pingouin
+      <a class="reference internal nav-link" href="#review-matrix-inverse">
+       Review: Matrix Inverse
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#formulating-linear-regression-in-matrix-form">
+       Formulating linear regression in matrix form
       </a>
      </li>
     </ul>
@@ -591,24 +623,56 @@ title="Print to PDF"
      Load 2007 data
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression-five-methods-in-python">
+   5.3. Linear regression: five methods in Python
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-regression-four-methods-in-python">
-     Linear regression: four methods in Python
+    <a class="reference internal nav-link" href="#method-1-scipy">
+     Method 1: Scipy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-2-statsmodels">
+     Method 2: statsmodels
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-3-pingouin">
+     Method 3: pingouin
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-4-regression-coefficients-using-numpy-s-polyfit-function">
+     Method 4: Regression coefficients using numpy’s polyfit function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-5-matrix-form">
+     Method 5: Matrix form
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#method-1-scipy">
-       Method 1: Scipy
+      <a class="reference internal nav-link" href="#review-matrix-multiplication">
+       Review: Matrix Multiplication
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#method-2-statsmodels">
-       Method 2: statsmodels
+      <a class="reference internal nav-link" href="#review-matrix-transpose">
+       Review: Matrix Transpose
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#method-3-pingouin">
-       Method 3: pingouin
+      <a class="reference internal nav-link" href="#review-matrix-inverse">
+       Review: Matrix Inverse
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#formulating-linear-regression-in-matrix-form">
+       Formulating linear regression in matrix form
       </a>
      </li>
     </ul>
@@ -627,6 +691,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="implementing-linear-regression-in-python">
 <h1><span class="section-number">5. </span>Implementing linear regression in Python<a class="headerlink" href="#implementing-linear-regression-in-python" title="Permalink to this headline">#</a></h1>
+<p>Like many data analysis problems, there are a number of different ways to perform a linear regression in Python. This notebook shows a few different methods. The final method motivates a review of matrix multiplication, which will be helpful in the next section on multivariate regression.</p>
 <section id="example-2007-west-coast-ocean-acidification-cruise">
 <h2><span class="section-number">5.1. </span>Example: 2007 West Coast Ocean Acidification Cruise<a class="headerlink" href="#example-2007-west-coast-ocean-acidification-cruise" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -644,6 +709,14 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/outdated/utils.py:14: OutdatedPackageWarning: The package pingouin is out of date. Your version is 0.5.2, the latest is 0.5.3.
+Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
+  return warn(
+/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/outdated/utils.py:14: OutdatedPackageWarning: The package outdated is out of date. Your version is 0.2.1, the latest is 0.2.2.
+Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
+  return warn(
+</pre></div>
+</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
 <span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
@@ -663,7 +736,7 @@ title="Print to PDF"
 <h3>Load 2007 data<a class="headerlink" href="#load-2007-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename07</span> <span class="o">=</span> <span class="s1">&#39;wcoa_cruise_2007/32WC20070511.exc.csv&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename07</span> <span class="o">=</span> <span class="s1">&#39;data/wcoa_cruise_2007/32WC20070511.exc.csv&#39;</span>
 <span class="n">df07</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename07</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="mi">29</span><span class="p">,</span><span class="n">na_values</span><span class="o">=-</span><span class="mi">999</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]])</span>
 </pre></div>
 </div>
@@ -689,8 +762,9 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="linear-regression-four-methods-in-python">
-<h3>Linear regression: four methods in Python<a class="headerlink" href="#linear-regression-four-methods-in-python" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="linear-regression-five-methods-in-python">
+<h2><span class="section-number">5.3. </span>Linear regression: five methods in Python<a class="headerlink" href="#linear-regression-five-methods-in-python" title="Permalink to this headline">#</a></h2>
 <p>Create <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -749,7 +823,7 @@ Length: 2348, dtype: bool
 </div>
 </div>
 <section id="method-1-scipy">
-<h4>Method 1: Scipy<a class="headerlink" href="#method-1-scipy" title="Permalink to this headline">#</a></h4>
+<h3>Method 1: Scipy<a class="headerlink" href="#method-1-scipy" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
@@ -764,7 +838,7 @@ Length: 2348, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=14.740034517902107, intercept=-3.9325720551997954, rvalue=0.9860645445968036, pvalue=0.0, stderr=0.05292378356970245, intercept_stderr=0.10258209230911518)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=14.740034517902119, intercept=-3.9325720551998167, rvalue=0.9860645445968044, pvalue=0.0, stderr=0.052923783569700955, intercept_stderr=0.10258209230911229)
 </pre></div>
 </div>
 </div>
@@ -776,7 +850,7 @@ Length: 2348, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.740034517902107
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.740034517902119
 </pre></div>
 </div>
 </div>
@@ -791,7 +865,7 @@ Length: 2348, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f8be85239d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1632dba00&gt;]
 </pre></div>
 </div>
 <img alt="_images/2-05-wcoa-cruise-regression_18_1.png" src="_images/2-05-wcoa-cruise-regression_18_1.png" />
@@ -799,7 +873,7 @@ Length: 2348, dtype: bool
 </div>
 </section>
 <section id="method-2-statsmodels">
-<h4>Method 2: statsmodels<a class="headerlink" href="#method-2-statsmodels" title="Permalink to this headline">#</a></h4>
+<h3>Method 2: statsmodels<a class="headerlink" href="#method-2-statsmodels" title="Permalink to this headline">#</a></h3>
 <p>Ordinary least squares fit using <a class="reference external" href="https://www.statsmodels.org/">statsmodels</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -827,10 +901,10 @@ Length: 2348, dtype: bool
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>7.757e+04</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Tue, 22 Feb 2022</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
+  <th>Date:</th>             <td>Thu, 02 Mar 2023</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>21:22:25</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
+  <th>Time:</th>                 <td>11:28:16</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  2210</td>      <th>  AIC:               </th> <td>   9992.</td> 
@@ -873,7 +947,7 @@ Length: 2348, dtype: bool
 </div>
 </section>
 <section id="method-3-pingouin">
-<h4>Method 3: pingouin<a class="headerlink" href="#method-3-pingouin" title="Permalink to this headline">#</a></h4>
+<h3>Method 3: pingouin<a class="headerlink" href="#method-3-pingouin" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">linear_regression</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
@@ -938,6 +1012,353 @@ Length: 2348, dtype: bool
   </tbody>
 </table>
 </div></div></div>
+</div>
+</section>
+<section id="method-4-regression-coefficients-using-numpy-s-polyfit-function">
+<h3>Method 4: Regression coefficients using numpy’s polyfit function<a class="headerlink" href="#method-4-regression-coefficients-using-numpy-s-polyfit-function" title="Permalink to this headline">#</a></h3>
+<p>We can also use the <code class="docutils literal notranslate"><span class="pre">polyfit</span></code> function from numpy to calculate the coefficients of the line of best fit (minimizing the sum of square errors):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[14.74003452 -3.93257206]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="method-5-matrix-form">
+<h3>Method 5: Matrix form<a class="headerlink" href="#method-5-matrix-form" title="Permalink to this headline">#</a></h3>
+<p>In the next section, we’ll consider solving for the coefficients of the linear fit using matrices. But first, let’s do a quick review of matrix multiplication:</p>
+<section id="review-matrix-multiplication">
+<h4>Review: Matrix Multiplication<a class="headerlink" href="#review-matrix-multiplication" title="Permalink to this headline">#</a></h4>
+<p>Suppose we have the following matrices:
+$<span class="math notranslate nohighlight">\( A= \begin{bmatrix} 1 &amp; 2 &amp; 3\\ 4 &amp; 5 &amp; 6 \end{bmatrix} \text{ and } B = \begin{bmatrix} 7 &amp; 8\\ 9 &amp; 10 \\ 11 &amp; 12 \end{bmatrix}\)</span><span class="math notranslate nohighlight">\(
+What will be the matrix product \)</span>AB$?</p>
+<p>To define matrices in Python, we define 2-d arrays as lists of lists wrapped in numpy’s <code class="docutils literal notranslate"><span class="pre">array</span></code> function, for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define matrix A</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+
+<span class="c1"># define matrix B </span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can check the dimensions of these array’s using numpy’s <code class="docutils literal notranslate"><span class="pre">shape</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of A: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of B: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">B</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape of A:  (2, 3)
+shape of B:  (3, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we can multiply two arrays using numpy’s <code class="docutils literal notranslate"><span class="pre">dot</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 58,  64],
+       [139, 154]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="review-matrix-transpose">
+<h4>Review: Matrix Transpose<a class="headerlink" href="#review-matrix-transpose" title="Permalink to this headline">#</a></h4>
+<p>The <em>transpose</em> of a matrix <span class="math notranslate nohighlight">\(A^T\)</span> has the same values as <span class="math notranslate nohighlight">\(A\)</span>, but the rows are converted to columns. One way to do this is with the <code class="docutils literal notranslate"><span class="pre">np.transpose</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2 3]
+ [4 5 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 4]
+ [2 5]
+ [3 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another way is to use the <code class="docutils literal notranslate"><span class="pre">.T</span></code> method on a Numpy array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 4]
+ [2 5]
+ [3 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the product <span class="math notranslate nohighlight">\(A^TA\)</span> is a <em>square</em> matrix, which has the same number of rows and columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[17, 22, 27],
+       [22, 29, 36],
+       [27, 36, 45]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="review-matrix-inverse">
+<h4>Review: Matrix Inverse<a class="headerlink" href="#review-matrix-inverse" title="Permalink to this headline">#</a></h4>
+<p>The concept of a matrix inverse is similar to the matrix of a single number. If we have a single value <span class="math notranslate nohighlight">\(b\)</span>, its inverse can be represented as <span class="math notranslate nohighlight">\(b^{-1}\)</span>. A value times its inverse is equal to 1.</p>
+<div class="math notranslate nohighlight">
+\[b^{-1}b = 1\]</div>
+<p>Let’s say we have a <em>square</em> matrix <span class="math notranslate nohighlight">\(B\)</span> where the number of rows and columns are equal. The inverse <span class="math notranslate nohighlight">\(B^{-1}\)</span> is the matrix that gives</p>
+<div class="math notranslate nohighlight">
+\[ B^{-1}B = I \]</div>
+<p>where the <em>identity matrix</em> <span class="math notranslate nohighlight">\(I\)</span> is a matrix that has all 0 values, except for 1 values along the diagonal from the upper left to the lower right. For example, a 3x3 identity matrix would be</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} I = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0  &amp; 1  \end{bmatrix} \end{split}\]</div>
+<p>In a linear algebra class, you might calculate <span class="math notranslate nohighlight">\(B^{-1}\)</span> by hand, but in this class we will rely in Numpy to do it for us. Let’s set up a 3 x 3 <span class="math notranslate nohighlight">\(B\)</span> matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2 1]
+ [3 2 1]
+ [1 2 2]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The inverse <span class="math notranslate nohighlight">\(B^{-1}\)</span> is</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.5 ,  0.5 ,  0.  ],
+       [ 1.25, -0.25, -0.5 ],
+       [-1.  ,  0.  ,  1.  ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The product <span class="math notranslate nohighlight">\(B^{-1}B\)</span> can be calculated as</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BinvB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">BinvB</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.00000000e+00  3.33066907e-16  1.66533454e-16]
+ [-5.55111512e-17  1.00000000e+00 -2.22044605e-16]
+ [ 0.00000000e+00  0.00000000e+00  1.00000000e+00]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we round these values, we can see more clearly that this is nearly identical to the identity matrix <span class="math notranslate nohighlight">\(I\)</span>, with some very small round-off error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">BinvB</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.  0.  0.]
+ [-0.  1. -0.]
+ [ 0.  0.  1.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>For reference, an identity matrix can be created with the <code class="docutils literal notranslate"><span class="pre">np.eye</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formulating-linear-regression-in-matrix-form">
+<h4>Formulating linear regression in matrix form<a class="headerlink" href="#formulating-linear-regression-in-matrix-form" title="Permalink to this headline">#</a></h4>
+<p>We can formulate regression in terms of matrices as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix} y_1\\ y_2\\ \vdots \\ y_N \end{bmatrix} = \begin{bmatrix} 1 &amp; x_1\\ 1 &amp; x_2\\ \vdots &amp; \vdots\\ 1 &amp; x_N \end{bmatrix} \begin{bmatrix} c_0\\ c_1\end{bmatrix} + \begin{bmatrix} \varepsilon_1\\ \varepsilon_2\\ \vdots \\ \varepsilon_N \end{bmatrix}\end{split}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\vec{y} = \textbf{X}\vec{c} + \vec{\varepsilon}\]</div>
+<p>Here, \vec{\varepsilon} represents the vector of errors, or differences between the model and data values.</p>
+<div class="math notranslate nohighlight">
+\[ \vec{\varepsilon} = \hat{y} - \vec{y} \]</div>
+<p>To solve for the parameters c using matrix multiplication, we first need to fomulate the <span class="math notranslate nohighlight">\(\vec{y}\)</span> and <span class="math notranslate nohighlight">\(\textbf{X}\)</span> matrices</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check to see that the y_subset is only 1-d (and won&#39;t work for matrix multiplication)</span>
+<span class="c1"># print(np.shape(y_subset))</span>
+
+<span class="c1"># define an (N, 1 matrix of the y values)</span>
+<span class="n">y_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">ii</span><span class="p">]),</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># print the matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_matrix</span><span class="p">)</span>
+
+<span class="c1"># print the shape of the matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of y: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">y_matrix</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[39.14]
+ [40.36]
+ [42.36]
+ ...
+ [26.46]
+ [25.29]
+ [23.98]]
+shape of y:  (2210, 1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a matrix X with a column of ones and a column of the x values</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ii</span><span class="p">]),</span><span class="mi">1</span><span class="p">)),</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ii</span><span class="p">])])</span>
+
+<span class="c1"># print the X matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># print the shape of the X matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.   2.73]
+ [1.   2.83]
+ [1.   2.94]
+ ...
+ [1.   2.35]
+ [1.   2.26]
+ [1.   2.1 ]]
+(2210, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have our matrices set up, let’s return to our model equation in matrix form.</p>
+<div class="math notranslate nohighlight">
+\[\hat{y} = \textbf{X}\vec{c}\]</div>
+<p>We can multiply each side of the equation by the transpose</p>
+<div class="math notranslate nohighlight">
+\[\textbf{X$^T$}\hat{y} = \textbf{X$^T$}\textbf{X}\vec{c}\]</div>
+<p>then multiply each side by the inverse of <span class="math notranslate nohighlight">\(\textbf{X\)</span>^T<span class="math notranslate nohighlight">\(}\textbf{X}\)</span></p>
+<div class="math notranslate nohighlight">
+\[(\textbf{X$^T$}\textbf{X})^{-1}\textbf{X$^T$}\hat{y} = (\textbf{X$^T$}\textbf{X})^{-1}\textbf{X$^T$}\textbf{X}\vec{c}\]</div>
+<p>which reduces to</p>
+<p>$<span class="math notranslate nohighlight">\((\textbf{X\)</span>^T<span class="math notranslate nohighlight">\(}\textbf{X})^{-1}\textbf{X\)</span>^T<span class="math notranslate nohighlight">\(}\hat{y} = \vec{c}\)</span>$,</p>
+<p>giving us an expression for the vector of coefficents <span class="math notranslate nohighlight">\(\vec{c}\)</span>.</p>
+<p>Here <span class="math notranslate nohighlight">\(\hat{y}\)</span> represents the vector of <em>model</em> values. With the vector of <em>data</em> values <span class="math notranslate nohighlight">\(\vec{y}\)</span> we can solve for the coefficients that minimize the sum of square errors using the same equation:</p>
+<div class="math notranslate nohighlight">
+\[\vec{c} = (\textbf{X$^T$}\textbf{X})^{-1}\textbf{X$^T$}\vec{y}\]</div>
+<p>Using numpy, we can define the matrix components of the above equation and then run the calculation to find the coefficients:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the transpose of the matrix X</span>
+<span class="n">XT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># calculate the product of XT and X</span>
+<span class="n">XTX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">XT</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># calculate the inverse of XTX</span>
+<span class="n">XTX_inverse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">XTX</span><span class="p">)</span>
+
+<span class="c1"># then calculate the products of XTX, XT and using two dot products</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">XTX_inverse</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">XT</span><span class="p">,</span><span class="n">y_matrix</span><span class="p">))</span>
+
+<span class="c1"># print the coefficients</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-3.93257206]
+ [14.74003452]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>As a sanity check, we can double check that the coefficients are the same as those from numpy’s <code class="docutils literal notranslate"><span class="pre">polyfit</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[14.74003452 -3.93257206]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
