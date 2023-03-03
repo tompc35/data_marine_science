@@ -855,7 +855,7 @@ Length: 2348, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x152244610&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x280ac4460&gt;]
 </pre></div>
 </div>
 <img alt="_images/2-05-wcoa-cruise-regression_18_1.png" src="_images/2-05-wcoa-cruise-regression_18_1.png" />
@@ -894,7 +894,7 @@ Length: 2348, dtype: bool
   <th>Date:</th>             <td>Thu, 02 Mar 2023</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>17:08:21</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
+  <th>Time:</th>                 <td>19:57:17</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  2210</td>      <th>  AIC:               </th> <td>   9992.</td> 
@@ -1026,9 +1026,12 @@ Length: 2348, dtype: bool
 <p>In the next section, we’ll consider solving for the coefficients of the linear fit using matrices. But first, let’s do a quick review of matrix multiplication:</p>
 <section id="review-matrix-multiplication">
 <h4>Review: Matrix Multiplication<a class="headerlink" href="#review-matrix-multiplication" title="Permalink to this headline">#</a></h4>
-<p>Suppose we have the following matrices:
-$<span class="math notranslate nohighlight">\( \textbf{A}= \begin{bmatrix} 1 &amp; 2 &amp; 3\\ 4 &amp; 5 &amp; 6 \end{bmatrix} \text{ and } \textbf{B} = \begin{bmatrix} 7 &amp; 8\\ 9 &amp; 10 \\ 11 &amp; 12 \end{bmatrix}\)</span><span class="math notranslate nohighlight">\(
-What will be the matrix product \)</span>\textbf{AB}$?</p>
+<p>Suppose we have the following matrices:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \textbf{A}= \begin{bmatrix} 1 &amp; 2 &amp; 3\\ 4 &amp; 5 &amp; 6 \end{bmatrix} \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} \textbf{B} = \begin{bmatrix} 7 &amp; 8\\ 9 &amp; 10 \\ 11 &amp; 12 \end{bmatrix} \end{split}\]</div>
+<p>What will be the matrix product <span class="math notranslate nohighlight">\(\textbf{AB}\)</span>?</p>
 <p>To define matrices in Python, we define 2-d arrays as lists of lists wrapped in numpy’s <code class="docutils literal notranslate"><span class="pre">array</span></code> function, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

@@ -144,7 +144,11 @@ print(coefficients)
 # 
 # #### Review: Matrix Multiplication
 # Suppose we have the following matrices:
-# $$ \textbf{A}= \begin{bmatrix} 1 & 2 & 3\\ 4 & 5 & 6 \end{bmatrix} \text{ and } \textbf{B} = \begin{bmatrix} 7 & 8\\ 9 & 10 \\ 11 & 12 \end{bmatrix}$$
+# 
+# $$ \textbf{A}= \begin{bmatrix} 1 & 2 & 3\\ 4 & 5 & 6 \end{bmatrix} $$
+# 
+# $$ \textbf{B} = \begin{bmatrix} 7 & 8\\ 9 & 10 \\ 11 & 12 \end{bmatrix} $$
+# 
 # What will be the matrix product $\textbf{AB}$?
 # 
 # To define matrices in Python, we define 2-d arrays as lists of lists wrapped in numpy's ```array``` function, for example:
