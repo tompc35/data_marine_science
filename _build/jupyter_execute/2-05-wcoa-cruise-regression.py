@@ -144,8 +144,8 @@ print(coefficients)
 # 
 # #### Review: Matrix Multiplication
 # Suppose we have the following matrices:
-# $$ A= \begin{bmatrix} 1 & 2 & 3\\ 4 & 5 & 6 \end{bmatrix} \text{ and } B = \begin{bmatrix} 7 & 8\\ 9 & 10 \\ 11 & 12 \end{bmatrix}$$
-# What will be the matrix product $AB$?
+# $$ \textbf{A}= \begin{bmatrix} 1 & 2 & 3\\ 4 & 5 & 6 \end{bmatrix} \text{ and } \textbf{B} = \begin{bmatrix} 7 & 8\\ 9 & 10 \\ 11 & 12 \end{bmatrix}$$
+# What will be the matrix product $\textbf{AB}$?
 # 
 # To define matrices in Python, we define 2-d arrays as lists of lists wrapped in numpy's ```array``` function, for example:
 
@@ -181,7 +181,7 @@ np.dot(A,B)
 
 # #### Review: Matrix Transpose
 # 
-# The *transpose* of a matrix $A^T$ has the same values as $A$, but the rows are converted to columns. One way to do this is with the `np.transpose` function.
+# The *transpose* of a matrix $\textbf{A}^T$ has the same values as $\textbf{A}$, but the rows are converted to columns. One way to do this is with the `np.transpose` function.
 
 # In[19]:
 
@@ -203,7 +203,7 @@ print(np.transpose(A))
 print(A.T)
 
 
-# Note that the product $A^TA$ is a *square* matrix, which has the same number of rows and columns. 
+# Note that the product $\textbf{A}^T\textbf{A}$ is a *square* matrix, which has the same number of rows and columns. 
 
 # In[22]:
 
@@ -217,15 +217,15 @@ np.dot(A.T, A)
 # 
 # $$b^{-1}b = 1$$
 
-# Let's say we have a *square* matrix $B$ where the number of rows and columns are equal. The inverse $B^{-1}$ is the matrix that gives 
+# Let's say we have a *square* matrix $\textbf{B}$ where the number of rows and columns are equal. The inverse $\textbf{B}^{-1}$ is the matrix that gives 
 # 
-# $$ B^{-1}B = I $$
+# $$ \textbf{B}^{-1}\textbf{B} = \textbf{I} $$
 # 
-# where the *identity matrix* $I$ is a matrix that has all 0 values, except for 1 values along the diagonal from the upper left to the lower right. For example, a 3x3 identity matrix would be
+# where the *identity matrix* $\textbf{I}$ is a matrix that has all 0 values, except for 1 values along the diagonal from the upper left to the lower right. For example, a 3x3 identity matrix would be
 # 
-# $$ I = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0  & 1  \end{bmatrix} $$
+# $$ \textbf{I} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0  & 1  \end{bmatrix} $$
 
-# In a linear algebra class, you might calculate $B^{-1}$ by hand, but in this class we will rely in Numpy to do it for us. Let's set up a 3 x 3 $B$ matrix.
+# In a linear algebra class, you might calculate $\textbf{B}^{-1}$ by hand, but in this class we will rely in Numpy to do it for us. Let's set up a $3 \times 3$ $\textbf{B}$ matrix.
 
 # In[23]:
 
@@ -236,7 +236,7 @@ B = np.array([[1, 2, 1],
 print(B)
 
 
-# The inverse $B^{-1}$ is
+# The inverse $\textbf{B}^{-1}$ is
 
 # In[24]:
 
@@ -244,7 +244,7 @@ print(B)
 np.linalg.inv(B)
 
 
-# The product $B^{-1}B$ can be calculated as
+# The product $\textbf{B}^{-1}\textbf{B}$ can be calculated as
 
 # In[25]:
 
@@ -253,7 +253,7 @@ BinvB = np.dot(np.linalg.inv(B), B)
 print(BinvB)
 
 
-# If we round these values, we can see more clearly that this is nearly identical to the identity matrix $I$, with some very small round-off error.
+# If we round these values, we can see more clearly that this is nearly identical to the identity matrix $\textbf{I}$, with some very small round-off error.
 
 # In[26]:
 
@@ -263,7 +263,7 @@ print(np.round(BinvB))
 
 # For reference, an identity matrix can be created with the `np.eye` function
 
-# In[36]:
+# In[27]:
 
 
 print(np.eye(3))
@@ -279,13 +279,13 @@ print(np.eye(3))
 # 
 # $$\vec{y} = \textbf{X}\vec{c} + \vec{\varepsilon}$$
 # 
-# Here, \vec{\varepsilon} represents the vector of errors, or differences between the model and data values.
+# Here, $\vec{\varepsilon}$ represents the vector of errors, or differences between the model and data values.
 # 
 # $$ \vec{\varepsilon} = \hat{y} - \vec{y} $$
 # 
 # To solve for the parameters c using matrix multiplication, we first need to fomulate the $\vec{y}$ and $\textbf{X}$ matrices
 
-# In[30]:
+# In[28]:
 
 
 # check to see that the y_subset is only 1-d (and won't work for matrix multiplication)
@@ -301,7 +301,7 @@ print(y_matrix)
 print('shape of y: ', np.shape(y_matrix))
 
 
-# In[31]:
+# In[29]:
 
 
 # define a matrix X with a column of ones and a column of the x values
@@ -321,25 +321,27 @@ print(np.shape(X))
 # 
 # We can multiply each side of the equation by the transpose
 # 
-# $$\textbf{X$^T$}\hat{y} = \textbf{X$^T$}\textbf{X}\vec{c}$$
+# $$\textbf{X}^T\hat{y} = \textbf{X}^T\textbf{X}\vec{c}$$
 # 
-# then multiply each side by the inverse of $\textbf{X$^T$}\textbf{X}$
+# then multiply each side by the inverse of $\textbf{X}^T\textbf{X}$
 # 
-# $$(\textbf{X$^T$}\textbf{X})^{-1}\textbf{X$^T$}\hat{y} = (\textbf{X$^T$}\textbf{X})^{-1}\textbf{X$^T$}\textbf{X}\vec{c}$$
+# $$(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\hat{y} = (\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\textbf{X}\vec{c}$$
 # 
 # which reduces to
 # 
-# $$(\textbf{X$^T$}\textbf{X})^{-1}\textbf{X$^T$}\hat{y} = \vec{c}$$,
+# $$(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\hat{y} = \textbf{I}\vec{c}.$$
+# 
+# $$(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\hat{y} = \vec{c}$$
 # 
 # giving us an expression for the vector of coefficents $\vec{c}$.
 
 # Here $\hat{y}$ represents the vector of *model* values. With the vector of *data* values $\vec{y}$ we can solve for the coefficients that minimize the sum of square errors using the same equation:
 # 
-# $$\vec{c} = (\textbf{X$^T$}\textbf{X})^{-1}\textbf{X$^T$}\vec{y}$$
+# $$\vec{c} = (\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\vec{y}$$
 # 
 # Using numpy, we can define the matrix components of the above equation and then run the calculation to find the coefficients:
 
-# In[32]:
+# In[30]:
 
 
 # calculate the transpose of the matrix X
@@ -360,7 +362,7 @@ print(c)
 
 # As a sanity check, we can double check that the coefficients are the same as those from numpy's ```polyfit``` function
 
-# In[33]:
+# In[31]:
 
 
 coefficients = np.polyfit(x[ii],y[ii],1)

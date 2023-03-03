@@ -3,7 +3,7 @@
 
 # # Multivariate regression
 # 
-# __Goal:__ Find a relationship that explains variable $y$ in terms of variables, $x_1, x_2, x_3$,...$x_n$
+# *Goal:* Find a relationship that explains variable $y$ in terms of variables, $x_1, x_2, x_3$,...$x_n$
 # 
 # ![images/mult_reg_viz.png](images/mult_reg_viz.png)
 # 
@@ -15,7 +15,7 @@
 # 
 # As a motivation for multiple linear regression, we consider a model for aragonite saturation state, $\Omega_A$. The study by Juranek et al. (2009), discussed on greater detail below, uses multiple linear regression to model $\Omega_A$ for surveys where it is not measured, using more commonly measured parameters. We know that $\Omega_A$ depends on both physical and biological processes, so one candidate for a model might be:
 # 
-# $y = b_0 + b_1x_1 + b_2x_2 + b_3x_3$
+# $y = c_0 + c_1x_1 + c_2x_2 + c_3x_3 $
 # 
 # where $y$ = $\Omega_A$
 # 
@@ -35,15 +35,15 @@
 # 
 # A linear model can be represented as a system of $N$ equations.
 # 
-# $$ b_0 + b_1x_{11} + b_2x_{12} + b_3x_{13} = \hat{y}_1 + \epsilon_1$$
+# $$ c_0 + c_1x_{11} + c_2x_{12} + c_3x_{13} = \hat{y}_1 + \epsilon_1$$
 # 
-# $$ b_0 + b_1x_{21} + b_2x_{22} + b_3x_{23} = \hat{y}_2 + \epsilon_2$$
+# $$ c_0 + c_1x_{21} + c_2x_{22} + c_3x_{23} = \hat{y}_2 + \epsilon_2$$
 # 
-# $$ b_0 + b_1x_{31} + b_2x_{32} + b_3x_{33} = \hat{y}_3  + \epsilon_3$$ 
+# $$ c_0 + c_1x_{31} + c_2x_{32} + c_3x_{33} = \hat{y}_3  + \epsilon_3$$ 
 # 
-# $$ \ldots$$
+# $$ \ldots $$
 # 
-# $$ b_0 + b_1x_{N1} + b_2x_{N2} + b_3x_{N3} = \hat{y}_N  + \epsilon_4$$
+# $$ c_0 + c_1x_{N1} + c_2x_{N2} + c_3x_{N3} = \hat{y}_N  + \epsilon_4$$
 # 
 # where $\hat{y}_i$ is a modeled value and $\epsilon_i$ is the difference between the modeled value, $\hat{y}_i$ and an observation $y_i$. The least squares regression minimizes the sum of $\epsilon_i^2$, the overall deviation between the linear model and data.
 # 
@@ -51,9 +51,9 @@
 # 
 # To solve a least squares problem numerically, it helps to write the system of equations for the model in matrix form.
 # 
-# Form a vector $Y$ of $N$ observations.
+# Form a vector $\vec{y}$ of $N$ observations.
 # 
-# $$ Y = \begin{bmatrix}
+# $$ \vec{y} = \begin{bmatrix}
 #         y_1 \\
 #         y_2 \\
 #         y_3 \\
@@ -61,19 +61,19 @@
 #         y_n \\
 #         \end{bmatrix}$$
 # 
-# A vector $B$ contains $k+1$ unknown coefficients.
+# A vector $\vec{c}$ contains $k+1$ unknown coefficients.
 # 
-# $$ B = \begin{bmatrix}
-#         b_0 \\
-#         b_1 \\
-#         b_2 \\
-#         b_3 \\
+# $$ \vec{c} = \begin{bmatrix}
+#         c_0 \\
+#         c_1 \\
+#         c_2 \\
+#         c_3 \\
 #         \end{bmatrix}$$
 # 
 # The predictor variables are stored as columns in a matrix with $N$ rows and $k+1$ columns
 # 
 # $$
-# X =     \begin{bmatrix}
+# \textbf{X} =     \begin{bmatrix}
 #         1 & x_{11} & x_{12} & x_{13} \\
 #         1 & x_{21} & x_{22} & x_{23} \\
 #         1 & x_{31} & x_{32} & x_{33} \\
@@ -83,7 +83,7 @@
 # 
 # Now the system of equations for the linear model can be written as
 # 
-# $ X B = Y$
+# $ X \vec{c} = \hat{y} $
 # 
 # 
 # ## Numerical solution
@@ -101,9 +101,9 @@
 # 
 # Similar to ANOVA significance calculation, which also involves ratios of squared values.
 # 
-# $$ \hat{y} = b_0 + b_1x_1 + b_2x_2 + b_3x_3$$
+# $$ \hat{y} = c_0 + c_1x_1 + c_2x_2 + c_3x_3$$
 # 
-# * $H_0 : \hat{y} = C_0$ (All non-constant coefficients are zero)
+# * $H_0 : \hat{y} = c_0 $ (All non-constant coefficients are zero)
 # 
 # * $H_1 :$ At least one coefficient is non-zero
 # 

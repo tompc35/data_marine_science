@@ -717,16 +717,6 @@ Set the environment variable OUTDATED_IGNORE=1 to disable these warnings.
   return warn(
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">pingouin</span> <span class="k">as</span> <span class="nn">pg</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">PyCO2SYS</span> <span class="k">as</span> <span class="nn">pyco2</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;PyCO2SYS&#39;
-</pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -865,7 +855,7 @@ Length: 2348, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1632dba00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12fb340a0&gt;]
 </pre></div>
 </div>
 <img alt="_images/2-05-wcoa-cruise-regression_18_1.png" src="_images/2-05-wcoa-cruise-regression_18_1.png" />
@@ -904,7 +894,7 @@ Length: 2348, dtype: bool
   <th>Date:</th>             <td>Thu, 02 Mar 2023</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>11:28:16</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
+  <th>Time:</th>                 <td>17:00:03</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  2210</td>      <th>  AIC:               </th> <td>   9992.</td> 
@@ -1037,8 +1027,8 @@ Length: 2348, dtype: bool
 <section id="review-matrix-multiplication">
 <h4>Review: Matrix Multiplication<a class="headerlink" href="#review-matrix-multiplication" title="Permalink to this headline">#</a></h4>
 <p>Suppose we have the following matrices:
-$<span class="math notranslate nohighlight">\( A= \begin{bmatrix} 1 &amp; 2 &amp; 3\\ 4 &amp; 5 &amp; 6 \end{bmatrix} \text{ and } B = \begin{bmatrix} 7 &amp; 8\\ 9 &amp; 10 \\ 11 &amp; 12 \end{bmatrix}\)</span><span class="math notranslate nohighlight">\(
-What will be the matrix product \)</span>AB$?</p>
+$<span class="math notranslate nohighlight">\( \textbf{A}= \begin{bmatrix} 1 &amp; 2 &amp; 3\\ 4 &amp; 5 &amp; 6 \end{bmatrix} \text{ and } \textbf{B} = \begin{bmatrix} 7 &amp; 8\\ 9 &amp; 10 \\ 11 &amp; 12 \end{bmatrix}\)</span><span class="math notranslate nohighlight">\(
+What will be the matrix product \)</span>\textbf{AB}$?</p>
 <p>To define matrices in Python, we define 2-d arrays as lists of lists wrapped in numpy’s <code class="docutils literal notranslate"><span class="pre">array</span></code> function, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1086,7 +1076,7 @@ shape of B:  (3, 2)
 </section>
 <section id="review-matrix-transpose">
 <h4>Review: Matrix Transpose<a class="headerlink" href="#review-matrix-transpose" title="Permalink to this headline">#</a></h4>
-<p>The <em>transpose</em> of a matrix <span class="math notranslate nohighlight">\(A^T\)</span> has the same values as <span class="math notranslate nohighlight">\(A\)</span>, but the rows are converted to columns. One way to do this is with the <code class="docutils literal notranslate"><span class="pre">np.transpose</span></code> function.</p>
+<p>The <em>transpose</em> of a matrix <span class="math notranslate nohighlight">\(\textbf{A}^T\)</span> has the same values as <span class="math notranslate nohighlight">\(\textbf{A}\)</span>, but the rows are converted to columns. One way to do this is with the <code class="docutils literal notranslate"><span class="pre">np.transpose</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -1129,7 +1119,7 @@ shape of B:  (3, 2)
 </div>
 </div>
 </div>
-<p>Note that the product <span class="math notranslate nohighlight">\(A^TA\)</span> is a <em>square</em> matrix, which has the same number of rows and columns.</p>
+<p>Note that the product <span class="math notranslate nohighlight">\(\textbf{A}^T\textbf{A}\)</span> is a <em>square</em> matrix, which has the same number of rows and columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
@@ -1150,13 +1140,13 @@ shape of B:  (3, 2)
 <p>The concept of a matrix inverse is similar to the matrix of a single number. If we have a single value <span class="math notranslate nohighlight">\(b\)</span>, its inverse can be represented as <span class="math notranslate nohighlight">\(b^{-1}\)</span>. A value times its inverse is equal to 1.</p>
 <div class="math notranslate nohighlight">
 \[b^{-1}b = 1\]</div>
-<p>Let’s say we have a <em>square</em> matrix <span class="math notranslate nohighlight">\(B\)</span> where the number of rows and columns are equal. The inverse <span class="math notranslate nohighlight">\(B^{-1}\)</span> is the matrix that gives</p>
+<p>Let’s say we have a <em>square</em> matrix <span class="math notranslate nohighlight">\(\textbf{B}\)</span> where the number of rows and columns are equal. The inverse <span class="math notranslate nohighlight">\(\textbf{B}^{-1}\)</span> is the matrix that gives</p>
 <div class="math notranslate nohighlight">
-\[ B^{-1}B = I \]</div>
-<p>where the <em>identity matrix</em> <span class="math notranslate nohighlight">\(I\)</span> is a matrix that has all 0 values, except for 1 values along the diagonal from the upper left to the lower right. For example, a 3x3 identity matrix would be</p>
+\[ \textbf{B}^{-1}\textbf{B} = \textbf{I} \]</div>
+<p>where the <em>identity matrix</em> <span class="math notranslate nohighlight">\(\textbf{I}\)</span> is a matrix that has all 0 values, except for 1 values along the diagonal from the upper left to the lower right. For example, a 3x3 identity matrix would be</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} I = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0  &amp; 1  \end{bmatrix} \end{split}\]</div>
-<p>In a linear algebra class, you might calculate <span class="math notranslate nohighlight">\(B^{-1}\)</span> by hand, but in this class we will rely in Numpy to do it for us. Let’s set up a 3 x 3 <span class="math notranslate nohighlight">\(B\)</span> matrix.</p>
+\[\begin{split} \textbf{I} = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0  &amp; 1  \end{bmatrix} \end{split}\]</div>
+<p>In a linear algebra class, you might calculate <span class="math notranslate nohighlight">\(\textbf{B}^{-1}\)</span> by hand, but in this class we will rely in Numpy to do it for us. Let’s set up a <span class="math notranslate nohighlight">\(3 \times 3\)</span> <span class="math notranslate nohighlight">\(\textbf{B}\)</span> matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
@@ -1174,7 +1164,7 @@ shape of B:  (3, 2)
 </div>
 </div>
 </div>
-<p>The inverse <span class="math notranslate nohighlight">\(B^{-1}\)</span> is</p>
+<p>The inverse <span class="math notranslate nohighlight">\(\textbf{B}^{-1}\)</span> is</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
@@ -1189,7 +1179,7 @@ shape of B:  (3, 2)
 </div>
 </div>
 </div>
-<p>The product <span class="math notranslate nohighlight">\(B^{-1}B\)</span> can be calculated as</p>
+<p>The product <span class="math notranslate nohighlight">\(\textbf{B}^{-1}\textbf{B}\)</span> can be calculated as</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BinvB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="n">B</span><span class="p">)</span>
@@ -1205,7 +1195,7 @@ shape of B:  (3, 2)
 </div>
 </div>
 </div>
-<p>If we round these values, we can see more clearly that this is nearly identical to the identity matrix <span class="math notranslate nohighlight">\(I\)</span>, with some very small round-off error.</p>
+<p>If we round these values, we can see more clearly that this is nearly identical to the identity matrix <span class="math notranslate nohighlight">\(\textbf{I}\)</span>, with some very small round-off error.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">BinvB</span><span class="p">))</span>
@@ -1244,7 +1234,7 @@ shape of B:  (3, 2)
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[\vec{y} = \textbf{X}\vec{c} + \vec{\varepsilon}\]</div>
-<p>Here, \vec{\varepsilon} represents the vector of errors, or differences between the model and data values.</p>
+<p>Here, <span class="math notranslate nohighlight">\(\vec{\varepsilon}\)</span> represents the vector of errors, or differences between the model and data values.</p>
 <div class="math notranslate nohighlight">
 \[ \vec{\varepsilon} = \hat{y} - \vec{y} \]</div>
 <p>To solve for the parameters c using matrix multiplication, we first need to fomulate the <span class="math notranslate nohighlight">\(\vec{y}\)</span> and <span class="math notranslate nohighlight">\(\textbf{X}\)</span> matrices</p>
@@ -1309,16 +1299,19 @@ shape of y:  (2210, 1)
 \[\hat{y} = \textbf{X}\vec{c}\]</div>
 <p>We can multiply each side of the equation by the transpose</p>
 <div class="math notranslate nohighlight">
-\[\textbf{X$^T$}\hat{y} = \textbf{X$^T$}\textbf{X}\vec{c}\]</div>
-<p>then multiply each side by the inverse of <span class="math notranslate nohighlight">\(\textbf{X\)</span>^T<span class="math notranslate nohighlight">\(}\textbf{X}\)</span></p>
+\[\textbf{X}^T\hat{y} = \textbf{X}^T\textbf{X}\vec{c}\]</div>
+<p>then multiply each side by the inverse of <span class="math notranslate nohighlight">\(\textbf{X}^T\textbf{X}\)</span></p>
 <div class="math notranslate nohighlight">
-\[(\textbf{X$^T$}\textbf{X})^{-1}\textbf{X$^T$}\hat{y} = (\textbf{X$^T$}\textbf{X})^{-1}\textbf{X$^T$}\textbf{X}\vec{c}\]</div>
+\[(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\hat{y} = (\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\textbf{X}\vec{c}\]</div>
 <p>which reduces to</p>
-<p>$<span class="math notranslate nohighlight">\((\textbf{X\)</span>^T<span class="math notranslate nohighlight">\(}\textbf{X})^{-1}\textbf{X\)</span>^T<span class="math notranslate nohighlight">\(}\hat{y} = \vec{c}\)</span>$,</p>
+<div class="math notranslate nohighlight">
+\[(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\hat{y} = \textbf{I}\vec{c}.\]</div>
+<div class="math notranslate nohighlight">
+\[(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\hat{y} = \vec{c}\]</div>
 <p>giving us an expression for the vector of coefficents <span class="math notranslate nohighlight">\(\vec{c}\)</span>.</p>
 <p>Here <span class="math notranslate nohighlight">\(\hat{y}\)</span> represents the vector of <em>model</em> values. With the vector of <em>data</em> values <span class="math notranslate nohighlight">\(\vec{y}\)</span> we can solve for the coefficients that minimize the sum of square errors using the same equation:</p>
 <div class="math notranslate nohighlight">
-\[\vec{c} = (\textbf{X$^T$}\textbf{X})^{-1}\textbf{X$^T$}\vec{y}\]</div>
+\[\vec{c} = (\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\vec{y}\]</div>
 <p>Using numpy, we can define the matrix components of the above equation and then run the calculation to find the coefficients:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
