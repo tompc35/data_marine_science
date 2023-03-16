@@ -855,7 +855,7 @@ Length: 2348, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x280ac4460&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x15dab8610&gt;]
 </pre></div>
 </div>
 <img alt="_images/2-05-wcoa-cruise-regression_18_1.png" src="_images/2-05-wcoa-cruise-regression_18_1.png" />
@@ -891,10 +891,10 @@ Length: 2348, dtype: bool
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>7.757e+04</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 02 Mar 2023</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
+  <th>Date:</th>             <td>Fri, 03 Mar 2023</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:57:17</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
+  <th>Time:</th>                 <td>09:58:30</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  2210</td>      <th>  AIC:               </th> <td>   9992.</td> 
@@ -1076,6 +1076,21 @@ shape of B:  (3, 2)
 </div>
 </div>
 </div>
+<p>It is important to remember that matrix multiplication is not <em>commutative</em>, meaning <span class="math notranslate nohighlight">\(\textbf{AB}\)</span> is generally not the same as <span class="math notranslate nohighlight">\(\textbf{BA}\)</span>. In this example, <span class="math notranslate nohighlight">\(\textbf{BA}\)</span> gives us a different size matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 39,  54,  69],
+       [ 49,  68,  87],
+       [ 59,  82, 105]])
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="review-matrix-transpose">
 <h4>Review: Matrix Transpose<a class="headerlink" href="#review-matrix-transpose" title="Permalink to this headline">#</a></h4>
@@ -1149,6 +1164,7 @@ shape of B:  (3, 2)
 <p>where the <em>identity matrix</em> <span class="math notranslate nohighlight">\(\textbf{I}\)</span> is a matrix that has all 0 values, except for 1 values along the diagonal from the upper left to the lower right. For example, a 3x3 identity matrix would be</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \textbf{I} = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0  &amp; 1  \end{bmatrix} \end{split}\]</div>
+<p>This is called an <em>identity matrix</em> because <span class="math notranslate nohighlight">\(\textbf{B}\textbf{I} = \textbf{I}\textbf{B} = \textbf{B}\)</span> for square matrices. This is analagous to <span class="math notranslate nohighlight">\(1b = b\)</span> for single values.</p>
 <p>In a linear algebra class, you might calculate <span class="math notranslate nohighlight">\(\textbf{B}^{-1}\)</span> by hand, but in this class we will rely in Numpy to do it for us. Let’s set up a <span class="math notranslate nohighlight">\(3 \times 3\)</span> <span class="math notranslate nohighlight">\(\textbf{B}\)</span> matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
