@@ -519,13 +519,35 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-error-propagates-through-calculations-and-anlysis">
-   8.1. How error propagates through calculations and anlysis
+  <a class="reference internal nav-link" href="#motivation">
+   8.1. Motivation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-error-propagates-through-calculations-and-anlysis">
+   8.2. How error propagates through calculations and anlysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#oceanographic-example">
+     Oceanographic example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-equation-for-uncertainty">
+     General equation for uncertainty
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simplified-equation-for-uncertainty-if-errors-are-uncorrelated">
+     Simplified equation for uncertainty, if errors are uncorrelated
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#special-cases-br">
-   8.2. Special cases
+   8.3. Special cases
    <br/>
   </a>
   <ul class="nav section-nav flex-column">
@@ -601,13 +623,35 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-error-propagates-through-calculations-and-anlysis">
-   8.1. How error propagates through calculations and anlysis
+  <a class="reference internal nav-link" href="#motivation">
+   8.1. Motivation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-error-propagates-through-calculations-and-anlysis">
+   8.2. How error propagates through calculations and anlysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#oceanographic-example">
+     Oceanographic example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-equation-for-uncertainty">
+     General equation for uncertainty
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simplified-equation-for-uncertainty-if-errors-are-uncorrelated">
+     Simplified equation for uncertainty, if errors are uncorrelated
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#special-cases-br">
-   8.2. Special cases
+   8.3. Special cases
    <br/>
   </a>
   <ul class="nav section-nav flex-column">
@@ -675,13 +719,33 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="error-propagation">
 <h1><span class="section-number">8. </span>Error propagation<a class="headerlink" href="#error-propagation" title="Permalink to this headline">#</a></h1>
+<section id="motivation">
+<h2><span class="section-number">8.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">#</a></h2>
+<p>Say we have some function <span class="math notranslate nohighlight">\(f(x)\)</span>. We have measurements of the variable <span class="math notranslate nohighlight">\(x\)</span> with some error <span class="math notranslate nohighlight">\(\sigma_x\)</span>. We want to know the error in <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
+<p>The uncertainty in <span class="math notranslate nohighlight">\(f(x)\)</span> depends on <span class="math notranslate nohighlight">\(\sigma_x\)</span> and the derivative <span class="math notranslate nohighlight">\(df/dx\)</span>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/2-08-error-propagation_1_0.png" src="_images/2-08-error-propagation_1_0.png" />
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[\frac{df}{dx} \approx \frac{f(x + \sigma_x) - f(x)}{\sigma_x} \]</div>
+<div class="math notranslate nohighlight">
+\[ \sigma_x \frac{df}{dx} \approx f(x + \sigma_x) - f(x)\]</div>
+</section>
 <section id="how-error-propagates-through-calculations-and-anlysis">
-<h2><span class="section-number">8.1. </span>How error propagates through calculations and anlysis<a class="headerlink" href="#how-error-propagates-through-calculations-and-anlysis" title="Permalink to this headline">#</a></h2>
-<p>Imagine you have three variables: <br>
+<h2><span class="section-number">8.2. </span>How error propagates through calculations and anlysis<a class="headerlink" href="#how-error-propagates-through-calculations-and-anlysis" title="Permalink to this headline">#</a></h2>
+<p>Now imagine you have three variables: <br>
 <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> <br>
 Each of those variables has a measure of uncertainty: <br>
 <span class="math notranslate nohighlight">\(\sigma_a,\sigma_b,\sigma_c\)</span></p>
-<p>Some calculated variable <span class="math notranslate nohighlight">\(y = f(a,b,c)\)</span> <br></p>
+<p>We want to know the uncertainty of a calculated variable <span class="math notranslate nohighlight">\(y = f(a,b,c)\)</span></p>
+<section id="oceanographic-example">
+<h3>Oceanographic example<a class="headerlink" href="#oceanographic-example" title="Permalink to this headline">#</a></h3>
+<p>An oceanographic example would be density, which is usually expressed as a function of temperature, salinity and pressure. Oceanographers measure these parameters with a CTD (conductivity, temperature and depth) instrument. This instrument does measure salinity directly. Salinity is calculated as a function of conductivity, temperature and pressure. This means that errors in salinity are not independent of errors in temperature. When estimating the uncertainty in density, we have to think about how the errors in salinity and temperature co-vary.</p>
+</section>
+<section id="general-equation-for-uncertainty">
+<h3>General equation for uncertainty<a class="headerlink" href="#general-equation-for-uncertainty" title="Permalink to this headline">#</a></h3>
 <p>What is the uncertainty of y when measurements are dependant/inter-related?</p>
 <p><span class="math notranslate nohighlight">\(\sigma_y^2 \approx \sigma_a^2 \left(\frac{\partial y}{\partial a}\right)^2 +\sigma_b^2 \left(\frac{\partial y}{\partial b}\right)^2 + \sigma_c^2\left(\frac{\partial y}{\partial c}\right)^2 + 2\sigma_{ab} ^2 \left(\frac{\partial y}{\partial a}\right)\left(\frac{\partial y}{\partial b}\right) + 2\sigma_{bc}^2 \left(\frac{\partial y}{\partial b}\right)\left(\frac{\partial y}{\partial c}\right) + 2\sigma_{ac}^2 \left(\frac{\partial y}{\partial a}\right) \left(\frac{\partial y}{\partial c}\right)\)</span></p>
 <p>This equation shows that the uncertainty in the calculated variable <span class="math notranslate nohighlight">\(y\)</span> depends on:</p>
@@ -691,8 +755,14 @@ Each of those variables has a measure of uncertainty: <br>
 <li><p>The relationship between magnitudes of the measurement variables and calculated variable (<span class="math notranslate nohighlight">\(\partial y\)</span>/<span class="math notranslate nohighlight">\(\partial a\)</span>, <span class="math notranslate nohighlight">\(\partial y\)</span>/<span class="math notranslate nohighlight">\(\partial b\)</span>, <span class="math notranslate nohighlight">\(\partial y\)</span>/<span class="math notranslate nohighlight">\(\partial c\)</span>)</p></li>
 </ul>
 </section>
+<section id="simplified-equation-for-uncertainty-if-errors-are-uncorrelated">
+<h3>Simplified equation for uncertainty, if errors are uncorrelated<a class="headerlink" href="#simplified-equation-for-uncertainty-if-errors-are-uncorrelated" title="Permalink to this headline">#</a></h3>
+<p>If the errors are uncorrelated, the covariance terms are zero and the above equation simplifies to</p>
+<p><span class="math notranslate nohighlight">\(\sigma_y^2 \approx \sigma_a^2 \left(\frac{\partial y}{\partial a}\right)^2 +\sigma_b^2 \left(\frac{\partial y}{\partial b}\right)^2 + \sigma_c^2\left(\frac{\partial y}{\partial c}\right)^2\)</span></p>
+</section>
+</section>
 <section id="special-cases-br">
-<h2><span class="section-number">8.2. </span>Special cases<br><a class="headerlink" href="#special-cases-br" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.3. </span>Special cases<br><a class="headerlink" href="#special-cases-br" title="Permalink to this headline">#</a></h2>
 <p>Rules for error propagation in common operations can be derived from the equation above. If there all measurement variables are independent, then the terms involving covariance become zero. The examples listed below assume no correlation between measurement variables.</p>
 <p>A more complete table, including covariance terms, can be found on Wikipedia:
 <a class="reference external" href="https://en.wikipedia.org/wiki/Propagation_of_uncertainty#Example_formulas">https://en.wikipedia.org/wiki/Propagation_of_uncertainty#Example_formulas</a></p>
@@ -700,13 +770,16 @@ Each of those variables has a measure of uncertainty: <br>
 <h3>Addition, subtractions<a class="headerlink" href="#addition-subtractions" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(y = a + b - c\)</span></p>
 <p><em>error:</em></p>
+<p><span class="math notranslate nohighlight">\(\sigma_y ^2  = \sigma_a ^2(1)^2 + \sigma_b ^2(1)^2 + \sigma_c ^2(-1)^2\)</span></p>
 <p><span class="math notranslate nohighlight">\(\sigma_y ^2  = \sigma_a ^2 + \sigma_b ^2 + \sigma_c ^2\)</span></p>
 </section>
 <section id="multiplication-division">
 <h3>Multiplication, division<a class="headerlink" href="#multiplication-division" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(y = \frac{ab}{c}\)</span></p>
+<p><em>error</em>:</p>
+<p><span class="math notranslate nohighlight">\(\sigma_y ^2  = \sigma_a ^2\left(\frac{b}{c}\right)^2 + \sigma_b ^2\left(\frac{a}{c}\right)^2 + \sigma_c ^2\left(\frac{-ab}{c^2}\right)^2\)</span></p>
 <p><em>relative error:</em></p>
-<p><span class="math notranslate nohighlight">\((\frac{\sigma_y }{y})^2 =(\frac{\sigma_a }{a})^2 + (\frac{\sigma_b }{b})^2 + (\frac{\sigma_c }{c})^2\)</span></p>
+<p><span class="math notranslate nohighlight">\(\left(\frac{\sigma_y }{y}\right)^2 = \left(\frac{\sigma_a }{a}\right)^2 + \left(\frac{\sigma_b }{b}\right)^2 + \left(\frac{\sigma_c }{c}\right)^2\)</span></p>
 </section>
 <section id="multiplying-by-an-exact-number">
 <h3>Multiplying by an exact number<a class="headerlink" href="#multiplying-by-an-exact-number" title="Permalink to this headline">#</a></h3>
@@ -714,7 +787,7 @@ Each of those variables has a measure of uncertainty: <br>
 <p><em>error:</em></p>
 <p><span class="math notranslate nohighlight">\((\sigma_y) = m(\sigma_a)\)</span></p>
 <p><em>relative error:</em></p>
-<p><span class="math notranslate nohighlight">\((\frac{\sigma_y}{y})^2 = (\frac{\sigma_a}{a})^2\)</span></p>
+<p><span class="math notranslate nohighlight">\(\left(\frac{\sigma_y}{y}\right)^2 = \left(\frac{\sigma_a}{a}\right)^2\)</span></p>
 </section>
 <section id="power">
 <h3>Power<a class="headerlink" href="#power" title="Permalink to this headline">#</a></h3>

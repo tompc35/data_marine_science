@@ -3,14 +3,67 @@
 
 # # Error propagation 
 # 
+# ## Motivation
+# 
+# Say we have some function $f(x)$. We have measurements of the variable $x$ with some error $\sigma_x$. We want to know the error in $f(x)$.
+# 
+# The uncertainty in $f(x)$ depends on $\sigma_x$ and the derivative $df/dx$.
+
+# In[1]:
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10)
+x1 = 3
+sigma1 = 1
+
+def f(x):
+    f = -x**3 + 10*x**2 + x
+    return f
+
+plt.figure()
+plt.plot(x, f(x))
+
+plt.plot([x1, x1],[0, f(x1)], 'k--')
+plt.plot([x1 + sigma1, x1 + sigma1],[0, f(x1 + sigma1)], 'k--')
+
+plt.plot([0, x1],[f(x1), f(x1)], 'k--')
+plt.plot([0, x1 + sigma1],[f(x1 + sigma1), f(x1 + sigma1)], 'k--')
+
+
+plt.xlim([0, 7])
+plt.ylim([0, 160])
+
+plt.text(0, f(x1), '$f(x)$', fontsize = 12, verticalalignment = 'bottom')
+plt.text(0, f(x1 + sigma1), '$f(x + \sigma_x)$', fontsize = 14, verticalalignment = 'bottom')
+
+plt.text(x1, 0, '$x$', fontsize = 12, verticalalignment = 'bottom')
+plt.text(x1 + sigma1, 0, '$x + \sigma_x$', fontsize = 12, verticalalignment = 'bottom')
+
+plt.xticks([]) 
+plt.yticks([]);
+
+
+# $$\frac{df}{dx} \approx \frac{f(x + \sigma_x) - f(x)}{\sigma_x} $$
+# 
+# $$ \sigma_x \frac{df}{dx} \approx f(x + \sigma_x) - f(x)$$
+
 # ## How error propagates through calculations and anlysis
 # 
-# Imagine you have three variables: <br>
+# Now imagine you have three variables: <br>
 # $a$, $b$, $c$ <br>
 # Each of those variables has a measure of uncertainty: <br>
 # $\sigma_a,\sigma_b,\sigma_c$
 # 
-# Some calculated variable $y = f(a,b,c)$ <br>
+# We want to know the uncertainty of a calculated variable $y = f(a,b,c)$ 
+# 
+# ### Oceanographic example
+# 
+# An oceanographic example would be density, which is usually expressed as a function of temperature, salinity and pressure. Oceanographers measure these parameters with a CTD (conductivity, temperature and depth) instrument. This instrument does measure salinity directly. Salinity is calculated as a function of conductivity, temperature and pressure. This means that errors in salinity are not independent of errors in temperature. When estimating the uncertainty in density, we have to think about how the errors in salinity and temperature co-vary.
+# 
+# ### General equation for uncertainty
 # 
 # What is the uncertainty of y when measurements are dependant/inter-related?
 # 
@@ -23,6 +76,12 @@
 # * The covariance among measurment variables ($\sigma_{ab}^2,\sigma_{bc}^2,\sigma_{ac}^2$)
 # 
 # * The relationship between magnitudes of the measurement variables and calculated variable ($\partial y$/$\partial a$, $\partial y$/$\partial b$, $\partial y$/$\partial c$)
+# 
+# ### Simplified equation for uncertainty, if errors are uncorrelated
+# 
+# If the errors are uncorrelated, the covariance terms are zero and the above equation simplifies to
+# 
+# $\sigma_y^2 \approx \sigma_a^2 \left(\frac{\partial y}{\partial a}\right)^2 +\sigma_b^2 \left(\frac{\partial y}{\partial b}\right)^2 + \sigma_c^2\left(\frac{\partial y}{\partial c}\right)^2$
 # 
 # ## Special cases<br>
 # 
@@ -38,15 +97,21 @@
 # 
 # _error:_
 # 
+# $\sigma_y ^2  = \sigma_a ^2(1)^2 + \sigma_b ^2(1)^2 + \sigma_c ^2(-1)^2$
+# 
 # $\sigma_y ^2  = \sigma_a ^2 + \sigma_b ^2 + \sigma_c ^2$
 # 
 # ### Multiplication, division
 # 
 # $y = \frac{ab}{c}$
 # 
+# _error_:
+# 
+# $\sigma_y ^2  = \sigma_a ^2\left(\frac{b}{c}\right)^2 + \sigma_b ^2\left(\frac{a}{c}\right)^2 + \sigma_c ^2\left(\frac{-ab}{c^2}\right)^2$
+# 
 # _relative error:_
 # 
-# $(\frac{\sigma_y }{y})^2 =(\frac{\sigma_a }{a})^2 + (\frac{\sigma_b }{b})^2 + (\frac{\sigma_c }{c})^2$
+# $\left(\frac{\sigma_y }{y}\right)^2 = \left(\frac{\sigma_a }{a}\right)^2 + \left(\frac{\sigma_b }{b}\right)^2 + \left(\frac{\sigma_c }{c}\right)^2$
 # 
 # ### Multiplying by an exact number
 # 
@@ -58,7 +123,7 @@
 # 
 # _relative error:_
 # 
-# $(\frac{\sigma_y}{y})^2 = (\frac{\sigma_a}{a})^2$
+# $\left(\frac{\sigma_y}{y}\right)^2 = \left(\frac{\sigma_a}{a}\right)^2$
 # 
 # ### Power
 # 
@@ -133,7 +198,7 @@
 
 # This result can be checked with the uncertainties package.
 
-# In[1]:
+# In[2]:
 
 
 from uncertainties import ufloat

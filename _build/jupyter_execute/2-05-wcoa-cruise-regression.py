@@ -183,17 +183,25 @@ print('shape of B: ', np.shape(B))
 np.dot(A,B)
 
 
+# It is important to remember that matrix multiplication is not *commutative*, meaning $\textbf{AB}$ is generally not the same as $\textbf{BA}$. In this example, $\textbf{BA}$ gives us a different size matrix.
+
+# In[19]:
+
+
+np.dot(B,A)
+
+
 # #### Review: Matrix Transpose
 # 
 # The *transpose* of a matrix $\textbf{A}^T$ has the same values as $\textbf{A}$, but the rows are converted to columns. One way to do this is with the `np.transpose` function.
 
-# In[19]:
+# In[20]:
 
 
 print(A)
 
 
-# In[20]:
+# In[21]:
 
 
 print(np.transpose(A))
@@ -201,7 +209,7 @@ print(np.transpose(A))
 
 # Another way is to use the `.T` method on a Numpy array.
 
-# In[21]:
+# In[22]:
 
 
 print(A.T)
@@ -209,7 +217,7 @@ print(A.T)
 
 # Note that the product $\textbf{A}^T\textbf{A}$ is a *square* matrix, which has the same number of rows and columns. 
 
-# In[22]:
+# In[23]:
 
 
 np.dot(A.T, A)
@@ -229,9 +237,11 @@ np.dot(A.T, A)
 # 
 # $$ \textbf{I} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0  & 1  \end{bmatrix} $$
 
+# This is called an *identity matrix* because $\textbf{B}\textbf{I} = \textbf{I}\textbf{B} = \textbf{B}$ for square matrices. This is analagous to $1b = b$ for single values.
+# 
 # In a linear algebra class, you might calculate $\textbf{B}^{-1}$ by hand, but in this class we will rely in Numpy to do it for us. Let's set up a $3 \times 3$ $\textbf{B}$ matrix.
 
-# In[23]:
+# In[24]:
 
 
 B = np.array([[1, 2, 1],
@@ -242,7 +252,7 @@ print(B)
 
 # The inverse $\textbf{B}^{-1}$ is
 
-# In[24]:
+# In[25]:
 
 
 np.linalg.inv(B)
@@ -250,7 +260,7 @@ np.linalg.inv(B)
 
 # The product $\textbf{B}^{-1}\textbf{B}$ can be calculated as
 
-# In[25]:
+# In[26]:
 
 
 BinvB = np.dot(np.linalg.inv(B), B)
@@ -259,7 +269,7 @@ print(BinvB)
 
 # If we round these values, we can see more clearly that this is nearly identical to the identity matrix $\textbf{I}$, with some very small round-off error.
 
-# In[26]:
+# In[27]:
 
 
 print(np.round(BinvB))
@@ -267,7 +277,7 @@ print(np.round(BinvB))
 
 # For reference, an identity matrix can be created with the `np.eye` function
 
-# In[27]:
+# In[28]:
 
 
 print(np.eye(3))
@@ -289,7 +299,7 @@ print(np.eye(3))
 # 
 # To solve for the parameters c using matrix multiplication, we first need to fomulate the $\vec{y}$ and $\textbf{X}$ matrices
 
-# In[28]:
+# In[29]:
 
 
 # check to see that the y_subset is only 1-d (and won't work for matrix multiplication)
@@ -305,7 +315,7 @@ print(y_matrix)
 print('shape of y: ', np.shape(y_matrix))
 
 
-# In[29]:
+# In[30]:
 
 
 # define a matrix X with a column of ones and a column of the x values
@@ -345,7 +355,7 @@ print(np.shape(X))
 # 
 # Using numpy, we can define the matrix components of the above equation and then run the calculation to find the coefficients:
 
-# In[30]:
+# In[31]:
 
 
 # calculate the transpose of the matrix X
@@ -366,7 +376,7 @@ print(c)
 
 # As a sanity check, we can double check that the coefficients are the same as those from numpy's ```polyfit``` function
 
-# In[31]:
+# In[32]:
 
 
 coefficients = np.polyfit(x[ii],y[ii],1)
