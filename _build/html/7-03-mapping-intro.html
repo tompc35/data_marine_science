@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>3. Map tutorial &#8212; Data Analysis Techniques in Marine Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,61 +62,112 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '7-03-mapping-intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. Image Analysis" href="8-01-image-analysis.html" />
     <link rel="prev" title="2. Interpolation techniques" href="7-02-interpolation.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
         
       
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+    
+    
       
-      <img src="_static/course-logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/course-logo.png" class="logo__image only-light" alt="Data Analysis Techniques in Marine Science - Home"/>
+    <script>document.write(`<img src="_static/course-logo.png" class="logo__image only-dark" alt="Data Analysis Techniques in Marine Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -113,514 +176,275 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 1. Introduction to Python
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1. Introduction to Python</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="software-installation/README.html">
-   1. Setup and software installation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-02-python-intro.html">
-   2. Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-03-boolean.html">
-   3. Boolean logic in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-04-cruise-data-analysis.html">
-   4. Cruise data analysis in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-05-loops.html">
-   5. Loops
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-06-conditional-execution.html">
-   6. Conditional execution
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-07-python-functions.html">
-   7. Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-08-python-modules.html">
-   8. Creating your own Python module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-09-python-packages.html">
-   9. Python packages
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="software-installation/README.html">1. Setup and software installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-02-python-intro.html">2. Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-03-boolean.html">3. Boolean logic in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-04-cruise-data-analysis.html">4. Cruise data analysis in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-05-loops.html">5. Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-06-conditional-execution.html">6. Conditional execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-07-python-functions.html">7. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-08-python-modules.html">8. Creating your own Python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-09-python-packages.html">9. Python packages</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 2. Probability distributions and linear modeling
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2. Probability distributions and linear modeling</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="2-01-introduction.html">
-   1. Sampling and statistics: Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-02-probability-and-distributions.html">
-   2. Probability and distributions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-03-modeling-sampling.html">
-   3. Modeling, sampling, confidence intervals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-04-corr-regress-least-squares.html">
-   4. Correlation and linear regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-05-wcoa-cruise-regression.html">
-   5. Implementing linear regression in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-06-multivariate-regression.html">
-   6. Multivariate regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">
-   7. Poisson regression example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-08-error-propagation.html">
-   8. Error propagation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="2-01-introduction.html">1. Sampling and statistics: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-02-probability-and-distributions.html">2. Probability and distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-03-modeling-sampling.html">3. Modeling, sampling, confidence intervals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">7. Poisson regression example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">8. Error propagation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 3. Hypothesis testing and power analysis
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="3-01-hypothesis-power.html">
-   1. Hypothesis testing and Power
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3-02-anova.html">
-   2. Analysis of variance (ANOVA)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3-03-nonparam.html">
-   3. Non-parametric statistical tests
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3-04-generalized-linear-model.html">
-   4. The generalized linear model
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="3-01-hypothesis-power.html">1. Hypothesis testing and Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-02-anova.html">2. Analysis of variance (ANOVA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-03-nonparam.html">3. Non-parametric statistical tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-04-generalized-linear-model.html">4. The generalized linear model</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 4. Nonlinear modeling and optimization
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 4. Nonlinear modeling and optimization</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="4-01-optimization.html">
-   1. Optimization and nonlinear modeling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="4-02-us-population-example.html">
-   2. Example: Modeling exponential growth
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="4-01-optimization.html">1. Optimization and nonlinear modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-02-us-population-example.html">2. Example: Modeling exponential growth</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 5. Principal component analysis and related techniques
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 5. Principal component analysis and related techniques</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="5-01-PCA-EOF.html">
-   1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5-02-MDS.html">
-   2. Multidimensional Scaling Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5-03-ndbc-wind.html">
-   3. NDBC data - analysis of wind vector time series
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5-04-monterey_bay_kelp.html">
-   4. Monterey Bay Kelp PCA
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="5-01-PCA-EOF.html">1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-02-MDS.html">2. Multidimensional Scaling Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-03-ndbc-wind.html">3. NDBC data - analysis of wind vector time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-04-monterey_bay_kelp.html">4. Monterey Bay Kelp PCA</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 6. Spectral analysis of time series
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 6. Spectral analysis of time series</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="6-01-spectral-analysis.html">
-   1. Spectral Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6-02-lobo-spectral.html">
-   2. Spectral analysis example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6-03-lobo-spectral-part2.html">
-   3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6-04-filtering.html">
-   5. Filtering and Convolution
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="6-01-spectral-analysis.html">1. Spectral Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-02-lobo-spectral.html">2. Spectral analysis example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-03-lobo-spectral-part2.html">3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="6-04-filtering.html">5. Filtering and Convolution</a></li>
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 7. Spatial analysis
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 7. Spatial analysis</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="7-01-spatial-analysis.html">
-   1. Spatial Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="7-02-interpolation.html">
-   2. Interpolation techniques
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   3. Map tutorial
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="7-01-spatial-analysis.html">1. Spatial Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-02-interpolation.html">2. Interpolation techniques</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Map tutorial</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 8. Image analysis
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 8. Image analysis</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="8-01-image-analysis.html">
-   1. Image Analysis
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="8-01-image-analysis.html">1. Image Analysis</a></li>
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendix A. Git reference
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix A. Git reference</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="git-reference/README.html">
-   Git Reference
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="git-reference/README.html">Git Reference</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/7-03-mapping-intro.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/7-03-mapping-intro.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/7-03-mapping-intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/7-03-mapping-intro.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#projections">
-   3.1. Projections
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#equirectangular">
-     Equirectangular
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mercator">
-     Mercator
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lambert-conformal">
-     Lambert conformal
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-gridlines">
-   3.2. Adding gridlines
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#higher-resolution-coastline-for-smaller-areas">
-   3.3. Higher resolution coastline for smaller areas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-shapefiles">
-   3.4. Using shapefiles
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Map tutorial</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#projections">
-   3.1. Projections
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#equirectangular">
-     Equirectangular
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mercator">
-     Mercator
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lambert-conformal">
-     Lambert conformal
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-gridlines">
-   3.2. Adding gridlines
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#higher-resolution-coastline-for-smaller-areas">
-   3.3. Higher resolution coastline for smaller areas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-shapefiles">
-   3.4. Using shapefiles
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Map tutorial</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projections">3.1. Projections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equirectangular">Equirectangular</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mercator">Mercator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambert-conformal">Lambert conformal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-gridlines">3.2. Adding gridlines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-resolution-coastline-for-smaller-areas">3.3. Higher resolution coastline for smaller areas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-shapefiles">3.4. Using shapefiles</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="map-tutorial">
-<h1><span class="section-number">3. </span>Map tutorial<a class="headerlink" href="#map-tutorial" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3. </span>Map tutorial<a class="headerlink" href="#map-tutorial" title="Permalink to this heading">#</a></h1>
 <p>In this notebook, some examples of creating maps in Python using the <a class="reference external" href="http://scitools.org.uk/cartopy/">Cartopy library</a> are shown. We will zoom in from the global scale to the local scale.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -632,10 +456,10 @@ title="Print to PDF"
 </div>
 </div>
 <section id="projections">
-<h2><span class="section-number">3.1. </span>Projections<a class="headerlink" href="#projections" title="Permalink to this headline">#</a></h2>
-<p>A complete list of available projections can be found here. The examples below show how to plot a coarse-resolution coastlines of the entire globe. A list of projections available in Cartopy can be found here: <a class="reference external" href="http://scitools.org.uk/cartopy/docs/v0.15/crs/projections.html">http://scitools.org.uk/cartopy/docs/v0.15/crs/projections.html</a></p>
+<h2><span class="section-number">3.1. </span>Projections<a class="headerlink" href="#projections" title="Permalink to this heading">#</a></h2>
+<p>A complete list of available projections can be found here. The examples below show how to plot a coarse-resolution coastlines of the entire globe. A list of projections available in Cartopy can be found here: <a class="reference external" href="http://scitools.org.uk/cartopy/docs/v0.15/crs/projections.html#">http://scitools.org.uk/cartopy/docs/v0.15/crs/projections.html#</a></p>
 <section id="equirectangular">
-<h3>Equirectangular<a class="headerlink" href="#equirectangular" title="Permalink to this headline">#</a></h3>
+<h3>Equirectangular<a class="headerlink" href="#equirectangular" title="Permalink to this heading">#</a></h3>
 <p>This projection just maps longitude to the x-axis and and latitude to the y-axis. It distorts and stretches areas away from the equator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -646,15 +470,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x1307ee710&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x12c086790&gt;
 </pre></div>
 </div>
-<img alt="_images/7-03-mapping-intro_3_1.png" src="_images/7-03-mapping-intro_3_1.png" />
+<img alt="_images/81d1bca21db1613ae66918488649f0b0320cffbb3d8035fd324d16a426c8ab76.png" src="_images/81d1bca21db1613ae66918488649f0b0320cffbb3d8035fd324d16a426c8ab76.png" />
 </div>
 </div>
 </section>
 <section id="mercator">
-<h3>Mercator<a class="headerlink" href="#mercator" title="Permalink to this headline">#</a></h3>
+<h3>Mercator<a class="headerlink" href="#mercator" title="Permalink to this heading">#</a></h3>
 <p>The Mercator projection expands latitude and longitude at the same <em>ratio</em> away from the equator. As a result, areas are stretched equally horizontally and vertically such at angles are preserved (i.e. it is conformal). Notice that Greenland and Africa are the same size in this map, which is not true if you look at a globe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -665,15 +489,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x147960910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x12c09bf50&gt;
 </pre></div>
 </div>
-<img alt="_images/7-03-mapping-intro_5_1.png" src="_images/7-03-mapping-intro_5_1.png" />
+<img alt="_images/e980e8c1b8b84ae225741350e182536f6ab7853318ebcd8dbcef4d30975ed1af.png" src="_images/e980e8c1b8b84ae225741350e182536f6ab7853318ebcd8dbcef4d30975ed1af.png" />
 </div>
 </div>
 </section>
 <section id="lambert-conformal">
-<h3>Lambert conformal<a class="headerlink" href="#lambert-conformal" title="Permalink to this headline">#</a></h3>
+<h3>Lambert conformal<a class="headerlink" href="#lambert-conformal" title="Permalink to this heading">#</a></h3>
 <p>This is another projection that is conformal and preserves angles. It is a <em>conic</em> projection, so it is better for displaying large areas at mid-latitudes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -685,16 +509,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x1479a4220&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x12c0b0110&gt;
 </pre></div>
 </div>
-<img alt="_images/7-03-mapping-intro_7_1.png" src="_images/7-03-mapping-intro_7_1.png" />
+<img alt="_images/3edc833811c06e1db1c2e7efdbcd76fcc4f49baa730a67785c828a6c1284bd5a.png" src="_images/3edc833811c06e1db1c2e7efdbcd76fcc4f49baa730a67785c828a6c1284bd5a.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="adding-gridlines">
-<h2><span class="section-number">3.2. </span>Adding gridlines<a class="headerlink" href="#adding-gridlines" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2. </span>Adding gridlines<a class="headerlink" href="#adding-gridlines" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartopy.mpl.gridliner</span> <span class="kn">import</span> <span class="n">LONGITUDE_FORMATTER</span><span class="p">,</span> <span class="n">LATITUDE_FORMATTER</span>
@@ -709,17 +533,17 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x1479f1180&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x12c168110&gt;
 </pre></div>
 </div>
-<img alt="_images/7-03-mapping-intro_9_1.png" src="_images/7-03-mapping-intro_9_1.png" />
+<img alt="_images/984a56e06a1eaa64048a27598b728e7875bf1015d10b33aeaac9b7e21c157ab9.png" src="_images/984a56e06a1eaa64048a27598b728e7875bf1015d10b33aeaac9b7e21c157ab9.png" />
 </div>
 </div>
 <p>It can be hard to remember all of these commands. It is easier to make a function. This function is based on a blog post by Filipe Fernandes at <a class="reference external" href="https://ocefpaf.github.io/python4oceanographers/blog/2015/06/22/osm/">https://ocefpaf.github.io/python4oceanographers/blog/2015/06/22/osm/</a>. For a given projection, it returns an axis object that can be used by Cartopy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_map</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Return axis object for cartopy map with labeled gridlines.</span>
 <span class="sd">    </span>
 <span class="sd">    Input: Cartopy projection, default = cartopy.crs.PlateCarree()</span>
@@ -752,21 +576,21 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/cartopy/mpl/gridliner.py:451: UserWarning: The .xlabels_top attribute is deprecated. Please use .top_labels to toggle visibility instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/cartopy/mpl/gridliner.py:451: UserWarning: The .xlabels_top attribute is deprecated. Please use .top_labels to toggle visibility instead.
   warnings.warn(&#39;The .xlabels_top attribute is deprecated. Please &#39;
-/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/cartopy/mpl/gridliner.py:487: UserWarning: The .ylabels_right attribute is deprecated. Please use .right_labels to toggle visibility instead.
+/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/cartopy/mpl/gridliner.py:487: UserWarning: The .ylabels_right attribute is deprecated. Please use .right_labels to toggle visibility instead.
   warnings.warn(&#39;The .ylabels_right attribute is deprecated. Please &#39;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x1307ab400&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x12c7269d0&gt;
 </pre></div>
 </div>
-<img alt="_images/7-03-mapping-intro_11_2.png" src="_images/7-03-mapping-intro_11_2.png" />
+<img alt="_images/a811f91158bc3235c75f2fb8751add449e91c76e62f719e0e38f8ae0320cd4c2.png" src="_images/a811f91158bc3235c75f2fb8751add449e91c76e62f719e0e38f8ae0320cd4c2.png" />
 </div>
 </div>
 </section>
 <section id="higher-resolution-coastline-for-smaller-areas">
-<h2><span class="section-number">3.3. </span>Higher resolution coastline for smaller areas<a class="headerlink" href="#higher-resolution-coastline-for-smaller-areas" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.3. </span>Higher resolution coastline for smaller areas<a class="headerlink" href="#higher-resolution-coastline-for-smaller-areas" title="Permalink to this heading">#</a></h2>
 <p>Here we make a map of Monterey Bay. Using the default coastline, it doesn’t work out so well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -786,10 +610,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x1479cad70&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/cartopy/mpl/gridliner.py:451: UserWarning: The .xlabels_top attribute is deprecated. Please use .top_labels to toggle visibility instead.
+  warnings.warn(&#39;The .xlabels_top attribute is deprecated. Please &#39;
+/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/cartopy/mpl/gridliner.py:487: UserWarning: The .ylabels_right attribute is deprecated. Please use .right_labels to toggle visibility instead.
+  warnings.warn(&#39;The .ylabels_right attribute is deprecated. Please &#39;
 </pre></div>
 </div>
-<img alt="_images/7-03-mapping-intro_14_1.png" src="_images/7-03-mapping-intro_14_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x12c1dbf50&gt;
+</pre></div>
+</div>
+<img alt="_images/93919abd67d7b4d71c9074d8108b60dfddcd6599edcd0eaa0df0bf5d3f1d673f.png" src="_images/93919abd67d7b4d71c9074d8108b60dfddcd6599edcd0eaa0df0bf5d3f1d673f.png" />
 </div>
 </div>
 <p>The following code produces a higher resolution coastline. The coastline data sets in Cartopy come from <a class="reference external" href="http://www.naturalearthdata.com/">Natural Earth</a>. The ‘10m’ option refers to resolution that is appropriate for a 1:10 million scale map, not 10 meter resolution.</p>
@@ -803,10 +633,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x147d97700&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/cartopy/mpl/gridliner.py:451: UserWarning: The .xlabels_top attribute is deprecated. Please use .top_labels to toggle visibility instead.
+  warnings.warn(&#39;The .xlabels_top attribute is deprecated. Please &#39;
+/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/cartopy/mpl/gridliner.py:487: UserWarning: The .ylabels_right attribute is deprecated. Please use .right_labels to toggle visibility instead.
+  warnings.warn(&#39;The .ylabels_right attribute is deprecated. Please &#39;
 </pre></div>
 </div>
-<img alt="_images/7-03-mapping-intro_16_1.png" src="_images/7-03-mapping-intro_16_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x12c7f7750&gt;
+</pre></div>
+</div>
+<img alt="_images/93919abd67d7b4d71c9074d8108b60dfddcd6599edcd0eaa0df0bf5d3f1d673f.png" src="_images/93919abd67d7b4d71c9074d8108b60dfddcd6599edcd0eaa0df0bf5d3f1d673f.png" />
 </div>
 </div>
 <p>We can also easily grab image tiles from the internet to show the same area. This example shows tiles from the familiar Google Maps. You can also show tiles from <a class="reference external" href="http://maps.stamen.com/terrain">Stamen Terrain</a>.</p>
@@ -823,7 +659,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7-03-mapping-intro_18_0.png" src="_images/7-03-mapping-intro_18_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/cartopy/mpl/gridliner.py:451: UserWarning: The .xlabels_top attribute is deprecated. Please use .top_labels to toggle visibility instead.
+  warnings.warn(&#39;The .xlabels_top attribute is deprecated. Please &#39;
+/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/cartopy/mpl/gridliner.py:487: UserWarning: The .ylabels_right attribute is deprecated. Please use .right_labels to toggle visibility instead.
+  warnings.warn(&#39;The .ylabels_right attribute is deprecated. Please &#39;
+</pre></div>
+</div>
+<img alt="_images/ce026685792e383b6e55b3543f751789bf39d7d37c1af4a96b302fe0b4ca961c.png" src="_images/ce026685792e383b6e55b3543f751789bf39d7d37c1af4a96b302fe0b4ca961c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -839,16 +681,22 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/z7/lmyk7sz94177j166ck0x63h80000gr/T/ipykernel_6549/1850294267.py:2: DeprecationWarning: The StamenTerrain class was deprecated in v0.17. Please use Stamen(&#39;terrain-background&#39;) instead.
-  request = cimgt.StamenTerrain()
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">cartopy.io.img_tiles</span> <span class="k">as</span> <span class="nn">cimgt</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">request</span> <span class="o">=</span> <span class="n">cimgt</span><span class="o">.</span><span class="n">StamenTerrain</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">make_map</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: module &#39;cartopy.io.img_tiles&#39; has no attribute &#39;StamenTerrain&#39;
 </pre></div>
 </div>
-<img alt="_images/7-03-mapping-intro_19_1.png" src="_images/7-03-mapping-intro_19_1.png" />
 </div>
 </div>
 </section>
 <section id="using-shapefiles">
-<h2><span class="section-number">3.4. </span>Using shapefiles<a class="headerlink" href="#using-shapefiles" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.4. </span>Using shapefiles<a class="headerlink" href="#using-shapefiles" title="Permalink to this heading">#</a></h2>
 <p>GIS data often uses the binary shapefile format. Cartopy includes tools that greatly simplify the process of reading these files in Python. To demonstrate, we will map out wetlands and roads near Elkhorn Slough from data contained in GIS shapefiles.</p>
 <p>The following code uses data that can be downloaded from the Elkhorn Slough Foundation website:
 <a class="reference external" href="http://www.elkhornslough.org/gis/index.htm">http://www.elkhornslough.org/gis/index.htm</a></p>
@@ -864,7 +712,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>The data can be displayed by following two steps</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Creating a Cartopy axis object, which can be any projection you want (Mercator in this case). This is similar to the plots created earlier.</p></li>
 <li><p>Looping through the geometries contained in the shapefile, and adding them to the map. Our custom projection must be specified here when reading the shapefile. This ensures that there is a correct conversion from distance in meters (the information contained in the shapefile) to longitude and latitude (which is what we want to plot).</p></li>
 </ol>
@@ -886,13 +734,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/cartopy/feature/__init__.py:217: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
-  self._geoms = tuple(geometries)
-/Users/tconnolly/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/cartopy/feature/__init__.py:217: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
-  self._geoms = tuple(geometries)
-</pre></div>
-</div>
-<img alt="_images/7-03-mapping-intro_23_1.png" src="_images/7-03-mapping-intro_23_1.png" />
+<img alt="_images/42e33980c9212f2c99869bc95d57ad41cb4912a0fb8e1a60fab164bcfaf67649.png" src="_images/42e33980c9212f2c99869bc95d57ad41cb4912a0fb8e1a60fab164bcfaf67649.png" />
 </div>
 </div>
 </section>
@@ -910,7 +752,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -918,50 +760,111 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="7-02-interpolation.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Interpolation techniques</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="7-02-interpolation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Interpolation techniques</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="8-01-image-analysis.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="8-01-image-analysis.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">1. </span>Image Analysis</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projections">3.1. Projections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equirectangular">Equirectangular</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mercator">Mercator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambert-conformal">Lambert conformal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-gridlines">3.2. Adding gridlines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-resolution-coastline-for-smaller-areas">3.3. Higher resolution coastline for smaller areas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-shapefiles">3.4. Using shapefiles</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Tom Connolly<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Tom Connolly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
