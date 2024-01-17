@@ -113,7 +113,7 @@ conda config --add channels conda-forge
 Now, install the additional programs and Python packages. This will take a while. Copy and paste the following onto the command line and press Enter (**note:** this command is very long and probably extends beyond the width of your browser; the easiest way to copy it is to click the "copy" button that appears when you hover the cursor over the right side of the text box):
 
 ```
-conda install jupyter jupyterlab matplotlib pandas seaborn xarray netCDF4 cartopy cmocean gsw scikit-image scikit-learn statsmodels uncertainties pingouin nb_conda_kernels ipympl
+conda install jupyter jupyterlab matplotlib pandas seaborn xarray netCDF4 cartopy cmocean gsw scikit-image scikit-learn statsmodels uncertainties pingouin nb_conda_kernels ipympl openpyxl autograd
 ```
 
 Here, `conda` is the name of the package management program and `install` is a command given to this program, followed by the names of programs to install. A description of the packages that you have just installed can be found [here](package-list.md).
@@ -123,7 +123,7 @@ Here, `conda` is the name of the package management program and `install` is a c
 When those package installations have finished, there is one more tool that has be installed with a different package manager called `pip`. Enter this command:
 
 ```
-pip install PyCO2SYS
+pip install --no-deps PyCO2SYS
 ```
 
 ## Install Git
