@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2 &#8212; Data Analysis Techniques in Marine Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +64,112 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '6-03-lobo-spectral-part2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="5. Filtering and Convolution" href="6-04-filtering.html" />
     <link rel="prev" title="2. Spectral analysis example" href="6-02-lobo-spectral.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
         
       
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+    
+    
       
-      <img src="_static/course-logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/course-logo.png" class="logo__image only-light" alt="Data Analysis Techniques in Marine Science - Home"/>
+    <script>document.write(`<img src="_static/course-logo.png" class="logo__image only-dark" alt="Data Analysis Techniques in Marine Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,602 +178,288 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 1. Introduction to Python
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1. Introduction to Python</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="software-installation/README.html">
-   1. Setup and software installation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-02-python-intro.html">
-   2. Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-03-boolean.html">
-   3. Boolean logic in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-04-cruise-data-analysis.html">
-   4. Cruise data analysis in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-05-loops.html">
-   5. Loops
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-06-conditional-execution.html">
-   6. Conditional execution
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-07-python-functions.html">
-   7. Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-08-python-modules.html">
-   8. Creating your own Python module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="1-09-python-packages.html">
-   9. Python packages
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="software-installation/README.html">1. Setup and software installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-02-python-intro.html">2. Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-03-boolean.html">3. Boolean logic in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-04-cruise-data-analysis.html">4. Cruise data analysis in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-05-loops.html">5. Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-06-conditional-execution.html">6. Conditional execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-07-python-functions.html">7. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-08-python-modules.html">8. Creating your own Python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-09-python-packages.html">9. Python packages</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 2. Probability distributions and linear modeling
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2. Probability distributions and linear modeling</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="2-01-introduction.html">
-   1. Sampling and statistics: Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-02-probability-and-distributions.html">
-   2. Probability and distributions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-03-modeling-sampling.html">
-   3. Modeling, sampling, confidence intervals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-04-corr-regress-least-squares.html">
-   4. Correlation and linear regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-05-wcoa-cruise-regression.html">
-   5. Implementing linear regression in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-06-multivariate-regression.html">
-   6. Multivariate regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">
-   7. Poisson regression example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-08-error-propagation.html">
-   8. Error propagation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="2-01-introduction.html">1. Sampling and statistics: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-02-probability-and-distributions.html">2. Probability and distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-03-modeling-sampling.html">3. Modeling, sampling, confidence intervals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">7. Poisson regression example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">8. Error propagation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 3. Hypothesis testing and power analysis
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="3-01-hypothesis-power.html">
-   1. Hypothesis testing and Power
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3-02-anova.html">
-   2. Analysis of variance (ANOVA)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3-03-nonparam.html">
-   3. Non-parametric statistical tests
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3-04-generalized-linear-model.html">
-   4. The generalized linear model
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="3-01-hypothesis-power.html">1. Hypothesis testing and Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-02-anova.html">2. Analysis of variance (ANOVA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-03-nonparam.html">3. Non-parametric statistical tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-04-generalized-linear-model.html">4. The generalized linear model</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 4. Nonlinear modeling and optimization
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 4. Nonlinear modeling and optimization</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="4-01-optimization.html">
-   1. Optimization and nonlinear modeling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="4-02-us-population-example.html">
-   2. Example: Modeling exponential growth
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="4-01-optimization.html">1. Optimization and nonlinear modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-02-us-population-example.html">2. Example: Modeling exponential growth</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 5. Principal component analysis and related techniques
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 5. Principal component analysis and related techniques</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="5-01-PCA-EOF.html">
-   1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5-02-MDS.html">
-   2. Multidimensional Scaling Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5-03-ndbc-wind.html">
-   3. NDBC data - analysis of wind vector time series
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5-04-monterey_bay_kelp.html">
-   4. Monterey Bay Kelp PCA
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="5-01-PCA-EOF.html">1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-02-MDS.html">2. Multidimensional Scaling Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-03-ndbc-wind.html">3. NDBC data - analysis of wind vector time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-04-monterey_bay_kelp.html">4. Monterey Bay Kelp PCA</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 6. Spectral analysis of time series
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 6. Spectral analysis of time series</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="6-01-spectral-analysis.html">
-   1. Spectral Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6-02-lobo-spectral.html">
-   2. Spectral analysis example
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6-04-filtering.html">
-   5. Filtering and Convolution
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="6-01-spectral-analysis.html">1. Spectral Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-02-lobo-spectral.html">2. Spectral analysis example</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="6-04-filtering.html">5. Filtering and Convolution</a></li>
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 7. Spatial analysis
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 7. Spatial analysis</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="7-01-spatial-analysis.html">
-   1. Spatial Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="7-02-interpolation.html">
-   2. Interpolation techniques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="7-03-mapping-intro.html">
-   3. Map tutorial
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="7-01-spatial-analysis.html">1. Spatial Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-02-interpolation.html">2. Interpolation techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-03-mapping-intro.html">3. Map tutorial</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 8. Image analysis
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 8. Image analysis</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="8-01-image-analysis.html">
-   1. Image Analysis
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="8-01-image-analysis.html">1. Image Analysis</a></li>
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendix A. Git reference
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix A. Git reference</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="git-reference/README.html">
-   Git Reference
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="git-reference/README.html">Git Reference</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/6-03-lobo-spectral-part2.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/6-03-lobo-spectral-part2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/6-03-lobo-spectral-part2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/6-03-lobo-spectral-part2.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loading-data">
-     3.1. Loading data
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#raw-periodogram">
-     3.2. Raw periodogram
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modified-periodograms">
-     3.3. Modified periodograms
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reproducing-the-raw-periodogram">
-       Reproducing the raw periodogram
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pre-whitening">
-       Pre-whitening
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#averaging-segments">
-       Averaging segments
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-a-sensible-window">
-       Using a sensible window
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comparing-spectral-estimates">
-       Comparing spectral estimates
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#confidence-intervals-and-degrees-of-freedom">
-     3.4. Confidence intervals and degrees of freedom
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     3.5. Exercises
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#low-pass-filtering-data">
-   4. Low pass filtering data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-average-boxcar">
-     4.1. Running average/boxcar
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cosine-lanczos">
-     4.2. cosine-Lanczos
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#application-and-comparison">
-     4.3. Application and comparison
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Spectral analysis of LOBO data in Elkhorn Slough - Part 2</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loading-data">
-     3.1. Loading data
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#raw-periodogram">
-     3.2. Raw periodogram
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modified-periodograms">
-     3.3. Modified periodograms
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reproducing-the-raw-periodogram">
-       Reproducing the raw periodogram
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pre-whitening">
-       Pre-whitening
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#averaging-segments">
-       Averaging segments
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-a-sensible-window">
-       Using a sensible window
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comparing-spectral-estimates">
-       Comparing spectral estimates
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#confidence-intervals-and-degrees-of-freedom">
-     3.4. Confidence intervals and degrees of freedom
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     3.5. Exercises
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#low-pass-filtering-data">
-   4. Low pass filtering data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-average-boxcar">
-     4.1. Running average/boxcar
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cosine-lanczos">
-     4.2. cosine-Lanczos
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#application-and-comparison">
-     4.3. Application and comparison
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Spectral analysis of LOBO data in Elkhorn Slough - Part 2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">3.1. Loading data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-periodogram">3.2. Raw periodogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-periodograms">3.3. Modified periodograms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducing-the-raw-periodogram">Reproducing the raw periodogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-whitening">Pre-whitening</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#averaging-segments">Averaging segments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-sensible-window">Using a sensible window</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-spectral-estimates">Comparing spectral estimates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-and-degrees-of-freedom">3.4. Confidence intervals and degrees of freedom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.5. Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#low-pass-filtering-data">4. Low pass filtering data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-average-boxcar">4.1. Running average/boxcar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-lanczos">4.2. cosine-Lanczos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-and-comparison">4.3. Application and comparison</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="spectral-analysis-of-lobo-data-in-elkhorn-slough-part-2">
-<h1><span class="section-number">3. </span>Spectral analysis of LOBO data in Elkhorn Slough - Part 2<a class="headerlink" href="#spectral-analysis-of-lobo-data-in-elkhorn-slough-part-2" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3. </span>Spectral analysis of LOBO data in Elkhorn Slough - Part 2<a class="headerlink" href="#spectral-analysis-of-lobo-data-in-elkhorn-slough-part-2" title="Permalink to this heading">#</a></h1>
 <p>This notebook continues a demonstration of spectral analysis using water level and nitrate data from Elkhorn Slough.</p>
 <p>For the basics of computing the Fast Fourier Transform and displaying the power spectrum as a periodogram, see <span class="xref myst">Part 1</span>. In Part 2, we focus on improving the estimate of power spectral density through pre-whitening, smoothing and windowing. These techniques address the following issues in computing the raw periodogram from the FFT of the original data.</p>
 <ul class="simple">
@@ -728,7 +477,7 @@ title="Print to PDF"
 </div></blockquote>
 <p>The analysis that follows gives examples of steps that can be taken to minimize these errors in practical spectral analysis.</p>
 <section id="loading-data">
-<h2><span class="section-number">3.1. </span>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1. </span>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
 <p>These steps are identical to <span class="xref myst">Part 1</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -751,7 +500,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="raw-periodogram">
-<h2><span class="section-number">3.2. </span>Raw periodogram<a class="headerlink" href="#raw-periodogram" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2. </span>Raw periodogram<a class="headerlink" href="#raw-periodogram" title="Permalink to this heading">#</a></h2>
 <p>As we have already seen in <span class="xref myst">Part 1</span>, the <code class="docutils literal notranslate"><span class="pre">scipy.signal</span></code> library contains a function for computing the raw periodogram. The inputs are the 1) values of the time series, and 2) the sampling frequency.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -773,14 +522,14 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;water level periodogram&#39;)
 </pre></div>
 </div>
-<img alt="_images/6-03-lobo-spectral-part2_4_1.png" src="_images/6-03-lobo-spectral-part2_4_1.png" />
+<img alt="_images/79ce6e8abe96d44b53fe551d7b1c925ceaec84da0da1c1543a5e14422d42f8f7.png" src="_images/79ce6e8abe96d44b53fe551d7b1c925ceaec84da0da1c1543a5e14422d42f8f7.png" />
 </div>
 </div>
 </section>
 <section id="modified-periodograms">
-<h2><span class="section-number">3.3. </span>Modified periodograms<a class="headerlink" href="#modified-periodograms" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.3. </span>Modified periodograms<a class="headerlink" href="#modified-periodograms" title="Permalink to this heading">#</a></h2>
 <p>In order to improve on the raw periodogram, we use another function in the <code class="docutils literal notranslate"><span class="pre">scipy.signal</span></code> module, which uses Welch’s method. This function allows us to improve on the raw periodogram in the following ways:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>pre-whitening the data by removing a linear trend</p></li>
 <li><p>smooth the estimate by averaging multiple spectral estimates</p></li>
 <li><p>applying a window to the data (weighting certain data points more than others)</p></li>
@@ -788,7 +537,7 @@ title="Print to PDF"
 <p>Welch’s method averages the estimate by dividing the time series in to shorter, overlapping segments and avergaing the resulting spectral estimates. However, the averaging process smooths the spectrum, reducing noise, and increases the number of degrees of freedom. The drawbacks of this method (and any other method of averaging spectral estimates) are effectively reduces the length of the time series being analyzed, and it may blur narrow-banded peaks in the spectrum.</p>
 <p>Like all spectral methods, Welch’s method is most effective when used in combination with a window that weights the middle of the segments more than the edges. This reduces the noise that is introduced into the spectrum that occurs at the “jump” in the time series when it is assumed to be periodic and the end wraps back around to the beginning.</p>
 <section id="reproducing-the-raw-periodogram">
-<h3>Reproducing the raw periodogram<a class="headerlink" href="#reproducing-the-raw-periodogram" title="Permalink to this headline">#</a></h3>
+<h3>Reproducing the raw periodogram<a class="headerlink" href="#reproducing-the-raw-periodogram" title="Permalink to this heading">#</a></h3>
 <p>We start by using <code class="docutils literal notranslate"><span class="pre">scipy.signal.welch</span></code> function to reproduce what we have already done. The raw periodogram can be thought as using only one segment (which has the length of the original time series, <span class="math notranslate nohighlight">\(N\)</span>) and a “boxcar” (or rectangular) window that weights all data points equally. Using these options in the <code class="docutils literal notranslate"><span class="pre">welch</span></code> function gives the exact same result as the original periodogram.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -812,12 +561,12 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;water level periodogram&#39;)
 </pre></div>
 </div>
-<img alt="_images/6-03-lobo-spectral-part2_6_1.png" src="_images/6-03-lobo-spectral-part2_6_1.png" />
+<img alt="_images/4f5d7dcb59ffcb711b4bebc9d7377b3854a02f57a6e4df7083d2356d28bac0d4.png" src="_images/4f5d7dcb59ffcb711b4bebc9d7377b3854a02f57a6e4df7083d2356d28bac0d4.png" />
 </div>
 </div>
 </section>
 <section id="pre-whitening">
-<h3>Pre-whitening<a class="headerlink" href="#pre-whitening" title="Permalink to this headline">#</a></h3>
+<h3>Pre-whitening<a class="headerlink" href="#pre-whitening" title="Permalink to this heading">#</a></h3>
 <p>If the data contains a significant trend, this can exacerbate the noise introduced by having different values near the end and beginning of the data set. Detrending the data before computing the spectrum can help. In this case, the water level spectrum does not have a very large trend. We obtain an estimate that is different, but not drastically so.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -836,15 +585,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x12ff89e10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x13ea13010&gt;
 </pre></div>
 </div>
-<img alt="_images/6-03-lobo-spectral-part2_8_1.png" src="_images/6-03-lobo-spectral-part2_8_1.png" />
+<img alt="_images/8c29e929288a69ccce0d496be28772ead305294ba603ce40d0e88745f8ea1a94.png" src="_images/8c29e929288a69ccce0d496be28772ead305294ba603ce40d0e88745f8ea1a94.png" />
 </div>
 </div>
 </section>
 <section id="averaging-segments">
-<h3>Averaging segments<a class="headerlink" href="#averaging-segments" title="Permalink to this headline">#</a></h3>
+<h3>Averaging segments<a class="headerlink" href="#averaging-segments" title="Permalink to this heading">#</a></h3>
 <p>In this example, the time series is divided into segments of length <span class="math notranslate nohighlight">\(N/4\)</span>, and the spectral estimates derived from these shorter segments are averaged. This implements Welch’s method, and results in a smoother spectrum with less noise (i.e. reduced random error).</p>
 <p>However, this method also blurs together the two dirnal peaks near the 1 cpd frequency, so it could be argued that important information is lost by over-smoothing.</p>
 <div class="cell docutils container">
@@ -864,15 +613,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1682c9270&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x13ec55fd0&gt;
 </pre></div>
 </div>
-<img alt="_images/6-03-lobo-spectral-part2_10_1.png" src="_images/6-03-lobo-spectral-part2_10_1.png" />
+<img alt="_images/65e11d84ed1576512e64ba92d09860a53fce2888e840fcc24bd86ccf140c448d.png" src="_images/65e11d84ed1576512e64ba92d09860a53fce2888e840fcc24bd86ccf140c448d.png" />
 </div>
 </div>
 </section>
 <section id="using-a-sensible-window">
-<h3>Using a sensible window<a class="headerlink" href="#using-a-sensible-window" title="Permalink to this headline">#</a></h3>
+<h3>Using a sensible window<a class="headerlink" href="#using-a-sensible-window" title="Permalink to this heading">#</a></h3>
 <p>All of the examples up to this point have used a rectangular window that weights all points in the time series equally. In contrast, a Hamming window weights the points in the middle of the time series more than the points on the edges near the beginning and end. This reduces the spurious energy that is introduced into the spectrum at the discontinuits where the end of the time series wraps around to the beginning (remember that the time series is effectively treated as a periodic function in Fourier analysis).</p>
 <p>Applying the window not only smooths the data, reducing noise (random error), but also reduces the biased overestimate that occurs when all data points are weighted equally (systematic error). The background PSD is reduced, and this reveals much more clearly the peaks at the harmonics of the diurnal 1 cpd frequency, which occur due to the dynamics of friction tidal flow in shallow water.</p>
 <div class="cell docutils container">
@@ -892,15 +641,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x168611090&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x13eed8490&gt;
 </pre></div>
 </div>
-<img alt="_images/6-03-lobo-spectral-part2_12_1.png" src="_images/6-03-lobo-spectral-part2_12_1.png" />
+<img alt="_images/6640638041e8d5252f5f57c24976995dcd47d09ce10a041cb561f92e117d9b29.png" src="_images/6640638041e8d5252f5f57c24976995dcd47d09ce10a041cb561f92e117d9b29.png" />
 </div>
 </div>
 </section>
 <section id="comparing-spectral-estimates">
-<h3>Comparing spectral estimates<a class="headerlink" href="#comparing-spectral-estimates" title="Permalink to this headline">#</a></h3>
+<h3>Comparing spectral estimates<a class="headerlink" href="#comparing-spectral-estimates" title="Permalink to this heading">#</a></h3>
 <p>The differences between different windowing and averaging methods can be seen more clearly by zooming in to the dominant peaks in the time series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -919,16 +668,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1684b6290&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x13ef6dfd0&gt;
 </pre></div>
 </div>
-<img alt="_images/6-03-lobo-spectral-part2_14_1.png" src="_images/6-03-lobo-spectral-part2_14_1.png" />
+<img alt="_images/0b080bc0f8254e7f1a64a58d7c2fadd68a26345160d955f60ef14362252096fb.png" src="_images/0b080bc0f8254e7f1a64a58d7c2fadd68a26345160d955f60ef14362252096fb.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="confidence-intervals-and-degrees-of-freedom">
-<h2><span class="section-number">3.4. </span>Confidence intervals and degrees of freedom<a class="headerlink" href="#confidence-intervals-and-degrees-of-freedom" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.4. </span>Confidence intervals and degrees of freedom<a class="headerlink" href="#confidence-intervals-and-degrees-of-freedom" title="Permalink to this heading">#</a></h2>
 <p>The confidence intervals for a spectral estimate are most conviently expressed in terms of their logarithms,</p>
 <div class="math notranslate nohighlight">
 \[ \log \left(\frac{\nu}{\chi^2_{1- \alpha /2, \nu}} \right) 
@@ -968,7 +717,7 @@ title="Print to PDF"
 <p>See Emery and Thomson, Section 5.6.8, for further in-depth discussion of this topic.</p>
 </section>
 <section id="exercises">
-<h2><span class="section-number">3.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Plot a “best” esimate of the power spectrum for nitrate</p></li>
 <li><p>Plot 95% confidence interval on log scale</p></li>
@@ -976,7 +725,7 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="low-pass-filtering-data">
-<h1><span class="section-number">4. </span>Low pass filtering data<a class="headerlink" href="#low-pass-filtering-data" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4. </span>Low pass filtering data<a class="headerlink" href="#low-pass-filtering-data" title="Permalink to this heading">#</a></h1>
 <p>This section compares two filtering methods.</p>
 <ul class="simple">
 <li><p>The running average (or “boxcar” filter)</p></li>
@@ -993,7 +742,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="running-average-boxcar">
-<h2><span class="section-number">4.1. </span>Running average/boxcar<a class="headerlink" href="#running-average-boxcar" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1. </span>Running average/boxcar<a class="headerlink" href="#running-average-boxcar" title="Permalink to this heading">#</a></h2>
 <p>The running average is equivalent to convolution with a set of equal weights. In this example we average over a time period of 40 hours in order to average out tidal and other high-frequency fluctuations. The <code class="docutils literal notranslate"><span class="pre">signal.boxcar</span></code> function generates the set of 40 weights for this example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1003,6 +752,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/z7/lmyk7sz94177j166ck0x63h80000gr/T/ipykernel_8655/1112988234.py:1: DeprecationWarning: Importing boxcar from &#39;scipy.signal&#39; is deprecated and will raise an error in SciPy 1.13.0. Please use &#39;scipy.signal.windows.boxcar&#39; or the convenience function &#39;scipy.signal.get_window&#39; instead.
+  weights = signal.boxcar(40)
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
        1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
        1., 1., 1., 1., 1., 1.])
@@ -1032,15 +785,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1689e9900&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13f8f0810&gt;]
 </pre></div>
 </div>
-<img alt="_images/6-03-lobo-spectral-part2_24_1.png" src="_images/6-03-lobo-spectral-part2_24_1.png" />
+<img alt="_images/f6b419e4268243bcd4c27d5b7bba843b518ec719a845a402aa8d7932a55f316f.png" src="_images/f6b419e4268243bcd4c27d5b7bba843b518ec719a845a402aa8d7932a55f316f.png" />
 </div>
 </div>
 </section>
 <section id="cosine-lanczos">
-<h2><span class="section-number">4.2. </span>cosine-Lanczos<a class="headerlink" href="#cosine-lanczos" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2. </span>cosine-Lanczos<a class="headerlink" href="#cosine-lanczos" title="Permalink to this heading">#</a></h2>
 <p>The scipy signal processing package contains a number of pre-designed windows. Custom filters can also be generated with the <code class="docutils literal notranslate"><span class="pre">signal.firwin</span></code> function (FIR is short for “finite impulse response”).</p>
 <p>The ideal set of weights is a sinc function,</p>
 <div class="math notranslate nohighlight">
@@ -1057,10 +810,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x168a1da20&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13fa160d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/6-03-lobo-spectral-part2_26_1.png" src="_images/6-03-lobo-spectral-part2_26_1.png" />
+<img alt="_images/bd53cce46a0fec7cd11ed0fb51b0ba45cbf82b2a9c88ac16d6b20f17168759a9.png" src="_images/bd53cce46a0fec7cd11ed0fb51b0ba45cbf82b2a9c88ac16d6b20f17168759a9.png" />
 </div>
 </div>
 <p>However, the sinc function is not practical because it would require an infinite set of weights. We could truncate it, but this would lead to discontinuities at the edges. FIR filters apply a window to this function, keeping the middle the same, but tapering it off on the edges.</p>
@@ -1074,42 +827,42 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">File ~/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/scipy/signal/windows/_windows.py:2214,</span> in <span class="ni">get_window</span><span class="nt">(window, Nx, fftbins)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2213</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2214</span>     <span class="n">beta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2215</span> <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="nn">File ~/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/scipy/signal/windows/_windows.py:2344,</span> in <span class="ni">get_window</span><span class="nt">(window, Nx, fftbins)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2343</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2344</span>     <span class="n">beta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2345</span> <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 
 <span class="ne">ValueError</span>: could not convert string to float: &#39;hanning&#39;
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File ~/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/scipy/signal/windows/_windows.py:2232,</span> in <span class="ni">get_window</span><span class="nt">(window, Nx, fftbins)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2231</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2232</span>     <span class="n">winfunc</span> <span class="o">=</span> <span class="n">_win_equiv</span><span class="p">[</span><span class="n">winstr</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">2233</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="nn">File ~/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/scipy/signal/windows/_windows.py:2362,</span> in <span class="ni">get_window</span><span class="nt">(window, Nx, fftbins)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2361</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2362</span>     <span class="n">winfunc</span> <span class="o">=</span> <span class="n">_win_equiv</span><span class="p">[</span><span class="n">winstr</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">2363</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 
 <span class="ne">KeyError</span>: &#39;hanning&#39;
 
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">lancz_weights</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">firwin</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">40</span><span class="p">,</span><span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">window</span><span class="o">=</span><span class="s1">&#39;hanning&#39;</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/scipy/signal/_fir_filter_design.py:463,</span> in <span class="ni">firwin</span><span class="nt">(numtaps, cutoff, width, window, pass_zero, scale, nyq, fs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">461</span> <span class="c1"># Get and apply the window function.</span>
-<span class="g g-Whitespace">    </span><span class="mi">462</span> <span class="kn">from</span> <span class="nn">.windows</span> <span class="kn">import</span> <span class="n">get_window</span>
-<span class="ne">--&gt; </span><span class="mi">463</span> <span class="n">win</span> <span class="o">=</span> <span class="n">get_window</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">numtaps</span><span class="p">,</span> <span class="n">fftbins</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">464</span> <span class="n">h</span> <span class="o">*=</span> <span class="n">win</span>
-<span class="g g-Whitespace">    </span><span class="mi">466</span> <span class="c1"># Now handle scaling if desired.</span>
+<span class="nn">File ~/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/scipy/signal/_fir_filter_design.py:469,</span> in <span class="ni">firwin</span><span class="nt">(numtaps, cutoff, width, window, pass_zero, scale, nyq, fs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">467</span> <span class="c1"># Get and apply the window function.</span>
+<span class="g g-Whitespace">    </span><span class="mi">468</span> <span class="kn">from</span> <span class="nn">.windows</span> <span class="kn">import</span> <span class="n">get_window</span>
+<span class="ne">--&gt; </span><span class="mi">469</span> <span class="n">win</span> <span class="o">=</span> <span class="n">get_window</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">numtaps</span><span class="p">,</span> <span class="n">fftbins</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">470</span> <span class="n">h</span> <span class="o">*=</span> <span class="n">win</span>
+<span class="g g-Whitespace">    </span><span class="mi">472</span> <span class="c1"># Now handle scaling if desired.</span>
 
-<span class="nn">File ~/opt/miniconda3/envs/data-book/lib/python3.10/site-packages/scipy/signal/windows/_windows.py:2234,</span> in <span class="ni">get_window</span><span class="nt">(window, Nx, fftbins)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2232</span>     <span class="n">winfunc</span> <span class="o">=</span> <span class="n">_win_equiv</span><span class="p">[</span><span class="n">winstr</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">2233</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2234</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown window type.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
-<span class="g g-Whitespace">   </span><span class="mi">2236</span> <span class="k">if</span> <span class="n">winfunc</span> <span class="ow">is</span> <span class="n">dpss</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2237</span>     <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">Nx</span><span class="p">,)</span> <span class="o">+</span> <span class="n">args</span> <span class="o">+</span> <span class="p">(</span><span class="kc">None</span><span class="p">,)</span>
+<span class="nn">File ~/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/scipy/signal/windows/_windows.py:2364,</span> in <span class="ni">get_window</span><span class="nt">(window, Nx, fftbins)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2362</span>     <span class="n">winfunc</span> <span class="o">=</span> <span class="n">_win_equiv</span><span class="p">[</span><span class="n">winstr</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">2363</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2364</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown window type.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+<span class="g g-Whitespace">   </span><span class="mi">2366</span> <span class="k">if</span> <span class="n">winfunc</span> <span class="ow">is</span> <span class="n">dpss</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2367</span>     <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">Nx</span><span class="p">,)</span> <span class="o">+</span> <span class="n">args</span> <span class="o">+</span> <span class="p">(</span><span class="kc">None</span><span class="p">,)</span>
 
 <span class="ne">ValueError</span>: Unknown window type.
 </pre></div>
@@ -1139,12 +892,12 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11497a760&gt;]
 </pre></div>
 </div>
-<img alt="_images/6-03-lobo-spectral-part2_30_1.png" src="_images/6-03-lobo-spectral-part2_30_1.png" />
+<img alt="_images/3ae2d52dd6d4b02c3dc477528c3de86de18954bd2cb1fc561950083e5a09ebed.png" src="_images/3ae2d52dd6d4b02c3dc477528c3de86de18954bd2cb1fc561950083e5a09ebed.png" />
 </div>
 </div>
 </section>
 <section id="application-and-comparison">
-<h2><span class="section-number">4.3. </span>Application and comparison<a class="headerlink" href="#application-and-comparison" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3. </span>Application and comparison<a class="headerlink" href="#application-and-comparison" title="Permalink to this heading">#</a></h2>
 <p>For both sets of weights, the smoothed time series is obtained through covolution of the weights with the original time series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1169,7 +922,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;nitrate [$\\mu$M]&#39;)
 </pre></div>
 </div>
-<img alt="_images/6-03-lobo-spectral-part2_33_1.png" src="_images/6-03-lobo-spectral-part2_33_1.png" />
+<img alt="_images/f3d1fc208b4fe5304843c901023ccd32f795054d28b1c89cd5e1b160bdfe1692.png" src="_images/f3d1fc208b4fe5304843c901023ccd32f795054d28b1c89cd5e1b160bdfe1692.png" />
 </div>
 </div>
 <p>Both methods dampen the tidal signal in this time series. However, the cosine-Lanczos is more effective and generates a smoother time series.</p>
@@ -1188,7 +941,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1196,50 +949,124 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="6-02-lobo-spectral.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Spectral analysis example</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="6-02-lobo-spectral.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Spectral analysis example</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="6-04-filtering.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="6-04-filtering.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">5. </span>Filtering and Convolution</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">3.1. Loading data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-periodogram">3.2. Raw periodogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-periodograms">3.3. Modified periodograms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducing-the-raw-periodogram">Reproducing the raw periodogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-whitening">Pre-whitening</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#averaging-segments">Averaging segments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-sensible-window">Using a sensible window</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-spectral-estimates">Comparing spectral estimates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-and-degrees-of-freedom">3.4. Confidence intervals and degrees of freedom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.5. Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#low-pass-filtering-data">4. Low pass filtering data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-average-boxcar">4.1. Running average/boxcar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cosine-lanczos">4.2. cosine-Lanczos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-and-comparison">4.3. Application and comparison</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Tom Connolly<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Tom Connolly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
