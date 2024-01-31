@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/tconnolly/opt/miniconda3/envs/ms263-24/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+df = pd.read_csv('2023-06.csv')
+wbf = Fit_Weibull_ZI(np.array(df['wspd']),show_probability_plot=False,print_results=False)
+histogram(np.array(df['wspd']), bins = np.arange(0, 13, 0.5))
+wbf.distribution.PDF();
+plt.title('')
+plt.xlabel('wind speed [m/s]');
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[2], line 2[0m
+[1;32m      1[0m df [38;5;241m=[39m pd[38;5;241m.[39mread_csv([38;5;124m'[39m[38;5;124m2023-06.csv[39m[38;5;124m'[39m)
+[0;32m----> 2[0m wbf [38;5;241m=[39m Fit_Weibull_ZI([43mnp[49m[38;5;241m.[39marray(df[[38;5;124m'[39m[38;5;124mwspd[39m[38;5;124m'[39m]),show_probability_plot[38;5;241m=[39m[38;5;28;01mFalse[39;00m,print_results[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+[1;32m      3[0m histogram(np[38;5;241m.[39marray(df[[38;5;124m'[39m[38;5;124mwspd[39m[38;5;124m'[39m]), bins [38;5;241m=[39m np[38;5;241m.[39marange([38;5;241m0[39m, [38;5;241m13[39m, [38;5;241m0.5[39m))
+[1;32m      4[0m wbf[38;5;241m.[39mdistribution[38;5;241m.[39mPDF();
+
+[0;31mNameError[0m: name 'np' is not defined
+
