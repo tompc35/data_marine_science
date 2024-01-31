@@ -1,6 +1,6 @@
 name: data-book-env
 dependencies:
-  - python=3.10
+  - python=3.11
   - numpy
   - matplotlib
   - scipy
@@ -18,3 +18,4 @@ dependencies:
   - pip
   - pip:
     - PyCO2SYS
+    - reliability

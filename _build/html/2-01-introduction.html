@@ -439,6 +439,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-error">Standard Error</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-revisited-repreated-trials">Example revisited: repreated trials</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-sample-size">Importance of sample size</a></li>
 </ul>
 </li>
 </ul>
@@ -577,13 +578,32 @@ In this example, the bias is reduced by correcting for the temperature dependenc
 </div>
 </div>
 <p>Results from 100 repeated trials during same storm (N = 200 each trial). The <span class="math notranslate nohighlight">\(x\)</span>-axis is the same as that shown for the sample distribution above, to emphasize how the distribution of means clusters more tightly together. We can think of these repeated trials as different instruments measuring different waves in the same storm. Note that this is easy to do with a computer-generated example dataset, but not so easy to do in practices.</p>
-<p>Blue bars:
-Probability density of the mean of each trial (mean of all sample means = 4.99m)</p>
-<p>Orange curve:
-Normal distribution
-Mean = Mean of trial 1 (example distribution shown above).
-Standard deviation = Standard error of trial 1, SE = <span class="math notranslate nohighlight">\(s/\sqrt{N}\)</span></p>
+<p>Blue bars:</p>
+<ul class="simple">
+<li><p>Probability density of the mean of each trial (mean of all sample means = 4.99m)</p></li>
+</ul>
+<p>Orange curve:</p>
+<ul class="simple">
+<li><p>Normal distribution</p></li>
+<li><p>Mean = Mean of trial 1 (example distribution shown above).</p></li>
+<li><p>Standard deviation = Standard error of trial 1, <span class="math notranslate nohighlight">\(SE = s/\sqrt{N}\)</span></p></li>
+</ul>
 <p>The standard error from 1 set of samples, gives an estimate of standard deviation (spread) of the means.</p>
+</section>
+<section id="importance-of-sample-size">
+<h4>Importance of sample size<a class="headerlink" href="#importance-of-sample-size" title="Permalink to this heading">#</a></h4>
+<p>What if only 20 samples had been collected in each experiment, instead of 200? The samples do not describe the underlying normal distribution nearly as well.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/506a3804bf870624cc2975f6fed54649efad22b474c37eb4c99e53671a0de24b.png" src="_images/506a3804bf870624cc2975f6fed54649efad22b474c37eb4c99e53671a0de24b.png" />
+</div>
+</div>
+<p>If we repeat the trials with 20 samples each, the distribution of the means is broader. We have less confidence that sample mean from an individual trial accurately represents the true mean. This is reflected in a larger standard error, <span class="math notranslate nohighlight">\(SE = s/\sqrt{N}\)</span>. We will see later that the standard error forms the basis for confidence intervals of the mean, a common way of describing uncertainty.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/80be01cf7044b4ae05abf729da75015187d2defa93aae30a2b482d90e135ef36.png" src="_images/80be01cf7044b4ae05abf729da75015187d2defa93aae30a2b482d90e135ef36.png" />
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -680,6 +700,7 @@ Standard deviation = Standard error of trial 1, SE = <span class="math notransla
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-error">Standard Error</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-revisited-repreated-trials">Example revisited: repreated trials</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-sample-size">Importance of sample size</a></li>
 </ul>
 </li>
 </ul>

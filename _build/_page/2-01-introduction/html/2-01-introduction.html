@@ -1,0 +1,680 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Sampling and statistics: Introduction &#8212; Data Analysis Techniques in Marine Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2-01-introduction';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/course-logo.png" class="logo__image only-light" alt="Data Analysis Techniques in Marine Science - Home"/>
+    <script>document.write(`<img src="_static/course-logo.png" class="logo__image only-dark" alt="Data Analysis Techniques in Marine Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Sampling and statistics: Introduction
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/2-01-introduction.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2-01-introduction.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sampling and statistics: Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-questions">Focus questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-data">Types of Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-measurements">Types of Measurements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-error">Types of Error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-distributions-probability-density">Sample distributions, probability density</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution">Cumulative distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-statistics">Descriptive statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">Mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-error">Standard Error</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-revisited-repreated-trials">Example revisited: repreated trials</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-sample-size">Importance of sample size</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sampling-and-statistics-introduction">
+<h1>Sampling and statistics: Introduction<a class="headerlink" href="#sampling-and-statistics-introduction" title="Permalink to this heading">#</a></h1>
+<section id="key-concepts">
+<h2>Key concepts<a class="headerlink" href="#key-concepts" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>types of data</p></li>
+<li><p>types of error</p></li>
+<li><p>mean</p></li>
+<li><p>variance</p></li>
+<li><p>normal distribution</p></li>
+<li><p>skewed distribution</p></li>
+<li><p>standard deviation</p></li>
+<li><p>standard error</p></li>
+</ul>
+</section>
+<section id="focus-questions">
+<h2>Focus questions<a class="headerlink" href="#focus-questions" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>What is the difference between accuracy and precision?</p></li>
+<li><p>What are sources of error in the data you work with?</p></li>
+<li><p>What is the difference between the standard deviation and standard error?</p></li>
+</ul>
+</section>
+<section id="types-of-data">
+<h2>Types of Data<a class="headerlink" href="#types-of-data" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Discrete</strong> - represented by an integer (whole number)- counts, presence/absence <br></p></li>
+<li><p><strong>Continuous</strong> - represented by real<sup>1</sup> numbers (e.g. temperature, wave speed, length of an organism, concentration)  <br></p></li>
+<li><p><strong>Categorical</strong> - examples: species, sediment type, hair color, site # <br></p></li>
+<li><p><strong>Metadata</strong> - “data describing data”</p></li>
+</ul>
+<p><sup>1</sup> <em>Actually, vectors can be represented as complex numbers with an imaginary part</em></p>
+</section>
+<section id="types-of-measurements">
+<h2>Types of Measurements<a class="headerlink" href="#types-of-measurements" title="Permalink to this heading">#</a></h2>
+<p><strong>Nominal</strong> - categories of equal rank<br></p>
+<ul class="simple">
+<li><p>Species Description (phytoplankton types: diatoms, coccolithophores, etc.)</p></li>
+</ul>
+<p><strong>Ordinal</strong> - Categories have a logically defined rank. Steps arent equal in size or quantifiable</p>
+<ul class="simple">
+<li><p>Visual classification of sediment grains: angularity and sphericity</p></li>
+<li><p>Hurricane scale: ranking is not equivalent to strength</p></li>
+<li><p>Beaufort Wind Scale: Mariner estimate of wind from wave climate. Categories are defined in a logical order, but a sea state of 10 is not necessarily indicate that the winds are twice as strong as a sea state of 5.</p></li>
+</ul>
+<p><strong>Scale</strong>: <strong>interval</strong> and <strong>ratio</strong></p>
+<ul class="simple">
+<li><p><strong>interval scale</strong>: constant succesive intervals, but the reference point is arbitrary e.g. Fahrenheit temperature scale</p></li>
+<li><p><strong>ratio scale</strong>: natural zero point (ex: length, mass, Kelvin temperature scale)</p></li>
+</ul>
+</section>
+<section id="types-of-error">
+<h2>Types of Error<a class="headerlink" href="#types-of-error" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Systematic error</strong>  - systematically repeatable biased, i.e. some pattern in how they vary <br></p></li>
+<li><p><strong>Random error</strong> - Impercise, but unbiased. Noise.</p></li>
+</ul>
+<p><img alt="error" src="_images/error_type.png" /></p>
+<p><strong>Measurement precision</strong><br>
+You would not record a value from a ruler to 3.7567453 cm if your ruler only has mm hash marks</p>
+<p>Rounding introduces error into your calculations, so in general it is better to use all of the digits that you have and round off to the significant digit when reporting the value</p>
+<p><strong>Drift</strong> - a systematic error that changes over time</p>
+<p><img alt="Nitrate Profile" src="_images/nitrate_profile_smooth.png" /></p>
+<p>Johnson, K. S., and L. J. Coletti, 2002: In situ ultraviolet spectrophotometry for high resolution and long-term monitoring of nitrate, bromide and bisulfide in the ocean. <em>Deep Sea Res. Part I Oceanogr. Res. Pap.</em>, 49, 1291–1305, doi:10.1016/S0967-0637(02)00020-1.</p>
+<p>Bottle data (squares): chemically derived values of nitrate (low resolution, high precision)<br>
+ISUS Nitrate Sensor (High resolution, systematic error (underreported values compared to bottle casts) , instrument noise (small scale random error))</p>
+<p>Smoothing reduces noise, but there is a trade-off: lowers resolution<br>
+In this example, the bias is reduced by correcting for the temperature dependence of the sensor.</p>
+</section>
+<section id="sample-distributions-probability-density">
+<h2>Sample distributions, probability density<a class="headerlink" href="#sample-distributions-probability-density" title="Permalink to this heading">#</a></h2>
+<p>As an example, consider a distribution of 200 wave heights observed during an extreme wave event (N = 200 samples). This is actually a synthetic (computer-generated) data set, but it is based on a similar observed data set in Emery and Thomson, Section 3.8.4. The mean of the 200 samples <span class="math notranslate nohighlight">\(\bar{x}\)</span> is 5.08 m and the standard deviation of the 200 samples <span class="math notranslate nohighlight">\(s\)</span> is 1.18 m.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/9fa98b56a16887b7b6df4aa646368b247772b05f6d9c0a492a514a073ecacb9f.png" src="_images/9fa98b56a16887b7b6df4aa646368b247772b05f6d9c0a492a514a073ecacb9f.png" />
+</div>
+</div>
+<p>The bars show the sample distribution, or the probability distribution of the 200 samples. The wave heights are separated into categories and divided in to bins of width <span class="math notranslate nohighlight">\(\Delta x\)</span>. The height of each bar represents a <em>probability density</em>.</p>
+<p><em>Probability density</em> = (fraction of samples in bin)/<span class="math notranslate nohighlight">\(\Delta x\)</span></p>
+<p>The total area of the blue bars (the sample distribution) is equal to 1. In other words, the sum of all of the fractions has to equal 1.</p>
+<p>The orange line is a hypothetical <em>normal distribution</em>. The shape of this hypothetical distribution is defined by two parameters: the mean and standard deviation. This theoretical curve has the same mean and standard deviation as the sample distribution. Statistical techniques often rely on the assumption of theoretical probability distribution to simplify the mathematics involved.</p>
+<p>The integral of the area under the orange curve (the theoretical normal distribution) is equal to 1, just like the area of the sample distribution. This is the case for all probability density functions. The integral, or area under the curve, has to equal 1.</p>
+<section id="cumulative-distribution">
+<h3>Cumulative distribution<a class="headerlink" href="#cumulative-distribution" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/14c69192e0e89f180b5de3d154f0d542abf7dda71e50da92cf29c394a65b7158.png" src="_images/14c69192e0e89f180b5de3d154f0d542abf7dda71e50da92cf29c394a65b7158.png" />
+</div>
+</div>
+<p>The figure above shows the same sample and theoretical distributions as before, this time expressed as cumulative probability. This is the probability that the data fall with a given interval <em>or less</em>.</p>
+</section>
+</section>
+<section id="descriptive-statistics">
+<h2>Descriptive statistics<a class="headerlink" href="#descriptive-statistics" title="Permalink to this heading">#</a></h2>
+<section id="mean">
+<h3>Mean<a class="headerlink" href="#mean" title="Permalink to this heading">#</a></h3>
+<p>With a finite number of <span class="math notranslate nohighlight">\(N\)</span> samples, the <strong>true mean</strong> of a population, <span class="math notranslate nohighlight">\(\mu\)</span> (“mu”), can be <em>estimated</em> by the sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[ \bar{x} = \frac{1}{N}\sum_{i=1}^{N}{x_i} = \frac{1}{N}(x_1+x_2+x_3+....+x_N) \]</div>
+</section>
+<section id="variance">
+<h3>Variance<a class="headerlink" href="#variance" title="Permalink to this heading">#</a></h3>
+<p><strong>Variance</strong> describes the spread of the data. The sample variance is equal to the sample <strong>standard deviation</strong> squared (<span class="math notranslate nohighlight">\(s^2\)</span>). The sample variance is an estimate of the true variance (<span class="math notranslate nohighlight">\(\sigma^2\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[s^2 = \frac{1}{N-1}\sum_{i=1}^N(x_i-\bar{x})^2,\]</div>
+<p>where <span class="math notranslate nohighlight">\(N-1\)</span> is the <strong>degrees of freedom</strong>. Degrees of freedom are the number of independent pieces of information. The variance of one sample (<span class="math notranslate nohighlight">\(N=1\)</span>) is essentially meaningless because it is always equal to zero, no matter what the value of the sample is. In this case, there are no degrees of freedom. Calculating the variance/standard deviation with <span class="math notranslate nohighlight">\(N-1\)</span> in the denominator is called the <strong>unbiased</strong> estimate of the true standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>The variance is <strong>positive definite</strong> because it is the sum of squared values and therefore cannot be negative.</p>
+</section>
+<section id="standard-error">
+<h3>Standard Error<a class="headerlink" href="#standard-error" title="Permalink to this heading">#</a></h3>
+<p>The <strong>standard error</strong> describes how well the sample mean describes the true mean</p>
+<div class="math notranslate nohighlight">
+\[ SE = \frac{s}{\sqrt{N}}. \]</div>
+<p>The standard error does not describe the spread of the data, it describes the how well the sample mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span>, represents the true mean, <span class="math notranslate nohighlight">\(\mu\)</span>. The standard error can thought of as an estimate of the standard deviation of <span class="math notranslate nohighlight">\((\bar{x} - \mu)\)</span>, after many repeated experiments with <span class="math notranslate nohighlight">\(N\)</span> samples.</p>
+<section id="example-revisited-repreated-trials">
+<h4>Example revisited: repreated trials<a class="headerlink" href="#example-revisited-repreated-trials" title="Permalink to this heading">#</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/f141ab7afe3961ddefabb4d3eb6e300c126644ff1c0c7752aa6bfea5143efe38.png" src="_images/f141ab7afe3961ddefabb4d3eb6e300c126644ff1c0c7752aa6bfea5143efe38.png" />
+</div>
+</div>
+<p>Results from 100 repeated trials during same storm (N = 200 each trial). The <span class="math notranslate nohighlight">\(x\)</span>-axis is the same as that shown for the sample distribution above, to emphasize how the distribution of means clusters more tightly together. We can think of these repeated trials as different instruments measuring different waves in the same storm. Note that this is easy to do with a computer-generated example dataset, but not so easy to do in practices.</p>
+<p>Blue bars:</p>
+<ul class="simple">
+<li><p>Probability density of the mean of each trial (mean of all sample means = 4.99m)</p></li>
+</ul>
+<p>Orange curve:</p>
+<ul class="simple">
+<li><p>Normal distribution</p></li>
+<li><p>Mean = Mean of trial 1 (example distribution shown above).</p></li>
+<li><p>Standard deviation = Standard error of trial 1, <span class="math notranslate nohighlight">\(SE = s/\sqrt{N}\)</span></p></li>
+</ul>
+<p>The standard error from 1 set of samples, gives an estimate of standard deviation (spread) of the means.</p>
+</section>
+<section id="importance-of-sample-size">
+<h4>Importance of sample size<a class="headerlink" href="#importance-of-sample-size" title="Permalink to this heading">#</a></h4>
+<p>What if only 20 samples had been collected in each experiment, instead of 200? The samples do not describe the underlying normal distribution nearly as well.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/506a3804bf870624cc2975f6fed54649efad22b474c37eb4c99e53671a0de24b.png" src="_images/506a3804bf870624cc2975f6fed54649efad22b474c37eb4c99e53671a0de24b.png" />
+</div>
+</div>
+<p>If we repeat the trials with 20 samples each, the distribution of the means is broader. We have less confidence that sample mean from an individual trial accurately represents the true mean. This is reflected in a larger standard error, <span class="math notranslate nohighlight">\(SE = s/\sqrt{N}\)</span>. We will see later that the standard error forms the basis for confidence intervals of the mean, a common way of describing uncertainty.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/80be01cf7044b4ae05abf729da75015187d2defa93aae30a2b482d90e135ef36.png" src="_images/80be01cf7044b4ae05abf729da75015187d2defa93aae30a2b482d90e135ef36.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this heading">#</a></h2>
+<p>Glover, Jenkins and Doney – Modeling Methods (GJD)</p>
+<ul class="simple">
+<li><p>Sections 2.1-2 - Measurement Theory</p></li>
+</ul>
+<p>Statistical Thinking for the 21st Century (ST21):</p>
+<ul class="simple">
+<li><p>Chapter 1: Introduction</p></li>
+<li><p>Chapter 2: Working with data</p></li>
+<li><p>Chapter 4: Summarizing data</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-questions">Focus questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-data">Types of Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-measurements">Types of Measurements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-error">Types of Error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-distributions-probability-density">Sample distributions, probability density</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution">Cumulative distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-statistics">Descriptive statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">Mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-error">Standard Error</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-revisited-repreated-trials">Example revisited: repreated trials</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-sample-size">Importance of sample size</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Connolly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

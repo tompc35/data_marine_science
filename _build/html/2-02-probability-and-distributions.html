@@ -458,15 +458,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="probability-and-distributions">
 <h1><span class="section-number">2. </span>Probability and distributions<a class="headerlink" href="#probability-and-distributions" title="Permalink to this heading">#</a></h1>
-<div class="cell tag_hide_input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 </div>
 <section id="focus-questions">
 <h2><span class="section-number">2.1. </span>Focus questions<a class="headerlink" href="#focus-questions" title="Permalink to this heading">#</a></h2>
@@ -489,60 +481,14 @@ document.write(`
 <p><strong>Probability Functions</strong></p>
 <p><span class="math notranslate nohighlight">\(P(x)\)</span> = probability mass function (for discrete data)</p>
 <p><em>Example:</em> The probability an number <span class="math notranslate nohighlight">\(x\)</span> coming up on a dice role. The PMF is plotted as vertical lines because the probability of rolling a non-integer (e.g. 3.5) is equal to zero.</p>
-<div class="cell tag_hide_input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a uniform distribution</span>
-<span class="c1"># see https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.randint.html#scipy.stats.randint</span>
-<span class="n">low</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">high</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">rv</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
-
-<span class="c1"># plot the probability mass function</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">low</span><span class="p">,</span><span class="n">high</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.175</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;probability mass function (PMF) for a roll of one die&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;probability&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/15d451e078b39e20d4b7cb66332e584de1ed2e4f6f766f28c1721a7eb98591b5.png" src="_images/15d451e078b39e20d4b7cb66332e584de1ed2e4f6f766f28c1721a7eb98591b5.png" />
+<img alt="_images/f9c29b076e096759beb13e6dcbe38e2be7a0155d1ebd02190e338a7fc0c9fa40.png" src="_images/f9c29b076e096759beb13e6dcbe38e2be7a0155d1ebd02190e338a7fc0c9fa40.png" />
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(F(x)\)</span> = cumulative distribution function (CDF)</p>
 <p>The cumulative distribution is the probability of occurrence of a value of <span class="math notranslate nohighlight">\(x\)</span> or lower. For the example of one die roll, the CDF is a step function.</p>
-<div class="cell tag_hide_input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a step function from points, function adapted from http://stackoverflow.com/a/41185239</span>
-<span class="k">def</span> <span class="nf">get_x_y_steps</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">):</span>
-    <span class="n">zipxx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
-    <span class="n">zipyy</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">where</span> <span class="o">==</span> <span class="s2">&quot;post&quot;</span><span class="p">:</span>
-        <span class="n">x_step</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="n">_x</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">zipxx</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">_x</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">]</span>
-        <span class="n">y_step</span> <span class="o">=</span> <span class="p">[</span><span class="n">_y</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">zipyy</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">_y</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-    <span class="k">elif</span> <span class="n">where</span> <span class="o">==</span> <span class="s2">&quot;pre&quot;</span><span class="p">:</span>
-        <span class="n">x_step</span> <span class="o">=</span> <span class="p">[</span><span class="n">_x</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">zipxx</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">_x</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-        <span class="n">y_step</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="n">_y</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">zipyy</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">_y</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">x_step</span><span class="p">,</span> <span class="n">y_step</span>
-
-<span class="c1"># create step function for CDF</span>
-<span class="n">xcdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">ycdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">rv</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">1</span><span class="p">])</span>
-<span class="p">(</span><span class="n">x_step</span><span class="p">,</span><span class="n">y_step</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_x_y_steps</span><span class="p">(</span><span class="n">xcdf</span><span class="p">,</span><span class="n">ycdf</span><span class="p">)</span>
-
-<span class="c1"># plot CDF</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_step</span><span class="p">,</span> <span class="n">y_step</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;cumulative distribution function (CDF) for a roll of one die&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;probability&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/9e88b677b482a4dc837b77c886894c060555ff56cb12934c7e8558958f03a7bf.png" src="_images/9e88b677b482a4dc837b77c886894c060555ff56cb12934c7e8558958f03a7bf.png" />
 </div>
@@ -590,6 +536,7 @@ document.write(`
 <section id="normal-distribution">
 <h3>Normal Distribution<a class="headerlink" href="#normal-distribution" title="Permalink to this heading">#</a></h3>
 <p><img alt="Normal dist" src="_images/Standard_deviation_diagram.png" /></p>
+<p>Image credit: Ainali, CC BY-SA 3.0 <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0">https://creativecommons.org/licenses/by-sa/3.0</a>, via Wikimedia Commons</p>
 <ul class="simple">
 <li><p><strong>Mean</strong> - 1st moment</p></li>
 <li><p><strong>Variance</strong> - 2nd moment</p></li>
@@ -599,10 +546,13 @@ document.write(`
 </section>
 <section id="non-normal-distributions">
 <h3>Non-normal distributions<a class="headerlink" href="#non-normal-distributions" title="Permalink to this heading">#</a></h3>
-<p><strong>Example: Life expectancy</strong></p>
-<p>Negative skew towards later life (spike at birth). The cumulative probability function is useful because we are not necessarily interested in the probability of dying at a very specific age, like exactly 67 years. We are more interested in the probability of living until a certain age or less. The cumulative probability distribution tapers off to one for very high ages. The probability of living to 120 years or less is equal to one.</p>
-<p><img alt="life expectancy" src="_images/life_expectancy_1.png" /></p>
-<p>source: <a class="reference external" href="http://www.cureffi.org/2013/06/19/how-censoring-by-life-expectancy-affects-age-of-onset-distributions/">http://www.cureffi.org/2013/06/19/how-censoring-by-life-expectancy-affects-age-of-onset-distributions/</a></p>
+<!-- __Example: Life expectancy__
+
+Negative skew towards later life (spike at birth). The cumulative probability function is useful because we are not necessarily interested in the probability of dying at a very specific age, like exactly 67 years. We are more interested in the probability of living until a certain age or less. The cumulative probability distribution tapers off to one for very high ages. The probability of living to 120 years or less is equal to one.
+
+![life expectancy](images/life_expectancy_1.png)
+
+source: http://www.cureffi.org/2013/06/19/how-censoring-by-life-expectancy-affects-age-of-onset-distributions/ -->
 </section>
 <section id="poisson-distribution">
 <h3>Poisson Distribution<a class="headerlink" href="#poisson-distribution" title="Permalink to this heading">#</a></h3>
@@ -631,8 +581,11 @@ document.write(`
 <section id="weibull-distribution">
 <h3>Weibull Distribution<a class="headerlink" href="#weibull-distribution" title="Permalink to this heading">#</a></h3>
 <p>A theoretical distribution that is often fit to wind speed data. Wind speed has only positive values, so the probability of a negative wind speed is zero. The distribution of wind speed is generally <strong>skewed</strong>, since very high values do occur, but are rare. This theoretical distribution is useful for engineering wind power projects, since it can be defined by a few parameters. The parameters obtained from a fit to data at a given location can be used as inputs to models for designing equipment with maximum efficiency.</p>
-<p><img alt="weibull distribution" src="_images/weibull.png" /></p>
-<p>Source: <a class="reference external" href="http://www.wind-powemr-program.com/wind_statistics.htm">http://www.wind-powemr-program.com/wind_statistics.htm</a></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/eb4326e79bb4e65625aacc165e31b67b68adab3437e4ed424a63a7bee54b0d80.png" src="_images/eb4326e79bb4e65625aacc165e31b67b68adab3437e4ed424a63a7bee54b0d80.png" />
+</div>
+</div>
 </section>
 <section id="log-normal-distribution">
 <h3>Log-Normal Distribution<a class="headerlink" href="#log-normal-distribution" title="Permalink to this heading">#</a></h3>
