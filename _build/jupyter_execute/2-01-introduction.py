@@ -114,7 +114,7 @@ plt.ylabel('cumulative probability');
 
 
 # The figure above shows the same sample and theoretical distributions as before, this time expressed as cumulative probability. This is the probability that the data fall with a given interval *or less*.
-# 
+
 # ## Descriptive statistics
 # 
 # ### Mean 
@@ -163,14 +163,53 @@ plt.ylabel('probability density\nfraction/m');
 # Results from 100 repeated trials during same storm (N = 200 each trial). The $x$-axis is the same as that shown for the sample distribution above, to emphasize how the distribution of means clusters more tightly together. We can think of these repeated trials as different instruments measuring different waves in the same storm. Note that this is easy to do with a computer-generated example dataset, but not so easy to do in practices.
 # 
 # Blue bars:
-# Probability density of the mean of each trial (mean of all sample means = 4.99m)
+# - Probability density of the mean of each trial (mean of all sample means = 4.99m)
 # 
 # Orange curve: 
-# Normal distribution
-# Mean = Mean of trial 1 (example distribution shown above).
-# Standard deviation = Standard error of trial 1, SE = $s/\sqrt{N}$
+# - Normal distribution
+# - Mean = Mean of trial 1 (example distribution shown above).
+# - Standard deviation = Standard error of trial 1, $SE = s/\sqrt{N}$
 # 
 # The standard error from 1 set of samples, gives an estimate of standard deviation (spread) of the means.
+
+# #### Importance of sample size
+# 
+# What if only 20 samples had been collected in each experiment, instead of 200? The samples do not describe the underlying normal distribution nearly as well. 
+
+# In[4]:
+
+
+np.random.seed(1)
+data = np.random.normal(5,scale=1.15,size=20)
+
+x = np.linspace(min(data)-1, max(data)+1, 1000)
+
+plt.hist(data,bins=10,density=True)
+plt.plot(x, stats.norm.pdf(x, np.mean(data), np.std(data)))
+plt.title('wave heights during storm, N = 20')
+plt.xlabel('wave height [m]')
+plt.ylabel('probability density\nfraction/m')
+plt.xlim(xl);
+
+
+# If we repeat the trials with 20 samples each, the distribution of the means is broader. We have less confidence that sample mean from an individual trial accurately represents the true mean. This is reflected in a larger standard error, $SE = s/\sqrt{N}$. We will see later that the standard error forms the basis for confidence intervals of the mean, a common way of describing uncertainty.
+
+# In[5]:
+
+
+Nsub = 10
+xm = np.nan*np.ones(100)
+
+for i in range(100):
+    xm[i] = np.mean(np.random.normal(5,scale=1.15,size=20))
+
+plt.figure()
+plt.hist(xm,density=True)
+plt.plot(x, stats.norm.pdf(x, np.mean(data), np.std(data)/np.sqrt(15)))
+plt.xlim(xl)
+plt.xlabel('wave height [m]')
+plt.ylabel('probability density\nfraction/m');
+
 
 # ## Further Reading
 # 

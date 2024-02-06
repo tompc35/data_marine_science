@@ -10,6 +10,9 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
 from scipy import stats
 import matplotlib.pyplot as plt
+import pandas as pd
+from reliability.Fitters import Fit_Weibull_ZI
+from reliability.Other_functions import histogram
 
 
 # ## Focus questions
@@ -46,7 +49,7 @@ rv = stats.randint(low, high)
 x = np.arange(low,high)
 plt.vlines(x, 0, rv.pmf(x), colors='b', linestyles='-', lw=3)
 plt.xlim(0.5,6.5)
-plt.ylim(0,0.175)
+plt.ylim(0,1)
 plt.title('probability mass function (PMF) for a roll of one die')
 plt.xlabel('value')
 plt.ylabel('probability');
@@ -145,6 +148,8 @@ plt.ylabel('probability');
 # 
 # ![Normal dist](images/Standard_deviation_diagram.png)
 # 
+# Image credit: Ainali, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons
+# 
 # * __Mean__ - 1st moment
 # * __Variance__ - 2nd moment
 # * __Skew__ - 3rd moment, Describes the spread (Normal Distribution, skew = 0)
@@ -152,13 +157,13 @@ plt.ylabel('probability');
 # 
 # ### Non-normal distributions
 # 
-# __Example: Life expectancy__
+# <!-- __Example: Life expectancy__
 # 
 # Negative skew towards later life (spike at birth). The cumulative probability function is useful because we are not necessarily interested in the probability of dying at a very specific age, like exactly 67 years. We are more interested in the probability of living until a certain age or less. The cumulative probability distribution tapers off to one for very high ages. The probability of living to 120 years or less is equal to one.
 # 
 # ![life expectancy](images/life_expectancy_1.png)
 # 
-# source: http://www.cureffi.org/2013/06/19/how-censoring-by-life-expectancy-affects-age-of-onset-distributions/
+# source: http://www.cureffi.org/2013/06/19/how-censoring-by-life-expectancy-affects-age-of-onset-distributions/ -->
 # 
 # 
 # ### Poisson Distribution
@@ -185,12 +190,18 @@ plt.ylabel('probability');
 # ### Weibull Distribution 
 # 
 # A theoretical distribution that is often fit to wind speed data. Wind speed has only positive values, so the probability of a negative wind speed is zero. The distribution of wind speed is generally __skewed__, since very high values do occur, but are rare. This theoretical distribution is useful for engineering wind power projects, since it can be defined by a few parameters. The parameters obtained from a fit to data at a given location can be used as inputs to models for designing equipment with maximum efficiency.
-# 
-# ![weibull distribution](images/weibull.png)
-# 
-# Source: http://www.wind-powemr-program.com/wind_statistics.htm
-# 
-# 
+
+# In[4]:
+
+
+df = pd.read_csv('data/mlml-weather/2023-06.csv')
+wbf = Fit_Weibull_ZI(np.array(df['wspd']),show_probability_plot=False,print_results=False)
+histogram(np.array(df['wspd']), bins = np.arange(0, 13, 0.5))
+wbf.distribution.PDF();
+plt.title('MLML Weather Station\nJune 2023')
+plt.xlabel('wind speed [m/s]');
+
+
 # ### Log-Normal Distribution 
 # 
 # Many biological data, such as growth rates, follow a log-normal distribution. The distributions are skewed, with a peak close to zero but a long tail of rare high values. These data can be transformed by taking the logarithm, giving a distribution that is more symmetric and closer to a normal distribution.
