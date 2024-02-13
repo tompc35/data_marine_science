@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '1-04-cruise-data-analysis';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -461,7 +463,7 @@ document.write(`
 <section id="wcoa-2013-data-set">
 <h2><span class="section-number">4.1. </span>WCOA 2013 data set<a class="headerlink" href="#wcoa-2013-data-set" title="Permalink to this heading">#</a></h2>
 <p>To download the data used in this tutorial, use the following command in the Terminal (Mac) or Git Bash (Windows).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mlmldata</span><span class="o">/</span><span class="n">wcoa_cruise</span><span class="o">.</span><span class="n">git</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mlmldata24</span><span class="o">/</span><span class="n">wcoa_cruise</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
 <p>The data comes from the West Coast Ocean Acidification (WCOA) cruise in 2013. The goal of this NOAA-supported research cruise is to collect data to help understand the effects of coastal upwelling on ocean acidification, and the impacts of ocean acidification on organisms and ecosystems. <a class="reference external" href="https://www.youtube.com/watch?v=Eesi6e03Yx0&amp;t=134s">This video</a> gives an idea of life aboard the ship and the type of science operations conducted.</p>
@@ -489,7 +491,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/z7/lmyk7sz94177j166ck0x63h80000gr/T/ipykernel_55859/3121988433.py:2: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/z7/lmyk7sz94177j166ck0x63h80000gr/T/ipykernel_28372/3121988433.py:2: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
   df = pd.read_csv(filename,header=31,na_values=-999,
 </pre></div>
 </div>
@@ -883,7 +885,7 @@ Name: CTDTMP, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12b548ed0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x134c4dbd0&gt;]
 </pre></div>
 </div>
 <img alt="_images/6cd9df197153c91b85f8eb9f8e42e154432b6336f1f232e8e41a41142251c7f3.png" src="_images/6cd9df197153c91b85f8eb9f8e42e154432b6336f1f232e8e41a41142251c7f3.png" />
@@ -898,7 +900,7 @@ Name: CTDTMP, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x12f8c15d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x134c19850&gt;
 </pre></div>
 </div>
 <img alt="_images/cf06f33568c4e56159de0117470cdd9e216dabeaf1d8b6fc36150e2e6fdd9c21.png" src="_images/cf06f33568c4e56159de0117470cdd9e216dabeaf1d8b6fc36150e2e6fdd9c21.png" />
@@ -2013,7 +2015,10 @@ Name: CTDTMP, dtype: float64
 <li><p>9 = sample not drawn.</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p>Create a new DataFrame called <code class="docutils literal notranslate"><span class="pre">dfsub1</span></code> that excludes all bad, questionable and missing pH values. Plot the probability density function for pH.</p></li>
+<li><ol class="arabic simple">
+<li><p>Create a new DataFrame called <code class="docutils literal notranslate"><span class="pre">dfsub1</span></code> that includes only data where pressure is less than 10 dbar and the latitude is farher north than <span class="math notranslate nohighlight">\(40^{\circ} \text{N}\)</span>.</p></li>
+</ol>
+</li>
 </ol>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
