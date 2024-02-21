@@ -464,19 +464,19 @@ document.write(`
 <p>Correlation <span class="math notranslate nohighlight">\(\neq\)</span> Causation</p>
 <ul class="simple">
 <li><p>If two variables are correlated, variability in one variable <em>might</em> cause variability in the other. Or there may be another underlying variable that causes variations in both.</p></li>
-<li><p>Statistically significant correlations may be <em>spurious</em> - see examples at <a class="reference external" href="https://tylervigen.com/spurious-correlations">https://tylervigen.com/spurious-correlations</a></p></li>
+<li><p>Statistically significant correlations may be <em>spurious</em> (like the one below) - this and other examples can be found at <a class="reference external" href="https://tylervigen.com/spurious-correlations">https://tylervigen.com/spurious-correlations</a></p></li>
 </ul>
 <p><img alt="images/correlation-causation-cage.png" src="_images/correlation-causation-cage.png" /></p>
 <p>The caclulation of correlation is based on covariance.</p>
 <p>The <strong>variance</strong> <span class="math notranslate nohighlight">\(s_x^2\)</span> has to be positive.</p>
 <div class="math notranslate nohighlight">
-\[ s_x^2 = \frac{1}{N-1}\sum_{i=1}^N (x_i - \bar{x})(x_i - \bar{x})\]</div>
-<p>The <strong>covariance</strong> <span class="math notranslate nohighlight">\(s_{xy}^2\)</span> can be positive or negative.  If <span class="math notranslate nohighlight">\(x_i\)</span> tends to be above the mean <span class="math notranslate nohighlight">\(\bar{x}\)</span> when <span class="math notranslate nohighlight">\(y_i\)</span> tends to be above the mean, then the covariance is positive</p>
+\[ s_x^2 = C_{xx} = \frac{1}{N-1}\sum_{i=1}^N (x_i - \bar{x})(x_i - \bar{x})\]</div>
+<p>The <strong>covariance</strong> <span class="math notranslate nohighlight">\(C_{xy}\)</span> can be positive or negative.  If <span class="math notranslate nohighlight">\(x_i\)</span> tends to be above the mean <span class="math notranslate nohighlight">\(\bar{x}\)</span> when <span class="math notranslate nohighlight">\(y_i\)</span> tends to be above the mean, then the covariance is positive</p>
 <div class="math notranslate nohighlight">
-\[ s_{xy}^2 = \frac{1}{N-1}\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})\]</div>
+\[ C_{xy} = \frac{1}{N-1}\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})\]</div>
 <p>The <em>Pearson correlation coefficient</em> is the normalized covariance between two variables.</p>
 <div class="math notranslate nohighlight">
-\[ r_{xy} = \frac{s_{xy}^2}{s_x s_y}\]</div>
+\[ r_{xy} = \frac{C_{xy}}{s_x s_y}\]</div>
 <section id="varying-degrees-of-correlation">
 <h3>Varying degrees of correlation<a class="headerlink" href="#varying-degrees-of-correlation" title="Permalink to this heading">#</a></h3>
 <p>There may be a pattern in the data, but a linear model may not be appropriate.</p>
@@ -723,28 +723,29 @@ document.write(`
 <section id="linear-regression-type-ii">
 <h3>Linear regression (Type II)<a class="headerlink" href="#linear-regression-type-ii" title="Permalink to this heading">#</a></h3>
 <p>Type 2 regression is the case where there are potentially errors or uncertainty in both the x and y variables. In a Type 1 regression, one variable needs to be selected as the independent variable (<span class="math notranslate nohighlight">\(x\)</span>) and another needs to be the dependent variable (<span class="math notranslate nohighlight">\(y\)</span>). The least-squares method in the Type I approach minimizes the sum of squared errors <span class="math notranslate nohighlight">\(\sum(\hat{y}-y)^2\)</span>. Errors in the <span class="math notranslate nohighlight">\(x\)</span> variable are not considered in the Type 1 approach.</p>
-<p><img alt="images/type_2_reg.png" src="_images/type_2_reg.png" /></p>
-<p>Image: Emery and Thomson</p>
-<p>Reference for Geometric Mean Function Regression (GMFR, a.k.a. neutral regression):</p>
-<p>Ricker, W. E. Computation and uses of central trend lines
-Can. J. Zool., 1984, 62, 1897-1905</p>
-<p><strong>Calculating Geometric Mean Function Regression</strong></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\hat{a}_{2yx}\)</span> : slope of regression of y on x</p></li>
-<li><p><span class="math notranslate nohighlight">\(\hat{a}_{2xy}\)</span> : slope of regression of y on x</p></li>
-<li><p>Geometric mean: <span class="math notranslate nohighlight">\(\hat{a}_{2GM} = \sqrt{\frac{\hat{a}_{2yx}} {\hat{a}_{2xy}}}\)</span></p></li>
-</ul>
 <section id="simplest-type-2-regression-the-geometric-mean">
 <h4>Simplest Type 2 regression - the geometric mean<a class="headerlink" href="#simplest-type-2-regression-the-geometric-mean" title="Permalink to this heading">#</a></h4>
+<p>The geometric mean regression is based on the two different Type 1 regression lines that result depending on which variable is “x” and which is “y”. Take, for example, the two Type 1 regression lines shown below:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>slope of regression of oxygen on nitrate =  -6.863908534393941
+slope of regression of nitrate on oxygen =  -0.10912091298329982
+</pre></div>
+</div>
+<img alt="_images/414b44aacdd9a9a2317a1cc36b6afb22cc9690dc65d1282f262f89313b73e41d.png" src="_images/414b44aacdd9a9a2317a1cc36b6afb22cc9690dc65d1282f262f89313b73e41d.png" />
+</div>
+</div>
 <p>The difference between the two Type 1 regression lines above can be used to illustrate one potential solution, the geometric mean regression. This is the line that bisects the two Type 1 regression lines. This can be thought of as a “compromise” between the two lines. An important assumption in this approach is that the uncertainty in each variable is assumed to be proportional to the sample standard deviation. If the uncertainty is dominated by natural variability, this might be a reasonable assumption. In cases, where the uncertainty is dominated by measurement error, there might be better ways of quantifying the uncertainty based on the analytical techniques. In this case, more sophisticated iterative approaches can be taken to determine the appropriate Type 2 regression model.</p>
-<p>Detailed discussion can be found in Ricker, W. E. (1984) Computation and uses of central trend lines, <em>Can. J. Zool.</em>, 62, 1897-1905.</p>
-<p>Glover, Jenkins and Doney provide an algorithm for determining the geometric mean regression slope:</p>
+<p>Glover, Jenkins and Doney provide a clear algorithm for determining the geometric mean regression slope:</p>
 <ul class="simple">
-<li><p>Determine the slope of the regression of <span class="math notranslate nohighlight">\(y\)</span> on <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(slope_{yx}\)</span></p></li>
-<li><p>Determine the slope of the regression of <span class="math notranslate nohighlight">\(x\)</span> on <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(slope_{xy}\)</span></p></li>
-<li><p>Calculate the geometric mean regression slope, <span class="math notranslate nohighlight">\(slope_{GMR} = \sqrt{\frac{slope_{yx}}{slope_{xy}}}\)</span></p></li>
+<li><p>Determine the slope of the regression of <span class="math notranslate nohighlight">\(y\)</span> on <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(a_{2yx}\)</span></p></li>
+<li><p>Determine the slope of the regression of <span class="math notranslate nohighlight">\(x\)</span> on <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(a_{2xy}\)</span></p></li>
+<li><p>Calculate the geometric mean regression slope, <span class="math notranslate nohighlight">\(a_{2GMR} = \sqrt{\frac{a_{2yx}}{a_{2xy}}}\)</span></p></li>
 <li><p>Determine the intercept by noting that the regression line goes through the mean of <span class="math notranslate nohighlight">\(x\)</span> and the mean of <span class="math notranslate nohighlight">\(y\)</span></p></li>
 </ul>
+<p>More detailed discussion can be found in Ricker (1984):</p>
+<p>Ricker, W. E. Computation and uses of central trend lines
+Can. J. Zool., 1984, 62, 1897-1905</p>
 </section>
 </section>
 </section>
