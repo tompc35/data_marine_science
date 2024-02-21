@@ -439,6 +439,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#student-s-two-sample-t-test-equal-variances">Student’s two- sample t-test (equal variances)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#welch-s-two-sample-t-test-unequal-variances">Welch’s two sample t-test (unequal variances)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-implementation">Python implementation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paired-t-test">Paired t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-comparing-means-of-current-meter-data">Exercise: comparing means of current meter data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-comparing-respiration-rates">Exercise: Comparing respiration rates</a></li>
 </ul>
@@ -604,72 +608,135 @@ lower critical t value = -3.182446305284264
 </section>
 <section id="application-of-hypothesis-testing-t-tests">
 <h2><span class="section-number">1.2. </span>Application of hypothesis testing: t-tests<a class="headerlink" href="#application-of-hypothesis-testing-t-tests" title="Permalink to this heading">#</a></h2>
-<p>The <span class="math notranslate nohighlight">\(t\)</span>-statistic is used to test whether sample means are different. It was was used by a statistician named William Sealy Gosset, who worked for the Guiness Brewery in Dublin in the early 20th century. He was interested in comparing the properties of ingredients of the beloved Irish stout with a small number of samples. To keep his corporate boss happy, Gosset published his statistical work under the pseudonym “Student”.</p>
 <section id="one-sample-t-test">
 <h3>One-sample t-test<a class="headerlink" href="#one-sample-t-test" title="Permalink to this heading">#</a></h3>
 <p>The example described above, in which a sample mean is compared with a single value (possibly a known value or a theoretical result), is called a <strong>one-sample t-test</strong>. All t-tests assumes that the samples are drawn from a <strong>normally-distributed</strong> population.</p>
 <p>In Python, a one sample <span class="math notranslate nohighlight">\(t\)</span>-test can be conducted with the function <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp()</span></code>. Given a set of values <code class="docutils literal notranslate"><span class="pre">x</span></code> and a population mean, <span class="math notranslate nohighlight">\(\mu\)</span> or <code class="docutils literal notranslate"><span class="pre">popmean</span></code>, this function returns the <span class="math notranslate nohighlight">\(t\)</span>-statistic and a <span class="math notranslate nohighlight">\(p\)</span>-value. The <span class="math notranslate nohighlight">\(p\)</span>-value is the probability of obtaining a <span class="math notranslate nohighlight">\(t\)</span>-statistic of that magnitude, or more extreme, in the hypothetical case the null hypothesis is true. If the <span class="math notranslate nohighlight">\(p\)</span>-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span> then the null hypothesis is rejected.</p>
-<p>Looking at an example where we have three samples, and we are comparing with a known value <span class="math notranslate nohighlight">\(\mu_0\)</span> = 10.0</p>
+<p>Looking at an example where we have four sensor measurements of temperature in degrees C, and we are comparing with a known value of a calibration bath <span class="math notranslate nohighlight">\(\mu_0\)</span> = 20.0</p>
+<p>In the following code block, define an array <code class="docutils literal notranslate"><span class="pre">x</span></code> of temperature values 19.8, 20.1, 20.5, and 20.4; a temperature variable <code class="docutils literal notranslate"><span class="pre">mu0</span></code> with a known value of 20; and a variable to represent the total number of samples <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">4.</span><span class="p">]</span>  <span class="c1"># list of samples</span>
-<span class="n">mu0</span> <span class="o">=</span> <span class="mf">10.0</span>      <span class="c1"># known value</span>
-<span class="n">t</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu0</span><span class="p">)</span>  
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x:&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mu0:&quot;</span><span class="p">,</span><span class="n">mu0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">19.8</span><span class="p">,</span> <span class="mf">20.1</span><span class="p">,</span> <span class="mf">20.5</span><span class="p">,</span> <span class="mf">20.4</span><span class="p">]</span>
+<span class="n">mu0</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the data defined above, calculate the standard deviation and the standard error, storing each in a variables <code class="docutils literal notranslate"><span class="pre">xstd</span></code> and <code class="docutils literal notranslate"><span class="pre">xSE</span></code> respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xstd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">xSE</span> <span class="o">=</span> <span class="n">xstd</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, calculate and print out the t-statistic of the data:
+$<span class="math notranslate nohighlight">\(
+t = \frac{\bar{x} - \mu_0}{s\sqrt{1/N}}
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">mu0</span><span class="p">)</span><span class="o">/</span><span class="n">xSE</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: [1.0, 2.0, 4.0]
-mu0: 10.0
-t: -8.693
-p: 0.013
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2649110640673726
 </pre></div>
 </div>
 </div>
 </div>
-<p>In this case, the <span class="math notranslate nohighlight">\(p\)</span>-value is less than .05 but greater than 0.01, so can the null hypothesis can be rejected at the at 95% confidence level but not the 99% confidence level.</p>
-<p>Looking at another example where the known value is closer to the sample mean,</p>
+<p>Finally, define a variable called <code class="docutils literal notranslate"><span class="pre">alpha</span></code> and assign it with a value that represents a 95% confidence interval. Use the stats package function <code class="docutils literal notranslate"><span class="pre">stats.t.ppf</span></code> to calculate the critical t value. Note that the <code class="docutils literal notranslate"><span class="pre">stats.t.ppf</span></code> function (“percent point function”) takes two arguments: <span class="math notranslate nohighlight">\(1-\alpha/2\)</span> and the degrees of freedom (<span class="math notranslate nohighlight">\(N-1\)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">mu0</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">t</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">mu0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x:&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mu0:&quot;</span><span class="p">,</span><span class="n">mu0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">t_crit</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t_crit</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: [1.0, 2.0, 4.0]
-mu0: 3
-t: -0.756
-p: 0.529
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.182446305284263
 </pre></div>
 </div>
 </div>
 </div>
-<p>we see that the <span class="math notranslate nohighlight">\(t\)</span>-statistic is much closer to zero, and the <span class="math notranslate nohighlight">\(p\)</span>-value is is much higher. In this case, the null hypothesis cannot be rejected at the 95% confidence level (or even a far more lenient 60% confidence level).</p>
+<p>We will reject the null hypothesis if the (absolute value of) the t value we calculated from the data is greater than the critical t value. In this case, we accept the null hypothesis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">&gt;</span><span class="n">t_crit</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Null Hypothesis Rejected&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Null Hypothesis Accepted&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Null Hypothesis Accepted
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use a t-test function called <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp</span></code> which takes in two arguments: the data and the true mean</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=1.2649110640673726, pvalue=0.29522893659952454, df=3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output gives us the the t-statistic, p-value and degrees of freedom (<span class="math notranslate nohighlight">\(N\)</span> - 1).</p>
+<p>The p-value is the probability of obtaining the t-statistic value, or more extreme, given that the null hypothesis is true. In other words, a low p-value (usually &lt;0.05) indicates that there is a low probability that the sample data occurred by chance.</p>
+<p>It is important to note that this is probability assumes two important conditions</p>
+<ol class="arabic simple">
+<li><p>the null hypothesis is true (we dont know this - we’re trying to infer it!)</p></li>
+<li><p>the samples are drawn from data that is normally distributed</p></li>
+</ol>
+<p>Note that it doesn’t tell us anything about the case where the null hypothesis is false!</p>
+<p>In this case, the <span class="math notranslate nohighlight">\(p\)</span>-value is greater than 0.05, so we cannot reject the null hypothesis at the at 95% confidence level (and of course the 99% confidence level, if we were using a more conservative <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.01).</p>
 <p>The p-value is related to the cumulative probability of the t-statistic. The p-value is the probability of obtaining a certain value of t, or more extreme, in the hypothetical case that the null hypothesis is true. The cumulative probability is the probability of obtaining a certain value of t or less when taking random samples from a normal distribution (again, in the hypothetical case that the null hypothesis is true).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tcdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mf">0.756</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cumulative probability:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">tcdf</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tcdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cumulative probability:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">tcdf</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 - cumulative probability:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tcdf</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value = &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tcdf</span><span class="p">),</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cumulative probability: 0.264
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cumulative probability: 0.8524
+1 - cumulative probability: 0.1476
+p-value =  0.29523
 </pre></div>
 </div>
 </div>
 </div>
-<p>There is a probability of 0.264 of randomly obtaining <span class="math notranslate nohighlight">\(t\)</span> value of -0.756 or less if the null hypothesis is true. However, there is twice as much probability (p = 0.529) of obtaining a more extreme value (<span class="math notranslate nohighlight">\(t \leq\)</span> -0.756 or <span class="math notranslate nohighlight">\(t \geq\)</span> -0.756).</p>
+<p>There is a probability of 0.8524 of randomly obtaining <span class="math notranslate nohighlight">\(t\)</span> value of 1.265 or less if the null hypothesis is true. The probability of obtaining a greater <span class="math notranslate nohighlight">\(t\)</span> value is (1-0.8524) = 0.1476. The probability of obtaining a more extreme <span class="math notranslate nohighlight">\(t\)</span> value (positive or negative) is 2*(1-0.8524) = 0.2953. This is the same p-value given by <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp</span></code> above.</p>
+<p>Looking at another example where the sensor is obviously biased,and the known value is farther away from the sample mean:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mf">25.2</span><span class="p">,</span><span class="mf">24.3</span><span class="p">,</span><span class="mf">24.9</span><span class="p">,</span><span class="mf">26.2</span><span class="p">]</span>
+<span class="n">mu0</span> <span class="o">=</span> <span class="mf">20.</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">mu0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=12.976780239983482, pvalue=0.0009880128723828553, df=3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>we see that the <span class="math notranslate nohighlight">\(t\)</span>-statistic is much greater, and the <span class="math notranslate nohighlight">\(p\)</span>-value is is much small. In this case, the null hypothesis cannot be rejected at the 95% confidence level (and the 99% confidence level).</p>
 </section>
 <section id="one-tailed-vs-two-tailed-tests">
 <h3>One-tailed vs. two-tailed tests<a class="headerlink" href="#one-tailed-vs-two-tailed-tests" title="Permalink to this heading">#</a></h3>
@@ -677,7 +744,12 @@ p: 0.529
 <p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\mu \leq \mu_0\)</span></p>
 <p><span class="math notranslate nohighlight">\(H_a\)</span>: <span class="math notranslate nohighlight">\(\mu &gt; \mu_0\)</span></p>
 <p>In this case, the null hypothesis is rejected only for extreme t values that are greater than zero. The rejection region for the 95% confidence level is shown below for <span class="math notranslate nohighlight">\(N\)</span> = 4 samples (3 degrees of freedom).</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvalues</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -693,18 +765,16 @@ p: 0.529
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/4c6fcd4b8d3248362d90355a08729b09f3638f7351b092de2c408866b5776aa3.png" src="_images/4c6fcd4b8d3248362d90355a08729b09f3638f7351b092de2c408866b5776aa3.png" />
 </div>
 </div>
-<p>When using a function such as <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp()</span></code> to do a one-tailed test, here is how to interpret the output:</p>
-<ul class="simple">
-<li><p>Reject <span class="math notranslate nohighlight">\(H_o\)</span> only if the value of t has the correct sign</p></li>
-<li><p>If t does have the correct sign, reject <span class="math notranslate nohighlight">\(H_o\)</span> if 1/2 the p-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
-</ul>
+<p>The function <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp()</span></code> can be used to do a one-tailed test by specifying the options <code class="docutils literal notranslate"><span class="pre">alternative</span> <span class="pre">=</span> <span class="pre">'greater'</span></code> or <code class="docutils literal notranslate"><span class="pre">alternative</span> <span class="pre">=</span> <span class="pre">'less'</span></code></p>
 </section>
 <section id="two-sample-t-test-comparing-pairs-of-populations">
 <h3>Two-sample t-test: comparing pairs of populations<a class="headerlink" href="#two-sample-t-test-comparing-pairs-of-populations" title="Permalink to this heading">#</a></h3>
+<p>The <span class="math notranslate nohighlight">\(t\)</span>-statistic can also be used to test whether sample means are different. It was was used by a statistician named William Sealy Gosset, who worked for the Guiness Brewery in Dublin in the early 20th century. He was interested in comparing the properties of ingredients of the beloved Irish stout with a small number of samples. To keep his corporate boss happy, Gosset published his statistical work under the pseudonym “Student”.</p>
 <p>A <strong>two-sample t-test</strong> is used to test whether the means of two groups of samples are different.</p>
 <p><span class="math notranslate nohighlight">\(H_o: \bar{x_1} = \bar{x_2}\)</span></p>
 <p><span class="math notranslate nohighlight">\(H_a: \bar{x_1} \neq \bar{x_2}\)</span></p>
@@ -744,6 +814,40 @@ p: 0.529
 <p><code class="docutils literal notranslate"><span class="pre">t,p</span> <span class="pre">=</span> <span class="pre">stats.ttest_ind(x,y,equal_var=False)</span></code></p>
 <p>It is recommended to use Welch’s t-test unless you have a good reason to assume that the population variances are equal. This reduces the chance of a Type I error.</p>
 </section>
+</section>
+<section id="paired-t-test">
+<h3>Paired t-test<a class="headerlink" href="#paired-t-test" title="Permalink to this heading">#</a></h3>
+<p>Samples are not independent (natural correspondence between the two samples). For example, consider the case where <code class="docutils literal notranslate"><span class="pre">x</span></code> represents wind speed samples collected at one location, and <code class="docutils literal notranslate"><span class="pre">y</span></code> represents wind speed samples collected at the same time at another location.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.6</span><span class="p">,</span> <span class="mf">11.9</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">,</span> <span class="mf">8.1</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mf">16.9</span><span class="p">,</span> <span class="mf">12.2</span><span class="p">,</span> <span class="mf">10.6</span><span class="p">,</span> <span class="mf">15.5</span><span class="p">,</span> <span class="mf">13.1</span><span class="p">]</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=-2.567311599295588, pvalue=0.0621552437167688, df=4)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We couls get the same results by testing whether the differences are significantly different from zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=-2.567311599295588, pvalue=0.0621552437167688, df=4)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h3>
 <section id="exercise-comparing-means-of-current-meter-data">
 <h4>Exercise: comparing means of current meter data<a class="headerlink" href="#exercise-comparing-means-of-current-meter-data" title="Permalink to this heading">#</a></h4>
 <p>In Section 3.14 of Emery and Thomson, an example is given where the January means of alongshore velocity (<span class="math notranslate nohighlight">\(V\)</span>) from current meter data are compared for two different years. The means and standard deviations from daily averages in January are given by</p>
@@ -773,13 +877,14 @@ p: 0.529
 <ul class="simple">
 <li><p>d=0.2 “small”</p></li>
 <li><p>d=0.8 “large”</p></li>
+<li><p>Can be thought of as a signal-to-noise ratio</p></li>
 </ul>
 </li>
 <li><p>Sample size: <span class="math notranslate nohighlight">\(N\)</span></p></li>
 <li><p>Confidence Level: (1-<span class="math notranslate nohighlight">\(\alpha\)</span>), also refered to as the <span class="math notranslate nohighlight">\(\alpha\)</span> level or significance level, typical is 0.05.</p></li>
-<li><p>Target Power: (1-<span class="math notranslate nohighlight">\(\beta\)</span>)</p></li>
+<li><p>Power: (1-<span class="math notranslate nohighlight">\(\beta\)</span>), the probability of correctly rejecting <span class="math notranslate nohighlight">\(H_0\)</span> <em>if</em> it is false (given the effect size <span class="math notranslate nohighlight">\(d\)</span>).</p></li>
 </ol>
-<p>The effect size (<span class="math notranslate nohighlight">\(d\)</span>) is the minimum deviation from the null hypothesis that you expect to be able to detect. In tris case, it is the effect size for a difference between two means (t-test).</p>
+<p>The effect size (<span class="math notranslate nohighlight">\(d\)</span>) is the minimum deviation from the null hypothesis that you expect to be able to detect. In this case, it is the effect size for a difference between two means (t-test).</p>
 <ul class="simple">
 <li><p>d is non-dimensional</p></li>
 <li><p>often called “Cohen’s d”</p></li>
@@ -787,15 +892,15 @@ p: 0.529
 </ul>
 <section id="example-detecting-change-due-to-a-restoration-activity">
 <h3>Example: Detecting change due to a restoration activity<a class="headerlink" href="#example-detecting-change-due-to-a-restoration-activity" title="Permalink to this heading">#</a></h3>
-<p>Goal 1 (ecologically significant effect): increase (indicates the need for a one-tailed z-test) the mean oxygen concentrations by 20 <span class="math notranslate nohighlight">\(\mu\)</span>M</p>
+<p>Consided a case where a restoration activity is being conducted to reduce hypoxia in a polluted estuary. An <em>ecologically</em> significant effect would be increase the mean oxygen concentrations by 20 <span class="math notranslate nohighlight">\(\mu M\)</span>.</p>
 <ul class="simple">
-<li><p>The natural variability is 50 <span class="math notranslate nohighlight">\(\mu\)</span>M (std. dev.)</p></li>
+<li><p>The natural variability is 50 <span class="math notranslate nohighlight">\(\mu M\)</span> (std. dev.)</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mu\)</span> is the mean oxygen concentration before restoration</p></li>
 <li><p><span class="math notranslate nohighlight">\(\bar{x}\)</span> mean of the samples collected after restoration</p></li>
 <li><p><span class="math notranslate nohighlight">\(d = \frac{|\mu_1 - \mu_2|} {\sigma}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(d = \frac{20 \mu M} {50 \mu M}\)</span> = 0.4</p></li>
 </ul>
-<p>Goal 2: want to be able to show that a <em>statistically</em> significant difference is present, if the activity is a a success.  This is different than Goal 1.</p>
+<p>Goal: want to be able to show that a <em>statistically</em> significant difference is present, if the activity is a a success. Note that this is different from the <em>ecologically</em> significant effect described above.</p>
 <ul class="simple">
 <li><p>In this case, <span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\bar{x} \le \mu\)</span>  and <span class="math notranslate nohighlight">\(H_a\)</span> : <span class="math notranslate nohighlight">\(\bar{x} &gt; \mu\)</span></p></li>
 </ul>
@@ -803,7 +908,7 @@ p: 0.529
 <section id="one-tailed-z-test-like-a-t-test-valid-for-a-large-n">
 <h3>One-tailed z-test (like a t-test, valid for a large N)<a class="headerlink" href="#one-tailed-z-test-like-a-t-test-valid-for-a-large-n" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(z = \frac{\bar{x} - \mu} {\frac {S} {\sqrt{N}}}\)</span></p></li>
+<li><p>test statistic: <span class="math notranslate nohighlight">\(z = \frac{\bar{x} - \mu} {\frac {S} {\sqrt{N}}}\)</span></p></li>
 <li><p>compare to <span class="math notranslate nohighlight">\(z_{crit}\)</span>:
 <span class="math notranslate nohighlight">\(z_{1-\alpha}\)</span></p></li>
 </ul>
@@ -821,13 +926,13 @@ p: 0.529
 <section id="example-detecting-small-differences-with-a-noisy-instrument">
 <h3>Example: detecting small differences with a noisy instrument<a class="headerlink" href="#example-detecting-small-differences-with-a-noisy-instrument" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Want to be able to measure a differences of 2 <span class="math notranslate nohighlight">\(\mu\)</span>M</p></li>
-<li><p>instrument noise = 5 <span class="math notranslate nohighlight">\(\mu\)</span>M</p></li>
+<li><p>Want to be able to measure a differences of 2 <span class="math notranslate nohighlight">\(\mu M\)</span></p></li>
+<li><p>instrument noise = 5 <span class="math notranslate nohighlight">\(\mu M\)</span></p></li>
 <li><p>Significance level: <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05</p></li>
 <li><p>Power: 1- <span class="math notranslate nohighlight">\(\beta\)</span> = 0.8</p></li>
 </ul>
 <p><em>How many of samples do we need to detect this difference?</em></p>
-<p>In this case, the effect size can be thought of as the absolute difference of 2uM, relative to the standard deviation (noise level) of 5uM. The effect size <span class="math notranslate nohighlight">\(d = \)</span> 0.4.</p>
+<p>In this case, the effect size can be thought of as the absolute difference of 2 <span class="math notranslate nohighlight">\(\mu M\)</span>, relative to the standard deviation (noise level) of 5 <span class="math notranslate nohighlight">\(\mu M\)</span>. The effect size <span class="math notranslate nohighlight">\(d = \)</span> 0.4.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.stats</span> <span class="kn">import</span> <span class="n">power</span>
@@ -842,7 +947,7 @@ p: 0.529
 </div>
 </div>
 </div>
-<p>If the actual difference is 2 <span class="math notranslate nohighlight">\(\mu\)</span>M, then we will get a significant difference 80% of the time with <span class="math notranslate nohighlight">\(N\)</span> = 51. This example is for a one-sample t-test, but other functions in the <code class="docutils literal notranslate"><span class="pre">power</span></code> library can be used for other statistical tests. The <em>Pingouin</em> package (see below) also has functions for computing power.</p>
+<p>If the actual difference is 2 <span class="math notranslate nohighlight">\(\mu M\)</span>, then we will get a significant difference 80% of the time with <span class="math notranslate nohighlight">\(N\)</span> = 51. This example is for a one-sample t-test, but other functions in the <code class="docutils literal notranslate"><span class="pre">power</span></code> library can be used for other statistical tests. The <em>Pingouin</em> package (see below) also has functions for computing power.</p>
 </section>
 </section>
 <section id="critiques-of-null-hypothesis-significance-testing">
@@ -1038,6 +1143,10 @@ p: 0.529
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#student-s-two-sample-t-test-equal-variances">Student’s two- sample t-test (equal variances)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#welch-s-two-sample-t-test-unequal-variances">Welch’s two sample t-test (unequal variances)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-implementation">Python implementation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paired-t-test">Paired t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-comparing-means-of-current-meter-data">Exercise: comparing means of current meter data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-comparing-respiration-rates">Exercise: Comparing respiration rates</a></li>
 </ul>
