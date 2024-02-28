@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>8. Error propagation &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>9. Error propagation &#8212; Data Analysis Techniques in Marine Science</title>
   
   
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. Hypothesis testing and Power" href="3-01-hypothesis-power.html" />
-    <link rel="prev" title="7. Poisson regression example" href="2-07-poisson-regression-tropical-storms.html" />
+    <link rel="prev" title="8. Poisson regression example" href="2-07-poisson-regression-tropical-storms.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -198,8 +198,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">7. Poisson regression example</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Error propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06b-implementing-multivariate-regression.html">7. Multivariate regression tutorial: aragonite saturation state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">8. Poisson regression example</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Error propagation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -425,14 +426,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">8.1. Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-error-propagates-through-calculations-and-anlysis">8.2. How error propagates through calculations and anlysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">9.1. Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-error-propagates-through-calculations-and-anlysis">9.2. How error propagates through calculations and anlysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oceanographic-example">Oceanographic example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-equation-for-uncertainty">General equation for uncertainty</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplified-equation-for-uncertainty-if-errors-are-uncorrelated">Simplified equation for uncertainty, if errors are uncorrelated</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases-br">8.3. Special cases<br/></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases-br">9.3. Special cases<br/></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-subtractions">Addition, subtractions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-division">Multiplication, division</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplying-by-an-exact-number">Multiplying by an exact number</a></li>
@@ -443,11 +444,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-base-10">Exponential, base 10</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-uncertainties-package">8.4. Python uncertainties package</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-uncertainties-package">9.4. Python uncertainties package</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-marine-carbonate-chemistry">8.5. Application: Marine Carbonate Chemistry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-marine-carbonate-chemistry">9.5. Application: Marine Carbonate Chemistry</a></li>
 </ul>
             </nav>
         </div>
@@ -460,9 +461,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="error-propagation">
-<h1><span class="section-number">8. </span>Error propagation<a class="headerlink" href="#error-propagation" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Error propagation<a class="headerlink" href="#error-propagation" title="Permalink to this heading">#</a></h1>
 <section id="motivation">
-<h2><span class="section-number">8.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
 <p>Say we have some function <span class="math notranslate nohighlight">\(f(x)\)</span>. We have measurements of the variable <span class="math notranslate nohighlight">\(x\)</span> with some error <span class="math notranslate nohighlight">\(\sigma_x\)</span>. We want to know the error in <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
 <p>The uncertainty in <span class="math notranslate nohighlight">\(f(x)\)</span> depends on <span class="math notranslate nohighlight">\(\sigma_x\)</span> and the derivative <span class="math notranslate nohighlight">\(df/dx\)</span>.</p>
 <div class="cell tag_remove-input docutils container">
@@ -476,7 +477,7 @@ document.write(`
 \[ \sigma_x \frac{df}{dx} \approx f(x + \sigma_x) - f(x)\]</div>
 </section>
 <section id="how-error-propagates-through-calculations-and-anlysis">
-<h2><span class="section-number">8.2. </span>How error propagates through calculations and anlysis<a class="headerlink" href="#how-error-propagates-through-calculations-and-anlysis" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>How error propagates through calculations and anlysis<a class="headerlink" href="#how-error-propagates-through-calculations-and-anlysis" title="Permalink to this heading">#</a></h2>
 <p>Now imagine you have three variables: <br>
 <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> <br>
 Each of those variables has a measure of uncertainty: <br>
@@ -504,7 +505,7 @@ Each of those variables has a measure of uncertainty: <br>
 </section>
 </section>
 <section id="special-cases-br">
-<h2><span class="section-number">8.3. </span>Special cases<br><a class="headerlink" href="#special-cases-br" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>Special cases<br><a class="headerlink" href="#special-cases-br" title="Permalink to this heading">#</a></h2>
 <p>Rules for error propagation in common operations can be derived from the equation above. If there all measurement variables are independent, then the terms involving covariance become zero. The examples listed below assume no correlation between measurement variables.</p>
 <p>A more complete table, including covariance terms, can be found on Wikipedia:
 <a class="reference external" href="https://en.wikipedia.org/wiki/Propagation_of_uncertainty#Example_formulas">https://en.wikipedia.org/wiki/Propagation_of_uncertainty#Example_formulas</a></p>
@@ -558,7 +559,7 @@ Each of those variables has a measure of uncertainty: <br>
 </section>
 </section>
 <section id="python-uncertainties-package">
-<h2><span class="section-number">8.4. </span>Python uncertainties package<a class="headerlink" href="#python-uncertainties-package" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.4. </span>Python uncertainties package<a class="headerlink" href="#python-uncertainties-package" title="Permalink to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://pythonhosted.org/uncertainties/">uncertainties</a> package in Python makes it easy to keep track of uncertainties in complicated equations and account for correlations, which are ignored in the special cases above.</p>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
@@ -606,7 +607,7 @@ Each of those variables has a measure of uncertainty: <br>
 </section>
 </section>
 <section id="application-marine-carbonate-chemistry">
-<h2><span class="section-number">8.5. </span>Application: Marine Carbonate Chemistry<a class="headerlink" href="#application-marine-carbonate-chemistry" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.5. </span>Application: Marine Carbonate Chemistry<a class="headerlink" href="#application-marine-carbonate-chemistry" title="Permalink to this heading">#</a></h2>
 <p><img alt="images/carbonate_example.png" src="_images/carbonate_example.png" /></p>
 <p><a class="reference external" href="http://acmg.seas.harvard.edu/people/faculty/djj/book/bookchap6.html">source</a></p>
 <p>Relative concentrations of dissolved CO2 and carbonate ions in seawater are determined by pH pf seawater and dissociation constants <span class="math notranslate nohighlight">\(K_1'\)</span> and <span class="math notranslate nohighlight">\(K_2'\)</span></p>
@@ -671,7 +672,7 @@ Analytical error in DIC = umol kg-1</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Poisson regression example</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Poisson regression example</p>
       </div>
     </a>
     <a class="right-next"
@@ -699,14 +700,14 @@ Analytical error in DIC = umol kg-1</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">8.1. Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-error-propagates-through-calculations-and-anlysis">8.2. How error propagates through calculations and anlysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">9.1. Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-error-propagates-through-calculations-and-anlysis">9.2. How error propagates through calculations and anlysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oceanographic-example">Oceanographic example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-equation-for-uncertainty">General equation for uncertainty</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplified-equation-for-uncertainty-if-errors-are-uncorrelated">Simplified equation for uncertainty, if errors are uncorrelated</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases-br">8.3. Special cases<br/></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases-br">9.3. Special cases<br/></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-subtractions">Addition, subtractions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-division">Multiplication, division</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplying-by-an-exact-number">Multiplying by an exact number</a></li>
@@ -717,11 +718,11 @@ Analytical error in DIC = umol kg-1</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-base-10">Exponential, base 10</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-uncertainties-package">8.4. Python uncertainties package</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-uncertainties-package">9.4. Python uncertainties package</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-marine-carbonate-chemistry">8.5. Application: Marine Carbonate Chemistry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-marine-carbonate-chemistry">9.5. Application: Marine Carbonate Chemistry</a></li>
 </ul>
   </nav></div>
 

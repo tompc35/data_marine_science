@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '2-06-multivariate-regression';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Poisson regression example" href="2-07-poisson-regression-tropical-storms.html" />
+    <link rel="next" title="7. Multivariate regression tutorial: aragonite saturation state" href="2-06b-implementing-multivariate-regression.html" />
     <link rel="prev" title="5. Implementing linear regression in Python" href="2-05-wcoa-cruise-regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -198,8 +198,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Multivariate regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">7. Poisson regression example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">8. Error propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06b-implementing-multivariate-regression.html">7. Multivariate regression tutorial: aragonite saturation state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">8. Poisson regression example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">9. Error propagation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -461,9 +462,15 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="multivariate-regression">
 <h1><span class="section-number">6. </span>Multivariate regression<a class="headerlink" href="#multivariate-regression" title="Permalink to this heading">#</a></h1>
 <p><em>Goal:</em> Find a relationship that explains variable <span class="math notranslate nohighlight">\(y\)</span> in terms of variables, <span class="math notranslate nohighlight">\(x_1, x_2, x_3\)</span>,…<span class="math notranslate nohighlight">\(x_n\)</span></p>
-<p><img alt="images/mult_reg_viz.png" src="_images/mult_reg_viz.png" /></p>
-<p>source: <a class="reference external" href="http://www.sjsu.edu/faculty/gerstman/EpiInfo/cont-mult.htm">http://www.sjsu.edu/faculty/gerstman/EpiInfo/cont-mult.htm</a></p>
-<p>This three dimensional visualization shows how linear model based on two predictor variables, <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> can be used to model a response variable <span class="math notranslate nohighlight">\(y\)</span>. A constant and two slopes to define a 2D plane in 3D space. The sum of squared vertical distances between the plane (model) and observations of <span class="math notranslate nohighlight">\(y\)</span> are minimized. Like fitting a line in 2D space, this procedure assumes the validity of a linear model.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/09029effb30e5ef06e5c49dc072d90a25ad3ec18ed358df3dad1b5fe51dc27a8.png" src="_images/09029effb30e5ef06e5c49dc072d90a25ad3ec18ed358df3dad1b5fe51dc27a8.png" />
+</div>
+</div>
+<p>This three dimensional visualization shows how linear model based on two predictor variables, <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> can be used to model a response variable <span class="math notranslate nohighlight">\(y\)</span>. A constant and two slopes to define a 2D plane in 3D space with the equation</p>
+<div class="math notranslate nohighlight">
+\[y = c_0 + c_1 x_1 + c_2 x_2\]</div>
+<p>The sum of squared vertical distances between the model (plane) and observations of <span class="math notranslate nohighlight">\(y\)</span> (dots) are minimized. Like fitting a line in 2D space, this procedure assumes the validity of a linear model.</p>
 <section id="example-model-for-aragonite-saturation-state-based-on-three-other-oceanographic-variables">
 <h2><span class="section-number">6.1. </span>Example: Model for aragonite saturation state based on three other oceanographic variables<a class="headerlink" href="#example-model-for-aragonite-saturation-state-based-on-three-other-oceanographic-variables" title="Permalink to this heading">#</a></h2>
 <p>As a motivation for multiple linear regression, we consider a model for aragonite saturation state, <span class="math notranslate nohighlight">\(\Omega_A\)</span>. The study by Juranek et al. (2009), discussed on greater detail below, uses multiple linear regression to model <span class="math notranslate nohighlight">\(\Omega_A\)</span> for surveys where it is not measured, using more commonly measured parameters. We know that <span class="math notranslate nohighlight">\(\Omega_A\)</span> depends on both physical and biological processes, so one candidate for a model might be:</p>
@@ -526,9 +533,9 @@ document.write(`
 </section>
 <section id="numerical-solution">
 <h2><span class="section-number">6.4. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this heading">#</a></h2>
-<p>The least squares problem is solved using a singular value decomposition method. Efficient alorithms for this procedure are typically included in scientfic computing software. In Python, create an array for the vector <span class="math notranslate nohighlight">\(Y\)</span> and a 2D array for the matrix <span class="math notranslate nohighlight">\(X\)</span>. Then use <code class="docutils literal notranslate"><span class="pre">np.linalg,lstsq</span></code> to solve for <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>The least squares problem is solved using a singular value decomposition method. Efficient alorithms for this procedure are typically included in scientfic computing software. In Python, create an array for the vector <span class="math notranslate nohighlight">\(\vec{y}\)</span> and a 2D array for the matrix <span class="math notranslate nohighlight">\(X\)</span>. Then use <code class="docutils literal notranslate"><span class="pre">np.linalg,lstsq</span></code> to solve for <span class="math notranslate nohighlight">\(c\)</span>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -575,7 +582,7 @@ document.write(`
 <section id="multiple-regression-example-modeling-aragonite-saturation-state">
 <h2><span class="section-number">6.6. </span>Multiple regression example: modeling aragonite saturation state<a class="headerlink" href="#multiple-regression-example-modeling-aragonite-saturation-state" title="Permalink to this heading">#</a></h2>
 <p><img alt="images/arag_sat.png" src="_images/arag_sat.png" /></p>
-<p>Source: Feeley et al. (2208) Evidence for upwelling of corrosive acidification water onto the continental shelf, Science</p>
+<p><em>Source:</em> Feeley et al. (2208) Evidence for upwelling of corrosive acidification water onto the continental shelf, Science</p>
 <p>At Aragonite staturation state &gt; 1 aragonite (calcium carbonate will dissolve in seawater)</p>
 <p>Is there a way to estimate aragonite saturation state <span class="math notranslate nohighlight">\(\Omega_{Ar}\)</span> based on more commonly measured parameters?</p>
 <div class="math notranslate nohighlight">
@@ -585,7 +592,7 @@ document.write(`
 <span class="math notranslate nohighlight">\([CO_3^{2+}]\)</span> can be calculated from chemical measurements of DIC, <span class="math notranslate nohighlight">\(pCO_2\)</span>, total alkalinity and pH (at least two of these 4 parameters).</p>
 <section id="models">
 <h3>Models<a class="headerlink" href="#models" title="Permalink to this heading">#</a></h3>
-<p>Juranek et al. (2009) describe a set of least squares regression models for aragonite saturation state, based on more commonly measured oceangraphic variables (temperature, salinity, pressure, oxygen and nitrate).</p>
+<p><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2009GL040778">Juranek et al. (2009)</a> describe a set of least squares regression models for aragonite saturation state, based on more commonly measured oceangraphic variables (temperature, salinity, pressure, oxygen and nitrate).</p>
 <p>Juranek, L. W., R. A. Feely, W. T. Peterson, S. R. Alin, B. Hales, K. Lee, C. L. Sabine, and J. Peterson, 2009: A novel method for determination of aragonite saturation state on the continental shelf of central Oregon using multi-parameter relationships with hydrographic data. Geophys. Res. Lett., 36, doi:10.1029/2009GL040778.</p>
 <section id="model-1">
 <h4>Model 1<a class="headerlink" href="#model-1" title="Permalink to this heading">#</a></h4>
@@ -614,6 +621,7 @@ document.write(`
 \[VIF  = \frac{1}{1 - R^2}\]</div>
 <p>where <span class="math notranslate nohighlight">\(R^2 \)</span> from regression of predictor variables against other predictor variables. There is no clear “cut-off” that defines high VIF, but greater than 5 (and definitely greater than 10) is generally considered high.</p>
 <p><img alt="images/arag_sat_table.png" src="_images/arag_sat_table.png" /></p>
+<p><em>Source:</em> Juranek et al. (2009)</p>
 </section>
 <section id="final-model">
 <h4>Final Model<a class="headerlink" href="#final-model" title="Permalink to this heading">#</a></h4>
@@ -627,10 +635,11 @@ document.write(`
 <li><p>Standardizing variables (using z-scores) another common strategy</p></li>
 </ul>
 <p><img alt="images/arag_sat_final.png" src="_images/arag_sat_final.png" /></p>
+<p><em>Source:</em> Juranek et al. (2009)</p>
 <p><strong>Aragonite saturation state</strong></p>
 <p><em>Red contours:</em> from measured DIC and total alkalinaity</p>
 <p><em>Blue contours:</em> Multiple regression model</p>
-<p><strong>Application of the model to time series that do not have direct observations of the carbonate system parameters</strong></p>
+<p>With their multiple regression model, Juranek et al. were able to estimate <span class="math notranslate nohighlight">\(\Omega_{arag}\)</span> for time series that does not always include direct observations of the carbonate system parameters. This helps provide a perspective on the seasonal cycle of <span class="math notranslate nohighlight">\(\Omega_{arag}\)</span>, something that cannot be done with one WCOA cruise per year.</p>
 <p><img alt="images/arag_sat_ts.png" src="_images/arag_sat_ts.png" /></p>
 </section>
 </section>
@@ -677,11 +686,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="2-07-poisson-regression-tropical-storms.html"
+       href="2-06b-implementing-multivariate-regression.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Poisson regression example</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Multivariate regression tutorial: aragonite saturation state</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
