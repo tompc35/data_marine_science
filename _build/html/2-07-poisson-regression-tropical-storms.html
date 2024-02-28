@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>7. Poisson regression example &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>8. Poisson regression example &#8212; Data Analysis Techniques in Marine Science</title>
   
   
   
@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '2-07-poisson-regression-tropical-storms';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8. Error propagation" href="2-08-error-propagation.html" />
-    <link rel="prev" title="6. Multivariate regression" href="2-06-multivariate-regression.html" />
+    <link rel="next" title="9. Error propagation" href="2-08-error-propagation.html" />
+    <link rel="prev" title="7. Multivariate regression tutorial: aragonite saturation state" href="2-06b-implementing-multivariate-regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -198,8 +198,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Poisson regression example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">8. Error propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06b-implementing-multivariate-regression.html">7. Multivariate regression tutorial: aragonite saturation state</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Poisson regression example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">9. Error propagation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -425,7 +426,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-tropical-storm-counts">7.1. Modeling tropical storm counts</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-tropical-storm-counts">8.1. Modeling tropical storm counts</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises</a></li>
 </ul>
@@ -442,9 +443,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="poisson-regression-example">
-<h1><span class="section-number">7. </span>Poisson regression example<a class="headerlink" href="#poisson-regression-example" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>Poisson regression example<a class="headerlink" href="#poisson-regression-example" title="Permalink to this heading">#</a></h1>
 <section id="modeling-tropical-storm-counts">
-<h2><span class="section-number">7.1. </span>Modeling tropical storm counts<a class="headerlink" href="#modeling-tropical-storm-counts" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.1. </span>Modeling tropical storm counts<a class="headerlink" href="#modeling-tropical-storm-counts" title="Permalink to this heading">#</a></h2>
 <p>The number of tropical storms is an example of a variable that is not expected to be normally distributed. Counts cannot be negative, are often skewed and tend to follow a Poisson distribution.</p>
 <p>This example follows the general approach of <a class="reference external" href="https://journals.ametsoc.org/view/journals/mwre/138/7/2010mwr3315.1.xml">Villarini et al. (2010)</a> in using Poisson regression to model the number of tropical storms based on climate indices.</p>
 <p>The goal of Poisson regression is to model a rate of occurrence, <span class="math notranslate nohighlight">\(\Lambda_i\)</span>, where the rate changes for each observation <span class="math notranslate nohighlight">\(i\)</span>. This model can be expressed as a generalized linear model (GLM) with a <em>logarithmic link function</em>.</p>
@@ -972,12 +973,12 @@ dtype: float64
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="2-06-multivariate-regression.html"
+       href="2-06b-implementing-multivariate-regression.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Multivariate regression</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Multivariate regression tutorial: aragonite saturation state</p>
       </div>
     </a>
     <a class="right-next"
@@ -985,7 +986,7 @@ dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Error propagation</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Error propagation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1005,7 +1006,7 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-tropical-storm-counts">7.1. Modeling tropical storm counts</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-tropical-storm-counts">8.1. Modeling tropical storm counts</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises</a></li>
 </ul>

@@ -198,8 +198,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Implementing linear regression in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">7. Poisson regression example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">8. Error propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06b-implementing-multivariate-regression.html">7. Multivariate regression tutorial: aragonite saturation state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">8. Poisson regression example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">9. Error propagation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -611,7 +612,7 @@ Length: 2348, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x105c5f6d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x161cec590&gt;]
 </pre></div>
 </div>
 <img alt="_images/16382717168bf55bad2073acd806747bfa15f757da8eb63763112a3fdf8fc0ff.png" src="_images/16382717168bf55bad2073acd806747bfa15f757da8eb63763112a3fdf8fc0ff.png" />
@@ -647,10 +648,10 @@ Length: 2348, dtype: bool
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>7.757e+04</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Tue, 20 Feb 2024</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
+  <th>Date:</th>             <td>Tue, 27 Feb 2024</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>18:04:56</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
+  <th>Time:</th>                 <td>18:19:49</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  2210</td>      <th>  AIC:               </th> <td>   9992.</td> 
@@ -784,10 +785,21 @@ Length: 2348, dtype: bool
 <h4>Review: Matrix Multiplication<a class="headerlink" href="#review-matrix-multiplication" title="Permalink to this heading">#</a></h4>
 <p>Suppose we have the following matrices:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \textbf{A}= \begin{bmatrix} 1 &amp; 2 &amp; 3\\ 4 &amp; 5 &amp; 6 \end{bmatrix} \end{split}\]</div>
+\[\begin{split} \textbf{A}= \begin{bmatrix} \color{red} 1 &amp; \color{red} 2 &amp; \color{red} 3\\ 
+                                \color{blue} 4 &amp; \color{blue} 5 &amp; \color{blue} 6 \end{bmatrix} \end{split}\]</div>
 <div class="math notranslate nohighlight">
-\[\begin{split} \textbf{B} = \begin{bmatrix} 7 &amp; 8\\ 9 &amp; 10 \\ 11 &amp; 12 \end{bmatrix} \end{split}\]</div>
-<p>What will be the matrix product <span class="math notranslate nohighlight">\(\textbf{AB}\)</span>?</p>
+\[\begin{split} \textbf{B} = \begin{bmatrix}  \color{green} 7 &amp; \color{purple} 8\\ 
+                                \color{green} 9 &amp; \color{purple} {10} \\ 
+                                \color{green} {11} &amp; \color{purple} {12} \end{bmatrix} \end{split}\]</div>
+<p>The matrix product <span class="math notranslate nohighlight">\(\textbf{AB}\)</span> is defined by the <em>dot products</em> of the rows of <span class="math notranslate nohighlight">\(\textbf{A}\)</span> and columns of <span class="math notranslate nohighlight">\(\textbf{B}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \textbf{AB} = \begin{bmatrix} \color{red}{(1)}\color{green}{(7)} \color{black} + \color{red}(2)\color{green} (9) \color{black} + \color{red}(3)\color{green}(11) &amp;  
+                    \color{red}(1)\color{purple}(8) + (\color{red} 2)\color{purple}(10) + \color{red} (3)\color{purple}(12)\\ 
+                    \color{blue}(4)\color{green}(7) + \color{blue}(5)\color{green}(9) + \color{blue}(6)\color{green}(11) &amp; 
+                    \color{blue}(4)\color{purple}(8) + \color{blue}(5)\color{purple}(10) + \color{blue}(6)\color{purple}(12) \end{bmatrix} \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} \textbf{AB} = \begin{bmatrix} 58 &amp;  64\\ 
+                               139 &amp; 154 \end{bmatrix} \end{split}\]</div>
 <p>To define matrices in Python, we define 2-d arrays as lists of lists wrapped in numpy’s <code class="docutils literal notranslate"><span class="pre">array</span></code> function, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -914,6 +926,13 @@ shape of B:  (3, 2)
 <p>The concept of a matrix inverse is similar to the matrix of a single number. If we have a single value <span class="math notranslate nohighlight">\(b\)</span>, its inverse can be represented as <span class="math notranslate nohighlight">\(b^{-1}\)</span>. A value times its inverse is equal to 1.</p>
 <div class="math notranslate nohighlight">
 \[b^{-1}b = 1\]</div>
+<p>The inverse of a single number can be used to solve for <span class="math notranslate nohighlight">\(x\)</span> in a linear equation <span class="math notranslate nohighlight">\(bx = c\)</span>. For example:</p>
+<div class="math notranslate nohighlight">
+\[ 10x = 2\]</div>
+<div class="math notranslate nohighlight">
+\[ (10^{-1})10x = 2(10^{-1})\]</div>
+<div class="math notranslate nohighlight">
+\[ x = 2(10^{-1})\]</div>
 <p>Let’s say we have a <em>square</em> matrix <span class="math notranslate nohighlight">\(\textbf{B}\)</span> where the number of rows and columns are equal. The inverse <span class="math notranslate nohighlight">\(\textbf{B}^{-1}\)</span> is the matrix that gives</p>
 <div class="math notranslate nohighlight">
 \[ \textbf{B}^{-1}\textbf{B} = \textbf{I} \]</div>
@@ -1078,7 +1097,7 @@ shape of y:  (2210, 1)
 <p>then multiply each side by the inverse of <span class="math notranslate nohighlight">\(\textbf{X}^T\textbf{X}\)</span></p>
 <div class="math notranslate nohighlight">
 \[(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\hat{y} = (\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\textbf{X}\vec{c}\]</div>
-<p>which reduces to</p>
+<p>Since which reduces to</p>
 <div class="math notranslate nohighlight">
 \[(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\hat{y} = \textbf{I}\vec{c}.\]</div>
 <div class="math notranslate nohighlight">

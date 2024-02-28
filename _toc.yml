@@ -28,6 +28,7 @@ parts:
    - file: 2-04-corr-regress-least-squares
    - file: 2-05-wcoa-cruise-regression
    - file: 2-06-multivariate-regression
+   - file: 2-06b-implementing-multivariate-regression
    - file: 2-07-poisson-regression-tropical-storms
    - file: 2-08-error-propagation
 
