@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>5. Implementing linear regression in Python &#8212; Data Analysis Techniques in Marine Science</title>
+    <title>5. Implementing linear regression in Python and matrix review &#8212; Data Analysis Techniques in Marine Science</title>
   
   
   
@@ -196,7 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2-02-probability-and-distributions.html">2. Probability and distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-03-modeling-sampling.html">3. Modeling, sampling, confidence intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Implementing linear regression in Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Implementing linear regression in Python and matrix review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-06b-implementing-multivariate-regression.html">7. Multivariate regression tutorial: aragonite saturation state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">8. Poisson regression example</a></li>
@@ -416,7 +416,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Implementing linear regression in Python</h1>
+    <h1>Implementing linear regression in Python and matrix review</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -436,13 +436,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-statsmodels">Method 2: statsmodels</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-3-pingouin">Method 3: pingouin</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-4-regression-coefficients-using-numpy-s-polyfit-function">Method 4: Regression coefficients using numpy’s polyfit function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-5-matrix-form">Method 5: Matrix form</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-multiplication">Review: Matrix Multiplication</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-transpose">Review: Matrix Transpose</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-inverse">Review: Matrix Inverse</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-linear-regression-in-matrix-form">Formulating linear regression in matrix form</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication-and-linear-algebra">5.4. Matrix multiplication and linear algebra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-multiplication">Review: Matrix Multiplication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-transpose">Review: Matrix Transpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-inverse">Review: Matrix Inverse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-linear-regression-in-matrix-form">Formulating linear regression in matrix form</a></li>
 </ul>
 </li>
 </ul>
@@ -456,8 +456,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="implementing-linear-regression-in-python">
-<h1><span class="section-number">5. </span>Implementing linear regression in Python<a class="headerlink" href="#implementing-linear-regression-in-python" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="implementing-linear-regression-in-python-and-matrix-review">
+<h1><span class="section-number">5. </span>Implementing linear regression in Python and matrix review<a class="headerlink" href="#implementing-linear-regression-in-python-and-matrix-review" title="Permalink to this heading">#</a></h1>
 <p>Like many data analysis problems, there are a number of different ways to perform a linear regression in Python. This notebook shows a few different methods. The final method motivates a review of matrix multiplication, which will be helpful in the next section on multivariate regression.</p>
 <section id="example-2007-west-coast-ocean-acidification-cruise">
 <h2><span class="section-number">5.1. </span>Example: 2007 West Coast Ocean Acidification Cruise<a class="headerlink" href="#example-2007-west-coast-ocean-acidification-cruise" title="Permalink to this heading">#</a></h2>
@@ -612,7 +612,7 @@ Length: 2348, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x161cec590&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14a1f0e90&gt;]
 </pre></div>
 </div>
 <img alt="_images/16382717168bf55bad2073acd806747bfa15f757da8eb63763112a3fdf8fc0ff.png" src="_images/16382717168bf55bad2073acd806747bfa15f757da8eb63763112a3fdf8fc0ff.png" />
@@ -648,10 +648,10 @@ Length: 2348, dtype: bool
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>7.757e+04</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Tue, 27 Feb 2024</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
+  <th>Date:</th>             <td>Wed, 28 Feb 2024</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>18:19:49</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
+  <th>Time:</th>                 <td>12:05:54</td>     <th>  Log-Likelihood:    </th> <td> -4993.9</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  2210</td>      <th>  AIC:               </th> <td>   9992.</td> 
@@ -778,11 +778,12 @@ Length: 2348, dtype: bool
 </div>
 </div>
 </section>
-<section id="method-5-matrix-form">
-<h3>Method 5: Matrix form<a class="headerlink" href="#method-5-matrix-form" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="matrix-multiplication-and-linear-algebra">
+<h2><span class="section-number">5.4. </span>Matrix multiplication and linear algebra<a class="headerlink" href="#matrix-multiplication-and-linear-algebra" title="Permalink to this heading">#</a></h2>
 <p>In the next section, we’ll consider solving for the coefficients of the linear fit using matrices. But first, let’s do a quick review of matrix multiplication:</p>
 <section id="review-matrix-multiplication">
-<h4>Review: Matrix Multiplication<a class="headerlink" href="#review-matrix-multiplication" title="Permalink to this heading">#</a></h4>
+<h3>Review: Matrix Multiplication<a class="headerlink" href="#review-matrix-multiplication" title="Permalink to this heading">#</a></h3>
 <p>Suppose we have the following matrices:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \textbf{A}= \begin{bmatrix} \color{red} 1 &amp; \color{red} 2 &amp; \color{red} 3\\ 
@@ -844,6 +845,33 @@ shape of B:  (3, 2)
 </div>
 </div>
 </div>
+<p>Alternatively, we could use <code class="docutils literal notranslate"><span class="pre">np.matmul</span></code> or the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 58,  64],
+       [139, 154]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="nd">@B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 58,  64],
+       [139, 154]])
+</pre></div>
+</div>
+</div>
+</div>
 <p>It is important to remember that matrix multiplication is not <em>commutative</em>, meaning <span class="math notranslate nohighlight">\(\textbf{AB}\)</span> is generally not the same as <span class="math notranslate nohighlight">\(\textbf{BA}\)</span>. In this example, <span class="math notranslate nohighlight">\(\textbf{BA}\)</span> gives us a different size matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -861,7 +889,7 @@ shape of B:  (3, 2)
 </div>
 </section>
 <section id="review-matrix-transpose">
-<h4>Review: Matrix Transpose<a class="headerlink" href="#review-matrix-transpose" title="Permalink to this heading">#</a></h4>
+<h3>Review: Matrix Transpose<a class="headerlink" href="#review-matrix-transpose" title="Permalink to this heading">#</a></h3>
 <p>The <em>transpose</em> of a matrix <span class="math notranslate nohighlight">\(\textbf{A}^T\)</span> has the same values as <span class="math notranslate nohighlight">\(\textbf{A}\)</span>, but the rows are converted to columns. One way to do this is with the <code class="docutils literal notranslate"><span class="pre">np.transpose</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -922,7 +950,7 @@ shape of B:  (3, 2)
 </div>
 </section>
 <section id="review-matrix-inverse">
-<h4>Review: Matrix Inverse<a class="headerlink" href="#review-matrix-inverse" title="Permalink to this heading">#</a></h4>
+<h3>Review: Matrix Inverse<a class="headerlink" href="#review-matrix-inverse" title="Permalink to this heading">#</a></h3>
 <p>The concept of a matrix inverse is similar to the matrix of a single number. If we have a single value <span class="math notranslate nohighlight">\(b\)</span>, its inverse can be represented as <span class="math notranslate nohighlight">\(b^{-1}\)</span>. A value times its inverse is equal to 1.</p>
 <div class="math notranslate nohighlight">
 \[b^{-1}b = 1\]</div>
@@ -1021,7 +1049,7 @@ shape of B:  (3, 2)
 </div>
 </section>
 <section id="formulating-linear-regression-in-matrix-form">
-<h4>Formulating linear regression in matrix form<a class="headerlink" href="#formulating-linear-regression-in-matrix-form" title="Permalink to this heading">#</a></h4>
+<h3>Formulating linear regression in matrix form<a class="headerlink" href="#formulating-linear-regression-in-matrix-form" title="Permalink to this heading">#</a></h3>
 <p>We can formulate regression in terms of matrices as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix} y_1\\ y_2\\ \vdots \\ y_N \end{bmatrix} = \begin{bmatrix} 1 &amp; x_1\\ 1 &amp; x_2\\ \vdots &amp; \vdots\\ 1 &amp; x_N \end{bmatrix} \begin{bmatrix} c_0\\ c_1\end{bmatrix} + \begin{bmatrix} \varepsilon_1\\ \varepsilon_2\\ \vdots \\ \varepsilon_N \end{bmatrix}\end{split}\]</div>
@@ -1150,7 +1178,6 @@ shape of y:  (2210, 1)
 </section>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1226,13 +1253,13 @@ shape of y:  (2210, 1)
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-statsmodels">Method 2: statsmodels</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-3-pingouin">Method 3: pingouin</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-4-regression-coefficients-using-numpy-s-polyfit-function">Method 4: Regression coefficients using numpy’s polyfit function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-5-matrix-form">Method 5: Matrix form</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-multiplication">Review: Matrix Multiplication</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-transpose">Review: Matrix Transpose</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-inverse">Review: Matrix Inverse</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-linear-regression-in-matrix-form">Formulating linear regression in matrix form</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication-and-linear-algebra">5.4. Matrix multiplication and linear algebra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-multiplication">Review: Matrix Multiplication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-transpose">Review: Matrix Transpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-matrix-inverse">Review: Matrix Inverse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-linear-regression-in-matrix-form">Formulating linear regression in matrix form</a></li>
 </ul>
 </li>
 </ul>
