@@ -13,7 +13,7 @@
 (#Push-changes-to-a-remote-repository-quick-steps)=
 ## Push changes to a remote repository: quick steps
 
-If you have already [initialized a local repository on your computer](#initialize-a-local-repository-on-your-computer) and [set up a remote repository on GitHub](#set-up-a-remote-repository-on-github), running the three commands below in your local project directory will add all new files and changes and push them to GitHub.
+If you have already [initialized a local repository on your computer](#initialize-a-local-repository-on-your-computer) and [set up a remote repository on GitHub](#set-up-a-remote-repository-on-github), running the four commands below in your local project directory will add all new files and changes and push them to GitHub.
 
 ```
 git pull origin main
