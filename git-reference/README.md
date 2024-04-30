@@ -16,9 +16,10 @@
 If you have already [initialized a local repository on your computer](#initialize-a-local-repository-on-your-computer) and [set up a remote repository on GitHub](#set-up-a-remote-repository-on-github), running the three commands below in your local project directory will add all new files and changes and push them to GitHub.
 
 ```
+git pull origin main
 git add .
 git commit -m "Write a descriptive commit message here."
-git push origin master
+git push origin main
 ```
 
 Note that `git add .` adds all files in the working directory and subdirectory to the repository. You can also add specific files.
