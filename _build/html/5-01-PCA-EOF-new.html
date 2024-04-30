@@ -1,0 +1,1011 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs) &#8212; Data Analysis Techniques in Marine Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '5-01-PCA-EOF-new';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/course-logo.png" class="logo__image only-light" alt="Data Analysis Techniques in Marine Science - Home"/>
+    <script>document.write(`<img src="_static/course-logo.png" class="logo__image only-dark" alt="Data Analysis Techniques in Marine Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data Analysis Techniques in Marine Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1. Introduction to Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="software-installation/README.html">1. Setup and software installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-02-python-intro.html">2. Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-03-boolean.html">3. Boolean logic in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-04-cruise-data-analysis.html">4. Cruise data analysis in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-05-loops.html">5. Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-06-conditional-execution.html">6. Conditional execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-07-python-functions.html">7. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-08-python-modules.html">8. Creating your own Python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-09-python-packages.html">9. Python packages</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2. Probability distributions and linear modeling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2-01-introduction.html">1. Sampling and statistics: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-02-probability-and-distributions.html">2. Probability and distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-03-modeling-sampling.html">3. Modeling, sampling, confidence intervals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python and matrix review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06b-implementing-multivariate-regression.html">7. Multivariate regression tutorial: aragonite saturation state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">8. Poisson regression example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">9. Error propagation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="3-01-hypothesis-power.html">1. Hypothesis testing and Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-02-anova.html">2. Analysis of variance (ANOVA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-03-nonparam.html">3. Non-parametric statistical tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-04-generalized-linear-model.html">4. The generalized linear model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 4. Nonlinear modeling and optimization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="4-01-optimization.html">1. Optimization and nonlinear modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-02-us-population-example.html">2. Example: Modeling exponential growth</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 5. Principal component analysis and related techniques</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="5-01-PCA-EOF.html">1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-02-MDS.html">2. Multidimensional Scaling Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-03-ndbc-wind.html">3. NDBC data - analysis of wind vector time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-04-monterey_bay_kelp.html">4. Monterey Bay Kelp PCA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 6. Spectral analysis of time series</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="6-01-spectral-analysis.html">1. Spectral Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-02-lobo-spectral.html">2. Spectral analysis example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-03-lobo-spectral-part2.html">3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="6-04-filtering.html">5. Filtering and Convolution</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 7. Spatial analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="7-01-spatial-analysis.html">1. Spatial Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-02-interpolation.html">2. Interpolation techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-03-mapping-intro.html">3. Map tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 8. Image analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="8-01-image-analysis.html">1. Image Analysis</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix A. Git reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="git-reference/README.html">Git Reference</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/5-01-PCA-EOF-new.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/5-01-PCA-EOF-new.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-in-two-dimensions-two-variables">Visualizing in two dimensions (two variables)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-wind-vectors">Example - Wind vectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-steps">Principal component analysis: steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-matrix-x">1. Data matrix, <strong>X</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-matrix-c-or-correlation-matrix-r">2. Covariance matrix, C  (or correlation matrix, R)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#current-meter-example-covariance-matrix">Current meter example: covariance matrix</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-the-eigenvalues-and-eigenvectors-from-the-covariance-matrix">3. Extracting the eigenvalues and eigenvectors from the covariance matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-meaning-of-the-eigenvalues-and-eigenvectors">4. Physical meaning of the eigenvalues and eigenvectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-current-meter-example">Back to the current meter example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-visualization-of-principal-components">3-D visualization of principal components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-pacific-decadal-oscillation">Example: the Pacific Decadal Oscillation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-matrix">Data matrix:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-covariance-matrix-what-size">Create a covariance matrix (what size?)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-principal-component-empirical-orthogonal-function-of-north-pacific-sst">First principal component/empirical orthogonal function of North Pacific SST</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-principal-components-of-north-pacific-sst">Other principal components of North Pacific SST</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-scores">Principal component scores</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-assumptions">PCA assumptions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-issues">PCA Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="principal-component-analysis-pca-and-empirical-orthogonal-functions-eofs">
+<h1>Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)<a class="headerlink" href="#principal-component-analysis-pca-and-empirical-orthogonal-functions-eofs" title="Permalink to this heading">#</a></h1>
+<p>The goal of <em>principal component analysis (PCA)</em> is to efficiently represent variability that is common among multiple variables. One application is to create an “index” that describes how different variables co-vary, or how a single variable co-varies in different places. <em>Empirical orthogonal functions (EOFs)</em> are a very similar type of analysis that involves the same basic steps (often seen in Physical Oceanography or Meteorology literature).</p>
+<section id="visualizing-in-two-dimensions-two-variables">
+<h2>Visualizing in two dimensions (two variables)<a class="headerlink" href="#visualizing-in-two-dimensions-two-variables" title="Permalink to this heading">#</a></h2>
+<p>PCA is easiest to visualize when there are only two variables. The same data can be visualized on different axes if you simply rotate the data into a new coordinate system with new axes.</p>
+<p><img alt="images/PCA_1.png" src="_images/PCA_1.png" /></p>
+<p><em>Image source</em>: Joliffe (1990), Principal Component Analysis: A Beginner’s Guide — I. Introduction and application, <em>Weather</em> <a class="reference external" href="https://rmets.onlinelibrary.wiley.com/doi/10.1002/j.1477-8696.1990.tb05558.x">https://rmets.onlinelibrary.wiley.com/doi/10.1002/j.1477-8696.1990.tb05558.x</a></p>
+<p>In the figure above, the data are rotated into a new coordinate system that maximizes the variance, or spread, in the data along the horizontal <span class="math notranslate nohighlight">\(z_1\)</span>-axis (the major axis) and minimizes the variance along the vertical <span class="math notranslate nohighlight">\(z_2\)</span>-axis (the minor axis). This particular type of PCA in two dimensions is often referred to as principal axis analysis. This analysis, which is described in detail below, creates a new coordinate frame that maximizes variability along an axis (PC1) and corresponding orthogonal axis (PC2) where PC1 and PC2 are uncorrelated.</p>
+<p>A common application of this type of analysis is to rotate data from a East/North coordinate system to <em>natural coordinates</em> primary oriented with the coastline or topography.</p>
+<section id="example-wind-vectors">
+<h3>Example - Wind vectors<a class="headerlink" href="#example-wind-vectors" title="Permalink to this heading">#</a></h3>
+<p><img alt="images/PCA_2.png" src="_images/PCA_2.png" /></p>
+<p>Source: Patrick Daniel, MLML</p>
+</section>
+</section>
+<section id="principal-component-analysis-steps">
+<h2>Principal component analysis: steps<a class="headerlink" href="#principal-component-analysis-steps" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Create data matrix (size: N x M, N rows and M columns)</p>
+<ul class="simple">
+<li><p>standardize if necessary (if data is a combination of different variables)</p></li>
+</ul>
+</li>
+<li><p>Form the covariance matrix (M x M)</p></li>
+<li><p>Extract eigenvalues and eigenvectors from covariance matrix</p></li>
+<li><p>The eigenvectors are the principal components, the eigenvalues are their magnitudes</p></li>
+</ol>
+<p>Here these steps are decribed for a two dimensional example, focusing on the wind buoy example above.</p>
+<section id="data-matrix-x">
+<h3>1. Data matrix, <strong>X</strong><a class="headerlink" href="#data-matrix-x" title="Permalink to this heading">#</a></h3>
+<p>Creating a data matrix, <span class="math notranslate nohighlight">\(X\)</span></p>
+<p>N rows, M columns</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix} u_1 &amp; v_1 
+\\ u_2 &amp; v_2 
+\\ u_3 &amp; v_3
+\\ \vdots &amp; \vdots
+\\ u_N &amp; v_N \end{bmatrix}\end{split}\]</div>
+<p>N - number of concurrent samples</p>
+<p>M - number of variables</p>
+<p>For the wind example, <span class="math notranslate nohighlight">\(u\)</span> is eastward velocity and <span class="math notranslate nohighlight">\(v\)</span> is northward velocity.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">file_path_csv</span> <span class="o">=</span> <span class="s1">&#39;data/ndbc_wind_pca/buoyData_5_years.csv&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path_csv</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">princax</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Principal axes of a vector time series.</span>
+<span class="sd">Usage:</span>
+<span class="sd">theta,major,minor = princax(u,v) # if u and v are real-valued vector components</span>
+<span class="sd">    or</span>
+<span class="sd">theta,major,minor = princax(w)   # if w is a complex vector</span>
+<span class="sd">Input:</span>
+<span class="sd">u,v - 1-D arrays of vector components (e.g. u = eastward velocity, v = northward velocity)</span>
+<span class="sd">    or</span>
+<span class="sd">w - 1-D array of complex vectors (u + 1j*v)</span>
+<span class="sd">Output:</span>
+<span class="sd">theta - angle of major axis (math notation, e.g. east = 0, north = 90)</span>
+<span class="sd">major - standard deviation along major axis</span>
+<span class="sd">minor - standard deviation along minor axis</span>
+<span class="sd">Reference: Emery and Thomson, 2001, Data Analysis Methods in Physical Oceanography, 2nd ed., pp. 325-328.</span>
+<span class="sd">Matlab function: http://woodshole.er.usgs.gov/operations/sea-mat/RPSstuff-html/princax.html</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># if one input only, decompose complex vector</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+    <span class="c1"># only use finite values for covariance matrix</span>
+    <span class="n">ii</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">u</span><span class="o">+</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">uf</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+    <span class="n">vf</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+
+    <span class="c1"># compute covariance matrix</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">uf</span><span class="p">,</span><span class="n">vf</span><span class="p">)</span>
+
+    <span class="c1"># calculate principal axis angle (ET, Equation 4.3.23b)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="o">*</span> <span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="c1"># calculate variance along major and minor axes (Equation 4.3.24)</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="p">((</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="n">major</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">term1</span> <span class="o">+</span> <span class="n">term2</span><span class="p">))</span>
+    <span class="n">minor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">term1</span> <span class="o">-</span> <span class="n">term2</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">theta</span><span class="p">,</span><span class="n">major</span><span class="p">,</span><span class="n">minor</span>
+
+<span class="k">def</span> <span class="nf">rot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">theta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Rotate a vector counter-clockwise OR rotate the coordinate system clockwise.</span>
+<span class="sd">Usage:</span>
+<span class="sd">ur,vr = rot(u,v,theta)</span>
+<span class="sd">Input:</span>
+<span class="sd">u,v - vector components (e.g. u = eastward velocity, v = northward velocity)</span>
+<span class="sd">theta - rotation angle (degrees)</span>
+<span class="sd">Output:</span>
+<span class="sd">ur,vr - rotated vector components</span>
+<span class="sd">Example:</span>
+<span class="sd">rot(1,0,90) returns (0,1)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">w</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">v</span>             <span class="c1"># complex vector</span>
+    <span class="n">ang</span> <span class="o">=</span> <span class="n">theta</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>    <span class="c1"># convert angle to radians</span>
+    <span class="n">wr</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">ang</span><span class="p">)</span>    <span class="c1"># complex vector rotation</span>
+    <span class="n">ur</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">wr</span><span class="p">)</span>         <span class="c1"># return u and v components</span>
+    <span class="n">vr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">wr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ur</span><span class="p">,</span><span class="n">vr</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4000</span><span class="p">,</span><span class="mi">6000</span><span class="p">)</span>
+<span class="n">tlim</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span><span class="p">])]</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">u</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">v</span>
+<span class="n">theta</span><span class="p">,</span><span class="n">major</span><span class="p">,</span><span class="n">minor</span> <span class="o">=</span> <span class="n">princax</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;u_rotated&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;v_rotated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span><span class="n">data</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;buoy 46042 wind velocity </span><span class="se">\n</span><span class="s1"> eastward ($u$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tlim</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">tlim</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span><span class="n">data</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;northward ($v$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tlim</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">tlim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.6622712082782454 1.107372677049764
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4000.0, 5999.0)
+</pre></div>
+</div>
+<img alt="_images/11182bb4f46070f05bf1de566c3b599a1364feee3bae9acead56cf8ff16b6e15.png" src="_images/11182bb4f46070f05bf1de566c3b599a1364feee3bae9acead56cf8ff16b6e15.png" />
+</div>
+</div>
+<p>We could also plot these <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> components as a scatter plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;eastward $u$ [m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;northward $v$ [m/s]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;northward $v$ [m/s]&#39;)
+</pre></div>
+</div>
+<img alt="_images/039cc9c953dec2888c088ce98dc202dac0b340667708701839e877083736da8b.png" src="_images/039cc9c953dec2888c088ce98dc202dac0b340667708701839e877083736da8b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">u_rotated</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">v_rotated</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$</span><span class="se">\&#39;</span><span class="s1"> component [m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$</span><span class="se">\&#39;</span><span class="s1"> component [m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;wind-uv-rotated-scatter.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3da8bb6dece6d6c8cc95a6b830dadc6f567655b62943390e9dddac216dd0708a.png" src="_images/3da8bb6dece6d6c8cc95a6b830dadc6f567655b62943390e9dddac216dd0708a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">u</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+<span class="n">u_rotated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">u_rotated</span><span class="p">)</span>
+<span class="n">v_rotated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">v_rotated</span><span class="p">)</span>
+
+<span class="n">gi</span><span class="p">,</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">idx</span><span class="p">]))</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">gi</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">gi</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">gi</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">gi</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">u_rotated</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">gi</span><span class="p">],</span> <span class="n">v_rotated</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">gi</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span><span class="n">data</span><span class="o">.</span><span class="n">u_rotated</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;rotated wind velocity </span><span class="se">\n</span><span class="s1"> $x$</span><span class="se">\&#39;</span><span class="s1"> component (alongshore)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tlim</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">tlim</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span><span class="n">data</span><span class="o">.</span><span class="n">v_rotated</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$y$</span><span class="se">\&#39;</span><span class="s1"> component (cross-shore)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tlim</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">tlim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;wind-uv-rotated&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9c3a4e1c678a06df60bfe0ad88534332cc67b0a5841dd0d187205e390052a337.png" src="_images/9c3a4e1c678a06df60bfe0ad88534332cc67b0a5841dd0d187205e390052a337.png" />
+</div>
+</div>
+</section>
+<section id="covariance-matrix-c-or-correlation-matrix-r">
+<h3>2. Covariance matrix, C  (or correlation matrix, R)<a class="headerlink" href="#covariance-matrix-c-or-correlation-matrix-r" title="Permalink to this heading">#</a></h3>
+<p>The covariance matrix <strong>C</strong> has  M rows and M columns (M x M). It contains the covariance between all possible combinations of the M different variables that are stored in the different columns of <strong>X</strong>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+c_{11} &amp; c_{12} &amp; c_{13} &amp; \cdots &amp; c_{1M}\\
+c_{21} &amp; c_{22} &amp; c_{23} &amp; \cdots &amp; c_{2M}\\
+c_{31} &amp; c_{32} &amp; c_{33} &amp; \cdots &amp; c_{3M}\\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp;       \\
+c_{M1} &amp; c_{M2} &amp; c_{M3} &amp;        &amp; c_{MM}\\
+\end{bmatrix}\end{split}\]</div>
+<p>Alternatively, the correlation matrix, <strong>R</strong>, can also be used. Recall that the correlation between two variables is the covariance scaled by the standard deviation of the variables, <span class="math notranslate nohighlight">\(r_{uv} = \frac{c_{uv}}{s_u s_v}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+1      &amp; r_{12} &amp; r_{13} &amp; \cdots &amp; r_{1M}\\
+r_{21} &amp; 1      &amp; r_{23} &amp; \cdots &amp; r_{2M}\\
+r_{31} &amp; r_{32} &amp; 1      &amp; \cdots &amp; r_{3M}\\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp;       \\
+r_{M1} &amp; r_{M2} &amp; r_{M3} &amp;        &amp; 1     \\
+\end{bmatrix}\end{split}\]</div>
+<p>The diagonal elements of the correlation matrix are all equal to 1.</p>
+<p>The covariance matrix is generally used when all variables have the same units. Variables or locations with greater variance are weighted higher. The correlation matrix is used when the variables have different units, or if the overall magnitudes do not matter. Use of the correlation matrix standardizes the data so that they are all weighted equally. It is equivalent to transforming the data into z-scores first, and then computing the covariance matrix.</p>
+<section id="current-meter-example-covariance-matrix">
+<h4>Current meter example: covariance matrix<a class="headerlink" href="#current-meter-example-covariance-matrix" title="Permalink to this heading">#</a></h4>
+<p>For the case of finding the principal component of wind or current meter data, the variables are the eastward component (<span class="math notranslate nohighlight">\(u\)</span>) and the northward component (<span class="math notranslate nohighlight">\(v\)</span>). The covariance matrix has two rows and two columns.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+c_{uu} &amp; c_{uv}\\
+c_{vu} &amp; c_{vv}\\
+\end{bmatrix}\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(c_{uu}\)</span>  variance of <span class="math notranslate nohighlight">\(u\)</span> <br></p>
+<p><span class="math notranslate nohighlight">\(c_{vv}\)</span>  variance of <span class="math notranslate nohighlight">\(v\)</span><br></p>
+<p><span class="math notranslate nohighlight">\(c_{uv}\)</span>  covariance of <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> <br></p>
+<p>The values for this wind example are,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+11.3 &amp; -4.61\\
+-4.61 &amp; 3.33\\
+\end{bmatrix}\end{split}\]</div>
+<p>where the units are in <span class="math notranslate nohighlight">\(\text{m}^2/\text{s}^2\)</span>.</p>
+<p>Calculating the covariance matrix can also be done in Python with the numpy.cov() function.</p>
+</section>
+</section>
+<section id="extracting-the-eigenvalues-and-eigenvectors-from-the-covariance-matrix">
+<h3>3. Extracting the eigenvalues and eigenvectors from the covariance matrix<a class="headerlink" href="#extracting-the-eigenvalues-and-eigenvectors-from-the-covariance-matrix" title="Permalink to this heading">#</a></h3>
+<p>The eigenvectors (contained in the matrix <span class="math notranslate nohighlight">\(V\)</span>) and eigenvalues (contained in the matrix <span class="math notranslate nohighlight">\(\Lambda\)</span>) of the <span class="math notranslate nohighlight">\(C\)</span> matrix are defined by the relationship:</p>
+<div class="math notranslate nohighlight">
+\[CV =  V \Lambda\]</div>
+<p><span class="math notranslate nohighlight">\(V\)</span> =  eigenvectors (M x M matrix)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+v_{11} &amp; v_{12} &amp; v_{13} &amp; \cdots\\
+v_{21} &amp; v_{22} &amp; v_{23} &amp; \cdots\\
+v_{31} &amp; v_{32} &amp; v_{33} &amp; \cdots\\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots
+\end{bmatrix}\end{split}\]</div>
+<p>Each column is one eigenvector</p>
+<p><span class="math notranslate nohighlight">\(\Lambda\)</span> = eigenvalues (M x M)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+\lambda_{1} &amp; 0 &amp; 0 &amp; \cdots \\
+0 &amp; \lambda_{2} &amp; 0 &amp; \cdots \\
+0 &amp; 0 &amp; \lambda_{3} &amp; \cdots \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots
+\end{bmatrix}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda _1\)</span> - eigenvalue # 1, <span class="math notranslate nohighlight">\(\lambda _2\)</span> - eigenvalue # 2, etc.</p>
+</section>
+<section id="physical-meaning-of-the-eigenvalues-and-eigenvectors">
+<h3>4. Physical meaning of the eigenvalues and eigenvectors<a class="headerlink" href="#physical-meaning-of-the-eigenvalues-and-eigenvectors" title="Permalink to this heading">#</a></h3>
+<p>The <em>eigenvectors</em> describe directions in M-dimensional space. These are called the principal components, which define the orientation of new axes for the data. All eigenvectors are orthogonal (or perpendicular, for the 2D case). The vectors that define the axes can be scaled any magnitude, but usually they are scaled to have a value of one (unit vectors).</p>
+<p>The <em>eigenvalues</em> describe how each eigenvector is scaled. They describe the variance in the data along each axis defined by the orientations of the eigenvectors.</p>
+</section>
+<section id="back-to-the-current-meter-example">
+<h3>Back to the current meter example<a class="headerlink" href="#back-to-the-current-meter-example" title="Permalink to this heading">#</a></h3>
+<p>To compute the eigenvectors and eigenvalues of a matrix in Python, use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+<br>
+<p>For the covariance matrix <span class="math notranslate nohighlight">\(C\)</span> given above for the wind data,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}V = \begin{bmatrix}
+0.91 &amp; 0.42\\
+-0.42 &amp; 0.91
+\end{bmatrix}\end{split}\]</div>
+<p>The columns of the V matrix define the orientation of the new axes (or principal components) in <span class="math notranslate nohighlight">\(u, v\)</span> space. The first column defining PC 1 has a negative slope (<span class="math notranslate nohighlight">\(u\)</span> = 0.91, <span class="math notranslate nohighlight">\(v\)</span> = -0.42) because the variance in the data is primarily oriented in the northwest/southeast axis in <span class="math notranslate nohighlight">\(u,v\)</span> space.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Lambda = \begin{bmatrix}
+13.4 &amp; 0\\
+0 &amp; 1.23
+\end{bmatrix}\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\lambda _1\)</span> = 13.4 <span class="math notranslate nohighlight">\(\frac{m^2}{s^2}\)</span> = variance along PC 1 <br>
+<span class="math notranslate nohighlight">\(\lambda _2\)</span> = 1.23 <span class="math notranslate nohighlight">\(\frac{m^2}{s^2}\)</span> = variance along PC 2  <br></p>
+<p>Note that there is much more variance along PC 1 (the major axis) than PC 2 (the minor axis). The data have been rotated so that the variance is maximized along PC 1 and minimized along PC 2.</p>
+<p>To recover the data in the rotated coordinates,</p>
+<p><span class="math notranslate nohighlight">\(\tau _1 = X V_i\)</span></p>
+<p><span class="math notranslate nohighlight">\(\tau _1\)</span> = u(0.91) + v(-0.42) <br>
+<span class="math notranslate nohighlight">\(\tau _2\)</span> = u(0.42) + v(0.91)</p>
+<p>For this example, this would create new variables for alongshore and cross-shore velocity. This is the same data, just rotated into a new set of axes, where alongshore is defined by the axis of maximum variance (the major axis).</p>
+<p>Factor loading is another common terminology encountered in EOFs, and refers to the larger spread of data in the first eigenvector (original example v’) than in the second (u’)and thereby quantifying their relative importance and are defined by:</p>
+<p><span class="math notranslate nohighlight">\(A =  V \sqrt{\Lambda}\)</span></p>
+<p>Factor loading can be visualized as the length of a PC vector, whereby PC1 would have a longer vector compared to PC2.</p>
+<p>The figure below shows the factor loadings for the wind data. The PCs are scaled so that the length of the PC1 vector is the standard deviation of of the data along that axis (<span class="math notranslate nohighlight">\(\sqrt{13.4} = 3.7\)</span> m/s) and the length of the PC2 vector is the standard deviation of of the data along that axis (<span class="math notranslate nohighlight">\(\sqrt{1.23} = 1.1\)</span> m/s)</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/7282fc62404f7fe213ca1ddb35f31e08d5dd505ecbb9d74600e869b4e2405498.png" src="_images/7282fc62404f7fe213ca1ddb35f31e08d5dd505ecbb9d74600e869b4e2405498.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="d-visualization-of-principal-components">
+<h2>3-D visualization of principal components<a class="headerlink" href="#d-visualization-of-principal-components" title="Permalink to this heading">#</a></h2>
+<p>For three variables, defined by three axes, three principal components are obtained. The first two PCs define a plane in three-dimensional space. These are the two axes that define a a plane where the data would be most spread out if you looked at the data from a perspective perpendicular to the plane.</p>
+<p>For an interactive visualization of PCA in three dimensions, see this link:</p>
+<p><a class="reference external" href="http://setosa.io/ev/principal-component-analysis/">http://setosa.io/ev/principal-component-analysis/</a></p>
+</section>
+<section id="example-the-pacific-decadal-oscillation">
+<h2>Example: the Pacific Decadal Oscillation<a class="headerlink" href="#example-the-pacific-decadal-oscillation" title="Permalink to this heading">#</a></h2>
+<p><img alt="images/PCA_PDO.png" src="_images/PCA_PDO.png" /></p>
+<p><a class="reference external" href="http://research.jisao.washington.edu/pdo/">source</a></p>
+<p>The Pacific Decadal Oscillation (PDO) is defined as the first principal component of SST in the North Pacific. The origin of this index comes from Davis (1976).</p>
+<p>This study used binned SST data from 1947-1974 in 82 different sites across the Pacific Ocean.</p>
+<p><img alt="images/PCA_PDO_Bins.png" src="_images/PCA_PDO_Bins.png" /></p>
+<p>Davis, R.E. (1976) Predictability of sea surface temperature and sea level pressure anomalies over the North Pacific Ocean. <em>J. Phys. Oceanogr.</em>, 6, 249-266.</p>
+<p><img alt="images/PCA_PDO_STD.png" src="_images/PCA_PDO_STD.png" /></p>
+<p>Standard deviation of temperature anomaly [deg C]</p>
+<p>Temperature anomaly = temperature – seasonal monthly mean temperature</p>
+<section id="data-matrix">
+<h3>Data matrix:<a class="headerlink" href="#data-matrix" title="Permalink to this heading">#</a></h3>
+<p>(336 X 82) -&gt; 28 years * 12 month</p>
+</section>
+<section id="create-a-covariance-matrix-what-size">
+<h3>Create a covariance matrix (what size?)<a class="headerlink" href="#create-a-covariance-matrix-what-size" title="Permalink to this heading">#</a></h3>
+<p>(82 x 82)</p>
+</section>
+<section id="first-principal-component-empirical-orthogonal-function-of-north-pacific-sst">
+<h3>First principal component/empirical orthogonal function of North Pacific SST<a class="headerlink" href="#first-principal-component-empirical-orthogonal-function-of-north-pacific-sst" title="Permalink to this heading">#</a></h3>
+<p><img alt="images/PCA_PDO_First.png" src="_images/PCA_PDO_First.png" /></p>
+<p>This is the dominant “mode” of temperature variability in the North Pacific, based on how temperature at different locations co-vary together (i.e. the covariance matrix).</p>
+<p>This PC is a vector defined by 82 different numbers. It is the first column of an (82 x 82) eigenvector matrix (V). It can be visualized by mapping each value back to its corresponding spatial location.</p>
+</section>
+<section id="other-principal-components-of-north-pacific-sst">
+<h3>Other principal components of North Pacific SST<a class="headerlink" href="#other-principal-components-of-north-pacific-sst" title="Permalink to this heading">#</a></h3>
+<p><img alt="images/PCA_PDO_All.png" src="_images/PCA_PDO_All.png" /></p>
+<p>Fraction of Variance that is accounted for by the fist M empirical orthogonal functions:</p>
+<p><img alt="images/PCA_PDO_Var.png" src="_images/PCA_PDO_Var.png" /></p>
+</section>
+<section id="principal-component-scores">
+<h3>Principal component scores<a class="headerlink" href="#principal-component-scores" title="Permalink to this heading">#</a></h3>
+<p>The first PC can be used to create an index describing the time variability of the dominant mode. This is the PDO index, which decribes a mode of temperature variability that can be compared with ecosystem parameters (e.g. zooplankton abundance).</p>
+<p><img alt="images/PCA_PDO_Index.png" src="_images/PCA_PDO_Index.png" /></p>
+<section id="pca-assumptions">
+<h4>PCA assumptions<a class="headerlink" href="#pca-assumptions" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Relationships between variables are linear</p></li>
+<li><p>Mean and variance are sufficient statistics (variables have Gaussian/normal distribution)</p></li>
+<li><p>Large variances have import dynamics (high signal to noise ration)</p></li>
+<li><p>The principal components are orthogonal</p></li>
+</ul>
+</section>
+<section id="pca-issues">
+<h4>PCA Issues<a class="headerlink" href="#pca-issues" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Does not take into account phase lags between correlated variables, can detect “standing” features but not propagating waves. The PDO oscillates back and forth between cool and warm phases like a see-saw, it does not propagate across the Pacific like a wave. If there are wave-like features in the data, PCA will split up the variance between multiple modes, confusing interpration.</p></li>
+<li><p>Domain dependence: can get a different answer by changing the spatial extent of the data</p></li>
+</ul>
+<p>Shlens, J., A tutorial on principal component analysis: Derivation, discussion and singular value decomposition.  <a class="reference external" href="https://www.cs.princeton.edu/picasso/mats/PCA-Tutorial-Intuition_jp.pdf">https://www.cs.princeton.edu/picasso/mats/PCA-Tutorial-Intuition_jp.pdf</a></p>
+<p>Example:
+<img alt="images/PCA_Issue.png" src="_images/PCA_Issue.png" /></p>
+<p>If no dominant pattern exists, PCA will pick out a pattern that may not be robust.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-in-two-dimensions-two-variables">Visualizing in two dimensions (two variables)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-wind-vectors">Example - Wind vectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-steps">Principal component analysis: steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-matrix-x">1. Data matrix, <strong>X</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-matrix-c-or-correlation-matrix-r">2. Covariance matrix, C  (or correlation matrix, R)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#current-meter-example-covariance-matrix">Current meter example: covariance matrix</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-the-eigenvalues-and-eigenvectors-from-the-covariance-matrix">3. Extracting the eigenvalues and eigenvectors from the covariance matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-meaning-of-the-eigenvalues-and-eigenvectors">4. Physical meaning of the eigenvalues and eigenvectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-current-meter-example">Back to the current meter example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-visualization-of-principal-components">3-D visualization of principal components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-pacific-decadal-oscillation">Example: the Pacific Decadal Oscillation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-matrix">Data matrix:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-covariance-matrix-what-size">Create a covariance matrix (what size?)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-principal-component-empirical-orthogonal-function-of-north-pacific-sst">First principal component/empirical orthogonal function of North Pacific SST</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-principal-components-of-north-pacific-sst">Other principal components of North Pacific SST</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-scores">Principal component scores</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-assumptions">PCA assumptions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-issues">PCA Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Connolly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

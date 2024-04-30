@@ -196,10 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2-02-probability-and-distributions.html">2. Probability and distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-03-modeling-sampling.html">3. Modeling, sampling, confidence intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python and matrix review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">7. Poisson regression example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">8. Error propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06b-implementing-multivariate-regression.html">7. Multivariate regression tutorial: aragonite saturation state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">8. Poisson regression example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">9. Error propagation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
 <ul class="current nav bd-sidenav">
@@ -425,8 +426,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-reading">2.1. Recommended reading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popular-post-hoc-tests">2.2. Popular <em>post-hoc</em> tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fisher-s-classic-one-way-anova">2.1. Fisher’s “classic” one-way ANOVA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-flavors-of-anova">2.2. Other flavors of ANOVA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#welch-s-anova">Welch’s ANOVA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeated-measures-anova">Repeated measures ANOVA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-way-anova">Two-Way ANOVA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-hoc-tests-and-multiple-comparisons">2.3. post-hoc tests and multiple comparisons</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-anova">Classic ANOVA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Welch’s ANOVA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonferroni-correction">Bonferroni correction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-reading">2.4. Recommended reading</a></li>
 </ul>
             </nav>
         </div>
@@ -440,21 +453,13 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="analysis-of-variance-anova">
 <h1><span class="section-number">2. </span>Analysis of variance (ANOVA)<a class="headerlink" href="#analysis-of-variance-anova" title="Permalink to this heading">#</a></h1>
-<section id="recommended-reading">
-<h2><span class="section-number">2.1. </span>Recommended reading<a class="headerlink" href="#recommended-reading" title="Permalink to this heading">#</a></h2>
-<p>McDonald, J.H. 2014. Handbook of Biological Statistics (3rd ed.). Sparky House Publishing, Baltimore, Maryland. Freely available online at <span class="xref myst">www.biostathandbook.com</span></p>
-<p><strong>Analysis of variance</strong>: test for a statistically significant difference between means of 3+ different groups</p>
+<p>Test for a statistically significant difference between means of 3+ different groups</p>
 <ul class="simple">
 <li><p>Does not tell you which group is different</p></li>
-<li><p>Requires the use of <strong><em>post hoc</em></strong> analysis to determine which means are different from each other</p></li>
+<li><p>Requires the use of <em>post hoc</em> analysis to determine which means are different from each other</p></li>
 </ul>
-<p>Example:
-<img alt="images/anova_example.png" src="_images/anova_example.png" /></p>
-<p><strong>One-Way ANOVA</strong>
-Fisher’s LSD <em>post-hoc</em> test used to determine which populations are different from each other.</p>
-<p><strong>Two-Way ANOVA</strong>
-Data are grouped into different genotypes, within those groupings, sex is segregated. Thus two factors are varying across the examples</p>
-<p>One-Way example:</p>
+<section id="fisher-s-classic-one-way-anova">
+<h2><span class="section-number">2.1. </span>Fisher’s “classic” one-way ANOVA<a class="headerlink" href="#fisher-s-classic-one-way-anova" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>J Populations (or “treatments”)</p></li>
 <li><p>N samples per population</p></li>
@@ -476,12 +481,46 @@ Data are grouped into different genotypes, within those groupings, sex is segreg
 <p>F-Distribution: <span class="math notranslate nohighlight">\(F =\frac{MSB}{MSW}\)</span></p>
 <p>The null hypothesis can be rejected if F is large. This is a one-tailed test, since small values of F do not lead to a rejection of the null hypothesis. The region of rejection is is above some critical level, which is determined by the confidence level and the degrees of freedon in the numerator and denominator.</p>
 </section>
-<section id="popular-post-hoc-tests">
-<h2><span class="section-number">2.2. </span>Popular <em>post-hoc</em> tests<a class="headerlink" href="#popular-post-hoc-tests" title="Permalink to this heading">#</a></h2>
+<section id="other-flavors-of-anova">
+<h2><span class="section-number">2.2. </span>Other flavors of ANOVA<a class="headerlink" href="#other-flavors-of-anova" title="Permalink to this heading">#</a></h2>
+<section id="welch-s-anova">
+<h3>Welch’s ANOVA<a class="headerlink" href="#welch-s-anova" title="Permalink to this heading">#</a></h3>
+<p>Similar to the Welch’s t-test, the Welch’s ANOVA relaxes the assumption of equal variance between groups.</p>
+</section>
+<section id="repeated-measures-anova">
+<h3>Repeated measures ANOVA<a class="headerlink" href="#repeated-measures-anova" title="Permalink to this heading">#</a></h3>
+<p>Use when the samples are not independent between groups, like when measuring the same subjects over different time points in an experiments.</p>
+</section>
+<section id="two-way-anova">
+<h3>Two-Way ANOVA<a class="headerlink" href="#two-way-anova" title="Permalink to this heading">#</a></h3>
+<p>Use when you are comparing means and have two nomimal variables, or two categories of groups that you are comparing between. In this case there is also an interaction term, which tells you if the difference between groups in one category is modulated by the differences in groups between another category. Can be extended to <span class="math notranslate nohighlight">\(N\)</span>-way ANOVA for more nominal variables.</p>
+</section>
+</section>
+<section id="post-hoc-tests-and-multiple-comparisons">
+<h2><span class="section-number">2.3. </span>post-hoc tests and multiple comparisons<a class="headerlink" href="#post-hoc-tests-and-multiple-comparisons" title="Permalink to this heading">#</a></h2>
+<p>The ANOVA only tests the null hypothesis all of the means are equal. If you reject the null hypothesis, you will probably want to know which of the groups are significantly different. Your intuition may tell you to do pair-wise t-tests. That is the general idea behind post-hoc tests, but care needs to be taken to account for multiple comparisons.</p>
+<p>For example, if you do 20 different comparsons on data drawn from the same distribution you would expect to get at least one “significant” difference.</p>
+<section id="classic-anova">
+<h3>Classic ANOVA<a class="headerlink" href="#classic-anova" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Fisher’s LSD (least significant difference)</p></li>
 <li><p>Tukey HSD (honest significant difference)</p></li>
 </ul>
+</section>
+<section id="id1">
+<h3>Welch’s ANOVA<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Games-Howell</p></li>
+</ul>
+</section>
+<section id="bonferroni-correction">
+<h3>Bonferroni correction<a class="headerlink" href="#bonferroni-correction" title="Permalink to this heading">#</a></h3>
+<p>The post-hoc tests above are designed specifically for ANOVA. Another common correction for multiple comparison is the Bonferonni correction. In that case, take the p-value you get and multiply it by the number of comparisons. This effectively sets a higher bar for statistical significance. In other words the Type I error rate is reduced.</p>
+</section>
+</section>
+<section id="recommended-reading">
+<h2><span class="section-number">2.4. </span>Recommended reading<a class="headerlink" href="#recommended-reading" title="Permalink to this heading">#</a></h2>
+<p>McDonald, J.H. 2014. Handbook of Biological Statistics (3rd ed.). Sparky House Publishing, Baltimore, Maryland. Freely available online at <span class="xref myst">www.biostathandbook.com</span></p>
 </section>
 </section>
 
@@ -549,8 +588,20 @@ Data are grouped into different genotypes, within those groupings, sex is segreg
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-reading">2.1. Recommended reading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popular-post-hoc-tests">2.2. Popular <em>post-hoc</em> tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fisher-s-classic-one-way-anova">2.1. Fisher’s “classic” one-way ANOVA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-flavors-of-anova">2.2. Other flavors of ANOVA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#welch-s-anova">Welch’s ANOVA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeated-measures-anova">Repeated measures ANOVA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-way-anova">Two-Way ANOVA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-hoc-tests-and-multiple-comparisons">2.3. post-hoc tests and multiple comparisons</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-anova">Classic ANOVA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Welch’s ANOVA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonferroni-correction">Bonferroni correction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-reading">2.4. Recommended reading</a></li>
 </ul>
   </nav></div>
 

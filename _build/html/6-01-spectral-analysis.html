@@ -196,10 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2-02-probability-and-distributions.html">2. Probability and distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-03-modeling-sampling.html">3. Modeling, sampling, confidence intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python and matrix review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">7. Poisson regression example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">8. Error propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06b-implementing-multivariate-regression.html">7. Multivariate regression tutorial: aragonite saturation state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">8. Poisson regression example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">9. Error propagation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -425,18 +426,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-review-complex-numbers">1.1. Math review - complex numbers</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-review-periodic-functions">1.1. Math review - periodic functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-review-complex-numbers">1.2. Math review - complex numbers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-conjugate">Complex Conjugate</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">1.2. Terminology</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">1.3. Terminology</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monochromatic-signals">Monochromatic signals</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-monochromatic-signals">Non-monochromatic signals</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-limitations">Practical Limitations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-analysis">1.3. Fourier Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-analysis">1.4. Discrete Fourier Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-analysis">1.4. Fourier Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-analysis">1.5. Discrete Fourier Analysis</a></li>
 </ul>
             </nav>
         </div>
@@ -452,23 +454,78 @@ document.write(`
 <h1><span class="section-number">1. </span>Spectral Analysis<a class="headerlink" href="#spectral-analysis" title="Permalink to this heading">#</a></h1>
 <p>Spectral analysis is a common form of time series analysis. It involves analyzing the variance in a time series, and the contribution of different frequencies. One common example in the ocean is the spectrum of wave energy observed by a buoy. The example below is from a <a class="reference external" href="https://www.ndbc.noaa.gov/station_page.php?station=46042">buoy offshore of Monterey Bay</a>.</p>
 <p><img alt="NDBC_wave_spectrum" src="_images/spec_plot.png" /></p>
-<p>Frequency is expressed in units of [Hz], or [cycles/s] on the lower horizontal axis. These frequencies <span class="math notranslate nohighlight">\(f\)</span> are the reciprocal of the wave period <span class="math notranslate nohighlight">\(T\)</span>, or <span class="math notranslate nohighlight">\(f = 1/T\)</span>. The corresponding periods are shown on the upper horizontal axis. The prominent peak in the plot is showing that the largest waves have a period just over 10 s, or a frequency just below 0.1 Hz. This is sometimes refered to as the <em>dominant period</em>, the period that dominates the wave energy.</p>
-<p>The units on the vertical axis are representing variance per unit frequency. If the height of the sea surface is measured in units of [m], then the variance of the surface elevation has units [m<span class="math notranslate nohighlight">\(^2\)</span>]. When we split the variance into the contributions of different frequencies, then we get units of [m<span class="math notranslate nohighlight">\(^2\)</span>]/Hz].</p>
+<p>Frequency is expressed in units of <span class="math notranslate nohighlight">\([\text{Hz}]\)</span>, or <span class="math notranslate nohighlight">\([\text{cycles/s}]\)</span> on the lower horizontal axis. These frequencies <span class="math notranslate nohighlight">\(f\)</span> are the reciprocal of the wave period <span class="math notranslate nohighlight">\(T\)</span>, or <span class="math notranslate nohighlight">\(f = 1/T\)</span>. The corresponding periods are shown on the upper horizontal axis. The prominent peak in the plot is showing that the largest waves have a period just over 10 s, or a frequency just below 0.1 Hz. This is sometimes refered to as the <em>dominant period</em>, the period that dominates the wave energy.</p>
+<p>The units on the vertical axis are representing variance per unit frequency. If the height of the sea surface is measured in units of [<span class="math notranslate nohighlight">\(\text{m}\)</span>], then the variance of the surface elevation has units <span class="math notranslate nohighlight">\([\text{m}^2]\)</span>. When we split the variance into the contributions of different frequencies, then we get units of <span class="math notranslate nohighlight">\([\text{m}^2/\text{Hz}]\)</span>.</p>
+<section id="math-review-periodic-functions">
+<h2><span class="section-number">1.1. </span>Math review - periodic functions<a class="headerlink" href="#math-review-periodic-functions" title="Permalink to this heading">#</a></h2>
+<p>The periodic functions <span class="math notranslate nohighlight">\(\sin\)</span> and <span class="math notranslate nohighlight">\(\cos\)</span> form the basis of time series analysis. The functions <span class="math notranslate nohighlight">\(\cos t\)</span> and <span class="math notranslate nohighlight">\(\sin t\)</span> have the same wave-like pattern but they are <span class="math notranslate nohighlight">\(\pi/4\)</span> radians out of phase.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;$\cos t$&#39;</span><span class="p">,</span> <span class="s1">&#39;$\sin t$&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">+</span><span class="mf">0.000001</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;-3π&#39;</span><span class="p">,</span> <span class="s1">&#39;-5π/2&#39;</span><span class="p">,</span> <span class="s1">&#39;-2π&#39;</span><span class="p">,</span> <span class="s1">&#39;-3π/2&#39;</span><span class="p">,</span> <span class="s1">&#39;π&#39;</span><span class="p">,</span> <span class="s1">&#39;-π/2&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;π/2&#39;</span><span class="p">,</span> <span class="s1">&#39;π&#39;</span><span class="p">,</span> <span class="s1">&#39;3π/2&#39;</span><span class="p">,</span> <span class="s1">&#39;2π&#39;</span><span class="p">,</span> <span class="s1">&#39;5π/2&#39;</span><span class="p">,</span> <span class="s1">&#39;3π&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/c72c70e0abb607288db4f3533873436dad4752020a19f1ac2fa46245842a2cb2.png" src="_images/c72c70e0abb607288db4f3533873436dad4752020a19f1ac2fa46245842a2cb2.png" />
+</div>
+</div>
+<p>If we plot these two functions against each other, so that <span class="math notranslate nohighlight">\(x = \cos t\)</span> and <span class="math notranslate nohighlight">\(y = \sin t\)</span> we get the unit circle. If we were to calculate the correlation between these two functions we would get a <span class="math notranslate nohighlight">\(r = 0\)</span>, exactly. So even though the two functions have the same pattern, they are completely uncorrelated because of the phase shift between them.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x = \cos t$&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y = \sin t$&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/9315b1bc6e1b95b76e6ec343f89df037baab9745e215876b2741246c876995df.png" src="_images/9315b1bc6e1b95b76e6ec343f89df037baab9745e215876b2741246c876995df.png" />
+</div>
+</div>
+</section>
 <section id="math-review-complex-numbers">
-<h2><span class="section-number">1.1. </span>Math review - complex numbers<a class="headerlink" href="#math-review-complex-numbers" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.2. </span>Math review - complex numbers<a class="headerlink" href="#math-review-complex-numbers" title="Permalink to this heading">#</a></h2>
 <p>Complex numbers are a powerful tool for analyzing periodic functions. They can be visualized as a representation of numbers in 2 dimensional space.</p>
-<p>example 5+2<span class="math notranslate nohighlight">\(i\)</span>, where <span class="math notranslate nohighlight">\(i=\sqrt{-1}\)</span></p>
-<p>real part: <span class="math notranslate nohighlight">\(x\)</span>=5</p>
-<p>imaginary part: <span class="math notranslate nohighlight">\(y\)</span>=2</p>
-<p><span class="math notranslate nohighlight">\(z\)</span>=5+2<span class="math notranslate nohighlight">\(i\)</span></p>
+<p>example: <span class="math notranslate nohighlight">\(5 + 2i\)</span> , where <span class="math notranslate nohighlight">\(i=\sqrt{-1}\)</span></p>
+<p>real part: <span class="math notranslate nohighlight">\(x = 5\)</span></p>
+<p>imaginary part: <span class="math notranslate nohighlight">\(y = 2\)</span></p>
+<p><span class="math notranslate nohighlight">\(z = 5+2i\)</span></p>
 <p>Complex numbers can be thought of as vectors in two dimensional space. In the formula above, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> can be thought of as the components of a vector <span class="math notranslate nohighlight">\(z\)</span>. We can also think about complex numbers as vectors with a magnitude(<span class="math notranslate nohighlight">\(r\)</span>) and angle/phase (<span class="math notranslate nohighlight">\(\phi\)</span>). Trigonometry can be used to describe the relationship between these two types of vector representation.</p>
-<p><span class="math notranslate nohighlight">\(x=rcos\phi\)</span></p>
-<p><span class="math notranslate nohighlight">\(y=rsin\phi\)</span></p>
+<p><span class="math notranslate nohighlight">\(x=r\cos\phi\)</span></p>
+<p><span class="math notranslate nohighlight">\(y=r\sin\phi\)</span></p>
 <p><span class="math notranslate nohighlight">\(r=|z|=\sqrt{x^2+y^2}\)</span></p>
-<p><span class="math notranslate nohighlight">\(\frac{y}{x}=tan\phi\)</span></p>
-<p><span class="math notranslate nohighlight">\(\phi=tan^-1(\frac{y}{x})\)</span></p>
-<p><span class="math notranslate nohighlight">\(=rcos\phi+i(rsin\phi)\)</span></p>
-<p><span class="math notranslate nohighlight">\(=r(cos\phi+isin\phi)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\frac{y}{x}=\tan\phi\)</span></p>
+<p><span class="math notranslate nohighlight">\(\phi=\tan^{-1}(\frac{y}{x})\)</span></p>
+<p><span class="math notranslate nohighlight">\(=r\cos\phi+i(r\sin\phi)\)</span></p>
+<p><span class="math notranslate nohighlight">\(=r(\cos\phi+i\sin\phi)\)</span></p>
 <p><span class="math notranslate nohighlight">\(z=re^{i\phi}\)</span></p>
 <p>This final formula shows how the complex number can be expressed compactly in terms of its magnitude and angle.</p>
 <p>Although we often think of exponential functions as growth or decay, an exponential with an imaginary exponent describes oscillations (i.e. sines and consines). The literature on spectral analysis often uses this type of equation.</p>
@@ -483,7 +540,7 @@ document.write(`
 </section>
 </section>
 <section id="terminology">
-<h2><span class="section-number">1.2. </span>Terminology<a class="headerlink" href="#terminology" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.3. </span>Terminology<a class="headerlink" href="#terminology" title="Permalink to this heading">#</a></h2>
 <section id="monochromatic-signals">
 <h3>Monochromatic signals<a class="headerlink" href="#monochromatic-signals" title="Permalink to this heading">#</a></h3>
 <p>Monochromatic = “one color”</p>
@@ -493,6 +550,14 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\eta(t)=\eta_{max}cos(2\pi ft-\phi)\)</span></p>
 <p><span class="math notranslate nohighlight">\(\eta(t)=\alpha cos(2\pi ft)+\beta sin(2\pi ft)\)</span></p>
 <p><span class="math notranslate nohighlight">\(\eta_{max}=\sqrt{\alpha^2+\beta^2}\)</span></p>
+<p>In the figure below, a signal with one frequency (<span class="math notranslate nohighlight">\(f\)</span> = 1 Hz) is expressed as the combination of a cosine wave where <span class="math notranslate nohighlight">\(\alpha = 0.5\)</span> and a sine wave where <span class="math notranslate nohighlight">\(\beta = 0.75\)</span>.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/3c5d263d2ac58987c0d12ec795a3f8491fdb0973c99d47bb080bd8eef8cdf79e.png" src="_images/3c5d263d2ac58987c0d12ec795a3f8491fdb0973c99d47bb080bd8eef8cdf79e.png" />
+</div>
+</div>
 </section>
 <section id="non-monochromatic-signals">
 <h3>Non-monochromatic signals<a class="headerlink" href="#non-monochromatic-signals" title="Permalink to this heading">#</a></h3>
@@ -502,6 +567,35 @@ document.write(`
 <p>or</p>
 <p><span class="math notranslate nohighlight">\(\eta(t)=\bar\eta+\sum^3_{j=1}[\alpha_j cos(j 2\pi f t)+\beta_j sin(j 2\pi f t)]\)</span></p>
 <p>An infinite number of sin waves can be added to each other to make any signal in existence. This includes both repeating waveforms and non repeating waveforms.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">alpha2</span> <span class="o">=</span> <span class="mf">0.75</span>
+<span class="n">beta2</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">alpha3</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">beta3</span> <span class="o">=</span> <span class="mf">0.8</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">beta</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+         <span class="o">+</span> <span class="n">alpha2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">beta2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+         <span class="o">+</span> <span class="n">alpha3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">beta3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;signal&#39;</span><span class="p">,</span> <span class="s1">&#39;cosine wave&#39;</span><span class="p">,</span> <span class="s1">&#39;sine wave&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/71400d9104d5802370f5fe383b0cdbe6c0d5666b6541035e65aa30abad3cdf95.png" src="_images/71400d9104d5802370f5fe383b0cdbe6c0d5666b6541035e65aa30abad3cdf95.png" />
+</div>
+</div>
 </section>
 <section id="practical-limitations">
 <h3>Practical Limitations<a class="headerlink" href="#practical-limitations" title="Permalink to this heading">#</a></h3>
@@ -517,7 +611,7 @@ document.write(`
 </section>
 </section>
 <section id="fourier-analysis">
-<h2><span class="section-number">1.3. </span>Fourier Analysis<a class="headerlink" href="#fourier-analysis" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.4. </span>Fourier Analysis<a class="headerlink" href="#fourier-analysis" title="Permalink to this heading">#</a></h2>
 <p>Model a time series <span class="math notranslate nohighlight">\(y(t)\)</span> with the “harmonics” of the fundamental frequency</p>
 <p><span class="math notranslate nohighlight">\(f_f, 2f_f, 3f_f, 4f_f...\frac{N}{2}f_f\)</span></p>
 <p>These frequencies range from the lowest frequency we measured (the fundamental frequency) to the highest frequency (the Nyquist frequency). We can also write the Nyquist frequency as</p>
@@ -525,28 +619,47 @@ document.write(`
 \[ f_N = \frac{N}{2}f_f = \frac{1}{2 \Delta t} \]</div>
 <p>At each frequency <span class="math notranslate nohighlight">\(f_k = k f_f\)</span> the wave has variance:</p>
 <p><span class="math notranslate nohighlight">\(\sigma^2_{y_k}=\frac{1}{2}(\alpha^2_k+\beta^2_k)\)</span></p>
-<p>Total variance ove <span class="math notranslate nohighlight">\(y(t) =\frac{1}{2}y^2_{max_k}\)</span></p>
+<p>Total variance: <span class="math notranslate nohighlight">\(y(t) =\frac{1}{2}y^2_{max_k}\)</span></p>
 <p><span class="math notranslate nohighlight">\(\sigma^2_{y_{total}}= \frac{1}{2}\sum^{N/2}_{k=1}(\alpha^2_k+\beta^2_k)\)</span></p>
 <p>The waves with greater amplitude contribute more to the variance of the time series.</p>
 <p>Using this set of frequencies, the time series can be rewritten in terms of a sum of sine and cosine functions:</p>
 <div class="math notranslate nohighlight">
 \[ y(t) = \bar{y} + \sum^{N/2}_{k=1} [\alpha_k cos(k 2\pi f_f t) + \beta_k sin(k 2\pi f_f t)]\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0016666666666666668
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="discrete-fourier-analysis">
-<h2><span class="section-number">1.4. </span>Discrete Fourier Analysis<a class="headerlink" href="#discrete-fourier-analysis" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.5. </span>Discrete Fourier Analysis<a class="headerlink" href="#discrete-fourier-analysis" title="Permalink to this heading">#</a></h2>
 <p>The Fourier coefficients of a sequence, or time series, <span class="math notranslate nohighlight">\(y = [y_0,y_1,y_2,...,y_{N-1}]\)</span> can be defined as</p>
-<p><span class="math notranslate nohighlight">\(Y_k=\sum^{N-1}_{n=0}y_ne^{-i2\pi kn/N}\)</span></p>
-<p>For each frequency, the Fourier coeffient is the sum of (all function values <span class="math notranslate nohighlight">\(\times\)</span> sines and cosines) over all N.</p>
-<p>The sum of (all function values x sines and cosines) is the same as computing the covariance between the function and sine/cosine waves.</p>
-<p>In general, the Fourier coefficients are complex numbers which describe both the coefficients for both the sine and cosine waves.</p>
-<p>Computing these sums for all fequencies gives a set of Fourier coefficients.</p>
-<p><span class="math notranslate nohighlight">\(Y_k =[Y_0,Y_1,Y_2,....Y_{N/2},......Y_{N-1}]\)</span></p>
-<p>Each coefficient <span class="math notranslate nohighlight">\(Y\)</span> can be complex valued. The real part of each <span class="math notranslate nohighlight">\(Y_k\)</span> represents the cosine coefficient (analagous to <span class="math notranslate nohighlight">\(\alpha_k\)</span> above) and the imaginary part represents the sine coefficient (analagous to <span class="math notranslate nohighlight">\(\beta_k\)</span> above).</p>
-<p><span class="math notranslate nohighlight">\(Y_0\)</span> represents the “zero frequency” or a constant. This is the mean of the time series, which is a constant.</p>
-<p>The set of coefficients [<span class="math notranslate nohighlight">\(Y_1\)</span>, …, <span class="math notranslate nohighlight">\(Y_{N/2}\)</span>] represents the coefficients for positive frequencies, while the set of coefficients [<span class="math notranslate nohighlight">\(Y_1\)</span>, …, <span class="math notranslate nohighlight">\(Y_{N/2}\)</span>] represents the coefficients for negative frequencies (if we were to reversed the order of the data points). When analyzing time series with real values (no imaginary components), the information corresponding to the positive and negative frequencies is redundant. In this case, we usually only look at the positive frequencies. See <a class="reference internal" href="6-02-lobo-spectral.html"><span class="doc std std-doc">the LOBO spectral analysis example</span></a> for more information about how the DFT is applied in Python and how to interpret this type of output.</p>
-<p>The intuitive method of computing these coefficients would be to loop through all frequencies and compute the covaraince for each frequency. This requires <span class="math notranslate nohighlight">\(N^2\)</span> operations. The “fast Fourrier transform” (FFT) requires only <span class="math notranslate nohighlight">\(N\log(N)\)</span> operations.</p>
-<p>Inverse DFT gets the time series back to is original form
-<span class="math notranslate nohighlight">\(Y_n=\frac{1}{N}\sum^{N-1}_{n=0}y_ne^{i2\pi kn/N}\)</span></p>
+<div class="math notranslate nohighlight">
+\[Y_k=\sum^{N-1}_{n=0}y_ne^{-i2\pi kn/N}\]</div>
+<ul class="simple">
+<li><p>For each frequency, the Fourier coeffient is the sum of (all function values <span class="math notranslate nohighlight">\(\times\)</span> sines and cosines) over all N.</p></li>
+<li><p>The sum of (all function values x sines and cosines) is the same as computing the covariance between the function and sine/cosine waves.</p></li>
+<li><p>In general, the Fourier coefficients are complex numbers which describe both the coefficients for both the sine and cosine waves.</p></li>
+</ul>
+<p>Computing these sums for all fequencies gives a set of Fourier coefficients:</p>
+<div class="math notranslate nohighlight">
+\[Y_k =[Y_0,Y_1,Y_2,....Y_{N/2},......Y_{N-1}]\]</div>
+<ul class="simple">
+<li><p>Each coefficient <span class="math notranslate nohighlight">\(Y\)</span> can be complex valued. The real part of each <span class="math notranslate nohighlight">\(Y_k\)</span> represents the cosine coefficient (analagous to <span class="math notranslate nohighlight">\(\alpha_k\)</span> above) and the imaginary part represents the sine coefficient (analagous to <span class="math notranslate nohighlight">\(\beta_k\)</span> above).</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y_0\)</span> represents the “zero frequency” or a constant. This is the mean of the time series, which is a constant.</p></li>
+<li><p>The set of coefficients [<span class="math notranslate nohighlight">\(Y_1\)</span>, …, <span class="math notranslate nohighlight">\(Y_{N/2}\)</span>] represents the coefficients for positive frequencies, while the set of coefficients [<span class="math notranslate nohighlight">\(Y_1\)</span>, …, <span class="math notranslate nohighlight">\(Y_{N/2}\)</span>] represents the coefficients for negative frequencies (if we were to reversed the order of the data points). When analyzing time series with real values (no imaginary components), the information corresponding to the positive and negative frequencies is redundant. In this case, we usually only look at the positive frequencies. See <a class="reference internal" href="6-02-lobo-spectral.html"><span class="doc std std-doc">the LOBO spectral analysis example</span></a> for more information about how the DFT is applied in Python and how to interpret this type of output.</p></li>
+<li><p>The intuitive method of computing these coefficients would be to loop through all frequencies and compute the covaraince for each frequency. This requires <span class="math notranslate nohighlight">\(N^2\)</span> operations. The “fast Fourrier transform” (FFT) requires only <span class="math notranslate nohighlight">\(N\log(N)\)</span> operations.</p></li>
+</ul>
+<p>The <em>inverse DFT</em> gets the time series back to is original form:</p>
+<div class="math notranslate nohighlight">
+\[Y_n=\frac{1}{N}\sum^{N-1}_{n=0}y_ne^{i2\pi kn/N}\]</div>
 <p>The Discrete Fourier Transform and Inverse DFT may be shown with different scalings (i.e. there is not always a factor 1/N in the equation above). The form used varies by book and programming language. However, the equations should always be internally consistent, so that the Inverse DFT always returns the original time series.</p>
 </section>
 </section>
@@ -615,18 +728,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-review-complex-numbers">1.1. Math review - complex numbers</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-review-periodic-functions">1.1. Math review - periodic functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-review-complex-numbers">1.2. Math review - complex numbers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-conjugate">Complex Conjugate</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">1.2. Terminology</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">1.3. Terminology</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monochromatic-signals">Monochromatic signals</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-monochromatic-signals">Non-monochromatic signals</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-limitations">Practical Limitations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-analysis">1.3. Fourier Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-analysis">1.4. Discrete Fourier Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-analysis">1.4. Fourier Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-analysis">1.5. Discrete Fourier Analysis</a></li>
 </ul>
   </nav></div>
 

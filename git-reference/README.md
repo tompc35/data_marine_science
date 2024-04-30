@@ -1,13 +1,16 @@
 # Git Reference
 
-[Push changes to a remote repository: quick steps](#push-changes-to-a-remote-repository-quick-steps)
+[Routine workflow: Push changes to a remote repository: quick steps](#Push-changes-to-a-remote-repository-quick-steps)
 
-[Initialize a local repository on your computer](#initialize-a-local-repository-on-your-computer)
+[Project setup: Initialize a local repository on your computer](#Initialize-a-local-repository-on-your-computer)
 
-[Set up a remote repository on GitHub](#set-up-a-remote-repository-on-github)
+[Project setup: Set up a remote repository on GitHub](#Set-up-a-remote-repository-on-github)
 
-[Delete a local git repository on your computer](#delete-a-local-git-repository-on-your-computer)
+[Ignoring and removing files from your repository](#Ignoring-and-removing-files-from-your-repository)
 
+[Delete a local git repository on your computer](#Delete-a-local-git-repository-on-your-computer)
+
+(#Push-changes-to-a-remote-repository-quick-steps)=
 ## Push changes to a remote repository: quick steps
 
 If you have already [initialized a local repository on your computer](#initialize-a-local-repository-on-your-computer) and [set up a remote repository on GitHub](#set-up-a-remote-repository-on-github), running the three commands below in your local project directory will add all new files and changes and push them to GitHub.
@@ -26,20 +29,7 @@ git add file1.txt file2.txt file3.txt
 
 __Replace the commit message between the quotes with a brief description of the changes that you have made.__
 
-## Ignoring and removing files from your repository
-
-__Ignoring files__
-
-Create a text file called `.gitignore` and place it in the main directory of your project. The contents of the file should contain a list of files (or file patterns) that are on your computer, but do not want to share with others (e.g. `.DS_Store`,`Thumbs.db`,`*.pyc`).
-
-For more information: https://www.atlassian.com/git/tutorials/gitignore
-
-__Removing files from your repository without removing them from your computer__
-
-```
-git rm --cached file1.txt file2.txt file3.txt
-```
-
+(#Initialize-a-local-repository-on-your-computer)=
 ## Initialize a local repository on your computer
 
 Run the following command in your local project directory:
@@ -50,6 +40,7 @@ git init
 
 You only have to do this once for each project. You do not have to run this command in sub-directories.
 
+(#Set-up-a-remote-repository-on-github)=
 ## Set up a remote repository on GitHub
 
 Go to your GitHub account page
@@ -71,6 +62,22 @@ Follow the quick steps to [push changes to a remote repository](#push-changes-to
 
 You only have to do this once for each project.
 
+(#Ignoring-and-removing-files-from-your-repository)=
+## Ignoring and removing files from your repository
+
+__Ignoring files__
+
+Create a text file called `.gitignore` and place it in the main directory of your project. The contents of the file should contain a list of files (or file patterns) that are on your computer, but do not want to share with others (e.g. `.DS_Store`,`Thumbs.db`,`*.pyc`).
+
+For more information: https://www.atlassian.com/git/tutorials/gitignore
+
+__Removing files from your repository without removing them from your computer__
+
+```
+git rm --cached file1.txt file2.txt file3.txt
+```
+
+(#Delete-a-local-git-repository-on-your-computer)=
 ## Delete a local git repository on your computer
 
 Sometimes you may want to delete a local git repository that you have already created with `git init`. You want to keep the files, but undo everything that has been done with git. This situation might arise if you make a mistake, like initializing in the wrong directory. Deleting the repository allows you to start over.
