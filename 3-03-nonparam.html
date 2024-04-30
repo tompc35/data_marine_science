@@ -196,10 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2-02-probability-and-distributions.html">2. Probability and distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-03-modeling-sampling.html">3. Modeling, sampling, confidence intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python and matrix review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">7. Poisson regression example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">8. Error propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-06b-implementing-multivariate-regression.html">7. Multivariate regression tutorial: aragonite saturation state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">8. Poisson regression example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">9. Error propagation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
 <ul class="current nav bd-sidenav">
@@ -456,6 +457,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-guide-to-common-statistical-tests">3.3. A guide to common statistical tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caution-on-using-non-parametric-tests">3.4. Caution on using non-parametric tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-hypothesis-is-being-tested">What hypothesis is being tested?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-new-assumptions">What are the new assumptions?</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -523,9 +529,10 @@ Red: Normal distribution with same mean and standard deviation, expected value (
 <p>Null Hypothesis: Samples are drawn from the same distribution (in the two-sample case)</p>
 <section id="an-oceanographic-example">
 <h4>An oceanographic example<a class="headerlink" href="#an-oceanographic-example" title="Permalink to this heading">#</a></h4>
+<p>The following two examples use the K-S test to determine if there is significant difference in fluorescence intensity between an experimental treatment (black) and control (gray).</p>
 <p><img alt="images/km_dist.png" src="_images/km_dist.png" /></p>
 <p><em>Source</em>: Durkin et al (2009), Chitin in diatoms and its association with the cell wall, Eukaryotic Cell</p>
-<p>The following graph illustrates the K-S test statistic for a two-sample test.</p>
+<p>The graph below illustrates the K-S test statistic for a two-sample test. It is the maximum difference between two the cumulative probability distributions.</p>
 <p><img alt="images/KS_wiki.png" src="_images/KS_wiki.png" /></p>
 <p>Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test">https://en.wikipedia.org/wiki/Kolmogorov–Smirnov_test</a> <br></p>
 <p>Illustration of the two-sample Kolmogorov–Smirnov statistic. Red and blue lines each correspond to an empirical distribution function, and the black arrow is the two-sample KS statistic.</p>
@@ -542,7 +549,7 @@ Red: Normal distribution with same mean and standard deviation, expected value (
 <h5>Shapiro-Wilk<a class="headerlink" href="#shapiro-wilk" title="Permalink to this heading">#</a></h5>
 <ul class="simple">
 <li><p>High Power</p></li>
-<li><p>Biased at <strong>Large</strong> sample size</p></li>
+<li><p>Biased at large sample size (may indicate non-normality for very subtle deviations from normality)</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 
@@ -571,6 +578,7 @@ Red: Normal distribution with same mean and standard deviation, expected value (
 <h4>Wilcoxan signed-rank test<a class="headerlink" href="#wilcoxan-signed-rank-test" title="Permalink to this heading">#</a></h4>
 <p><strong><span class="math notranslate nohighlight">\(H_0\)</span></strong>: the median difference between pairs of observations is zero</p>
 <ul class="simple">
+<li><p>Like a paired t-test on ranks of the differences</p></li>
 <li><p>Rank the absolute values of the differences (smallest = 1)</p></li>
 <li><p>Sum the ranks of the positive values, and sum the ranks the negative values separately</p></li>
 <li><p>The smaller of the two sums is the test statistic T</p></li>
@@ -651,21 +659,31 @@ Red: Normal distribution with same mean and standard deviation, expected value (
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3a6ce2f54832c5f6fca4cef88e48584b48aa447a74113b4e351b70b4930c7a51.png" src="_images/3a6ce2f54832c5f6fca4cef88e48584b48aa447a74113b4e351b70b4930c7a51.png" />
+<img alt="_images/8379d359e722432efa9d5455707ebec12134a2af9b8e470731a8f36909f8cf2e.png" src="_images/8379d359e722432efa9d5455707ebec12134a2af9b8e470731a8f36909f8cf2e.png" />
 </div>
 </div>
 <p>Spearman’s correlation coefficient is not useful for relationships like those below because they are not monotonic relationships.</p>
-<p><img alt="images/bad_rank.png" src="_images/bad_rank.png" /></p>
-<p><a class="reference external" href="http://jpktd.blogspot.com/2012/06/non-linear-dependence-measures-distance.html">source: jpktd.blogspot.com</a></p>
 </section>
 </section>
 </section>
 <section id="a-guide-to-common-statistical-tests">
 <h2><span class="section-number">3.3. </span>A guide to common statistical tests<a class="headerlink" href="#a-guide-to-common-statistical-tests" title="Permalink to this heading">#</a></h2>
 <p><img alt="images/test_cases.png" src="_images/test_cases.png" /></p>
-<p>Make sure that if you are using a non-parametric test, that you know what the hypothesis is. For example, Mann-Whitney and Kruskal-Wallis test for differences between <em>medians</em>, not means. If performing a t-test on log transformed data, the null hypothesis is no difference between <em>geometric means</em> (G.M.)</p>
+</section>
+<section id="caution-on-using-non-parametric-tests">
+<h2><span class="section-number">3.4. </span>Caution on using non-parametric tests<a class="headerlink" href="#caution-on-using-non-parametric-tests" title="Permalink to this heading">#</a></h2>
+<section id="what-hypothesis-is-being-tested">
+<h3>What hypothesis is being tested?<a class="headerlink" href="#what-hypothesis-is-being-tested" title="Permalink to this heading">#</a></h3>
+<p>Make sure that if you are using a non-parametric test, that you know what the hypothesis is. If performing a t-test on log transformed data, the null hypothesis is no difference between <em>geometric means</em> (G.M.)</p>
 <div class="math notranslate nohighlight">
 \[GM = \sqrt[n]{x_i \times x_2 \cdots x_n}\]</div>
+</section>
+<section id="what-are-the-new-assumptions">
+<h3>What are the new assumptions?<a class="headerlink" href="#what-are-the-new-assumptions" title="Permalink to this heading">#</a></h3>
+<p>For example, Mann-Whitney and Kruskal-Wallis test for differences between <em>medians</em>, not means. Also, these tests still have the very restrictive that the distributions of each group have the same shape. This means that there is an implicity assumption of <em>homoscedasticity</em>, or equal variances between the groups. As discussed in detail by McDonald (2014), the Welch’s ANOVA is robust to deviations from normality and is often a better choice than the Kruskal-Wallis ANOVA for non-normal data.</p>
+<p><a class="reference external" href="https://www.biostathandbook.com/kruskalwallis.html">https://www.biostathandbook.com/kruskalwallis.html</a></p>
+<p>McDonald, J.H. 2014. Handbook of Biological Statistics (3rd ed.). Sparky House Publishing, Baltimore, Maryland. Freely available online at <a class="reference external" href="http://www.biostathandbook.com">www.biostathandbook.com</a></p>
+</section>
 </section>
 </section>
 
@@ -764,6 +782,11 @@ Red: Normal distribution with same mean and standard deviation, expected value (
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-guide-to-common-statistical-tests">3.3. A guide to common statistical tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caution-on-using-non-parametric-tests">3.4. Caution on using non-parametric tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-hypothesis-is-being-tested">What hypothesis is being tested?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-new-assumptions">What are the new assumptions?</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
