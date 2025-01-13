@@ -1,60 +1,48 @@
 
-
 <!DOCTYPE html>
 
-
-<html lang="en" data-content_root="" >
-
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>2. Example: Modeling exponential growth &#8212; Data Analysis Techniques in Marine Science</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-  </script>
-  
+    
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
-  
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -62,114 +50,65 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '4-02-us-population-example';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)" href="5-01-PCA-EOF.html" />
     <link rel="prev" title="1. Optimization and nonlinear modeling" href="4-01-optimization.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
 
-  
-  
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
+    
+    <div class="container-fluid" id="banner"></div>
 
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    
 
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
-
-  <header>
-  
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
-  
-  </header>
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
       
-      
-      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
-        
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-
-<a class="navbar-brand logo" href="README.html">
-  
-  
-  
-  
-  
-    
-    
       
-    
-    
-    <img src="_static/course-logo.png" class="logo__image only-light" alt="Data Analysis Techniques in Marine Science - Home"/>
-    <script>document.write(`<img src="_static/course-logo.png" class="logo__image only-dark" alt="Data Analysis Techniques in Marine Science - Home"/>`);</script>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
+      <img src="_static/course-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Analysis Techniques in Marine Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -178,274 +117,509 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1. Introduction to Python</span></p>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1. Introduction to Python
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="software-installation/README.html">1. Setup and software installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-02-python-intro.html">2. Introduction to Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-03-boolean.html">3. Boolean logic in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-04-cruise-data-analysis.html">4. Cruise data analysis in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-05-loops.html">5. Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-06-conditional-execution.html">6. Conditional execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-07-python-functions.html">7. Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-08-python-modules.html">8. Creating your own Python module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-09-python-packages.html">9. Python packages</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="software-installation/README.html">
+   1. Setup and software installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-02-python-intro.html">
+   2. Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-03-boolean.html">
+   3. Boolean logic in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-04-cruise-data-analysis.html">
+   4. Cruise data analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-05-loops.html">
+   5. Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-06-conditional-execution.html">
+   6. Conditional execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-07-python-functions.html">
+   7. Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-08-python-modules.html">
+   8. Creating your own Python module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-09-python-packages.html">
+   9. Python packages
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2. Probability distributions and linear modeling</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2. Probability distributions and linear modeling
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2-01-introduction.html">1. Sampling and statistics: Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-02-probability-and-distributions.html">2. Probability and distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-03-modeling-sampling.html">3. Modeling, sampling, confidence intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-04-corr-regress-least-squares.html">4. Correlation and linear regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-05-wcoa-cruise-regression.html">5. Implementing linear regression in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-06-multivariate-regression.html">6. Multivariate regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">7. Poisson regression example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-08-error-propagation.html">8. Error propagation</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-01-introduction.html">
+   1. Sampling and statistics: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-02-probability-and-distributions.html">
+   2. Probability and distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-03-modeling-sampling.html">
+   3. Modeling, sampling, confidence intervals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-04-corr-regress-least-squares.html">
+   4. Correlation and linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-05-wcoa-cruise-regression.html">
+   5. Implementing linear regression in Python and matrix review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-06-multivariate-regression.html">
+   6. Multivariate regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-06b-implementing-multivariate-regression.html">
+   7. Multivariate regression tutorial: aragonite saturation state
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-07-poisson-regression-tropical-storms.html">
+   8. Poisson regression example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-08-error-propagation.html">
+   9. Error propagation
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. Hypothesis testing and power analysis</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3. Hypothesis testing and power analysis
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="3-01-hypothesis-power.html">1. Hypothesis testing and Power</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-02-anova.html">2. Analysis of variance (ANOVA)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-03-nonparam.html">3. Non-parametric statistical tests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-04-generalized-linear-model.html">4. The generalized linear model</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-01-hypothesis-power.html">
+   1. Hypothesis testing and Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-02-anova.html">
+   2. Analysis of variance (ANOVA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-03-nonparam.html">
+   3. Non-parametric statistical tests
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-04-generalized-linear-model.html">
+   4. The generalized linear model
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 4. Nonlinear modeling and optimization</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 4. Nonlinear modeling and optimization
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="4-01-optimization.html">1. Optimization and nonlinear modeling</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Example: Modeling exponential growth</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4-01-optimization.html">
+   1. Optimization and nonlinear modeling
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Example: Modeling exponential growth
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 5. Principal component analysis and related techniques</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 5. Principal component analysis and related techniques
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="5-01-PCA-EOF.html">1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-02-MDS.html">2. Multidimensional Scaling Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-03-ndbc-wind.html">3. NDBC data - analysis of wind vector time series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-04-monterey_bay_kelp.html">4. Monterey Bay Kelp PCA</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-01-PCA-EOF.html">
+   1. Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-02-MDS.html">
+   2. Multidimensional Scaling Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-03-ndbc-wind.html">
+   3. NDBC data - analysis of wind vector time series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-04-monterey_bay_kelp.html">
+   4. Monterey Bay Kelp PCA
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 6. Spectral analysis of time series</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 6. Spectral analysis of time series
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="6-01-spectral-analysis.html">1. Spectral Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-02-lobo-spectral.html">2. Spectral analysis example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-03-lobo-spectral-part2.html">3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="6-04-filtering.html">5. Filtering and Convolution</a></li>
-
-
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-01-spectral-analysis.html">
+   1. Spectral Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-02-lobo-spectral.html">
+   2. Spectral analysis example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-03-lobo-spectral-part2.html">
+   3. Spectral analysis of LOBO data in Elkhorn Slough - Part 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-04-filtering.html">
+   5. Filtering and Convolution
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 7. Spatial analysis</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 7. Spatial analysis
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="7-01-spatial-analysis.html">1. Spatial Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-02-interpolation.html">2. Interpolation techniques</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-03-mapping-intro.html">3. Map tutorial</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-01-spatial-analysis.html">
+   1. Spatial Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-02-interpolation.html">
+   2. Interpolation techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-03-mapping-intro.html">
+   3. Map tutorial
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 8. Image analysis</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 8. Image analysis
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="8-01-image-analysis.html">1. Image Analysis</a></li>
-
-
-
+ <li class="toctree-l1">
+  <a class="reference internal" href="8-01-image-analysis.html">
+   1. Image Analysis
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix A. Git reference</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix A. Git reference
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="git-reference/README.html">Git Reference</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="git-reference/README.html">
+   Git Reference
+  </a>
+ </li>
 </ul>
 
     </div>
 </nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
     </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
+          
 
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
 
 
 
-
-
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/4-02-us-population-example.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tompc35/data_marine_science/main?urlpath=tree/4-02-us-population-example.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
   
     <img src="_static/images/logo_binder.svg">
   </span>
-<span class="btn__text-container">Binder</span>
+<span class="headerbtn__text-container">Binder</span>
 </a>
-</li>
+
+      </li>
       
-  </ul>
+    </ul>
+  </div>
 </div>
-
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/4-02-us-population-example.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
   </button>
-`);
-</script>
-
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
-</div></div>
-      
-    </div>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/4-02-us-population-example.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
   
-</div>
-</div>
-              
-              
 
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Example: Modeling exponential growth</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data">2.1. Plotting the data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-cost-function">2.2. Visualizing the cost function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-linear-optimization">2.3. Non-linear optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-error-of-coefficients">2.4. Estimating error of coefficients</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises">2.5. Excercises</a></li>
-</ul>
-            </nav>
-        </div>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-              
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-data">
+   2.1. Plotting the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-cost-function">
+   2.2. Visualizing the cost function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-linear-optimization">
+   2.3. Non-linear optimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-error-of-coefficients">
+   2.4. Estimating error of coefficients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#excercises">
+   2.5. Excercises
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Example: Modeling exponential growth</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-data">
+   2.1. Plotting the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-cost-function">
+   2.2. Visualizing the cost function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-linear-optimization">
+   2.3. Non-linear optimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-error-of-coefficients">
+   2.4. Estimating error of coefficients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#excercises">
+   2.5. Excercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
+              <div>
+                
   <section class="tex2jax_ignore mathjax_ignore" id="example-modeling-exponential-growth">
-<h1><span class="section-number">2. </span>Example: Modeling exponential growth<a class="headerlink" href="#example-modeling-exponential-growth" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">2. </span>Example: Modeling exponential growth<a class="headerlink" href="#example-modeling-exponential-growth" title="Permalink to this headline">#</a></h1>
 <p>The goal of this exerice is to find the parameters of an exponential fit of US population growth with time</p>
 <div class="math notranslate nohighlight">
 \[ y = a_1 \exp(a_2t) \]</div>
@@ -482,7 +656,7 @@ document.write(`
 </div>
 </div>
 <section id="plotting-the-data">
-<h2><span class="section-number">2.1. </span>Plotting the data<a class="headerlink" href="#plotting-the-data" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.1. </span>Plotting the data<a class="headerlink" href="#plotting-the-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -496,7 +670,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;population&#39;)
 </pre></div>
 </div>
-<img alt="_images/0413851e91d4c6f1ab276b1129a84dfa7fdda0147abd63d310fcc1d0030fe0cb.png" src="_images/0413851e91d4c6f1ab276b1129a84dfa7fdda0147abd63d310fcc1d0030fe0cb.png" />
+<img alt="_images/4-02-us-population-example_7_1.png" src="_images/4-02-us-population-example_7_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -512,11 +686,11 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ln(population)&#39;)
 </pre></div>
 </div>
-<img alt="_images/614aa11f73881a68867b75fd5245de24a4d3f73b718156e5b809723bcbf41bfa.png" src="_images/614aa11f73881a68867b75fd5245de24a4d3f73b718156e5b809723bcbf41bfa.png" />
+<img alt="_images/4-02-us-population-example_8_1.png" src="_images/4-02-us-population-example_8_1.png" />
 </div>
 </div>
 <section id="exercises">
-<h3>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h3>
+<h3>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Estimate the parameters <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span> is to performing a linear least-squares fit to the log-transformed data shown above. Note that log-transforming both sides of the first equation gives <span class="math notranslate nohighlight">\(\ln(y) = \ln(a_1) + a_2 t\)</span></p></li>
 <li><p>Plot the original data (not transformed) and the exponential fit using these parameters.</p></li>
@@ -524,7 +698,7 @@ document.write(`
 </section>
 </section>
 <section id="visualizing-the-cost-function">
-<h2><span class="section-number">2.2. </span>Visualizing the cost function<a class="headerlink" href="#visualizing-the-cost-function" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.2. </span>Visualizing the cost function<a class="headerlink" href="#visualizing-the-cost-function" title="Permalink to this headline">#</a></h2>
 <p>An extremely inefficient way of optimizing the parameters would be to try every possible combination of parameters within some range. This is called the “brute force” method because it relies on computer power rather than intelligence.</p>
 <p>Even though it is inefficient, it is a good way to visualize the cost function in two dimensions.</p>
 <div class="cell docutils container">
@@ -559,17 +733,17 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$a_1$&#39;)
 </pre></div>
 </div>
-<img alt="_images/401e2252bc7af26439c3eb75f896e5e2d3b6a875f67c0c257c4da39978b2a13e.png" src="_images/401e2252bc7af26439c3eb75f896e5e2d3b6a875f67c0c257c4da39978b2a13e.png" />
+<img alt="_images/4-02-us-population-example_11_1.png" src="_images/4-02-us-population-example_11_1.png" />
 </div>
 </div>
 </section>
 <section id="non-linear-optimization">
-<h2><span class="section-number">2.3. </span>Non-linear optimization<a class="headerlink" href="#non-linear-optimization" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3. </span>Non-linear optimization<a class="headerlink" href="#non-linear-optimization" title="Permalink to this headline">#</a></h2>
 <p>The first step in this process is to define the function that you want to fit to data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exponential_growth</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;inputs:</span>
+    <span class="sd">&#39;&#39;&#39;inputs:</span>
 <span class="sd">    t - vector of times</span>
 <span class="sd">    a1 - initial population at time 0</span>
 <span class="sd">    a2 - specific growth rate</span>
@@ -612,12 +786,12 @@ exponential_growth(t, a1, a2)
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="nn">Input In [9],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fvalues</span> <span class="o">=</span> <span class="n">exponential_growth</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">fvalues</span><span class="p">)</span>
 
-<span class="nn">Cell In[7], line 10,</span> in <span class="ni">exponential_growth</span><span class="nt">(t, a1, a2)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="w"> </span><span class="sd">&#39;&#39;&#39;inputs:</span>
+<span class="nn">Input In [7],</span> in <span class="ni">exponential_growth</span><span class="nt">(t, a1, a2)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="sd">&#39;&#39;&#39;inputs:</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> t - vector of times</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd"> a1 - initial population at time 0</span>
 <span class="sd">   (...)</span>
@@ -655,7 +829,7 @@ exponential_growth(t, a1, a2)
 </div>
 </section>
 <section id="estimating-error-of-coefficients">
-<h2><span class="section-number">2.4. </span>Estimating error of coefficients<a class="headerlink" href="#estimating-error-of-coefficients" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.4. </span>Estimating error of coefficients<a class="headerlink" href="#estimating-error-of-coefficients" title="Permalink to this headline">#</a></h2>
 <p>The second variable in the output (<code class="docutils literal notranslate"><span class="pre">pcov</span></code>) is the error covariance matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -710,7 +884,7 @@ exponential_growth(t, a1, a2)
 <p>The standard errors can be visualized in this map of the cost function. The height and width of the red error bars are determined by the standard errors of the coefficients.</p>
 </section>
 <section id="excercises">
-<h2><span class="section-number">2.5. </span>Excercises<a class="headerlink" href="#excercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.5. </span>Excercises<a class="headerlink" href="#excercises" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Plot the parameters obtained from the linear regression of the log-transformed data on the cost function map.</p></li>
 <li><p>Use the optimization techniques described above to fit an exponential curve to the data from phytoplankton growth experiments</p></li>
@@ -731,7 +905,7 @@ exponential_growth(t, a1, a2)
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -739,110 +913,50 @@ exponential_growth(t, a1, a2)
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
-
-              
-              
-              
-              
-                <footer class="prev-next-footer">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="4-01-optimization.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Optimization and nonlinear modeling</p>
-      </div>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="4-01-optimization.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Optimization and nonlinear modeling</p>
+        </div>
     </a>
-    <a class="right-next"
-       href="5-01-PCA-EOF.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="5-01-PCA-EOF.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">1. </span>Principal Component Analysis (PCA) and Empirical Orthogonal Functions (EOFs)</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data">2.1. Plotting the data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-cost-function">2.2. Visualizing the cost function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-linear-optimization">2.3. Non-linear optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-error-of-coefficients">2.4. Estimating error of coefficients</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises">2.5. Excercises</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By Tom Connolly
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-
-  <p class="copyright">
-    
-      © Copyright 2022.
-      <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
+            </footer>
+        </div>
     </div>
-  </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom Connolly<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <footer class="bd-footer">
-  </footer>
+
   </body>
 </html>
