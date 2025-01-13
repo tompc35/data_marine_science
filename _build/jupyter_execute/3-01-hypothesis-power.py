@@ -134,56 +134,112 @@ stats.t.cdf(tupper,N-1)
 
 # ## Application of hypothesis testing: t-tests
 # 
-# The $t$-statistic is used to test whether sample means are different. It was was used by a statistician named William Sealy Gosset, who worked for the Guiness Brewery in Dublin in the early 20th century. He was interested in comparing the properties of ingredients of the beloved Irish stout with a small number of samples. To keep his corporate boss happy, Gosset published his statistical work under the pseudonym "Student". 
-# 
 # ### One-sample t-test
 # 
 # The example described above, in which a sample mean is compared with a single value (possibly a known value or a theoretical result), is called a __one-sample t-test__. All t-tests assumes that the samples are drawn from a __normally-distributed__ population.
 # 
 # In Python, a one sample $t$-test can be conducted with the function `stats.ttest_1samp()`. Given a set of values `x` and a population mean, $\mu$ or `popmean`, this function returns the $t$-statistic and a $p$-value. The $p$-value is the probability of obtaining a $t$-statistic of that magnitude, or more extreme, in the hypothetical case the null hypothesis is true. If the $p$-value is less than $\alpha$ then the null hypothesis is rejected.
 
-# Looking at an example where we have three samples, and we are comparing with a known value $\mu_0$ = 10.0
+# Looking at an example where we have four sensor measurements of temperature in degrees C, and we are comparing with a known value of a calibration bath $\mu_0$ = 20.0
+
+# In the following code block, define an array `x` of temperature values 19.8, 20.1, 20.5, and 20.4; a temperature variable `mu0` with a known value of 20; and a variable to represent the total number of samples `N`.
 
 # In[4]:
 
 
-x = [1.,2.,4.]  # list of samples
-mu0 = 10.0      # known value
-t,p = stats.ttest_1samp(x, mu0)  
-print("x:",x)
-print("mu0:",mu0)
-print("t:",round(t,3))
-print("p:",round(p,3)) 
+x = [19.8, 20.1, 20.5, 20.4]
+mu0 = 20
+N = len(x)
 
 
-# In this case, the $p$-value is less than .05 but greater than 0.01, so can the null hypothesis can be rejected at the at 95% confidence level but not the 99% confidence level.
-
-# Looking at another example where the known value is closer to the sample mean,
+# Using the data defined above, calculate the standard deviation and the standard error, storing each in a variables `xstd` and `xSE` respectively.
 
 # In[5]:
 
 
-a = [1,2.,4]
-mu0 = 3
-t,p = stats.ttest_1samp(a, mu0)
-print("x:",x)
-print("mu0:",mu0)
-print("t:",round(t,3))
-print("p:",round(p,3))
+xstd = np.std(x, ddof=1)
+xSE = xstd/np.sqrt(N)
 
 
-# we see that the $t$-statistic is much closer to zero, and the $p$-value is is much higher. In this case, the null hypothesis cannot be rejected at the 95% confidence level (or even a far more lenient 60% confidence level). 
-
-# The p-value is related to the cumulative probability of the t-statistic. The p-value is the probability of obtaining a certain value of t, or more extreme, in the hypothetical case that the null hypothesis is true. The cumulative probability is the probability of obtaining a certain value of t or less when taking random samples from a normal distribution (again, in the hypothetical case that the null hypothesis is true). 
+# Next, calculate and print out the t-statistic of the data:
+# $$
+# t = \frac{\bar{x} - \mu_0}{s\sqrt{1/N}}
+# $$
 
 # In[6]:
 
 
-tcdf = stats.t.cdf(-0.756,2)
-print("cumulative probability:",round(tcdf,3))
+t = (np.mean(x) - mu0)/xSE
+print(t)
 
 
-# There is a probability of 0.264 of randomly obtaining $t$ value of -0.756 or less if the null hypothesis is true. However, there is twice as much probability (p = 0.529) of obtaining a more extreme value ($t \leq$ -0.756 or $t \geq$ -0.756).
+# Finally, define a variable called `alpha` and assign it with a value that represents a 95% confidence interval. Use the stats package function `stats.t.ppf` to calculate the critical t value. Note that the `stats.t.ppf` function ("percent point function") takes two arguments: $1-\alpha/2$ and the degrees of freedom ($N-1$).
+
+# In[7]:
+
+
+alpha = 0.05
+t_crit = stats.t.ppf(1-alpha/2, N-1)
+print(t_crit)
+
+
+# We will reject the null hypothesis if the (absolute value of) the t value we calculated from the data is greater than the critical t value. In this case, we accept the null hypothesis:
+
+# In[8]:
+
+
+if np.abs(t)>t_crit:
+    print('Null Hypothesis Rejected')
+else:
+    print('Null Hypothesis Accepted')
+
+
+# We can also use a t-test function called `stats.ttest_1samp` which takes in two arguments: the data and the true mean
+
+# In[9]:
+
+
+stats.ttest_1samp(x, mu0)
+
+
+# The output gives us the the t-statistic, p-value and degrees of freedom ($N$ - 1).
+# 
+# The p-value is the probability of obtaining the t-statistic value, or more extreme, given that the null hypothesis is true. In other words, a low p-value (usually <0.05) indicates that there is a low probability that the sample data occurred by chance.
+# 
+# It is important to note that this is probability assumes two important conditions
+# 1. the null hypothesis is true (we dont know this - we're trying to infer it!)
+# 2. the samples are drawn from data that is normally distributed
+# 
+# Note that it doesn't tell us anything about the case where the null hypothesis is false!
+
+# In this case, the $p$-value is greater than 0.05, so we cannot reject the null hypothesis at the at 95% confidence level (and of course the 99% confidence level, if we were using a more conservative $\alpha$ = 0.01).
+
+# The p-value is related to the cumulative probability of the t-statistic. The p-value is the probability of obtaining a certain value of t, or more extreme, in the hypothetical case that the null hypothesis is true. The cumulative probability is the probability of obtaining a certain value of t or less when taking random samples from a normal distribution (again, in the hypothetical case that the null hypothesis is true). 
+# 
+
+# In[10]:
+
+
+tcdf = stats.t.cdf(t, N-1)
+print("cumulative probability:",round(tcdf, 4))
+print("1 - cumulative probability:",round(1-tcdf, 4))
+print('p-value = ', round(2*(1-tcdf), 5))
+
+
+# 
+# There is a probability of 0.8524 of randomly obtaining $t$ value of 1.265 or less if the null hypothesis is true. The probability of obtaining a greater $t$ value is (1-0.8524) = 0.1476. The probability of obtaining a more extreme $t$ value (positive or negative) is 2*(1-0.8524) = 0.2953. This is the same p-value given by `stats.ttest_1samp` above.
+
+# Looking at another example where the sensor is obviously biased,and the known value is farther away from the sample mean:
+
+# In[11]:
+
+
+a = [25.2,24.3,24.9,26.2]
+mu0 = 20.
+stats.ttest_1samp(a, mu0)
+
+
+# we see that the $t$-statistic is much greater, and the $p$-value is is much small. In this case, the null hypothesis cannot be rejected at the 95% confidence level (and the 99% confidence level). 
 
 # ### One-tailed vs. two-tailed tests
 # 
@@ -195,7 +251,7 @@ print("cumulative probability:",round(tcdf,3))
 # 
 # In this case, the null hypothesis is rejected only for extreme t values that are greater than zero. The rejection region for the 95% confidence level is shown below for $N$ = 4 samples (3 degrees of freedom).
 
-# In[7]:
+# In[12]:
 
 
 plt.figure()
@@ -211,12 +267,11 @@ upperi, = np.where(tvalues>tcrit)
 plt.fill_between(tvalues[upperi],tpdf[upperi],facecolor='red');
 
 
-# When using a function such as `stats.ttest_1samp()` to do a one-tailed test, here is how to interpret the output:
-# 
-# * Reject $H_o$ only if the value of t has the correct sign
-# * If t does have the correct sign, reject $H_o$ if 1/2 the p-value is less than $\alpha$
+# The function `stats.ttest_1samp()` can be used to do a one-tailed test by specifying the options `alternative = 'greater'` or `alternative = 'less'`
 
 # ### Two-sample t-test: comparing pairs of populations
+# 
+# The $t$-statistic can also be used to test whether sample means are different. It was was used by a statistician named William Sealy Gosset, who worked for the Guiness Brewery in Dublin in the early 20th century. He was interested in comparing the properties of ingredients of the beloved Irish stout with a small number of samples. To keep his corporate boss happy, Gosset published his statistical work under the pseudonym "Student". 
 # 
 # A __two-sample t-test__ is used to test whether the means of two groups of samples are different.
 # 
@@ -275,6 +330,27 @@ plt.fill_between(tvalues[upperi],tpdf[upperi],facecolor='red');
 # 
 # It is recommended to use Welch's t-test unless you have a good reason to assume that the population variances are equal. This reduces the chance of a Type I error.
 
+# ### Paired t-test
+# Samples are not independent (natural correspondence between the two samples). For example, consider the case where `x` represents wind speed samples collected at one location, and `y` represents wind speed samples collected at the same time at another location.
+
+# In[13]:
+
+
+x = [5.6, 11.9, 7.2, 8.1, 10.5]
+y = [16.9, 12.2, 10.6, 15.5, 13.1]
+stats.ttest_rel(x, y)
+
+
+# We couls get the same results by testing whether the differences are significantly different from zero.
+
+# In[14]:
+
+
+stats.ttest_1samp(np.array(x)-np.array(y), 0)
+
+
+# ### Exercises
+# 
 # #### Exercise: comparing means of current meter data
 
 # In Section 3.14 of Emery and Thomson, an example is given where the January means of alongshore velocity ($V$) from current meter data are compared for two different years. The means and standard deviations from daily averages in January are given by
@@ -312,11 +388,12 @@ plt.fill_between(tvalues[upperi],tpdf[upperi],facecolor='red');
 # 1. Effect Size:  $d = \frac{|\mu_1 - \mu_2|} {\sigma}$
 #     * d=0.2 "small"
 #     * d=0.8 "large"
+#     * Can be thought of as a signal-to-noise ratio
 # 2. Sample size: $N$
 # 3. Confidence Level: (1-$\alpha$), also refered to as the $\alpha$ level or significance level, typical is 0.05.
-# 4. Target Power: (1-$\beta$)
+# 4. Power: (1-$\beta$), the probability of correctly rejecting $H_0$ *if* it is false (given the effect size $d$).
 
-# The effect size ($d$) is the minimum deviation from the null hypothesis that you expect to be able to detect. In tris case, it is the effect size for a difference between two means (t-test).
+# The effect size ($d$) is the minimum deviation from the null hypothesis that you expect to be able to detect. In this case, it is the effect size for a difference between two means (t-test).
 # 
 # * d is non-dimensional
 # * often called "Cohen's d"
@@ -324,8 +401,10 @@ plt.fill_between(tvalues[upperi],tpdf[upperi],facecolor='red');
 # 
 # ##### Example: Detecting change due to a restoration activity
 # 
-# Goal 1 (ecologically significant effect): increase (indicates the need for a one-tailed z-test) the mean oxygen concentrations by 20 $\mu$M
-# * The natural variability is 50 $\mu$M (std. dev.)
+# 
+# Consided a case where a restoration activity is being conducted to reduce hypoxia in a polluted estuary. An *ecologically* significant effect would be increase the mean oxygen concentrations by 20 $\mu M$.
+# 
+# * The natural variability is 50 $\mu M$ (std. dev.)
 # * $\mu$ is the mean oxygen concentration before restoration
 # * $\bar{x}$ mean of the samples collected after restoration
 # 
@@ -333,13 +412,13 @@ plt.fill_between(tvalues[upperi],tpdf[upperi],facecolor='red');
 # * $d = \frac{20 \mu M} {50 \mu M}$ = 0.4 
 # 
 # 
-# Goal 2: want to be able to show that a *statistically* significant difference is present, if the activity is a a success.  This is different than Goal 1.
+# Goal: want to be able to show that a *statistically* significant difference is present, if the activity is a a success. Note that this is different from the *ecologically* significant effect described above.
 # 
 # * In this case, $H_0$: $\bar{x} \le \mu$  and $H_a$ : $\bar{x} > \mu$
 # 
 # ##### One-tailed z-test (like a t-test, valid for a large N)
 # 
-# * $z = \frac{\bar{x} - \mu} {\frac {S} {\sqrt{N}}}$
+# * test statistic: $z = \frac{\bar{x} - \mu} {\frac {S} {\sqrt{N}}}$
 # * compare to $z_{crit}$:
 # $z_{1-\alpha}$
 
@@ -352,16 +431,16 @@ plt.fill_between(tvalues[upperi],tpdf[upperi],facecolor='red');
 # * [Python - pingouin](https://pingouin-stats.org/api.html#power-analysis)
 
 # #### Example: detecting small differences with a noisy instrument 
-# * Want to be able to measure a differences of 2 $\mu$M
-# * instrument noise = 5 $\mu$M
+# * Want to be able to measure a differences of 2 $\mu M$
+# * instrument noise = 5 $\mu M$
 # * Significance level: $\alpha$ = 0.05
 # * Power: 1- $\beta$ = 0.8
 # 
 # _How many of samples do we need to detect this difference?_
 # 
-# In this case, the effect size can be thought of as the absolute difference of 2uM, relative to the standard deviation (noise level) of 5uM. The effect size $d = $ 0.4.
+# In this case, the effect size can be thought of as the absolute difference of 2 $\mu M$, relative to the standard deviation (noise level) of 5 $\mu M$. The effect size $d = $ 0.4.
 
-# In[8]:
+# In[15]:
 
 
 from statsmodels.stats import power
@@ -369,7 +448,7 @@ nobs = power.tt_solve_power(power=0.8,alpha=0.05,effect_size=0.4)
 print('N = ',round(nobs,3))
 
 
-# If the actual difference is 2 $\mu$M, then we will get a significant difference 80% of the time with $N$ = 51. This example is for a one-sample t-test, but other functions in the `power` library can be used for other statistical tests. The *Pingouin* package (see below) also has functions for computing power.
+# If the actual difference is 2 $\mu M$, then we will get a significant difference 80% of the time with $N$ = 51. This example is for a one-sample t-test, but other functions in the `power` library can be used for other statistical tests. The *Pingouin* package (see below) also has functions for computing power.
 
 # ## Critiques of null hypothesis significance testing
 
@@ -428,7 +507,7 @@ print('N = ',round(nobs,3))
 # 
 # The relatively new [Pingouin](https://pingouin-stats.org) package provides Bayes factors, along with effect sizes (Cohen's $d$) and power analysis.
 
-# In[9]:
+# In[16]:
 
 
 import pingouin as pg

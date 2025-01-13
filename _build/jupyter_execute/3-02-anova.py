@@ -3,27 +3,12 @@
 
 # # Analysis of variance (ANOVA)
 
-# ### Recommended reading ###
-# 
-# McDonald, J.H. 2014. Handbook of Biological Statistics (3rd ed.). Sparky House Publishing, Baltimore, Maryland. Freely available online at [www.biostathandbook.com](www.biostathandbook.com)
-# 
-# __Analysis of variance__: test for a statistically significant difference between means of 3+ different groups
+# Test for a statistically significant difference between means of 3+ different groups
 # 
 # * Does not tell you which group is different
-# * Requires the use of __*post hoc*__ analysis to determine which means are different from each other
+# * Requires the use of *post hoc* analysis to determine which means are different from each other
 # 
-# Example:
-# ![images/anova_example.png](images/anova_example.png)
-# 
-# __One-Way ANOVA__ 
-# Fisher's LSD *post-hoc* test used to determine which populations are different from each other.
-# 
-# __Two-Way ANOVA__
-# Data are grouped into different genotypes, within those groupings, sex is segregated. Thus two factors are varying across the examples
-# 
-# 
-# 
-# One-Way example:
+# ## Fisher's "classic" one-way ANOVA
 # 
 # * J Populations (or "treatments")
 # * N samples per population
@@ -56,10 +41,48 @@
 # 
 # The null hypothesis can be rejected if F is large. This is a one-tailed test, since small values of F do not lead to a rejection of the null hypothesis. The region of rejection is is above some critical level, which is determined by the confidence level and the degrees of freedon in the numerator and denominator.
 # 
+# ## Other flavors of ANOVA
+# 
+# ### Welch's ANOVA
+# 
+# Similar to the Welch's t-test, the Welch's ANOVA relaxes the assumption of equal variance between groups.
+# 
+# ### Repeated measures ANOVA
+# 
+# Use when the samples are not independent between groups, like when measuring the same subjects over different time points in an experiments.
+# 
+# ### Two-Way ANOVA
+# 
+# Use when you are comparing means and have two nomimal variables, or two categories of groups that you are comparing between. In this case there is also an interaction term, which tells you if the difference between groups in one category is modulated by the differences in groups between another category. Can be extended to $N$-way ANOVA for more nominal variables.
+# 
 
-# ### Popular *post-hoc* tests ###
+# ## post-hoc tests and multiple comparisons
+# 
+# The ANOVA only tests the null hypothesis all of the means are equal. If you reject the null hypothesis, you will probably want to know which of the groups are significantly different. Your intuition may tell you to do pair-wise t-tests. That is the general idea behind post-hoc tests, but care needs to be taken to account for multiple comparisons. 
+# 
+# For example, if you do 20 different comparsons on data drawn from the same distribution you would expect to get at least one "significant" difference. 
+# 
+# ### Classic ANOVA 
 # 
 # * Fisher's LSD (least significant difference)
 # 
-# * Tukey HSD (honest significant difference) 
+# * Tukey HSD (honest significant difference)
 # 
+# ### Welch's ANOVA
+# 
+# * Games-Howell
+# 
+# ### Bonferroni correction 
+# 
+# The post-hoc tests above are designed specifically for ANOVA. Another common correction for multiple comparison is the Bonferonni correction. In that case, take the p-value you get and multiply it by the number of comparisons. This effectively sets a higher bar for statistical significance. In other words the Type I error rate is reduced.
+# 
+
+# ## Recommended reading ###
+# 
+# McDonald, J.H. 2014. Handbook of Biological Statistics (3rd ed.). Sparky House Publishing, Baltimore, Maryland. Freely available online at [www.biostathandbook.com](www.biostathandbook.com)
+
+# In[ ]:
+
+
+
+

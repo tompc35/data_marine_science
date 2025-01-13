@@ -270,3 +270,68 @@ plt.title('water level periodogram')
 # >"More lives have been lost looking at the raw periodogram than by any other action involving time series."
 # 
 # In [Part 2](week10b_lobo_spectral_part2.ipynb) of this tutorial, we will expand on this basic method to show ways of improving on this basic method of computing the power spectrum.
+
+# ## Aliasing
+# 
+# One of the practical issues in any type of time series analysis, including spectral analysis, is the potential for *aliasing*. Aliasing occurs when the sampling frequency is not fast enough to capture the real signal. One familiar [visual example](https://jackschaedler.github.io/circles-sines-signals/sampling4.html) of this is the "wagon wheel effect" in movies, where the wheels of a vehicle appear to be moving backwards due to a frame rate that is too slow.
+# 
+# What if we were to sample the water level in Elkhorn Slough one per day, instead of once per hour?
+
+# In[13]:
+
+
+plt.figure()
+plt.plot(time,waterdep)
+plt.plot(time[::24],waterdep[::24], '-o')
+plt.legend(['hourly sampling (original)', 'daily sampling (aliased)'])
+plt.title('water depth [m]');
+
+
+# The daily sampling is not fast enough to resolve the tidal signals, which have periods of rough 12 hours and 24 hours. The variance in the time series occurs at lower frequencies than the actual signal.
+# 
+# Aliasing occurs when the frequency $f$ of a signal in the time series is greater than the Nyquist frequency, 
+# 
+# $$f > f_N = \frac{1}{2}f_s $$
+# 
+# The effect of aliasing is to project unresolved high frequencies onto the lower frequencies that are measured in the time series. 
+# 
+# We can see that aliasing has a major effect on the spectrum calculated from a time series. Returning to the periodgram calculated above, we can compare the original spectrum to what we would get from the aliased time series. We see that aliasing does not *remove* the variance at the higher frequencies. Instead, that variance is projected onto lower frequencies, distorting the shape of the spectrum.
+
+# In[14]:
+
+
+from scipy.signal import periodogram
+
+fa,Sa = periodogram(waterdep[::24], fs=1.)
+
+plt.figure()
+plt.loglog(fp,Sp)
+plt.loglog(fa,Sa)
+
+plt.xlabel('frequency [cpd]')
+plt.ylabel('PSD [m$^2$/cpd]')
+plt.ylim([1e-9,1e2])
+plt.xlim([1e-2,1.5e1])
+plt.title('water level periodogram')
+plt.legend(['hourly sampling (original)', 'daily sampling (aliased)'])
+
+
+# There are several strategies to avoid alaising. 
+# * One obvious strategy is to sample faster. However, this is not always practical. Instruments can be limited by battery power or memory available for storing data.
+# * A second strategy is to anticipate the signal involved and sample just enough to capture those signals. This may involve reading previous literature or doing a preliminary experiment. A drawback is that you may not completely understand the important signals involved until you make the measurements.
+# * A third strategy is called *burst sampling*. Here you sample at high frequencies
+# 
+
+# ## Distinguishing spectral peaks
+
+# If we look closely at the periodogram calculated above from the hourly sea surface elevation data, we are  Distinguishing peaks at two different frequencies depends on the record length $T$ (not the sample interval $\Delta t$). In  DFT analysis, the frequencies are are harmonics of the fundamental frequency $f_f$, so each spectral estimate is separated on the horizontal axis by $\Delta f = f_f = 1/T$. If two peaks are closer to each other than this, then they cannot be distinguished from each other. This criterion for distinguishing peaks is called the *Rayleigh criterion*.
+
+# ## Stationarity
+
+# *Stationarity* is the assumption that the statsitics (such as mean, variance, decorrelation time scale) do not change over time. In the ocean theses statistics often change seasonally. Doing a spectral analysis on a time series of a full year may not be representative of the signals associated with one particular season.
+
+# In[ ]:
+
+
+
+

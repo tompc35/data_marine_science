@@ -3,31 +3,68 @@
 
 # ## Image Analysis
 # 
-# ### Ways of representing an image (or color) as a number
-# - __Binary__: Each pixel has a value of 0 or 1 (black or white)
-# - __grayscale__: Each pixel has a value between 0 and 255 (black is 0 white is 255) Each pixel has 8-bits of data ($2^8$)
+# ## Ways of representing an image (or color) as a number
+# - __Binary__: Each pixel has a value of 0 or 1 (black or white). Each pixel has 1 bit of data ($2^1$ possible values).
+# - __grayscale__: Each pixel has a value between 0 and 255 (black is 0 white is 255) Each pixel has 8 bits of data ($2^8$ possible values)
 # - __RGB__: storing a value for each pixel as three component colors - Red, Green, Blue
 # Each pixel has three 8 bit values. All colors combined corresponds to white
 # - __CMYK__: Uses Cyan - Magenta - Yellow and combining colors makes Black (this is used more for printing)
 # 
 # ![colors](images/colors.png)
 # 
-# __But__ CMYK is a subset of RGB, so you cant always print what is on the screen
+# Since CMYK is a subset of RGB, so you can't always print what is on the screen
 # 
 # ![colors2](images/colors2.png)
 # 
 # Source: https://www.mgxcopy.com/blog/san-diego-printing/2012/05/01/rgb-vs-cmyk-colorspace-why-its-important-to-use-cmyk-for-printing
 # 
-# One simple way of transforming from CMY to RGB:<br>
+# Any transformation between CMY and RGB is an approximation. One simple way of transforming from RGB to CMY is:
+# 
 # C = 255 - R<br>
 # M = 255 - G<br>
 # Y = 255 - B<br>
 # 
-# #### Hue, Saturation, Intensity (or lightness)
+# ### Hue, Saturation, Intensity (or lightness)
 # 
 # Another way of representing colors with three numbers
 # 
-# ![hue_sat_ints](images/hue_sat_ints.png)
+# ![hue_sat_ints](images/HSL_color_solid_cylinder_saturation_gray.png)
+# 
+# Source: https://en.wikipedia.org/wiki/HSL_and_HSV#/media/File:HSL_color_solid_cylinder_saturation_gray.png
+# 
+
+# ## Convolution in two dimensions
+# 
+# A two-dimensional extension of the convolution concept covered in [filtering time series](6-04-filtering.ipynb). 
+# 
+# - Image matrix (input) $A$
+# 
+# - Kernel matrix $K$
+# 
+# - Convolution matrix (output) $B$
+# 
+# $$ B = A * K $$
+# 
+# Note that the $*$ operator indicates convolution, not matrix multiplication.
+# 
+# ![2d_convolution](images/2D_Convolution_Animation.gif)
+# 
+# Source: https://en.wikipedia.org/wiki/Kernel_(image_processing)#/media/File:2D_Convolution_Animation.gif
+# 
+# 
+# A common kernel in image analysis is a two dimensional Gaussian function. This kernel smoothes the image, producing an effect called a "Gaussian blur".
+# 
+# ![2d_gaussian](images/Wiki_gauss.png)
+# Source: https://en.wikipedia.org/wiki/Multidimensional_discrete_convolution#/media/File:Wiki_gauss.png
+# By Shaddowffax - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=44967280
+# 
+# In image analysis, this function is approximated and its discrete form depends on the size of the kernal matrix $K$. For example, a 3x3 Gaussian kernel matrix would be
+# 
+# $$ K = \frac{1}{16}\begin{bmatrix}
+# 1 & 2 & 1\\
+# 2 & 4 & 2\\
+# 1 & 2 & 1\\
+# \end{bmatrix} $$
 # 
 
 # # Image analysis in Python

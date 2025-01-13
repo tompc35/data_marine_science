@@ -16,11 +16,11 @@
 # 
 # * Harmonic fit: $y = a_1 + a_2 \sin(x) + a_3 \cos(x)$
 # 
-# The problems are all classified as linear, even if the functions do not describe only straight lines, because the unknown coefficients are on the outside the terms in the equation.
+# The problems are all classified as linear, even if the functions do not describe only straight lines, because the unknown coefficients are on the outside the terms in the equation. All of these examples can be expressed in terms of a matrix equation $\vec{y} = X\vec{c}$.
 # 
 # ## Parameter estimation: nonlinear fit
 # 
-# A simple function that requires a non-linear fit is a model for exponential growth. 
+# A simple example of a non-linear model is a model for exponential growth. 
 # 
 # * Exponential growth: $y = a_1 e^{a_2 x} = a_1 \exp({a_2 x})$
 # 
@@ -37,13 +37,15 @@
 # 
 # $J = \sum^N_{i=1} w_i(\hat{y}_i - y_i)^2$ 
 # 
-# $w_i$ is the weight for each data points
+# * $w_i$ is the weight for each data points
 # 
-# $\hat{y}_i$ is the model estimate
+# * $\hat{y}_i$ is the model estimate,
 # 
-# $y_i$ is the observation
+# * $y_i$ is the observation.
 # 
-# $J$ can also be thought of as a chi-square variable since it is the sum of squares.
+# $J$ is sometimes referred to as a *chi-square* variable since it is a sum of squares.
+# 
+# If the weights $w_i$ are all equal to 1, then each observation $y_i$ is weighted the same. In some cases, we may have some uncertainty estimate $\sigma_i$ for each observation. In that case we may want to give less weight to the data points that have more error, so that $w_i = 1/\sigma_i^2$.
 # 
 # #### Goal: minimize J
 
@@ -76,7 +78,7 @@ plt.gca().get_yaxis().set_ticks([])
 # $\frac{\partial J}{\partial p } = 0$
 # 
 # Note that there can be only one global minimum but many local minima. If a cost function is noisy, with many local minima, the parameter optimization problem becomes difficult. Constraining the range of possble parameter values is one way to make the problem easier. There are many algorithms for finding the minimum in $J$. The best approach depends on the problem and the structure of the cost function.
-# 
+
 # ### Optimization with two parameters ###
 # 
 # ##### Example: exponential growth
@@ -99,10 +101,6 @@ plt.gca().get_yaxis().set_ticks([])
 # 
 # 
 # If there are two unknown parameters he cost function can be visualized as a topography in _parameter space_. Local minima in $J$ are found in the valleys of the topography. For three dimensions or more, it is harder to visualize the cost function in _parameter hyperspace_, but the idea is the same. 
-# 
-# !['images/cost_fxn_3.png'](images/cost_fxn_3.png)
-# 
-# http://www.scipy-lectures.org/advanced/mathematical_optimization/
 
 # For two parameters, the optimization problem becomes difficult if the minimum is in a long valley rather than a deep hole. Sometimes this issue can be avoided by scaling the parameters so that their values are of the same order (similar to the approach of standardizing variables in the multiple linear regression problem).
 # 

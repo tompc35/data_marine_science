@@ -4,12 +4,68 @@
 # # Multivariate regression
 # 
 # *Goal:* Find a relationship that explains variable $y$ in terms of variables, $x_1, x_2, x_3$,...$x_n$
+
+# In[1]:
+
+
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import statsmodels.formula.api as sm
+from matplotlib import cm
+
+np.random.seed(232)
+x = np.random.normal(6, 3, 100)
+y = -np.random.normal(3, 1, 100)
+z = 20 + 2*x + 3*y + np.random.normal(0, 2, 100)
+
+fig = plt.figure(figsize=(7, 7))
+ax = fig.add_subplot(111, projection='3d')
+ax.set_proj_type('persp')
+
+x_surf = np.arange(0, np.max(x), 0.1)
+y_surf = np.arange(np.min(y), 0, 0.1)
+x_surf, y_surf = np.meshgrid(x_surf, y_surf)
+
+z_surf = 20 + 2*x_surf + 3*y_surf
+
+ax.plot_surface(x_surf, y_surf,
+                z_surf,
+                rstride=1,
+                cstride=1,
+                alpha = 0.4)
+
+
+ax.scatter(x, y, z,
+           c='blue',
+           marker='o',
+           alpha=1)
+
+ax.plot3D(x, 0*x, 20 + 2*x, color='darkgray')
+ax.plot3D(x*0, y, 20 + 3*y, color='darkgray')
+
+ax.plot3D(0, 0, 20, marker='o', color='k')
+ax.text3D(0, 0, 22, '$c_0$', color='k', fontsize=16)
+ax.text3D(9, 0, 41, '$c_1$', color='k', fontsize=16)
+ax.text3D(0, -4, 15, '$c_2$', color='k', fontsize=16)
+
+ax.set_xlabel('$x_1$', fontsize=18)
+ax.set_ylabel('$x_2$', fontsize=18)
+
+ax.set_xlim3d([0, 15])
+ax.set_ylim3d([-5, 0]);
+
+ax.set_zlabel('y', fontsize=18);
+ax.view_init(elev=20.);
+ax.set_box_aspect(aspect=None, zoom=0.9);
+
+
+# This three dimensional visualization shows how linear model based on two predictor variables, $x_1$ and $x_2$ can be used to model a response variable $y$. A constant and two slopes to define a 2D plane in 3D space with the equation
 # 
-# ![images/mult_reg_viz.png](images/mult_reg_viz.png)
+# $$y = c_0 + c_1 x_1 + c_2 x_2$$
 # 
-# source: [http://www.sjsu.edu/faculty/gerstman/EpiInfo/cont-mult.htm](http://www.sjsu.edu/faculty/gerstman/EpiInfo/cont-mult.htm)
-# 
-# This three dimensional visualization shows how linear model based on two predictor variables, $x_1$ and $x_2$ can be used to model a response variable $y$. A constant and two slopes to define a 2D plane in 3D space. The sum of squared vertical distances between the plane (model) and observations of $y$ are minimized. Like fitting a line in 2D space, this procedure assumes the validity of a linear model.
+# The sum of squared vertical distances between the model (plane) and observations of $y$ (dots) are minimized. Like fitting a line in 2D space, this procedure assumes the validity of a linear model.
 # 
 # ## Example: Model for aragonite saturation state based on three other oceanographic variables
 # 
@@ -88,11 +144,11 @@
 # 
 # ## Numerical solution
 # 
-# The least squares problem is solved using a singular value decomposition method. Efficient alorithms for this procedure are typically included in scientfic computing software. In Python, create an array for the vector $Y$ and a 2D array for the matrix $X$. Then use `np.linalg,lstsq` to solve for $B$.
+# The least squares problem is solved using a singular value decomposition method. Efficient alorithms for this procedure are typically included in scientfic computing software. In Python, create an array for the vector $\vec{y}$ and a 2D array for the matrix $X$. Then use `np.linalg,lstsq` to solve for $c$.
 # 
 # ```python
 # import numpy as np
-# B = np.linalg.lstsq(X,Y)
+# c = np.linalg.lstsq(X,y)
 # ```
 
 # ## Testing for significance
@@ -142,7 +198,7 @@
 # 
 # ![images/arag_sat.png](images/arag_sat.png)
 # 
-# Source: Feeley et al. (2208) Evidence for upwelling of corrosive acidification water onto the continental shelf, Science
+# *Source:* Feeley et al. (2208) Evidence for upwelling of corrosive acidification water onto the continental shelf, Science
 # 
 # At Aragonite staturation state > 1 aragonite (calcium carbonate will dissolve in seawater)
 # 
@@ -157,7 +213,7 @@
 # 
 # #### Models
 # 
-# Juranek et al. (2009) describe a set of least squares regression models for aragonite saturation state, based on more commonly measured oceangraphic variables (temperature, salinity, pressure, oxygen and nitrate).
+# [Juranek et al. (2009)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2009GL040778) describe a set of least squares regression models for aragonite saturation state, based on more commonly measured oceangraphic variables (temperature, salinity, pressure, oxygen and nitrate).
 # 
 # Juranek, L. W., R. A. Feely, W. T. Peterson, S. R. Alin, B. Hales, K. Lee, C. L. Sabine, and J. Peterson, 2009: A novel method for determination of aragonite saturation state on the continental shelf of central Oregon using multi-parameter relationships with hydrographic data. Geophys. Res. Lett., 36, doi:10.1029/2009GL040778.
 # 
@@ -191,6 +247,8 @@
 # 
 # ![images/arag_sat_table.png](images/arag_sat_table.png)
 # 
+# *Source:* Juranek et al. (2009)
+# 
 # ##### Final Model
 # 
 # $$\Omega_{arag}^e = \alpha_0 + \alpha_1(O_2 - O_{2,r}) + \alpha_2(T - T_r) \times (O_2 - O_{2,r})$$
@@ -203,6 +261,8 @@
 # 
 # ![images/arag_sat_final.png](images/arag_sat_final.png)
 # 
+# *Source:* Juranek et al. (2009)
+# 
 # 
 # __Aragonite saturation state__
 # 
@@ -210,7 +270,13 @@
 # 
 # _Blue contours:_ Multiple regression model
 # 
-# __Application of the model to time series that do not have direct observations of the carbonate system parameters__
+# With their multiple regression model, Juranek et al. were able to estimate $\Omega_{arag}$ for time series that does not always include direct observations of the carbonate system parameters. This helps provide a perspective on the seasonal cycle of $\Omega_{arag}$, something that cannot be done with one WCOA cruise per year.
 # 
 # ![images/arag_sat_ts.png](images/arag_sat_ts.png)
 # 
+
+# In[ ]:
+
+
+
+

@@ -63,11 +63,13 @@
 # 
 # #### An oceanographic example
 # 
+# The following two examples use the K-S test to determine if there is significant difference in fluorescence intensity between an experimental treatment (black) and control (gray).
+# 
 # ![images/km_dist.png](images/km_dist.png)
 # 
 # _Source_: Durkin et al (2009), Chitin in diatoms and its association with the cell wall, Eukaryotic Cell
 # 
-# The following graph illustrates the K-S test statistic for a two-sample test.
+# The graph below illustrates the K-S test statistic for a two-sample test. It is the maximum difference between two the cumulative probability distributions.
 # 
 # ![images/KS_wiki.png](images/KS_wiki.png)
 # 
@@ -87,7 +89,7 @@
 # 
 # ##### Shapiro-Wilk
 # - High Power
-# - Biased at __Large__ sample size
+# - Biased at large sample size (may indicate non-normality for very subtle deviations from normality)
 # 
 # ```python
 # from scipy import stats
@@ -118,6 +120,7 @@
 # 
 # __$H_0$__: the median difference between pairs of observations is zero
 # 
+# - Like a paired t-test on ranks of the differences
 # - Rank the absolute values of the differences (smallest = 1)
 # - Sum the ranks of the positive values, and sum the ranks the negative values separately
 # - The smaller of the two sums is the test statistic T
@@ -198,18 +201,31 @@ plt.title('rho = '+str(round(rho3,3))+'\n p = '+str(round(p3,4)));
 
 
 # Spearman's correlation coefficient is not useful for relationships like those below because they are not monotonic relationships.
-# 
-# ![images/bad_rank.png](images/bad_rank.png)
-# 
-# [source: jpktd.blogspot.com](http://jpktd.blogspot.com/2012/06/non-linear-dependence-measures-distance.html)
 
 # ## A guide to common statistical tests
 # 
 # ![images/test_cases.png](images/test_cases.png)
 # 
 # 
-# Make sure that if you are using a non-parametric test, that you know what the hypothesis is. For example, Mann-Whitney and Kruskal-Wallis test for differences between _medians_, not means. If performing a t-test on log transformed data, the null hypothesis is no difference between _geometric means_ (G.M.)
+# ## Caution on using non-parametric tests
+# 
+# ### What hypothesis is being tested?
+# 
+# Make sure that if you are using a non-parametric test, that you know what the hypothesis is. If performing a t-test on log transformed data, the null hypothesis is no difference between _geometric means_ (G.M.)
 # 
 # $$GM = \sqrt[n]{x_i \times x_2 \cdots x_n}$$
 # 
+# ### What are the new assumptions?
 # 
+# For example, Mann-Whitney and Kruskal-Wallis test for differences between _medians_, not means. Also, these tests still have the very restrictive that the distributions of each group have the same shape. This means that there is an implicity assumption of *homoscedasticity*, or equal variances between the groups. As discussed in detail by McDonald (2014), the Welch's ANOVA is robust to deviations from normality and is often a better choice than the Kruskal-Wallis ANOVA for non-normal data.
+# 
+# https://www.biostathandbook.com/kruskalwallis.html
+# 
+# McDonald, J.H. 2014. Handbook of Biological Statistics (3rd ed.). Sparky House Publishing, Baltimore, Maryland. Freely available online at www.biostathandbook.com
+# 
+
+# In[ ]:
+
+
+
+

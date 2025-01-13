@@ -8,7 +8,7 @@
 # Correlation $\neq$ Causation
 # 
 # * If two variables are correlated, variability in one variable *might* cause variability in the other. Or there may be another underlying variable that causes variations in both.
-# * Statistically significant correlations may be *spurious* - see examples at https://tylervigen.com/spurious-correlations
+# * Statistically significant correlations may be *spurious* (like the one below) - this and other examples can be found at https://tylervigen.com/spurious-correlations
 # 
 # ![images/correlation-causation-cage.png](images/correlation-causation-cage.png)
 
@@ -16,15 +16,15 @@
 # 
 # The __variance__ $s_x^2$ has to be positive.
 # 
-# $$ s_x^2 = \frac{1}{N-1}\sum_{i=1}^N (x_i - \bar{x})(x_i - \bar{x})$$
+# $$ s_x^2 = C_{xx} = \frac{1}{N-1}\sum_{i=1}^N (x_i - \bar{x})(x_i - \bar{x})$$
 # 
-# The __covariance__ $s_{xy}^2$ can be positive or negative.  If $x_i$ tends to be above the mean $\bar{x}$ when $y_i$ tends to be above the mean, then the covariance is positive
+# The __covariance__ $C_{xy}$ can be positive or negative.  If $x_i$ tends to be above the mean $\bar{x}$ when $y_i$ tends to be above the mean, then the covariance is positive
 # 
-# $$ s_{xy}^2 = \frac{1}{N-1}\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})$$
+# $$ C_{xy} = \frac{1}{N-1}\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})$$
 # 
 # The _Pearson correlation coefficient_ is the normalized covariance between two variables.
 # 
-# $$ r_{xy} = \frac{s_{xy}^2}{s_x s_y}$$
+# $$ r_{xy} = \frac{C_{xy}}{s_x s_y}$$
 # 
 # 
 
@@ -267,37 +267,61 @@ plt.text(3, 12, 'IV', fontsize=20)
 # ### Linear regression (Type II) ###
 # 
 # Type 2 regression is the case where there are potentially errors or uncertainty in both the x and y variables. In a Type 1 regression, one variable needs to be selected as the independent variable ($x$) and another needs to be the dependent variable ($y$). The least-squares method in the Type I approach minimizes the sum of squared errors $\sum(\hat{y}-y)^2$. Errors in the $x$ variable are not considered in the Type 1 approach.
-# 
-# ![images/type_2_reg.png](images/type_2_reg.png)
-# 
-# Image: Emery and Thomson
-# 
-# Reference for Geometric Mean Function Regression (GMFR, a.k.a. neutral regression):
-# 
-# Ricker, W. E. Computation and uses of central trend lines
-# Can. J. Zool., 1984, 62, 1897-1905 
-# 
-# __Calculating Geometric Mean Function Regression__
-# 
-# - $\hat{a}_{2yx}$ : slope of regression of y on x
-# 
-# - $\hat{a}_{2xy}$ : slope of regression of y on x
-# 
-# - Geometric mean: $\hat{a}_{2GM} = \sqrt{\frac{\hat{a}_{2yx}} {\hat{a}_{2xy}}}$
-# 
 
 # #### Simplest Type 2 regression - the geometric mean
 # 
+# The geometric mean regression is based on the two different Type 1 regression lines that result depending on which variable is "x" and which is "y". Take, for example, the two Type 1 regression lines shown below:
+
+# In[5]:
+
+
+import pandas as pd
+import PyCO2SYS as pyco2
+
+filename07 = 'data/wcoa_cruise_2007/32WC20070511.exc.csv'
+df07 = pd.read_csv(filename07,header=29,na_values=-999,parse_dates=[[6,7]])
+
+# select subset of good data
+ii = ((df07['CTDPRS'] >= 30) & (df07['CTDPRS'] <= 300) & 
+      (df07['NITRAT_FLAG_W'] == 2) & (df07['PHSPHT_FLAG_W'] == 2))
+
+# least-squares regression of oxygen on nitrate
+result_NO = stats.linregress(df07['NITRAT'][ii], df07['CTDOXY'][ii])
+print('slope of regression of oxygen on nitrate = ',result_NO.slope)
+# least-squares regression of nitrate on oxygen
+result_ON = stats.linregress(df07['CTDOXY'][ii],df07['NITRAT'][ii])
+print('slope of regression of nitrate on oxygen = ',result_ON.slope)
+
+plt.figure()
+plt.plot(df07['NITRAT'][ii],df07['CTDOXY'][ii],'.')
+plt.plot(df07['NITRAT'][ii],
+         df07['NITRAT'][ii]*result_NO.slope + result_NO.intercept,'r-')
+plt.plot(df07['CTDOXY'][ii]*result_ON.slope + result_ON.intercept,
+         df07['CTDOXY'][ii],'k-')
+plt.title('WCOA 2007\nsubset: 30-300 dbar')
+plt.ylabel('Dissolved oxygen [$\mu$mol/kg]')
+plt.xlabel('Nitrate [$\mu$mol/kg]');
+
+
 # The difference between the two Type 1 regression lines above can be used to illustrate one potential solution, the geometric mean regression. This is the line that bisects the two Type 1 regression lines. This can be thought of as a "compromise" between the two lines. An important assumption in this approach is that the uncertainty in each variable is assumed to be proportional to the sample standard deviation. If the uncertainty is dominated by natural variability, this might be a reasonable assumption. In cases, where the uncertainty is dominated by measurement error, there might be better ways of quantifying the uncertainty based on the analytical techniques. In this case, more sophisticated iterative approaches can be taken to determine the appropriate Type 2 regression model.
 # 
-# Detailed discussion can be found in Ricker, W. E. (1984) Computation and uses of central trend lines, *Can. J. Zool.*, 62, 1897-1905.
+# Glover, Jenkins and Doney provide a clear algorithm for determining the geometric mean regression slope:
 # 
-# Glover, Jenkins and Doney provide an algorithm for determining the geometric mean regression slope:
+# * Determine the slope of the regression of $y$ on $x$, $a_{2yx}$
 # 
-# * Determine the slope of the regression of $y$ on $x$, $slope_{yx}$
+# * Determine the slope of the regression of $x$ on $y$, $a_{2xy}$
 # 
-# * Determine the slope of the regression of $x$ on $y$, $slope_{xy}$
-# 
-# * Calculate the geometric mean regression slope, $slope_{GMR} = \sqrt{\frac{slope_{yx}}{slope_{xy}}}$
+# * Calculate the geometric mean regression slope, $a_{2GMR} = \sqrt{\frac{a_{2yx}}{a_{2xy}}}$
 # 
 # * Determine the intercept by noting that the regression line goes through the mean of $x$ and the mean of $y$
+# 
+# More detailed discussion can be found in Ricker (1984):
+# 
+# Ricker, W. E. Computation and uses of central trend lines
+# Can. J. Zool., 1984, 62, 1897-1905 
+
+# In[ ]:
+
+
+
+

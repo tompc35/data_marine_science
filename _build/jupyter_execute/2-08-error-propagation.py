@@ -155,7 +155,7 @@ plt.yticks([]);
 # 
 # $\sigma_y = |2.303 y \sigma_a|$
 
-# ### Python uncertainties package
+# ## Python uncertainties package
 # 
 # The [uncertainties](https://pythonhosted.org/uncertainties/) package in Python makes it easy to keep track of uncertainties in complicated equations and account for correlations, which are ignored in the special cases above.
 
@@ -209,7 +209,7 @@ V = (4/3)*np.pi*(0.5*d)**3
 V.std_dev/V.nominal_value
 
 
-# __Example__: Marine Carbonate Chemistry
+# ## Application: Marine Carbonate Chemistry
 # 
 # ![images/carbonate_example.png](images/carbonate_example.png)
 # 
@@ -261,4 +261,10 @@ V.std_dev/V.nominal_value
 # $[H^+] \approx 10^{-8.2}$
 # 
 # 
-# What is the error in calculating the partial pressure of CO2 in seawater from these measurements?
+# Chemical oceanographers may be interested in knowing the error in calculating the partial pressure of CO2 in seawater from these measurements. The PYCO2SYS package provides [tools for propagating uncertainty](https://pyco2sys.readthedocs.io/en/latest/uncertainty/) in its carbonate system calculations.
+
+# In[ ]:
+
+
+
+

@@ -90,10 +90,10 @@ fahr_to_celsius_kelvin()
 # 
 # Create a function that converts temperature from degrees Celsius to degrees Fahrenheit.
 # 
-# Use the function created above to convert the following array of temperature values from degrees F to degrees C. Avoid using a for loop.
+# Use the function created above to convert the following array of temperature values from degrees C to degrees F. Avoid using a for loop.
 # 
 # ```python
-# temps_f = np.array([50.5, 58.4, 62.3, 49.2])
+# temps_c = np.array([50.5, 58.4, 62.3, 49.2])
 # ``` 
 
 # ### Exercise: Stokes law function

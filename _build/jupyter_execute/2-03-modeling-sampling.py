@@ -588,11 +588,54 @@ interact(plot_distribution_of_subsampled_weight_means,
 # 
 # ### Confidence intervals for the mean
 # 
+# For large sample size $N$:
+# 
 # $CI_{95\%} = \bar{x} \pm 1.96 \times SE$, where SE is the standard error $\frac{S}{\sqrt{N}}$
 # 
-# With large enough sampling size N, the 95% confidence interval will contain the true population mean 95% of the time. Here 1.96 is a critical z-score. In theory, if a population is normally distributed then 95% of the z-scores will be between -1.96 and 1.96. 
+# With large enough $N$, the 95% confidence interval will contain the true population mean 95% of the time. Here 1.96 is a critical z-score. In theory, if a population is normally distributed then 95% of the z-scores will be between -1.96 and 1.96. 
 # 
 # This equation is only valid for large samples sizes. For small sample sizes, we use a t-distribution instead of z-distribution (covered later).
+# 
+# The 1.96 in the equation above is the critical $z$-value for a *significance level* of $\alpha$ = 0.05, which corresponds to a 100x(1-$\alpha$) *confidence level*. 
+# 
+# This number comes from the standard normal distribution shown below, where 95% of the values in this distribution fall between $z_{0.025} = $ -1.96 and $z_{0.925} = $ 1.96. The subscripts on the critical $z$-values represent the cumulative probability - 97.5% of values fall below 1.96 and 2.5% of values fall below -1.96, with 95% of the values falling between theses critical values. Note that because the distribution is symmetric, $z_{0.025} = -z_{0.025}$.
+# 
+# We can therefore write the confidence interval in a few different ways:
+# 
+# $CI_{95\%} = \bar{x} \pm 1.96 \times SE$
+# 
+# $CI_{95\%} = \bar{x} \pm z_{crit} \times SE$
+# 
+# $CI_{95\%} = \bar{x} \pm z_{0.975} \times SE$
+# 
+# $CI_{95\%} = \bar{x} \pm z_{1-\alpha/2} \times SE$
+
+# In[11]:
+
+
+# significance level
+
+alpha = 0.05
+
+# plot t-distribution
+zvalues = np.arange(-4,4,0.01)
+zpdf = stats.norm.pdf(zvalues)
+
+plt.figure()
+plt.plot(zvalues,zpdf,lw=3)
+plt.xlabel('$z$')
+plt.ylabel('probability density')
+plt.title('standard normal $z$-distribution')
+plt.gca().set_ylim(bottom=0)
+
+# plot rejection regions
+zcrit = stats.norm.ppf(1-alpha/2)
+upperi, = np.where(zvalues>zcrit)
+loweri, = np.where(zvalues<-zcrit)
+plt.fill_between(zvalues[upperi],zpdf[upperi],facecolor='red')
+plt.fill_between(zvalues[loweri],zpdf[loweri],facecolor='red');
+
+
 # 
 # #### Example: fish weight distribution
 # 
@@ -601,8 +644,10 @@ interact(plot_distribution_of_subsampled_weight_means,
 # The confidence intervals generally encompass the population mean. However, there are some trials where the confidence intervals fail. Also, by making the sample size small (e.g. $N$ = 3) you can see that the confidence intervals start to encompass negative values, which is not realistic for this data set. 
 # 
 
-# In[11]:
+# In[12]:
 
+
+ntrial = 1000
 
 xm = np.nan*np.zeros(ntrial)
 xs = np.nan*np.zeros(ntrial)
@@ -651,6 +696,10 @@ interact(plot_confidence_intervals,
          ntrial=widgets.IntSlider(min=10, max=200, step=1, value=100));
 
 
+# The visualization above is inspired by a similar visualization by Kristoffer Magnusson at https://rpsychologist.com/d3/ci/. An excerpt from the description on site is worth keeping in mind:
+# 
+# > The take home message is that we must accept that our data are noisy and that our results are uncertain. A single “significant” CI or p-value might provide comfort and make for easy conclusions. I hope this visualization shows that instead of drawing conclusions from a single experiment, we should spend our time replication results, honing scientific arguments, polish theories and form narratives, that taken all together provide evidentiary value for our hypothesis. So that we in the end can make substantive claims about the real world.
+
 # 
 # 
 # #### Common misinterpretation of confidence intervals*:
@@ -667,3 +716,11 @@ interact(plot_confidence_intervals,
 # 
 # \*Adapted from: http://statsthinking21.org/sampling.html
 # 
+
+# “The parameter is an unknown constant and no probability statement concerning its value may be made.”
+# 
+# Jerzy Neyman, 1937
+# Inventor of the confidence interval
+# 
+
+# Confidence intervals (along with p-values) are examples of *frequentist* statistics, which rely on a set of hypothetical experiments conducted many, many (technically, infinitely many) times. We need to be careful thinking about how we apply and interpret frequentist statistics in the typical case where we only have samples from one experiment.

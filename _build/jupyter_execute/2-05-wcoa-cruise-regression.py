@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Implementing linear regression in Python
+# # Implementing linear regression in Python and matrix review
 # 
 # Like many data analysis problems, there are a number of different ways to perform a linear regression in Python. This notebook shows a few different methods. The final method motivates a review of matrix multiplication, which will be helpful in the next section on multivariate regression.
 # 
@@ -138,18 +138,29 @@ coefficients = np.polyfit(x[ii],y[ii],1)
 print(coefficients)
 
 
-# ### Method 5: Matrix form
+# ## Matrix multiplication and linear algebra
 # 
 # In the next section, we'll consider solving for the coefficients of the linear fit using matrices. But first, let's do a quick review of matrix multiplication:
 # 
 # #### Review: Matrix Multiplication
 # Suppose we have the following matrices:
 # 
-# $$ \textbf{A}= \begin{bmatrix} 1 & 2 & 3\\ 4 & 5 & 6 \end{bmatrix} $$
+# $$ \textbf{A}= \begin{bmatrix} \color{red} 1 & \color{red} 2 & \color{red} 3\\ 
+#                                 \color{blue} 4 & \color{blue} 5 & \color{blue} 6 \end{bmatrix} $$
 # 
-# $$ \textbf{B} = \begin{bmatrix} 7 & 8\\ 9 & 10 \\ 11 & 12 \end{bmatrix} $$
+# $$ \textbf{B} = \begin{bmatrix}  \color{green} 7 & \color{purple} 8\\ 
+#                                 \color{green} 9 & \color{purple} {10} \\ 
+#                                 \color{green} {11} & \color{purple} {12} \end{bmatrix} $$
 # 
-# What will be the matrix product $\textbf{AB}$?
+# The matrix product $\textbf{AB}$ is defined by the *dot products* of the rows of $\textbf{A}$ and columns of $\textbf{B}$.
+# 
+# $$ \textbf{AB} = \begin{bmatrix} \color{red}{(1)}\color{green}{(7)} \color{black} + \color{red}(2)\color{green} (9) \color{black} + \color{red}(3)\color{green}(11) &  
+#                     \color{red}(1)\color{purple}(8) + (\color{red} 2)\color{purple}(10) + \color{red} (3)\color{purple}(12)\\ 
+#                     \color{blue}(4)\color{green}(7) + \color{blue}(5)\color{green}(9) + \color{blue}(6)\color{green}(11) & 
+#                     \color{blue}(4)\color{purple}(8) + \color{blue}(5)\color{purple}(10) + \color{blue}(6)\color{purple}(12) \end{bmatrix} $$
+#                    
+# $$ \textbf{AB} = \begin{bmatrix} 58 &  64\\ 
+#                                139 & 154 \end{bmatrix} $$
 # 
 # To define matrices in Python, we define 2-d arrays as lists of lists wrapped in numpy's ```array``` function, for example:
 
@@ -183,9 +194,23 @@ print('shape of B: ', np.shape(B))
 np.dot(A,B)
 
 
-# It is important to remember that matrix multiplication is not *commutative*, meaning $\textbf{AB}$ is generally not the same as $\textbf{BA}$. In this example, $\textbf{BA}$ gives us a different size matrix.
+# Alternatively, we could use `np.matmul` or the `@` operator:
 
 # In[19]:
+
+
+np.matmul(A,B)
+
+
+# In[20]:
+
+
+A@B
+
+
+# It is important to remember that matrix multiplication is not *commutative*, meaning $\textbf{AB}$ is generally not the same as $\textbf{BA}$. In this example, $\textbf{BA}$ gives us a different size matrix.
+
+# In[21]:
 
 
 np.dot(B,A)
@@ -195,13 +220,13 @@ np.dot(B,A)
 # 
 # The *transpose* of a matrix $\textbf{A}^T$ has the same values as $\textbf{A}$, but the rows are converted to columns. One way to do this is with the `np.transpose` function.
 
-# In[20]:
+# In[22]:
 
 
 print(A)
 
 
-# In[21]:
+# In[23]:
 
 
 print(np.transpose(A))
@@ -209,7 +234,7 @@ print(np.transpose(A))
 
 # Another way is to use the `.T` method on a Numpy array.
 
-# In[22]:
+# In[24]:
 
 
 print(A.T)
@@ -217,7 +242,7 @@ print(A.T)
 
 # Note that the product $\textbf{A}^T\textbf{A}$ is a *square* matrix, which has the same number of rows and columns. 
 
-# In[23]:
+# In[25]:
 
 
 np.dot(A.T, A)
@@ -228,6 +253,12 @@ np.dot(A.T, A)
 # The concept of a matrix inverse is similar to the matrix of a single number. If we have a single value $b$, its inverse can be represented as $b^{-1}$. A value times its inverse is equal to 1.
 # 
 # $$b^{-1}b = 1$$
+
+# The inverse of a single number can be used to solve for $x$ in a linear equation $bx = c$. For example:
+# 
+# $$ 10x = 2$$
+# $$ (10^{-1})10x = 2(10^{-1})$$
+# $$ x = 2(10^{-1})$$
 
 # Let's say we have a *square* matrix $\textbf{B}$ where the number of rows and columns are equal. The inverse $\textbf{B}^{-1}$ is the matrix that gives 
 # 
@@ -241,7 +272,7 @@ np.dot(A.T, A)
 # 
 # In a linear algebra class, you might calculate $\textbf{B}^{-1}$ by hand, but in this class we will rely in Numpy to do it for us. Let's set up a $3 \times 3$ $\textbf{B}$ matrix.
 
-# In[24]:
+# In[26]:
 
 
 B = np.array([[1, 2, 1],
@@ -252,7 +283,7 @@ print(B)
 
 # The inverse $\textbf{B}^{-1}$ is
 
-# In[25]:
+# In[27]:
 
 
 np.linalg.inv(B)
@@ -260,7 +291,7 @@ np.linalg.inv(B)
 
 # The product $\textbf{B}^{-1}\textbf{B}$ can be calculated as
 
-# In[26]:
+# In[28]:
 
 
 BinvB = np.dot(np.linalg.inv(B), B)
@@ -269,7 +300,7 @@ print(BinvB)
 
 # If we round these values, we can see more clearly that this is nearly identical to the identity matrix $\textbf{I}$, with some very small round-off error.
 
-# In[27]:
+# In[29]:
 
 
 print(np.round(BinvB))
@@ -277,7 +308,7 @@ print(np.round(BinvB))
 
 # For reference, an identity matrix can be created with the `np.eye` function
 
-# In[28]:
+# In[30]:
 
 
 print(np.eye(3))
@@ -299,7 +330,7 @@ print(np.eye(3))
 # 
 # To solve for the parameters c using matrix multiplication, we first need to fomulate the $\vec{y}$ and $\textbf{X}$ matrices
 
-# In[29]:
+# In[31]:
 
 
 # check to see that the y_subset is only 1-d (and won't work for matrix multiplication)
@@ -315,7 +346,7 @@ print(y_matrix)
 print('shape of y: ', np.shape(y_matrix))
 
 
-# In[30]:
+# In[32]:
 
 
 # define a matrix X with a column of ones and a column of the x values
@@ -341,7 +372,7 @@ print(np.shape(X))
 # 
 # $$(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\hat{y} = (\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\textbf{X}\vec{c}$$
 # 
-# which reduces to
+# Since which reduces to
 # 
 # $$(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\hat{y} = \textbf{I}\vec{c}.$$
 # 
@@ -355,7 +386,7 @@ print(np.shape(X))
 # 
 # Using numpy, we can define the matrix components of the above equation and then run the calculation to find the coefficients:
 
-# In[31]:
+# In[33]:
 
 
 # calculate the transpose of the matrix X
@@ -376,7 +407,7 @@ print(c)
 
 # As a sanity check, we can double check that the coefficients are the same as those from numpy's ```polyfit``` function
 
-# In[32]:
+# In[34]:
 
 
 coefficients = np.polyfit(x[ii],y[ii],1)
