@@ -174,8 +174,6 @@ open -e
 notepad
 ```
 
-If you are using Windows, it is highly recommended that you install the free [Notepad++](https://notepad-plus-plus.org/) editor instead of using the default Notepad.
-
 ## Setup for Unix shell tutorial
 
 On the first day of our data analysis course, we go through parts of the Software Carpentry <a href="http://swcarpentry.github.io/shell-novice/">Unix shell tutorial</a>. Software Carpentry is an organization that develops lessons and workshops to teach skills in research computing.
