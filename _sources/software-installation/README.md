@@ -20,7 +20,9 @@ Anaconda is a popular distribution of Python and a set of programs built specifi
 
 ### If you have Anaconda or Miniconda already installed
 
+```{attention}
 If you have Anaconda or Miniconda already installed on your computer, follow the steps below. If not, move on to [Miniconda installation](#miniconda-installation).
+```
 
 First run Python and check which version you have. The version number is displayed when Python starts up.
 
