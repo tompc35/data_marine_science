@@ -13,7 +13,7 @@ You will need at least 2 GB free on your computer's hard drive.
 ### What is Miniconda?
 
 Anaconda is a popular distribution of Python and a set of programs built specifically for data science. Miniconda is stripped-down version of Anaconda. We will use Miniconda, and add additional programs manually, so that it does not take up as much space on your computer. Miniconda includes:
-* *Python*: Programming language (we'll be using version 3.12)
+* *Python*: Programming language (we'll be using version 3.13)
 * *Conda*: Package manager
 
 *Conda* is a package manager. It maintains the directories (folder pathways) and versions of external (non-default) python packages. A package is a set of Python tools designed for a specific purpose. Some of these are included with Python, but others have to be downloaded from an external source.
@@ -24,7 +24,7 @@ If you have Anaconda or Miniconda already installed on your computer, follow the
 
 First run Python and check which version you have. The version number is displayed when Python starts up.
 
-To maintain consistency, we will be using Python version 3.12 in this class. Previous versions of Python 3.x will work most of the time in classroom demonstrations and other course materials, but you may run into a few cases where certain commands are invalid or not available. Python 2.x is completely incompatible with this course material. If your version is already 3.12, and you are fine with installing additional packages to your existing version, proceed to [installing additional tools](#installing-additional-tools).
+To maintain consistency, we will be using Python version 3.13 in this class. Previous versions of Python 3.x will work most of the time in classroom demonstrations and other course materials, but you may run into a few cases where certain commands are invalid or not available. Python 2.x is completely incompatible with this course material. If your version is already 3.13, and you are fine with installing additional packages to your existing version, proceed to [installing additional tools](#installing-additional-tools).
 
 If you have a different version of Python, you have two options:
 
@@ -37,7 +37,7 @@ Option 2 will allow you to use the same Python version and packages used in the 
 Open a terminal (Mac) or Anaconda prompt (Windows) and type:
 
 ```
-conda create --name data-25 python=3.12
+conda create --name data-25 python=3.13
 ```
 
 You can replace `data-25` with any name you like for your environment. To enter the new environment, type:
