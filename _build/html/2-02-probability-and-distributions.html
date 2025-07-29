@@ -50,8 +50,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -709,19 +707,6 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="probability-and-distributions">
 <h1><span class="section-number">2. </span>Probability and distributions<a class="headerlink" href="#probability-and-distributions" title="Permalink to this headline">#</a></h1>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">reliability.Fitters</span> <span class="kn">import</span> <span class="n">Fit_Weibull_ZI</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">reliability.Other_functions</span> <span class="kn">import</span> <span class="n">histogram</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;reliability&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <section id="focus-questions">
 <h2><span class="section-number">2.1. </span>Focus questions<a class="headerlink" href="#focus-questions" title="Permalink to this headline">#</a></h2>
@@ -852,16 +837,19 @@ source: http://www.cureffi.org/2013/06/19/how-censoring-by-life-expectancy-affec
 </section>
 <section id="log-normal-distribution">
 <h3>Log-Normal Distribution<a class="headerlink" href="#log-normal-distribution" title="Permalink to this headline">#</a></h3>
-<p>Many biological data, such as growth rates, follow a log-normal distribution. The distributions are skewed, with a peak close to zero but a long tail of rare high values. These data can be transformed by taking the logarithm, giving a distribution that is more symmetric and closer to a normal distribution.</p>
-<p><img alt="log normal" src="_images/log_normal.png" /></p>
-<p>source: Landry, M.R. and B.M. Hickey (eds.) (1989) Coastal Oceanography of Washington and
-Oregon, 607 pp., Elsevier Science, Amsterdam, The Netherlands.</p>
+<p>Many biological data, such as growth rates or abundance, follow a log-normal distribution. The distributions are skewed, with a peak close to zero but a long tail of rare high values. These data can be transformed by taking the logarithm, giving a distribution that is more symmetric and closer to a normal distribution.</p>
+<p>The example below comes from the distribution of chlorophyll-a samples from the <a class="reference internal" href="1-04-cruise-data-analysis.html"><span class="doc std std-doc">West Coast Ocean Acidification Cruise</span></a>. Chorophyll-a is a proxy for phyplankton abundance. The untransformed data are highly skewed; low abundaces are common but there are some samples that have very high abundances. Log transforming the data makes the distribution look more “normal,” although it is clearly different from a theoretical Gaussian distribution.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/2-02-probability-and-distributions_14_0.png" src="_images/2-02-probability-and-distributions_14_0.png" />
+</div>
+</div>
 </section>
 <section id="back-to-normal-distributions">
 <h3>Back to Normal Distributions<a class="headerlink" href="#back-to-normal-distributions" title="Permalink to this headline">#</a></h3>
 <p>Random instrument error is often normally distributed. The mean of errors tends to be zero if error is randomly distributed and <strong>accurate</strong>, i.e. not biased.</p>
 <p><img alt="satellite error" src="_images/instr_error_dist.png" /></p>
-<p>source: Connolly and Lentz (2014)</p>
+<p>source: Connolly, T. P., &amp; Lentz, S. J. (2014). Interannual variability of wintertime temperature on the inner continental shelf of the Middle Atlantic Bight. Journal of Geophysical Research: Oceans, 119(9), 6269-6285.</p>
 <p>In this example, error is defined as: <span class="math notranslate nohighlight">\(T_{sat} - T_{mooring}\)</span> units of [<span class="math notranslate nohighlight">\(^o\)</span>C]. There is a fairly large spread in the data. We therefore cannot be extremely confident in any particular satellite image. However, we can be confident that the mean of a large number of errors is close to zero.</p>
 <p>Normal distributions can be “standardized”, where the</p>
 <ul class="simple">

@@ -6,13 +6,13 @@
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
 from scipy import stats
 import matplotlib.pyplot as plt
 import pandas as pd
 from reliability.Fitters import Fit_Weibull_ZI
 from reliability.Other_functions import histogram
+import pandas as pd
 
 
 # ## Focus questions
@@ -204,12 +204,30 @@ plt.xlabel('wind speed [m/s]');
 
 # ### Log-Normal Distribution 
 # 
-# Many biological data, such as growth rates, follow a log-normal distribution. The distributions are skewed, with a peak close to zero but a long tail of rare high values. These data can be transformed by taking the logarithm, giving a distribution that is more symmetric and closer to a normal distribution.
+# Many biological data, such as growth rates or abundance, follow a log-normal distribution. The distributions are skewed, with a peak close to zero but a long tail of rare high values. These data can be transformed by taking the logarithm, giving a distribution that is more symmetric and closer to a normal distribution.
 # 
-# ![log normal](images/log_normal.png)
-# 
-# source: Landry, M.R. and B.M. Hickey (eds.) (1989) Coastal Oceanography of Washington and
-# Oregon, 607 pp., Elsevier Science, Amsterdam, The Netherlands.
+# The example below comes from the distribution of chlorophyll-a samples from the [West Coast Ocean Acidification Cruise](1-04-cruise-data-analysis.ipynb). Chorophyll-a is a proxy for phyplankton abundance. The untransformed data are highly skewed; low abundaces are common but there are some samples that have very high abundances. Log transforming the data makes the distribution look more "normal," although it is clearly different from a theoretical Gaussian distribution. 
+
+# In[5]:
+
+
+filename = 'data/wcoa_cruise/WCOA2013_hy1.csv'
+df = pd.read_csv(filename,header=31,na_values=-999,
+                 parse_dates=[[8,9]])
+
+plt.figure(figsize=(8, 3.5))
+
+plt.subplot(121)
+plt.hist(df['CHLORA']);
+plt.xlabel('chlorophyll-a [$\mu$g/L]')
+plt.ylabel('count')
+plt.title('untransformed')
+
+plt.subplot(122)
+plt.hist(np.log10(df['CHLORA']))
+plt.xlabel('log$_{10}($chlorophyll-a [$\mu$g/L])')
+plt.title('log transformed');
+
 
 # ### Back to Normal Distributions
 # 
@@ -217,7 +235,7 @@ plt.xlabel('wind speed [m/s]');
 # 
 # ![satellite error](images/instr_error_dist.png)
 # 
-# source: Connolly and Lentz (2014)
+# source: Connolly, T. P., & Lentz, S. J. (2014). Interannual variability of wintertime temperature on the inner continental shelf of the Middle Atlantic Bight. Journal of Geophysical Research: Oceans, 119(9), 6269-6285.
 # 
 # In this example, error is defined as: $T_{sat} - T_{mooring}$ units of [$^o$C]. There is a fairly large spread in the data. We therefore cannot be extremely confident in any particular satellite image. However, we can be confident that the mean of a large number of errors is close to zero.
 # 
