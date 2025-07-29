@@ -108,7 +108,13 @@ First, add the "conda-forge" channel as a source for obtaining packages. This is
 conda config --add channels conda-forge
 ```
 
-Now, install the additional programs and Python packages. This will take a while. Copy and paste the following onto the command line and press Enter (**note:** this command is very long and probably extends beyond the width of your browser; the easiest way to copy it is to click the "copy" button that appears when you hover the cursor over the right side of the text box):
+Now, now you will install the additional programs and Python packages. This will take a while. 
+
+```{note}
+This command below is very long and probably extends beyond the width of your browser; the easiest way to copy it is to click the "copy" button that appears when you hover the cursor over the right side of the text box.
+```
+
+Copy and paste the following onto the command line and press Enter:
 
 ```
 conda install jupyter jupyterlab matplotlib pandas seaborn xarray netCDF4 cartopy cmocean gsw scikit-image scikit-learn statsmodels uncertainties pingouin nb_conda_kernels ipympl openpyxl autograd PyCO2SYS glidertools pykrige 
