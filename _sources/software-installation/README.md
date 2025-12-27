@@ -39,13 +39,13 @@ Option 2 will allow you to use the same Python version and packages used in the 
 Open a terminal (Mac) or Anaconda prompt (Windows) and type:
 
 ```
-conda create --name data-25 python=3.13
+conda create --name data-26
 ```
 
-You can replace `data-25` with any name you like for your environment. To enter the new environment, type:
+You can replace `data-26` with any name you like for your environment. To enter the new environment, type:
 
 ```
-conda activate data-25
+conda activate data-26
 ```
 
 ```{note}
