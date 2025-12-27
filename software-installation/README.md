@@ -6,7 +6,7 @@ You will need at least 2 GB free on your computer's hard drive.
 
 ## Sign up for a GitHub account
 
-[Github](https://github.com) is a popular remote repository hosting service. This is a way to store and share version controlled software off of your computer. You can think of this sort of like Dropbox for code. Sign up for an account, if you do not already have one.
+[Github](https://github.com) is a popular remote repository hosting service. This is a way to store and share version controlled software off of your computer. We will be using it in this class to distribute and turn in assignments. Sign up for an account, if you do not already have one.
 
 ## Install Miniconda
 
@@ -56,13 +56,13 @@ Keep this window open and proceed to [Installing additional tools](#installing-a
 
 ### Miniconda installation
 
-1. Go to: https://www.anaconda.com/download
+1. Go to: https://www.anaconda.com/download/success
 
-2. Enter your email address and click "submit" or click "skip registration"
+2. Scroll down to Miniconda installers, download the appropriate installer for your operating system and run. The default options will be fine.
 
-3. Scroll down to Miniconda installers, download the appropriate installer for your operating system and run. The default options will be fine.
-
-  * <b>Mac</b>: There are different options for installers. Download the .pkg installer for the processor on your Mac (Intel for older Macs and Apple M1 for newer Macs) and click on it. If you don't know what type of processor you have, see this [guide](https://support.apple.com/en-us/HT211814).
+```{note}
+  *Mac users*: There are different options for installers. Download the graphical installer (.pkg file) for the processor on your Mac (Intel for older Macs and Apple M1 for newer Macs) and click on it. If you don't know what type of processor you have, see this [guide](https://support.apple.com/en-us/HT211814).
+```
 
 ### Open a terminal or command prompt
 
@@ -71,7 +71,7 @@ Keep this window open and proceed to [Installing additional tools](#installing-a
 * [Mac instructions](#mac-instructions)
 
 #### Windows instructions
-After installing Anaconda, open the program <b>"Anaconda Prompt"</b>
+After installing Miniconda, open the program <b>"Anaconda Prompt"</b>
 You might have to search for this in the start menu.<br>
 
 ```{image} images/comd_prompt_windows.png
@@ -84,7 +84,7 @@ Clicking *Anaconda Prompt* will bring up a screen where you can type commands. K
 
 #### Mac instructions
 
-After installing Anaconda, open the program <b>"Terminal"</b>
+After installing Miniconda, open the program <b>"Terminal"</b>
 
 This is located in Applications -> Utilities
 
@@ -120,7 +120,7 @@ Copy and paste the following onto the command line and press Enter:
 conda install jupyter jupyterlab matplotlib pandas seaborn xarray netCDF4 cartopy cmocean gsw scikit-image scikit-learn statsmodels uncertainties pingouin nb_conda_kernels ipympl openpyxl autograd PyCO2SYS glidertools pykrige 
 ```
 
-Here, `conda` is the name of the package management program and `install` is a command given to this program, followed by the names of programs to install. A description of the packages that you have just installed can be found [here](package-list.md).
+Here, `conda` is the name of the package management program and `install` is a command given to this program, followed by the names of programs to install.
 
 ## Install Git
 
@@ -136,12 +136,6 @@ Choose the default options if prompted to make selections. If for some reason th
 
 Check to make sure that you can open the Git Bash command prompt. You should be able to find Git Bash in the list of programs when you open the Windows Start menu. It may be listed under the heading *Anaconda3*.
 
-## Install Visual Studio Code
-
-VS Code is a text editor designed for programming. VS Code is available on all operating systems and has some cool custom plugins.
- 
-Follow the instructions for [setting up Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview) for your operating system. For Windows and Linux users, just follow the steps under "Installation." For Mac users, follow the steps under "Installation" and "Launching from the command line."
-
 ## Open a text editor from the command line
 
 Make sure that you can open a text editor from the command line. Open the Terminal application (Mac) or Git Bash (Windows).
@@ -156,19 +150,9 @@ nano
 
 This brings up a text editor in the terminal window. Enter Control-X to exit Nano. If that worked, then proceed to [Setup for Unix shell tutorial](#setup-for-unix-shell-tutorial)
 
-### VS Code
-
-You can also try the VS Code text editor. On the command line, enter:
-
-```
-code
-```
-
-This should open a window in the VS Code text editor. 
-
 ### System default text editor
 
-You can also try the default text editor for your operating system. These do not have as many features as Visual Studio Code but will get the job done.
+You can also try the default text editor for your operating system. 
 
 #### TextEdit (Mac)
 
